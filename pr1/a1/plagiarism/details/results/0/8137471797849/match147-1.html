@@ -1,0 +1,172 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match147-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenThiNga_97770_assignsubmission_file_MidTermAssignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+VuThiHue_97649_assignsubmission_file_HueB02.java<p><PRE>
+//Vu Thi Hue-B02-1901040091
+package assignment;
+
+import java.util.Scanner;
+
+public class HueB02 {
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match147-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 0;
+        //this action to create 5 options for user to run one of the problems.
+        while (n != 5) {
+            System.out.println("1. Problem1: ");
+            System.out.println("2. Problem2: ");
+            System.out.println("3. Problem3: ");
+</FONT>            System.out.println("4. Problem4: ");
+            System.out.println("5. Exist");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match147-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.print("Choose an option: ");
+            n = sc.nextInt();
+            // split the problems
+            switch (n) {
+                case 1:
+                    System.out.println("The number: ");
+                    //type the input data
+                    int number = sc.nextInt();
+                    String R = "",
+                     R1 = "";
+                    //condition to continue the loop
+                    while (number / 2 != 0) {
+</FONT>
+                        int r = number % 2;
+                        number = number / 2;
+                        //put the data on empty string R
+                        R = R + r;
+                    }
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match147-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    R = R + 1;
+
+                    for (int i = R.length() - 1; i &gt;= 0; i--) {
+                        //put the data on the empty string R1
+                        R1 = R1 + R.charAt(i);
+                    }
+
+                    System.out.println("binary: " + R1);
+                    break;
+                case (2):
+                    //type the user's data
+                    System.out.print("The value of m: ");
+                    int m = sc.nextInt();
+                    System.out.print("The value of n: ");
+</FONT>                    int n1 = sc.nextInt();
+                    double result = 0,
+                     c = 0;
+                    //the condition to continue the loop
+                    for (int i = 0; i &lt;= n - 1; i++) {
+                        if (n1 &gt;= 1 && n1 &lt;= 5) {
+                            c = Math.sqrt(c + m);
+                        } else {
+                            System.out.println("invalid input");
+
+                        }
+
+                    }
+                    System.out.println("The result: " + c);
+
+                    break;
+
+                case (3):
+                    //type the user's data
+                    System.out.print("value of a: ");
+                    double a = sc.nextDouble();
+                    System.out.print("value of b: ");
+                    double b = sc.nextDouble();
+                    System.out.print("value of c: ");
+                    double c1 = sc.nextDouble();
+                    if (a == 0 && b == 0) {
+                        if (c1 == 0) {
+                            System.out.println("there is nothing to be solved");
+                        } else {
+                            System.out.println("the equation has no root");
+                        }
+                    } else if (a == 0 && b != 0 && c1 != 0) {
+                        double x = -c1 / b;
+                        System.out.println("there is one root: " + x);
+                    } else if (a != 0) {
+                        if (b * b - 4 * a * c1 &lt; 0) {
+                            System.out.println("there is no root");
+                        } else if (b * b - 4 * a * c1 == 0) {
+                            System.out.println("the equation has x1=x2= " + -b / (2 * a));
+
+                        } else {
+                            double x1 = (-b + Math.sqrt(b * b - 4 * a * c1)) / (2 * a);
+                            double x2 = (-b - Math.sqrt(b * b - 4 * a * c1)) / (2 * a);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match147-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_24.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println("x1= " + x1 + " ; " + "x2= " + x2);
+                        }
+                    }
+
+                    break;
+
+                case (4):
+
+                    System.out.print("input number: ");
+                    //type user's data
+                    int input = sc.nextInt();
+                    //use switch instead of else if
+                    switch (input) {
+                        case 1:
+                            System.out.println(" * ");
+                            break;
+
+                        case 2:
+                            System.out.println(" * ");
+                            System.out.println("***");
+                            break;
+                        case 3:
+                            System.out.println("  * ");
+                            System.out.println(" *** ");
+                            System.out.println("***** ");
+                            break;
+                        case 4:
+                            System.out.println("   * ");
+                            System.out.println("  *** ");
+                            System.out.println(" ***** ");
+                            System.out.println("*******");
+                            break;
+                        case 5:
+                            System.out.println("    * ");
+                            System.out.println("   *** ");
+                            System.out.println("  ***** ");
+                            System.out.println(" ******* ");
+                            System.out.println("********* ");
+                            break;
+                        default:
+                            System.out.println("invalid input");
+                            break;
+
+                    }
+
+                    break;
+</FONT>
+                default:
+                    break;
+            }
+        }
+        //to conclude the program
+        System.out.println("Goodbye !");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match147-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

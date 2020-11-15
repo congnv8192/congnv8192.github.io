@@ -1,0 +1,148 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match240-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LePhuongThao_97615_assignsubmission_file_assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LePhuongThao_97615_assignsubmission_file_assignment1.java<p><PRE>
+import java.util.Scanner;
+public class assignment1 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = 0;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match240-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		char cont;
+		do {
+			do {
+				try {
+					System.out.println("[1] Convert a decimal integer to binary");
+					System.out.println("[2] Compute a consecutive square root");
+					System.out.println("[3] Solve a quadratic equation");
+					System.out.println("[4] Print a triangle given its size");
+</FONT>					System.out.print("Choose an option: ");
+					n = sc.nextInt();
+					switch (n) {
+						case 1:
+							option1(sc);
+							break;
+						case 2:
+							option2(sc);
+							break;
+						case 3:
+							option3(sc);
+							break;
+						case 4:
+							option4(sc);
+							break;
+						default:
+							System.out.println("Invalid input!");
+					}
+				}
+				catch (Exception e) {
+					System.out.println("You must enter a number from 1 to 4. Input again!");
+					sc.nextLine();
+				}
+			}
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match240-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			while (n &lt; 1 || n &gt; 4); {
+				System.out.println("Do you want to continue with another function?");
+				System.out.println("Yes / No");
+				cont = sc.next().charAt(0);
+			}
+		}
+		while (cont == 'y' || cont == 'Y');
+        	System.out.println("Goodbye!");
+</FONT>			sc.nextLine();
+		}
+	
+	//option 1
+	public static void option1(Scanner sc) {
+        int d, q, j, i = 1; //d: decimal number, q: quotient 
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match240-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int b[] = new int[100]; //b: binary number array
+        System.out.print("Enter a decimal number: ");
+        d = sc.nextInt();
+        q = d;
+        while(q != 0) {
+            b[i++] = q%2;
+            q = q/2;
+</FONT>        }
+        System.out.print("Binary number equivalent: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match240-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for(j=i-1; j&gt;0; j--) {
+            System.out.print(b[j]);
+        }
+        System.out.print("\n");
+	}
+	
+	//option 2
+	public static void option2(Scanner sc) {
+		System.out.print("Enter m, n: ");
+		double m = sc.nextDouble();
+</FONT>		int n = sc.nextInt();
+		double a = 0;
+		for (int i = 0; i &lt; n; i++) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match240-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			a = Math.sqrt(m+a); //m= m + a
+		}
+		System.out.println(a);
+	}
+	
+	//option 3
+	public static void option3(Scanner sc){
+        System.out.print("Enter a, b, c: ");
+        double a = sc.nextDouble();
+</FONT>        double b = sc.nextDouble();
+        double c = sc.nextDouble();
+        double x1, x2;
+        if (a == 0 && b == 0 && c == 0) {
+            System.out.println("Nothing to solve");
+        }
+        else if (a == 0 && b == 0 && c != 0) {
+            System.out.println("The equation has no root");
+        }
+        else if (a == 0 && b != 0 && c!= 0) {
+            x1 = (-c)/b;
+            System.out.println("The equation has only one root x = " + x1);
+        }
+        else if ((b*b - 4*a*c) &lt; 0) {
+            System.out.println("The equation has no real root");
+        }
+        else {
+            x1 = ((-b)+ Math.sqrt(b*b - 4*a*c))/(2*a);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match240-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            x2 = ((-b)- Math.sqrt(b*b - 4*a*c))/(2*a);
+            System.out.println("The equation has two roots: x1 = " + x1 + ", x2 = " + x2);
+        }
+    }
+	
+	//option 4
+	public static void option4(Scanner sc) {
+		System.out.print("Enter an integer between 1 and 5: ");
+		int n = sc.nextInt();
+		for (int i = 0; i &lt;= n; i++) {
+			for (int j = n; j &gt; i; j--) {
+</FONT>				System.out.print(" ");
+			}
+			for (int k = 0; k &lt; 2*i-1; k++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match240-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

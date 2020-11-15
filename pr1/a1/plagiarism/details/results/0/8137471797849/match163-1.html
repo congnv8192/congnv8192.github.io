@@ -1,0 +1,166 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match163-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>DuongQuynhTrang_97610_assignsubmission_file_DuongQuynhTrang_1TD19_1901060050.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeMinhuc_97635_assignsubmission_file_LeMinhDuc_4C19_1901040060_B03.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package leminhduc_4c19_1901040060_b03;
+
+/**
+ *
+ * @author lemin
+ */
+import java.util.Scanner;
+import java.lang.Math;
+public class LeMinhDuc_4C19_1901040060_B03 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void ConvertDecimalToBinary() {
+        Scanner sc= new Scanner(System.in);
+        System.out.print("Enter a positive integer: ");
+        int decimal = sc.nextInt();
+        int binary;
+        int a = 0;
+        int i = 1;
+        while (decimal &gt; 0){
+            binary = decimal % 2;
+            decimal = decimal / 2;
+            i = i * 10;
+            a = a + (binary * i);
+        }  
+        System.out.println("Binary equivalent: " + a);    
+         
+    }
+    
+    public static void ComputeConsecutiveSquareRoot () {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an integer: ");
+        int b = sc.nextInt();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match163-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_28.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter the number of consecutive square root between 3 and 5: ");
+        int n = sc.nextInt();
+        double a = Math.sqrt(b);
+        if (n &gt;= 3 && n &lt;= 5) {
+            for (int i = 1; i &lt; n; i++) {
+                a = Math.sqrt(b + a);
+            }
+            System.out.println("Result is: " + a);
+        }
+        else {
+            System.out.println("Invalid input");
+        }
+        
+    }
+    public static void SolveQuadraticEquation () {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("ax^2 + bx + c = 0");
+        System.out.println("Enter a, b, c");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int d = (b * b) - (4 * a * c);
+        if ( d &lt; 0) {
+            System.out.println("No solution");
+        } else if (a == 0 && b == 0 && c == 0) {
+            System.out.println("Infinite solution");
+        } else if (a == 0) {
+            System.out.println("x = " + -c / b);
+</FONT>        } else if (d==0) {
+            System.out.println("x1 = x2 = " + (-b / 2 * a));
+        } else {
+            System.out.println("x1 = " + (-b + Math.sqrt(d)) / 2 * a);
+            System.out.println("x2 = " + (-b - Math.sqrt(d)) / 2 * a);
+        }   
+    }
+    public static void Triangle () {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match163-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of rows between 1 and 5");
+        int row = sc.nextInt();
+        int c = (2 * row) - 1;
+        if (row &gt;= 1 && row &lt;= 5){
+            for (int i = 0; i &lt;= row; i++){
+            for (int m = 1; m &lt;= (row - i); m++){
+                System.out.print(" ");
+            }
+            for (int n = ((row - i) + 1); n &lt;= ((c - row) + i); n++){
+                System.out.print("*");
+            }
+            System.out.println();
+            }
+        }else {
+            System.out.println("Invalid input");
+        }
+        }
+    
+    public static void main (String args[]) {
+</FONT>        Scanner sc = new Scanner(System.in);
+        System.out.println("[1] Convert Decimal To Binary\n" +
+"[2] Compute Consecutive Square Root\n" +
+"[3] Solve Quadratic Equation\n" +
+"[4] Triangle\n");
+        do {
+           System.out.println("Choose an option: ");
+        
+        int choose = sc.nextInt();
+        switch (choose) {
+            case 1: 
+                ConvertDecimalToBinary();
+                break;
+            case 2: 
+                ComputeConsecutiveSquareRoot();
+                break;
+            case 3:
+                SolveQuadraticEquation();
+                break;
+            case 4:
+                Triangle();
+                break;
+            default:
+                break;
+        }
+        System.out.println("Do you want continue?");
+        System.out.println("1. Yes      2. No");
+        int choice = sc.nextInt();
+        if ( choice == 2) {
+            System.out.println("Goodbye and see you again!");
+            break;
+        } 
+        } while (true);
+       
+            
+
+        
+        
+        
+        
+            
+            
+            
+                
+                
+            
+        
+        
+        
+    }
+        }
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match163-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

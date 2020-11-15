@@ -1,0 +1,230 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match3-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>HoangNgocThai_97508_assignsubmission_file_Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+HoangNgocThai_97508_assignsubmission_file_Assignment.java<p><PRE>
+/*
+ * Student: Hoàng Ngọc Thái
+ * ID: 1901040197
+ * MID-TERM PROJECT
+ */
+
+package Midterm;
+
+import java.util.Scanner;
+import java.io.*;
+import static java.lang.Math.*;
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match3-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public class Assignment {
+
+	// Check input
+	public static String Input(String message) {
+		Scanner sc = new Scanner(System.in);
+		boolean flag = false;
+		int input_number = 0;
+		while (!flag) {
+			try {
+				flag = true;
+				System.out.print(message);
+				String str = sc.nextLine();
+				input_number = Integer.parseInt(str);
+			} catch (NumberFormatException e) {
+				System.out.println("Error: You must enter integer number not character.");
+				Assignment obj = new Assignment();
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match3-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				input_number = Integer.parseInt(obj.Input(message));
+			}
+		}
+		return Integer.toString(input_number);
+	}
+
+	// EX1. Convert a decimal (base 10) integer to binary (base 2)
+	public void convertBinary() {
+		int binary_number[] = new int[100];
+		Assignment obj = new Assignment();
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match3-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int decimal = Integer.parseInt(obj.Input("Ex1. Input a Decimal Number: "));
+		int index = 0;
+
+		while (decimal &gt; 0) {
+			binary_number[index++] = decimal % 2;
+			decimal = decimal / 2;
+		}
+		String binary = "     Binary representation of decimal number is: ";
+		for (int i = index - 1; i &gt;= 0; i--) {
+			binary = binary + Integer.toString(binary_number[i]);
+		}
+		System.out.println(binary);
+	}
+
+	// EX2. Compute a consecutive square root
+
+	public static double square(int m, int n) {
+		if (m == 0)
+			return 0;
+		if (n == 1)
+			return (double) Math.sqrt(m);
+		else
+			return (double) Math.sqrt(m + square(m, n - 1));
+	}
+
+	public void ConsecutiveSquareRoot() {
+		Scanner sc2 = new Scanner(System.in);
+</FONT>		Assignment obj = new Assignment();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match3-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		String str1, str2;
+		int m, n;
+		str1 = obj.Input("Ex2. Enter integer m: ");
+		m = Integer.parseInt(str1);
+		str2 = obj.Input("     Enter integer n (1 ≤ n ≤ 5): ");
+		n = Integer.parseInt(str2);
+
+		while (n &gt;= 6 || n &lt; 1) {
+			str2 = obj.Input("Error: You must enter number n (1 &lt;= n &lt;= 5): ");
+			n = Integer.parseInt(str2);
+		}
+		double sum = square(m, n);
+		System.out.println("     Result: " + sum);
+	}
+     // Ex4
+	public void triangle() {
+</FONT>		Scanner sc4 = new Scanner(System.in);
+		Assignment obj4 = new Assignment();
+		String str1;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match3-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_24.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int HEIGHT;
+		str1 = obj4.Input("Input an integer n(1 ≤ n ≤ 5): ");
+		HEIGHT = Integer.parseInt(str1);
+		System.out.println("The size of a triangle is: " + HEIGHT);
+		String result = "";
+		String space = "";
+		String character = "";
+		int line = 1;
+
+		while (line &lt;= HEIGHT) {
+			space = "";
+			character = "";
+			for (int s = 1; s &lt;= HEIGHT - line; s++)
+				space += "  ";
+
+			for (int c = 1; c &lt;= 2 * line - 1; c++)
+				character += "* ";
+
+			result += space + character + "\n";
+			line++;
+		}
+		System.out.println("Ex4. Result is: \n" + result + "\n");
+	}
+
+	// Main
+
+	public static void main(String[] args) {
+		int exercise = 0;
+		Scanner sc = new Scanner(System.in);
+		Assignment obj = new Assignment();
+
+		while (exercise != 4) {
+			try {
+				System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2)\r\n"
+						+ "[2] Compute a consecutive square root\r\n" + "[3] Solve a quadratic equation\r\n"
+						+ "[4] Print a triangle given its size\r\n" + "Choose an option to perform: ");
+				exercise = (int) sc.nextInt();
+			} catch (Exception e) {
+				System.out.println("Error: You must enter number not character.");
+				sc.nextLine();
+			}
+
+			switch (exercise) {
+			case 1:
+				obj.convertBinary();
+				System.out.println("\n");
+				break;
+			case 2:
+				obj.ConsecutiveSquareRoot();
+				System.out.println("\n");
+				break;
+			case 3:
+</FONT>				// Ex3
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match3-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				double a = 0, b = 0, c = 0;
+				double root1, root2;
+				Scanner sc3 = new Scanner(System.in);
+				System.out.println("Ex3. Input a: ");
+				a = sc3.nextDouble();
+				System.out.println("Input b: ");
+				b = sc3.nextDouble();
+				System.out.println("Input c: ");
+				c = sc3.nextDouble();
+				
+				double determinant = b * b - 4 * a * c;
+				if (determinant &gt; 0) {
+					root1 = (-b + Math.sqrt(determinant)) / (2 * a);
+					root2 = (-b - Math.sqrt(determinant)) / (2 * a);
+
+					System.out.format("root1 = %.2f and root2 = %.2f \n", root1, root2);
+				}
+				else if (determinant == 0) {
+					root1 = root2 = -b / (2 * a);
+
+					System.out.format("root1 = root2 = %.2f; \n", root1);
+				}
+				else {
+					double realPart = -b / (2 * a);
+					double imaginaryPart = Math.sqrt(-determinant) / (2 * a);
+
+					System.out.format("root1 = %.2f+%.2fi and root2 = %.2f-%.2fi \n", realPart, imaginaryPart, realPart,
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match3-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							imaginaryPart);
+				}
+				break;
+			case 4:
+				obj.triangle();
+				System.out.println("\n");
+				break;
+			default:
+				System.out.println("Please! Enter a number in the list!!!\n");
+				break;
+			}
+			char condition;
+			System.out.println("Do you want to continue with another function? Enter:Y/N");
+			condition = sc.next().charAt(0);
+			sc.nextLine();
+
+			if (condition == 'N' || condition == 'n') {
+				System.out.println("Quit,goodbye!!!");
+				break;
+			} else if (condition == 'Y' || condition == 'y') {
+				continue;
+			} else {
+				System.out.println("Please! Enter: Yes or No?");
+				String answer = sc.nextLine();
+				if (answer.equals("Yes") || answer.equals("yes") || answer.equals("Y") || answer.equals("y")) {
+					continue;
+				}
+				if (answer.equals("No") || answer.equals("no") || answer.equals("n") || answer.equals("N")) {
+					System.out.println("Goodbye!");
+					break;
+</FONT>				}
+			}
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match3-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:14 GMT -->
+</HTML>

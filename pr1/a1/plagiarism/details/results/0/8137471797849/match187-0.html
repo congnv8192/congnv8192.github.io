@@ -1,0 +1,258 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match187-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040135TruongHoangLong_97605_assignsubmission_file_TruongHoangLong_1C18_1801040135_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040135TruongHoangLong_97605_assignsubmission_file_TruongHoangLong_1C18_1801040135_A1.java<p><PRE>
+/**
+ * 
+ * 
+ * @author Truong Hoang Long
+ * @author 180141035
+ * 
+ * Tutor: Mr. Long Nguyen
+ * 
+ */
+
+
+
+package TUT.assignment1;
+
+import java.util.Scanner;
+
+
+public class TruongHoangLong_1C18_1801040135_A1 {
+    public static Scanner sc = new Scanner(System.in);
+    public static Scanner scanChoice = new Scanner(System.in);
+    
+
+public static void main(String[] args) {
+    userMenu();
+}
+
+
+public static void invalidNotif() {
+    sc.nextLine();                          // this code is to stop menu to get the previous invalid value
+    System.err.println("Invalid input!");
+    userConfirmation(); 
+}
+
+
+
+public static void userConfirmation(){      //ask if user want to continue or not
+    System.out.println("Do you want to go back to menu and try again? \nType Y(yes), type N(no):");
+    String choose = scanChoice.next();
+        if(choose.equalsIgnoreCase("Y")){ 
+            userMenu();                     // return to menu 
+        } else if(choose.equalsIgnoreCase("N")){
+            System.out.println("Program exitting.... \nGoodbye!");
+            System.exit(0);                 //exit program
+        } else{
+            System.out.println("----------------");
+            System.err.println("Invalid option!");
+            userConfirmation();             //return and ask user to try again
+        }
+}
+
+
+public static void userMenu(){
+    int options;
+    try{
+        System.out.println("+---------------------------MENU------------------------------+");
+        System.out.println("| Choose the following NUMBER as options bellow to continue:  |");
+        System.out.println("| [1] Compute a consecutive square root                       |");
+        System.out.println("| [2] Give size and print a triangle                          |");
+        System.out.println("| [3] Convert a decimal integer to binary                     |");
+        System.out.println("| [4] Solve quadratic equation                                |");
+        System.out.println("| [5] Exit                                                    |");
+        System.out.println("+-------------------------------------------------------------+");
+        System.out.print("Input here:");
+        options = scanChoice.nextInt(); //get user input and only accept number
+        switch(options){
+            case 1:                 //            
+                option1();          //        
+            break;                  //        
+            case 2:                 //          
+                option2();          //
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match187-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            break;                  //  switch to each case as user input valid option
+            case 3:                 //
+                option3();          //
+            break;                  //
+            case 4:                 //
+                option4();          //
+            break;
+            case 5:
+                System.out.println("Goodbye!");
+                System.exit(0);
+</FONT>                scanChoice.close();
+            default:
+                System.out.println("Invalid input. \nPlease try again!");  //any numberic input will get filter out and program will run again
+                userMenu();
+        }
+
+    } catch(Exception e){    //invalid input as characters and letters are filtered out
+        System.out.println("Invalid input(ONLY NUMBER)! \nPlease run the program again!");
+    }
+
+}
+
+public static void option1(){
+    try{
+    System.out.println("+-------------------------------------+");                      //
+    System.out.println("|  Compute a consecutive square root  |");                      //
+    System.out.println("+-------------------------------------+");                      //
+    System.out.println("Please enter an integer: ");                                    //
+    double input = sc.nextDouble();                                                     //
+    double store = input;                                                               //
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match187-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    System.out.println("The times the square root is taken (From 1 to 5): ");           //
+    int times = sc.nextInt();                                                           //
+    int lan = 0;                                                                        //
+    double resultSqrt = 0;                                                              //
+                                                                                        //      Compute a consecutive square root
+    while (times &lt; 1 || times &gt; 5) {                                                    //
+        System.err.println("Not allowed! Please enter the times again: ");              //    
+        times = sc.nextInt();                                                           //
+    }                                                                                   //
+                                                                                        //
+    if (1 &lt;= times && times &lt;= 5) {                                                     //
+        while (lan &lt; times) {                                                           //
+            resultSqrt = Math.sqrt(input);                                              //
+            input = store + resultSqrt;                                                 //  
+            lan++;                                                                      //
+        }                                                                               //
+        System.out.println("The result is: " + resultSqrt);                             //
+        System.out.println("-----------------------------");
+</FONT>    }
+    userConfirmation();    // return menu to ask users if they want to try again
+    } catch(Exception e) {  // invalid input will get notifcation and users will be asked if they want to try again or not
+        invalidNotif();
+    }
+}
+
+public static void option2(){
+    try{
+    System.out.println("+----------------------------------+");                                         //
+    System.out.println("|  Give size and print a triangle  |");                                         //
+    System.out.println("+----------------------------------+");                                         //
+    System.out.println("Input an integer at range [1,5]: ");                                            //
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match187-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    int level = sc.nextInt();                                                                           //
+                                                                                                        //
+    while (level &lt; 1 || level &gt; 5) {                                                                    //
+        System.err.println("Not allowed! Please input an integer between 1 and 5: ");                   //
+        level = sc.nextInt();                                                                           //
+    }                                                                                                   //  Give size and print a triangle
+                                                                                                        //
+    if (level &gt;= 1 && level &lt;= 5) {                                                                     //    
+        for (int k = 0; k &lt; level; k++) {                           //Number of rows                    //
+            for (int i = k; i &lt; level-1; i++) {                     //Number of space each row          //
+                System.out.print(" ");                                                                  //
+            }                                                                                           //
+            for (int j = 0; j &lt; k * 2 + 1; j++) {                   //Number of star each row           //
+                System.out.print("*");                                                                  //
+            }                                                                                           //
+                System.out.println();                               //Make a new line for each level    //
+</FONT>            }                                                                                           //
+        }
+    userConfirmation();
+    } catch(Exception e){
+        invalidNotif();
+    }
+}
+
+public static void option3(){
+    try{
+    System.out.println("+---------------------------------------+");                    //
+    System.out.println("|  Convert a decimal integer to binary  |");                    //
+    System.out.println("+---------------------------------------+");                    //
+    System.out.println("Enter your number:");                                           //
+    int num = sc.nextInt();                                                             //
+     int m;                                                                             //
+    String binaryNum ="";                                                               //        Convert a decimal integer to binary
+     while(num &gt; 0){                                                                    // 
+        m =  num% 2;                                                                    //
+        num = num/2;                                                                    //
+        binaryNum = String.valueOf(m) + binaryNum;                                      //
+        }                                                                               //
+        System.out.println("This number is written in binary form: "+binaryNum);
+        System.out.println("-----------------------------");
+    userConfirmation();
+    }catch(Exception e){
+        invalidNotif();
+    }
+}
+
+public static void option4(){
+    try{
+    System.out.println("+----------------------------+");                           //
+    System.out.println("|  Solve quadratic equation  |");                           //
+    System.out.println("+----------------------------+");                           //
+    System.out.println("Please insert a: ");                                        //
+    double a = sc.nextDouble();                                                     //
+    System.out.println("-------------------");                                      //
+    System.out.println("Please insert b: ");                                        //
+    double b = sc.nextDouble();                                                     //
+    System.out.println("-------------------");                                      //
+    System.out.println("Please insert c: ");                                        //
+    double c = sc.nextDouble();                                                     //
+                                                                                    //
+    if (a == 0 && b == 0 && c == 0) {sc.nextLine();                                 //
+        System.out.println("The equation has infenitely many solution!");           //
+    }                                                                               //
+                                                                                    //
+    else if (a == 0 && b == 0 && c != 0) {                                          //
+        System.out.println("The equation has no solution!");                        //        Solve quadratic equation
+        System.out.println("-----------------------------");                        //
+                                                                                    //
+    }                                                                               //
+                                                                                    //
+    else if (a == 0 && b != 0 && c != 0) {                                          //
+        double x = -c / b;                                                          //
+        System.out.println("There is one root: x = " + x);                          //
+        System.out.println("-----------------------------");                        //
+                                                                                    //
+    }                                                                               //
+                                                                                    //
+    else {                                                                          //
+        double delta = b*b - 4*a*c;                                                 //
+    if (delta &lt; 0) {                                                                //
+        System.out.println("The equation has no solution!");                        //
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match187-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("-----------------------------");                        //
+                                                                                    //
+    }                                                                               //
+    else {                                                                          //
+        double x1 = (-b + Math.sqrt(delta))/(2*a);                                  //
+        double x2 = (-b - Math.sqrt(delta))/(2*a);                                  //
+        System.out.println("There are two roots: ");                                //
+        System.out.println("x1 = " + x1 + ", x2 = " + x2);                          //
+</FONT>        System.out.println("-----------------------------");                        //
+                                                                                    //
+    }                                                                               //
+    }                                                                               //
+    userConfirmation();
+    } catch(Exception e){
+        invalidNotif();
+    }
+}
+}
+
+
+
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match187-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

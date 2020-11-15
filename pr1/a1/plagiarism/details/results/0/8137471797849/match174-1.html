@@ -1,0 +1,161 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match174-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeThiHuong_97570_assignsubmission_file_Assignment1_LeThiHuong_7C19.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenBaVinh_97732_assignsubmission_file_Assignment1_NguyenBaVinh_7C19.java<p><PRE>
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author ADMIN
+ */
+public class Assignment1_NguyenBaVinh_7C19 {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        while(true){ 
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match174-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Scanner sc = new Scanner(System.in);
+            boolean quit = false;
+            String option;
+            do {  
+                  System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2).");
+                  System.out.println("[2] Compute a consecutive square root.");
+                  System.out.println("[3] Solve a quadratic equation.");
+                  System.out.println("[4] Print a triangle given its size.");
+                  System.out.print("Choose an option: ");
+                  option = sc.nextLine();
+                switch (option) {
+
+                    case "1":
+                    {   
+                        System.out.println("input number:");
+                        int n = sc.nextInt();
+                        String a,b="";
+</FONT>                        int x;
+                        while (n!=0){
+                         x = n % 2;                        
+                         a = String.valueOf(x);
+                         b = a + b;
+                         n = n / 2;
+                        }
+                        System.out.println(b);
+                        quit = true;
+                        break;
+                    }  
+                    case "2":
+                    {
+                        System.out.println("input m:");
+                        int m=sc.nextInt();
+                                System.out.println("input n:");
+                        int n=sc.nextInt();
+                        double a=Math.sqrt(m);
+                        if(5&lt;=n||n&lt;=1){while(5&lt;n || n&lt;1){
+                            System.out.println("n must be from 1 to 5");
+                            System.out.println("input n");
+                        n= sc.nextInt();
+                        }}
+                        if(n&lt;=5 && n&gt;=1){
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match174-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for(int i=1;i&lt;n;i++){
+                            a=Math.sqrt(m+a);}
+                                System.out.println(a);}                          
+                            quit = true;
+                            break;
+                    }
+                        
+        
+                    case "3":
+</FONT>                    {
+                        double a , b,c;
+                        System.out.println("input a:");
+                        a = sc.nextDouble();
+                        System.out.println("input b:");
+                        b = sc.nextDouble();
+                        System.out.println("input c");
+                        c = sc.nextDouble();    
+                        double delta = b*b-4*a*c;        
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match174-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        double x, x1, x2;
+                    if ( a==0 && b==0 && c==0){
+                        System.out.println("There's nothing to be solved.");
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match174-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    } else if ( a==0 && b==0 && c!=0 || delta &lt; 0){
+                        System.out.println("The equation has no root.");
+                    } else if ( a==0 && b!=0 && c!=0){
+                        x = -c/b;
+                        System.out.println("The equation has one root:");
+                        System.out.println("x = " + x);
+</FONT>                    } else {
+                        x1 = ( -b + Math.sqrt(b*b - 4*a*c) )/(2*a);
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match174-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        x2 = ( -b - Math.sqrt(b*b - 4*a*c) )/(2*a);
+                        System.out.println("The equation has two roots:");
+                        System.out.println("x1 = " + x1 + ", x2 = " + x2);
+//h thử viết lại cái case 1 bằng while do anh xem nào
+
+                    }                    
+                            quit = true;
+                            break;}
+                        
+                    case "4":
+</FONT>                          System.out.println("input n:");
+                            int n = sc.nextInt();
+                            if(5&lt;n||n&lt;1){
+                            while(5&lt;n || n&lt;1){
+                            System.out.println("n must be from 1 to 5");
+                            System.out.println("input n");
+                            n= sc.nextInt();
+                            }}
+                            if(5&gt;=n && n&gt;=1){
+                                for (int i = 1; i &lt;= 2*n; i+=2){
+                                    for (int j = 2*n; j &gt;= i; j--) { 
+                                System.out.print(" "); }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match174-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                    for (int j = 1; j &lt;= i; j++) { 
+                                System.out.print("* "); 
+                            }
+                             System.out.println();
+                            }}               
+                            quit = true;
+                            break;
+                        
+                    default:
+                        System.out.println("Invalid choice. Try again!");
+                        break;
+                }   
+            } while (quit==false);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match174-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.print("Do you wish to continue? (Y/N) ");
+            String q = scan.nextLine();
+            if (q.equalsIgnoreCase("n")) {
+                System.out.println("Goodbye!");
+                break; 
+</FONT>        }
+    }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match174-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

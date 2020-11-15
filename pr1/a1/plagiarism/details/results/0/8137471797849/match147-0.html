@@ -1,0 +1,161 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match147-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenThiNga_97770_assignsubmission_file_MidTermAssignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenThiNga_97770_assignsubmission_file_MidTermAssignment.java<p><PRE>
+
+//* Name: Nguyen Thi Nga
+//* Class: A06
+//* ID: 1901040144
+package mid.term.assignment;
+import java.util.Scanner;
+public class MidTermAssignment {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match147-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int Options=0;
+        while (Options != 5) {
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("2. Compute a consecutive square root");
+            System.out.println("3. Solve a quadratic equation");
+</FONT>            System.out.println("4. Print a triangle given its size");
+            System.out.println("5. Exit");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match147-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.print("Choose an option from 1 to 5: ");
+            Options = sc.nextInt();
+            switch (Options){
+                case (1):  
+                    //*Input data
+                    System.out.print ("Enter an integer: ");
+		int e= sc.nextInt();
+		String Remainder= "", BinaryEquivalent = "";
+                //* Repeat the finding of Remainder
+		while (e/2 != 0) {
+</FONT>			Remainder = Remainder + e%2;
+			e= e/2;
+		}
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match147-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		Remainder= Remainder +1;
+                //* Repeat the arreangment Remainder in reserve order
+		for (int i= Remainder.length()-1; i&gt;=0; i-- ) {
+			BinaryEquivalent = BinaryEquivalent + Remainder.charAt(i);
+		}
+		System.out.println("Binary Equivalent is " + BinaryEquivalent);
+                    break;
+                case (2):
+             //*Input data
+                    System.out.print("Input m: " );
+	    int m = sc.nextInt();
+	    System.out.print("Input n: " );
+</FONT>	    int n = sc.nextInt();
+	    double p = 0;
+            //* check if the data sastified
+	    if (n&gt;=1 && n&lt;= 5){
+	    for (int i =1; i&lt;= n; i++ ){
+	        p= Math.sqrt(m + p);
+	    }
+	    System.out.println (" Result: " + p);
+	    }
+	    else{
+	    System.out.println (" You are only allowed to enter an integer 'n' from 1 to 5");
+	    }
+                    break;
+                case (3):
+                //*Input data
+		System.out.print ("Enter 3 coeficients: ");
+		double a= sc.nextDouble();
+		double b= sc.nextDouble();
+		double c= sc.nextDouble();
+                //*analyze the data and print
+		if (a==0) {
+			if (b==0 && c==0) {
+				System.out.println("Equation has countless solutions.");
+			}
+			else if (b==0 && c!=0) {
+				System.out.println("Equation has no solution.");
+			}
+			else if (b!=0 && c==0) {
+				System.out.println("Equation has one solution x= 0");
+			}
+			else {
+				double x= -c/b;
+				System.out.println("Equation has one solution x= " + x);
+			}
+		}
+		else {
+			double Delta= b*b - 4*a*c;
+			if(Delta &lt; 0) {
+				System.out.println("Equation has no solution.");
+			}
+			else if (Delta == 0) {
+				double x= -b/2*a;
+				System.out.println("Equation has one solution x= " +x);
+			}
+			else {
+				double x1= (-b+ Math.sqrt(Delta))/2*a;
+				double x2= (-b- Math.sqrt(Delta))/2*a;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match147-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_25.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("Equation has 2 solutions: " + "x1= "+ x1 + " and x2= " + x2);
+			}
+		}
+                    break;
+                case (4):
+                    //*Input data
+                    System.out.print("Input h: ");
+		int h = sc.nextInt();
+		switch (h) {
+		case (1):
+			System.out.println("    *    ");
+			break;
+		case (2):
+			System.out.println("    *    ");
+			System.out.println("   ***   ");
+			break;
+		case (3):
+			System.out.println("    *    ");
+			System.out.println("   ***   ");
+			System.out.println("  *****  ");
+			break;
+		case (4):
+			System.out.println("    *    ");
+			System.out.println("   ***   ");
+			System.out.println("  *****  ");
+			System.out.println(" ******* ");
+			break;
+		case (5):
+			System.out.println("    *    ");
+			System.out.println("   ***   ");
+			System.out.println("  *****  ");
+			System.out.println(" ******* ");
+			System.out.println("*********");
+			break;
+		default:
+			System.out.println("Error!");
+			break;
+		}
+                    break;
+</FONT>        
+                default:
+                System.out.print ("Invalid input!!!");
+                    break;
+            }
+        }
+        System.out.println("End Program. Thank you and say Goodbye!");
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match147-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

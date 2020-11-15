@@ -1,0 +1,164 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match116-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1601040234angCamTu_97512_assignsubmission_file_Assignment1_pr1B04.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1601040234angCamTu_97512_assignsubmission_file_Assignment1_pr1B04.java<p><PRE>
+
+package assignment1_pr1B04;
+import java.util.Scanner;
+public class Assignment1_pr1B04{
+    public static void task_01() {
+        int decimalNumber, quotient , i=1, j;
+        int binary[] = new int[100];
+        
+        Scanner input = new Scanner(System.in);	
+        System.out.print("Input a decimal number : ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match116-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        decimalNumber = input.nextInt();
+        if ( decimalNumber &gt;= 0){
+            quotient = decimalNumber;	
+            while(quotient != 0){
+             binary[i++] = quotient%2;
+             quotient = quotient/2;
+</FONT>            }
+             System.out.print("Binary number is: ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match116-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for(j=i-1; j&gt;0; j--){
+             System.out.print(binary[j]);
+            }
+             System.out.println("");
+        }
+        else 
+            System.out.println("Invalid input!!");
+    }
+    public static void task_02() {
+</FONT>        Scanner input = new Scanner(System.in);
+        System.out.print("Input interger m: ");
+        int m = input.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match116-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Input interger n: ");
+        int n = input.nextInt();
+        double result = 0;
+        if (m &gt;= 0 && n &gt;= 1 && n &lt;= 5 ){
+             for (int i=1; i &lt;= n; i++)
+             result = Math.sqrt(result + m);
+             System.out.println("Result = " + result);
+         }
+        else 
+            System.out.println("Invalid input! ");
+    }
+    public static void task_03() {  
+        System.out.println("Input 3 coefficients, plz ");
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input a: ");
+</FONT>        Double a =sc.nextDouble();
+        System.out.print("Input b: ");
+        Double b =sc.nextDouble();
+        System.out.print("Input c: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match116-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Double c =sc.nextDouble();
+     
+        if (a == 0){
+            if (b == 0 && c == 0)
+             System.out.println("The equation has infinitely many roots");
+            else if (b == 0 && c != 0 )
+             System.out.println("The equation has no real root");
+            else 
+             System.out.println("The only root is: "+ (-c)/b);
+</FONT>        }
+        else if (a !=0){
+        Double denta = b*b-4*a*c;
+            if ( denta &gt;0.0){
+             Double x1 = (-b + Math.pow(denta, 0.5))/(2*a);
+             Double x2 = ((-b - Math.pow(denta, 0.5))/(2*a));
+             System.out.println("The root are: x1= " + x1 + "and x2= " + x2);
+            }else if ( denta ==0.0){
+             Double x= -b/(2*a);
+             System.out.println("The quadratic equation has one root x1 = x2: " + x );
+            }else 
+              System.out.println("The quadratic equation has no real root");
+        }
+    }
+    public static void task_04() {
+     int a, b;
+     System.out.print("Input number of rows: ");
+     Scanner input = new Scanner(System.in);
+     int  number_of_rows = input.nextInt();
+     
+        if (number_of_rows &gt;= 1 && number_of_rows &lt;= 5) {
+         for(a = 1 ; a &lt;= number_of_rows ; a++){
+            for(b = 1 ; b &lt;= number_of_rows - a ; b++)
+             System.out.print(" ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match116-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for(b = 1 ; b &lt;= 2*a-1 ; b++)
+             System.out.print("*");
+             System.out.print("\n");
+         }
+        }else 
+         System.out.println("Invalid number of rows");
+</FONT>    }
+    
+    public static void main(String[] args) {
+        String answer = "";
+        Scanner input = new Scanner(System.in);
+        int ex = 0;
+        do{
+
+        try{
+            
+            System.out.println("Assignment 1");
+            System.out.println("Exercise1:Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("Exercise2: Compute a consecutive square root");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match116-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Exercise3: Solve a quadratic equation");
+            System.out.println("Exercise4: Print a triangle given its size");
+            System.out.print("Exercise: ");
+            ex = input.nextInt();
+            
+            while (ex &gt; 4 || ex &lt; 0) {
+            System.out.println("Invalid input! Please input again.");
+            System.out.print("Exercise: ");
+            ex = input.nextInt();}
+
+        } catch (Exception e){
+            input.nextLine();
+            System.out.print("Input an interger from 1 to 4: ");
+            ex = input.nextInt();
+        } 
+     
+        switch(ex){
+            case (1):
+                task_01(); break;
+            case (2):
+                task_02(); break;
+            case (3):
+                task_03(); break;
+            case (4):
+                task_04(); break;
+        }
+        
+        System.out.print("Do you want to continue with another function? ");
+        answer = input.next();
+        
+        }while (answer.equalsIgnoreCase("yes"));
+        input.close();
+        System.out.println("Thank you!");
+</FONT>        }         
+    }</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match116-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+</HTML>

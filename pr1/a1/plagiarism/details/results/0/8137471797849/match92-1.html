@@ -1,0 +1,154 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match92-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040166BuiTungNhat_97629_assignsubmission_file_Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040194TranThiNgocTu_97528_assignsubmission_file_TranThiNgocTu_6c18_1801040194_A1.java<p><PRE>
+package midterm_pr01;
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match92-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_21.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/* Full name : Trần Thị Ngọc Tú
+ * Class : 6C18
+ * ID : 1801040194
+ * Email : tu.anvil8112000@gmail.com
+ * 
+ */
+public class TranThiNgocTu_6c18_1801040194_A1 {
+public static void main (String[] arg) {
+	
+	Scanner sc = new Scanner (System.in); 			//read input data of int,double,etc.
+	char o;
+	
+	//use do...while loop to iterate the functions several times
+	 do { 
+         System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)"
+                 + "\n2. Compute a consecutive square root"
+                 + "\n3. Solve a quadratic equation"
+                 + "\n4. Print a triangle given its size");
+         System.out.println("Enter the function number: ");
+         int x = sc.nextInt();
+         String binary = "";
+         switch (x) {		// 0&lt;x&lt;=4 case like 4 functions
+         					// use switch...case to select 1 of 4 functions to be executed
+         
+             case 1: 	//Convert a decimal (base 10) integer to binary (base 2)
+                 System.out.println("Enter the decimal number: ");
+                 int dec = sc.nextInt();
+                 while (dec != 0) { // use while to check condition before do anything
+                     int result = dec / 2;
+                     int remainder = dec % 2;
+                     dec = result;
+                     String y = Integer.toString(remainder);
+                     binary = y + binary;
+                 }   System.out.println(binary);
+</FONT>                 break;
+                 
+             case 2:	//Compute a consecutive square root
+                 { // use this braces to avoid duplicating variable in cases
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match92-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                     System.out.println("enter m(m&gt;=0):");
+                     double m = sc.nextDouble();
+                     System.out.println("enter n(1=&lt;n=&lt;5)(integer only!):");
+                     int n = sc.nextInt();
+                     double y = Math.sqrt(m);
+</FONT>                     double result = 0;
+                     if (n &gt;= 1 && n &lt;= 5) { // check condition of n times
+                     	int i = 1;
+                         while(i &lt; n){ 
+                         	result = Math.sqrt(m + y);
+                         	y = result;
+                         	i++;
+                         }
+                         System.out.println("Result is: " + y);
+                     } else {
+                         System.out.println("please follow the condition of n!!");
+                     }
+                     break;
+                 }
+             case 3:	//Solve a quadratic equation
+                 {
+                     System.out.println("a (a is nonzero) = ");
+                     double a = sc.nextDouble();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match92-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                     System.out.println("b = ");
+                     double b = sc.nextDouble();
+                     System.out.println("c = ");
+                     double c = sc.nextDouble();
+                     if (a != 0) { // check condition of operation
+                         double delta = b * b - 4 * a * c;
+                         if (delta &lt; 0) { // no root
+                             System.out.println("No solution!!!");
+</FONT>                         } else if (delta == 0) {
+                             double x1 = -b / (2 * a); // 1 root
+                             System.out.println("x1 = x2 = " + x1);
+                         } else {
+                             double x1 = (-b + Math.sqrt(delta)) / (2 * a); // 2 roots
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match92-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                             double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                             System.out.println("x1 = " + x1 + "\nx2 = " + x2);
+                         }
+                     } else {
+                         System.out.println("please follow the condition of a!!");
+</FONT>                     }       break;
+                 }
+             case 4:	//Print a triangle given its size
+                 {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match92-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_25.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                     String a = "        *";
+                     String b = "      * * *";
+                     String c = "    * * * * *";
+                     String d = "  * * * * * * *";
+                     String e = "* * * * * * * * *";
+                     System.out.println("Enter n (1 &lt;= n &lt;= 5): ");
+                     int n = sc.nextInt();
+                     switch (n) { 	
+  					// use switch...case to select sizes to be executed
+
+                         case 1:
+                             System.out.println(a);
+                             break;
+                         case 2:
+                             System.out.println(a + "\n" + b);
+                             break;
+                         case 3:
+                             System.out.println(a + "\n" + b + "\n" + c);
+                             break;
+                         case 4:
+                             System.out.println(a + "\n" + b + "\n" + c + "\n" + d);
+                             break;
+                         case 5:
+                             System.out.println(a + "\n" + b + "\n" + c + "\n" + d + "\n" + e);
+                             break;
+                         default:
+                             System.out.println("please follow the condition of n!!");
+</FONT>                             break;
+                     }       break;
+                 }
+             default:
+                 System.out.println("x is not sastified!");
+                 break;
+         }
+         System.out.println("Would you like to continue or quit?\nEnter z if you want to continue, another for stop.");
+         o = sc.next().charAt(0); // o is another character (different "z") to exit
+     } while(o =='z');
+ 
+
+}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match92-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+</HTML>

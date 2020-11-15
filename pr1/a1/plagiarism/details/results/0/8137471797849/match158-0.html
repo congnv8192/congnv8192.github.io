@@ -1,0 +1,207 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match158-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>PhamThanhNam_97545_assignsubmission_file_ThanhNam.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+PhamThanhNam_97545_assignsubmission_file_ThanhNam.java<p><PRE>
+package assignment1;
+
+import java.util.Scanner;
+
+public class ThanhNam {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int select = 0;
+		while (select != 5) {
+			try {
+				System.out.println("Menu: ");
+				System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+				System.out.println("2. Compute a consecutive square root");
+				System.out.println("3. Solve a quadratic equation");
+				System.out.println("4. Print a triangle given its size ");
+				System.out.println("5. Quit!");
+				System.out.println("Please choose: ");
+				select = sc.nextInt();
+				switch (select) {
+				case 1:
+					boolean oh = false;
+					while (!oh) {
+						/*
+						  while loop help repeat until the user has entered it correctly
+						  (applies to all 4 case)
+						 */
+						try {
+							System.out.println("Enter An Interger: ");
+							int dec = sc.nextInt();
+
+							// Using the toBinaryString () method.
+							String bin = Integer.toBinaryString(dec);
+							System.out.println("The Binary: " + bin);
+							break;
+						} catch (Exception e) {
+							System.err.println("Please enter the Interger!");
+							sc.nextLine();
+							// Help notice what user must enter
+						}
+					}
+					break;
+				case 2:
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match158-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_18.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					boolean gotIt = false;
+
+					while (!gotIt) {
+
+						try {
+							// If the user enters the character (not the number), it'll run again
+							System.out.println("Enter m= ");
+							int m = sc.nextInt();
+
+							System.out.println("Enter n= ");
+							int n = sc.nextInt();
+
+							int i = 0;
+							double a = 0;
+							if (n &lt; 1 || n &gt; 5) {
+								while (n &lt; 1 || n &gt; 5) {
+									System.out.print("Enter n Again: ");
+									n = sc.nextInt();
+									// Enter the correct n requirements of the exercise (n&gt; = 1 && n &lt;= 5)
+								}
+								for (i = 0; i &lt; n; i++)
+									a = Math.sqrt(m + a); // new value of the small square root in the big square root
+
+								System.out.println("Result: " + a);
+								// This for-loop is run when the input n gets wrong
+							} else {
+								for (i = 0; i &lt; n; i++)
+									a = Math.sqrt(m + a);
+
+								System.out.println("Result: " + a);
+								// This for-loop is run when input n correct
+							}
+							gotIt = true;
+						} catch (Exception e) {
+							System.err.println("Please enter the number!");
+</FONT>							sc.nextLine();
+
+							System.out.println("Please Enter n and m Again ");
+							// Help notice what user must enter
+						}
+					}
+					break;
+				case 3:
+					boolean hmm = false;
+
+					while (!hmm) {
+						try {
+							// similar to case2. if input wrong, it'll require user input again
+							System.out.println("Enter a = ");
+							double a = sc.nextDouble();
+							System.out.println("Enter b = ");
+							double b = sc.nextDouble();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match158-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							System.out.println("Enter c = ");
+							double c = sc.nextDouble();
+							if (a == 0) {
+								if (b == 0) {
+									if (c == 0) {
+</FONT>										System.out.println("There's nothing to be solved.");
+										break;
+									} else {
+										System.out.println("The equation has no root.");
+										break;
+									}
+								} else {
+									double x = -c / b;
+									System.out.println("There is one root: x = " + x);
+									break;
+								}
+							} else {
+								double delta = b * b - 4 * a * c;
+								if (delta &lt; 0) {
+									System.out.println("The equation has no real root.");
+									break;
+								} else if (delta == 0) {
+									double x = -b / (2 * a);
+									System.out.println("The root is x = " + x);
+									break;
+								} else {
+									double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+									double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+									System.out.println("There are 2 roots: x1 = " + x1 + ", x2 = " + x2);
+									break;
+								}
+							}
+
+						} catch (Exception e) {
+							System.err.println("Please enter the number!");
+							sc.nextLine();
+
+						}
+					}
+					break;
+				case 4:
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match158-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					System.out.println("Enter An Interger:");
+					int num = sc.nextInt();
+					if (num &lt; 1 || num &gt; 5) {
+						while (num &lt; 1 || num &gt; 5) {
+							System.out.println("Enter An Integer Again: ");
+							num = sc.nextInt();
+
+						}
+						for (int x = 1; x &lt;= num; x++) {
+							for (int y = 1; y &lt;= num - x; y++) {
+</FONT>								System.out.print(" ");
+							}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match158-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							for (int k = 1; k &lt;= 2 * x - 1; k++) {
+								System.out.print("*");
+							}
+							System.out.println();
+						}
+						// This for-loop is run when the input n gets wrong ( Like case 2)
+					} else {
+						for (int x = 1; x &lt;= num; x++) {
+							for (int y = 1; y &lt;= num - x; y++) {
+</FONT>								System.out.print(" ");
+							}
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match158-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							for (int k = 1; k &lt;= 2 * x - 1; k++) {
+								System.out.print("*");
+							}
+							System.out.println();
+						}
+						// This for-loop is run when input n correct
+					}
+					break;
+</FONT>				case 5:
+					System.out.println("See You Again!");
+					break;
+				default:
+					System.err.println("Please choose a number (1-&gt;5)!");
+				}
+				break; // help stop while-loop when run completely
+			} catch (Exception e) {
+				System.err.println("Please enter the number (1-&gt;5)!");
+				sc.nextLine();
+			}
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match158-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

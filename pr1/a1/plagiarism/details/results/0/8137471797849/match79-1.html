@@ -1,0 +1,143 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match79-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040108VuQuangHuy_97672_assignsubmission_file_A1Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040148TranQuangMinh_97543_assignsubmission_file_Assignment1.java<p><PRE>
+package assignment1;
+
+import java.util.Scanner;
+
+public class Assignment1 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 0;
+        while (n != 5) {
+            try {
+                System.out.println("Please choose a feature listed below: ");
+                System.out.println("1. Convert a decimal to binary");
+                System.out.println("2. Compute a consecutive square root");
+                System.out.println("3. Solve a quadratic equation");
+                System.out.println("4. Print a triangle given its size");
+                System.out.println("5. Quit program");
+                System.out.print(" Choose an option: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match79-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_27.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                n = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("You must enter number from 1-5");
+                sc.nextLine();
+            }
+            switch (n) {
+                case 1:
+                    function1(sc);
+                    break;
+                case 2:
+                    function2(sc);
+                    break;
+                case 3:
+                    function3(sc);
+                    break;
+                case 4:
+                    function4(sc);
+                    break;
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Try again");
+            }
+        }
+    }
+
+    public static void function1(Scanner sc) {
+        int decimal, binary;
+        System.out.println("Please enter a decimal number:");
+        decimal = sc.nextInt();
+
+        do {
+            binary = decimal % 2;
+            System.out.print(binary);
+        } while ((decimal /= 2) != 0);
+        System.out.println("");
+    }
+
+    public static void function2(Scanner sc) {
+        System.out.println("Input a number: ");
+        double in = sc.nextInt();
+        double tt = in;
+        System.out.println("How many times the square root is taken ? (From 1 to 5)");
+</FONT>        int n = sc.nextInt();
+        int x = 0;
+        double result = 0;
+        if (1 &lt;= n && n &lt;= 5) {
+            while (x &lt; n) {
+                result = Math.sqrt(in);
+                in = result + tt;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match79-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                x++;
+            }
+            System.out.println("Result: " + result);
+        } else {
+            System.out.println("The number you input is not in range");
+        }
+    }
+
+    public static void function3(Scanner sc) {
+        System.out.println("Input a: ");
+        double a = sc.nextDouble();
+        System.out.println("Input b: ");
+        double b = sc.nextDouble();
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match79-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Input c: ");
+        double c = sc.nextDouble();
+
+        double delta = b * b - 4 * a * c;
+
+        if (delta &gt; 0) {
+            double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match79-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_28.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            System.out.println("The equation has two real roots: " + x1 + " and " + x2);
+        }
+        if (delta == 0) {
+            double x = -b / (2 * a);
+            System.out.println("The equation has one root" + x);
+        }
+        if (delta &lt; 0) {
+            System.out.println("The equation has no real root");
+        }
+    }
+
+    public static void function4(Scanner sc) {
+        System.out.println("Enter integer n (1 ≤ n ≤ 5): ");
+        int a = sc.nextInt();
+        if (a &gt;= 1 && a &lt;= 5) {
+            for (int b = 0; b &lt; a + 1; b++) {
+                for (int c = a; c &gt;= b; c--) {
+                    System.out.print(" ");
+                }
+                for (int d = 0; d &lt; (2 * b - 1); d++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("Please try again");
+</FONT>        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match79-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:50 GMT -->
+</HTML>

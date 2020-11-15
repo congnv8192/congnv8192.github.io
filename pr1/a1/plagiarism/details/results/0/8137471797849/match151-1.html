@@ -1,0 +1,156 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match151-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040108VuQuangHuy_97672_assignsubmission_file_A1Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+BuiNgocPhuc_97465_assignsubmission_file_Assignment.java<p><PRE>
+package assignment;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Admin
+ */
+import java.util.Scanner;
+public class Assignment {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter options");
+        int n = sc.nextInt();
+        System.out.println("Please choose one of the given option below");
+        System.out.println("Ex1: Convert a decimal integer to binary");
+        System.out.println("Ex2: Compute a consecutive  square root");
+        System.out.println("Ex3: Solve a quadratic equation");
+        System.out.println("Ex4: Print a triangle given its size");
+        System.out.println("5. Quit program");
+        while(n != 5) {
+      switch (n) {
+                case 1:
+                    Function1(sc);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match151-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    break;
+                case 2:
+                    Function2(sc);
+                    break;
+                case 3:
+                    Function3(sc);
+                    break;
+                case 4:
+                    Function4(sc);
+                    break;
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Please Try again");
+            }
+        }
+    }
+    public static void Function1(Scanner sc) {
+</FONT>//                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter decimal number");
+                int j = sc.nextInt();
+                int d;
+                String c = "";
+                while (j != 0)
+                {
+                    d = j % 2;
+                    c = c + d;
+                    j /= 2;
+                }
+                System.out.println("Binary equivalent: " + c);
+            }
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match151-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Function2(Scanner sc) {
+        System.out.println("Enter m:");
+        double m = sc.nextInt();
+        double k = m;
+        System.out.println("How many time the square roots is taken ? (from 1 to 5)");
+</FONT>        int nl = sc.nextInt();
+        double result = 0;
+        if (nl == 1) {
+                    result = Math.sqrt(m);
+                    System.out.println("A square root of " + m + " taken " + nl + " times: " + result);
+                } else if (nl == 2) {
+                    result = Math.sqrt(m + Math.sqrt(m));
+                    System.out.println("A square root of " + m + " taken " + nl + " times: " + result);    
+                } else if (nl == 3) {
+                    result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)));
+                     System.out.println("A square root of " + m + " taken " + nl + " times: " + result);
+                } else if (nl == 4) {
+                    result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m))));
+                    System.out.println("A square root of " + m + " taken " + nl + " times: " + result);
+                } else if (nl == 5) {
+                    result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)))));
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match151-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("A square root of " + m + " taken " + nl + " times: " + result);
+                } else {
+                    System.out.println("the number you input not satisfy the condition");
+                }
+    }
+    public static void Function3(Scanner sc) {
+        System.out.println("Enter a: ");
+        double a = sc.nextDouble();
+        System.out.println("Enter b: ");
+        double b = sc.nextDouble();
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match151-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter c: ");
+        double c = sc.nextDouble();
+
+        double delta = b * b - 4 * a * c;
+
+        if (delta &gt; 0) {
+            double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match151-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_21.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            System.out.println("The equation has two real roots: " + x1 + " and " + x2);
+        }
+        if (delta == 0) {
+            double x= -b / (2 * a);
+            System.out.println("The equation has one root" + x);
+        }
+        if (delta &lt; 0) {
+            System.out.println("The equation has no real root");
+        }
+    }
+    public static void Function4(Scanner sc) {
+        System.out.println("Enter an integer n (from 1 to 5)");
+        int m = sc.nextInt();
+        if (m &gt;= 1 && m &lt;= 5) {
+            for (int x = 0; x &lt; m + 1; x++) {
+                for (int j = m; j &gt;= x; j--) {
+                    System.out.print(" ");
+                }
+                for (int h = 0; h &lt; (2 * x - 1); h++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("good bye");
+</FONT>        
+            }
+        }
+    }
+        
+
+       
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match151-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

@@ -1,0 +1,128 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match181-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040124NongKhanhLinh_97667_assignsubmission_file_Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040124NongKhanhLinh_97667_assignsubmission_file_Assignment.java<p><PRE>
+package Ex1;
+
+import java.util.Scanner;
+
+public class Assignment {
+	public static void main(String[] args) {
+		boolean isContinue = true;
+		try {
+			while (isContinue) {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("Choose program: ");
+				System.out.println("1- Convert int to binary");
+				System.out.println("2- Compute consecutive square root");
+				System.out.println("3- Solve quadratic equation");
+				System.out.println("4- Draw triangle");
+				System.out.println("\n\nEnter your choice:");
+				int insertnumb = sc.nextInt();
+				if (insertnumb == 1) {
+					System.out.println("Please enter the number you want to convert: ");
+					int intToBinary = sc.nextInt();
+					String bin = Integer.toBinaryString(intToBinary);
+					System.out.println(bin);
+				} else if (insertnumb == 2) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match181-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					System.out.println("Enter your m:");
+					int m = sc.nextInt();
+					System.out.println("Enter number of loop (n):");
+					int n = sc.nextInt();
+					if (!(n &gt;= 1 && n &lt;= 5)) {
+						System.err.println(" n are invalid,please re-enter n !");
+						break;
+</FONT>					}
+					double result = 0;
+					for (int i = 1; i &lt;= n; i++) {
+						result = Math.sqrt(m + result);
+					}
+					System.out.println("the result is:" + result);
+				} else if (insertnumb == 3) {
+					System.out.print("Enter a: ");
+					int a = sc.nextInt();
+					System.out.print("Enter b: ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match181-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					int b = sc.nextInt();
+					System.out.print("Enter c: ");
+					int c = sc.nextInt();
+					if (a == 0 && b != 0 && c != 0) {
+</FONT>						System.out.println("x=" + -c / b);
+					}
+					if (a == 0 && b == 0 && c == 0) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match181-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						System.out.println("infinity solutions");
+					}
+					if (a == 0 && b == 0 && c != 0) {
+						System.out.println("No solution");
+					}
+
+					double d = Math.pow(b, 2) - 4 * a * c;
+					double x1 = (-b + Math.sqrt(d)) / (2 * a);
+					double x2 = (-b - Math.sqrt(d)) / (2 * a);
+
+					System.out.println(d == 0 ? "x=" + x1
+							: d &gt; 0 ? "This equation has 2 result" + "\nroot 1 = " + x1 + " and " + "root 2 = " + x2
+									: "This equation has no solution");
+</FONT>				} else if (insertnumb == 4) {
+					System.out.println("Enter row: ");
+					int row = sc.nextInt();
+					if (row &gt; 20) {
+						System.out.println("Too many row to display!!");
+						break;
+					}
+					for (int i = 1; i &lt;= row; i++) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match181-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						for (int j = 1; j &lt;= row - i; j++) {
+							System.out.print(" ");
+						}
+						for (int k = 1; k &lt;= i * 2 - 1; k++) {
+							System.out.print("*");
+						}
+						System.out.println("\n");
+</FONT>					}
+				} else {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match181-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					System.err.println("!!!Error!!!");
+					sc.close();
+				}
+				System.out.println("Continue? y/n");
+				String select = sc.next();
+				if (select.equals("y")) {
+</FONT>					continue;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match181-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				} else if (select.equals("n")) {
+					isContinue = false;
+					sc.close();
+					break;
+				} else {
+					System.err.println("!!!ERROR!!!");
+					return;
+				}
+
+			}
+		} catch (Exception e) {
+			System.err.println("Error detected! please check again");
+</FONT>			return;
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match181-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

@@ -1,0 +1,161 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match46-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>HoangNguyenThuyDuong_97754_assignsubmission_file_HoangNguyenThuyDuong_1TD19_1901060012.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+HoangNguyenThuyDuong_97754_assignsubmission_file_HoangNguyenThuyDuong_1TD19_1901060012.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Midterm;
+
+import java.util.Scanner;
+
+/** Hoang Nguyen Thuy Duong
+ * 1TD-19
+ * 1901060012
+ */
+public class HoangNguyenThuyDuong_1TD19_1901060012 {
+    public static void main(String[] args) {
+        int n = 0;
+        
+        Scanner sc = new Scanner(System.in);
+        
+        while (n != 5) {
+            try {
+        System.out.println("[1]Convert a decimal (base 10) integer to binary (base 2)");
+        System.out.println("[2]Compute a consecutive square root");
+        System.out.println("[3]Solve a quadratic equation");
+        System.out.println("[4]Print a triangle given its size");
+        System.out.println("[5]Exit the program");
+        System.out.println("Choose an option: ");
+        
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match46-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        n = sc.nextInt();
+        } catch (Exception ex) { //This is the code for someone who chooses exceptional alternative
+                System.out.println("You must input number not character");
+                sc.nextLine();
+        }
+            switch(n) { //switch-case allow the program to run different requirements for different number
+                case 1: //each case represents a number
+                        int quot, h = 1, k ;
+                        int bin[] = new int[100];
+                        //get a number from the users
+                        System.out.println("Enter a decimal numer: ");
+                        int dec = sc.nextInt();
+                        quot = dec;
+                    //while running
+                    while (quot != 0) {
+                        bin [h++] = quot % 2;
+                        quot = quot / 2;
+</FONT>                    }
+                    // print out result
+                        System.out.println("Binary representation is: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match46-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    for (k = h - 1; k &gt; 0; k --) {
+                         System.out.println(bin[k]);
+                    }
+                    System.out.println("\n");
+                    break;
+                case 2:
+                    //get a number M from users
+                    int M;
+                    System.out.println("Enter an integer m (m &gt;= 0): ");
+                    M = sc.nextInt();
+                    //get a number N from users
+                    System.out.println("Enter an integer n (1 &lt;= n &lt;= 5): ");
+                    int N;
+                    N = sc.nextInt();
+                    double answer = 0;
+                    double g;
+                if (M &gt;= 0 && N &gt;= 1 && N &lt;= 5) {
+                    while (N != 0) {
+                        g = answer;
+                        answer = Math.sqrt(M + g);
+                        N = N - 1;
+                    }
+                    //print out result
+                    System.out.println(answer);
+                    break;
+                }
+                else{
+                        System.out.println("N or M does not satisfy the condition! \n Please try again!");
+                        }
+                case 3: 
+                    System.out.println("ax^2 + bx + c = 0");
+</FONT>                    System.out.println("Please enter a: "); //users enter number
+                    double a = sc.nextDouble();
+                    System.out.println("Please enter b: ");
+                    double b = sc.nextDouble();
+                    System.out.println("Please enter c: ");
+                    double c = sc.nextDouble();
+                    //cases of validation
+                    if (a == 0 && b == 0 && c == 0) { 
+                        //print out the results
+                        System.out.println("There is nothing to be solved!");
+                    } 
+                    else if (a == 0 && b == 0 && c != 0) {
+                        System.out.println("The equation has no root!");
+                    }
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match46-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_38.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    else if (a == 0 && b != 0 && c != 0) {
+                        double x = -c / b;
+                        System.out.println("There is one root x = " + x + ".");
+                    }
+                    else if (b * b - (4 * a * c) &lt; 0){
+                        System.out.println("The equation has no root!");
+                    }
+                    else if (b * b - ( 4 * a * c) &gt; 0) {
+                        double x1 = (-b + Math.sqrt(b * b - (4 * a * c))) / ( 2 * a);
+                        double x2 = (-b - Math.sqrt(b * b - (4 * a * c))) / ( 2 * a);
+                        System.out.println("The first root is x1 = " + x1 + ".");
+                        System.out.println("The second root is x2 = " + x2 + ".");
+                    }
+                    break;
+                case 4: 
+                    System.out.println("Enter an integer n (1 &lt;= n &lt;=5): ");
+                    int n4 = sc.nextInt(); //n4 represents rows
+                    int l = 0;
+                    if (n4 &gt;= 1 && n4 &lt;=5) { //the condition for the number of rows
+                        for (int i = 1; i &lt;= n4; ++i, l = 0) { //loop to print the number of spaces before each star
+                            for (int space = 1; space &lt;= n4 - i; ++space) {
+                                    System.out.print("  ");
+                        }
+                    while (l != 2 * i - 1) { //loop to print the number of stars in each row
+                        System.out.print("* ");
+                        ++l;
+                    } 
+                            System.out.println();
+                        }
+                        break;
+                    }
+                    else {
+                        System.out.println("n does not satisfy the condition! \nPlease try again!");   
+                    }
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid input");
+</FONT>                    break;
+            }
+        }   
+    }
+}
+        
+               
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match46-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:41 GMT -->
+</HTML>

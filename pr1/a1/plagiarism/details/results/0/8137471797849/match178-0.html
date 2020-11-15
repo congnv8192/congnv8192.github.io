@@ -1,0 +1,160 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match178-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040073BuiThiHanh_97464_assignsubmission_file_BuiThiHanh_1C18_1801040073_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040073BuiThiHanh_97464_assignsubmission_file_BuiThiHanh_1C18_1801040073_A1.java<p><PRE>
+package BuiThiHanh_1C18_1801040073_A1;
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match178-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_18.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/**
+ *
+ * @BùiTh?H?nh1C18
+ */
+public class BuiThiHanh_1C18_1801040073_A1 {
+
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String repeat = null;
+		int option;
+		do {
+			System.out.println("1: Convert a decimal integer to binary");
+			System.out.println("2: Compute a consecutive square root");
+			System.out.println("3: Solve quadratic equation");
+			System.out.println("4: Print a triangle given it's size");
+			System.out.println("Select a function you want: ");
+			option = sc.nextInt();
+			sc.nextLine();
+			switch (option) {
+			case 1:
+				exercise1();
+				break;
+			case 2:
+				exercise2();
+				break;
+			case 3:
+				exercise3();
+				break;
+			case 4:
+				exercise4();
+				break;
+			default:
+				System.out.println("This function does not exist. Please select again.");
+				break;
+			}
+			System.out.println("Do you want to continue with another function ? yes/ no");
+</FONT>			repeat = sc.nextLine();
+		} while (repeat.equals("yes") == true);
+	}
+
+	public static void exercise1() {
+		Scanner sc = new Scanner(System.in);
+		int decimal, binary;
+		System.out.println("Please enter a decimal number:");
+		decimal = sc.nextInt();
+
+		do {
+			binary = decimal % 2;
+			System.out.print(binary);
+		} while ((decimal /= 2) != 0);// (decimal = decimal / 2) != 0
+		System.out.println("");
+	}
+
+	public static void exercise2() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Input a number: ");
+		double in = sc.nextInt();
+		double t = in;
+		System.out.println("How many times the square root is taken ? (From 1 to 5)");
+		int n = sc.nextInt();
+		int x = 0;
+		double result = 0;
+		if (1 &lt;= n && n &lt;= 5) {
+			while (x &lt; n) {
+				result = Math.sqrt(in);
+				in = result + t;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match178-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				x++;
+			}
+			System.out.println("Result: " + result);
+
+		} else {
+			System.out.println("The number you input is not in range");
+		}
+
+	}
+
+	public static void exercise3() {
+		Scanner sc = new Scanner(System.in);
+</FONT>		System.out.println("Enter three coefficients");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match178-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("a = "); // Compute a quadratic equation.
+		float a = sc.nextFloat();
+		System.out.print("b = ");
+		float b = sc.nextFloat();
+		System.out.print("c = ");
+</FONT>		float c = sc.nextFloat();
+		float delta = b * b - 4 * a * c;
+		float x1 = (float) ((-b + Math.sqrt(delta)) / (2 * a));
+		float x2 = (float) ((-b - Math.sqrt(delta)) / (2 * a));
+
+		if (a == 0 && b == 0 && c != 0 && delta &lt; 0) {
+			System.out.println("the equation has no solution ");
+		} else if (a == 0 && b == 0 && c == 0) {
+			System.out.println("the equation has infinitely many solution");
+		} else if (a == 0 && b != 0 && c != 0) {
+			System.out.println("the equation has an unique solution x=" + -c / b);
+		} else if (a != 0 && b != 0 && c != 0 && delta &gt; 0) {
+			System.out.println("The equation has two solutions: x1= " + x1 + "x2= " + x2);
+		} else {
+			System.out.println("The equation has double root: x = " + (-b) / (2 * a));
+		}
+	}
+
+	public static void exercise4() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Layer of trangular(An interge from 1 to 5)");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match178-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int m, n, p, number;
+		p = sc.nextInt();
+		if (p &gt;= 1 && p &lt;= 5) {
+			System.out.println("trangular: ");
+			for (m = 0; m &lt; p; m++) {
+				for (n = 0; n &lt;= 2 * p; n++) {
+					if (n &gt;= (p - 1 - m) && n &lt;= (p - 1 + m)) {
+						System.out.print(" * ");
+					} else {
+
+						System.out.print("   ");
+					}
+				}
+				System.out.println("");
+			}
+
+		}
+
+		else {
+			System.out.println("The number is not suitable!");
+</FONT>
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match178-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

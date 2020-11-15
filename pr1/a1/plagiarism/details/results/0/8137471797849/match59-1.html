@@ -1,0 +1,172 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match59-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenPhuongTan_97663_assignsubmission_file_Main.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+PhanLeBaoTram_97474_assignsubmission_file_PhanLeBaoTram_2TD19.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment1;
+import java.util.Scanner;
+/** Studen ID: 1901060056
+ * Gmail phanlebaotramm1411@gmail.com
+ * @author phanlebaotram
+ */
+public class PhanLeBaoTram_2TD19 {
+ public static void main(String[] args) {
+        int T;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("");
+        while (true) {
+
+            System.out.println("input 1 and enter to convert a decimal to a binary");
+            System.out.println("input 2 and enter to compute a consecutive square ");
+            System.out.println("input 3 and enter to solve a quadratic function");
+            System.out.println("input 4 and enter to print a triangle");
+            T = sc.nextInt();
+            switch (T) {
+                case 1:                    
+                    System.out.println("Welcome to our decimal to binary converter");
+
+                    
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match59-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int dec_im, q_t, i = 1, j; // q_t is quotation 
+                    int binary[] = new int[100];
+                    Scanner scan = new Scanner(System.in);
+
+                    System.out.print("Please type a Decimal Number : ");
+                    dec_im = scan.nextInt();
+
+                    q_t = dec_im;
+
+                    while (q_t != 0) {
+                        binary[i++] = q_t % 2;
+                        q_t = q_t / 2;
+</FONT>                    }
+
+                    System.out.print("binary number is: ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match59-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    for (j = i - 1; j &gt; 0; j--) {
+                        System.out.print(binary[j]);
+                    }
+                    System.out.print("\n");
+
+                    break;
+                case 2:
+                    System.out.println("Welcome to consecutive square root calculator ");
+
+                    int m = 0; // m is under root
+                    int n = 0; // n is root times
+                    double sum = 0;
+                    while (m &lt; 1 || n &lt; 1) {
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match59-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Type your M and N (M.N&gt;0): ");
+                        try {
+                            m = sc.nextInt();
+                            sc.nextLine();
+                            n = sc.nextInt();
+                            sc.nextLine();
+                        } catch (Exception e) {
+                            sc.nextLine();
+                            System.out.println("Invalid number, please try again!");
+</FONT>                        }
+
+                    }
+                    for (int i1 = 1; i1 &lt;= n; i1++) {
+                        sum = Math.sqrt((sum + m));
+                    }
+
+                    System.out.println(" ReSult " + sum);
+                    break;
+                case 3:
+                    System.out.println("Solve quadratic equations automatically");
+
+
+                    double a = sc.nextDouble();
+                    double b = sc.nextDouble();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match59-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_22.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    double c = sc.nextDouble();
+                    double d = b * b - 4 * a * c;
+                    double x1 = (-b + Math.sqrt(d)) / 2 * a;
+                    double x2 = (-b - Math.sqrt(d)) / 2 * a;
+
+                    if (a == 0) {
+                        if (b == 0) {
+                            if (c == 0) {
+                                System.out.println("infinitely many solutions");
+                            } else {
+                                System.out.println("no solution");
+                            }
+                        } else {
+                            System.out.println("solution x= " + -c / b);
+                        }
+                    } else {
+                        if (d &lt; 0)
+
+                            System.out.println("no solution");
+
+                        if (d == 0)
+                            System.out.println("exactly one solution x = " + (-b) / (2 * a));
+
+                        if (d &gt; 0)
+                            System.out.println("2 solutions x1= " + x1 + " x2= " + x2);
+</FONT>                    }break;
+                case 4:
+                    int h = 0;
+
+
+
+                    System.out.println("Press your height of your triangle then we will draw it for u");
+
+
+                    while (h &lt; 1) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match59-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Number must be greater than 0");
+                        try {
+                            h = sc.nextInt();
+                            sc.nextLine();
+                        } catch (Exception e) {
+                            sc.nextLine();
+                            System.out.println("This is not even a number :(");
+                        }
+                    }
+                    for (i = 1; i &lt;= h; i = i + 1)
+                    {
+                        for (j = 1; j &lt;= 2 * h - 1; j++)
+                        {
+                            if (j &gt;= h - i + 1 && j &lt;= h + i - 1)
+                                System.out.print("*");
+
+                            else
+                                System.out.print(" ");
+                        }
+                        System.out.print("\n");
+
+                    } break;
+                case 5:
+                    System.out.println("we have nothing here!good bye!");
+                    System.exit(0);
+                default: System.out.println("Incorrect input!!! Please re-enter choice from our menu");
+</FONT>            }
+        }
+    }
+}   
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match59-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+</HTML>

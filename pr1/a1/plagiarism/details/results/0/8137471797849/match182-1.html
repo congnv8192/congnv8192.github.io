@@ -1,0 +1,139 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match182-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHoangLan_97484_assignsubmission_file_AsF1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+PhamSonDuong_97758_assignsubmission_file_assignmentmid.java<p><PRE>
+package tut;
+
+import java.util.Scanner;
+
+public class assignmentmid {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a;
+		while (true) { // loop menu
+			System.out.println("[1] Task 1");
+			System.out.println("[2] Task 2");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match182-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println("[3] Task 3");
+			System.out.println("[4] Task 4");
+			System.out.println("Enter your choice");
+			Scanner sc = new Scanner(System.in);
+			a = sc.nextInt();
+</FONT>			// Receive user input
+			;
+
+			switch (a) {
+			case 3:
+				Scanner sc3 = new Scanner(System.in);
+				System.out.print("Input a: ");
+				double d = sc3.nextDouble();
+				System.out.print("Input b: ");
+				double b = sc3.nextDouble();
+				System.out.print("Input c: ");
+				double c = sc3.nextDouble();
+				double result = b * b - 4.0 * d * c;// calculate
+				if (result &gt; 0.0) {// if there are 2 results
+					double r1 = (-b + Math.pow(result, 0.5)) / (2.0 * d);
+					double r2 = (-b - Math.pow(result, 0.5)) / (2.0 * d);
+					System.out.println("The roots are \n" + r1 + " and \n" + r2);
+				} else if (result == 0.0) { // 1 results
+					double r1 = -b / (2.0 * d);
+					System.out.println("The root is  \n" + r1);
+				} else {// if there are no answer
+					System.out.println("The equation has no real roots. \n");
+				}
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match182-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				break;
+
+			case 4:
+				int n1;
+				Scanner sc4 = new Scanner(System.in);
+				System.out.println("Please Enter a number");
+				n1 = sc4.nextInt();
+				if (n1 &lt; 1 && n1 &gt; 5) {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match182-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					System.out.println("Invalid number");
+				} else {
+					System.out.println("Pattern : ");
+					int star = 1;// print the amount of star from the first row
+					int NumOfSpace = 4;// the amount of space in the first row
+					for (int e = 1; e &lt;= n1; e++) {
+						for (int f = 1; f &lt;= NumOfSpace; f++) { // print the white backspace
+							System.out.print(" ");
+						}
+						for (int g = 1; g &lt;= star; g++) { // print the star and white background
+							System.out.print("*");
+						}
+						System.out.println();
+						star = star + 2;// the star + 2 by every single row
+						NumOfSpace = NumOfSpace - 1; // the space get -1 by every single row
+					}
+				}
+				break;
+			case 2:
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match182-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				Scanner sc2 = new Scanner(System.in);
+				int m;
+				System.out.println(" Enter your number m: ");
+				m = sc2.nextInt();
+				int n;
+				System.out.println(" Enter your number n: ");
+				n = sc2.nextInt();
+				double square = 0;
+				for (int i = 1; i &lt;= n; i++) {
+</FONT>					square = Math.sqrt(square + m); // wrap square with m ( n times)
+				}
+				System.out.println("Result: \n" + square);
+				break;
+			case 1:
+				int number, i = 0;
+				int binary[] = new int[100];
+				Scanner sc1 = new Scanner(System.in);
+				System.out.print("Enter decimal number: ");
+				number = sc1.nextInt();
+				while (number != 0) {
+					binary[i] = number % 2;// operation
+					number = number / 2;
+					i++;
+				}
+				System.out.print("Binary value is : \n");
+				for (int j = i - 1; j &gt;= 0; j--) {
+					System.out.print("" + binary[j]);
+				}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match182-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				break;
+
+			default:
+				System.out.println("Not a valid number");
+			}
+			System.out.println();
+			System.out.println(" Do you want continue with another function? Y/N");// ask the user if they want to
+																					// continue with another function
+
+			String answer = sc.next();
+			if (answer.equalsIgnoreCase("N")) { // allow the answer to be in upper or lower case
+				System.out.println("Quitting");
+				break;
+</FONT>			}
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match182-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

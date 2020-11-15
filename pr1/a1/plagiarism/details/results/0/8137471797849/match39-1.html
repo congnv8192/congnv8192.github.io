@@ -1,0 +1,167 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match39-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LuThanhLong_97565_assignsubmission_file_LuThanhLong_1TD19_1901060028.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenThuHa_97711_assignsubmission_file_NguyenThuHa_1TD19_1906060014.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match39-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package nguyenthuha_1td19_1906060014;
+
+import static java.lang.Math.sqrt;
+import java.util.Scanner;
+
+/**
+ *
+ * @author DaiPhongPC
+ */
+public class NguyenThuHa_1TD19_1906060014 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        int n=0; //choice, selection
+   Scanner sc = new Scanner(System.in);
+   while (n !=5){ 
+       try {
+      System.out.println ("[1] Convert a decimal (base 10) integer to binary (base 2)");
+       System.out.println ("[2] Compute a consecutive square root");
+       System.out.println ("[3] Solve a quadratic equation ");
+</FONT>       System.out.println ("(4) Print a triangle given its size");
+       System.out.println ("[5] Exit the program");
+       System.out.print("Choose an option");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match39-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+       n = sc.nextInt();
+       } catch (Exception ex) {
+           System.out.println ("You must input number not character");
+           sc.nextLine();
+       }
+       switch(n) {
+           case 1:
+              if (n == 1) {
+                int  quot, i = 1 , j ;
+                int bin[] = new int[100];
+                System.out.print("Enter an Decimal number: ");
+                int  dec = sc.nextInt();
+                quot = dec;
+            while (quot != 0){
+                bin[i++] = quot % 2;
+                quot =quot / 2;            
+</FONT>                }
+                System.out.print("Binary representation is: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match39-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for ( j = i - 1; j &gt; 0; j --) {
+                System.out.print(bin[j]);
+                }    
+                System.out.print("\n");
+            }
+            
+           break;
+           case 2:
+           System.out.println("Enter an integer m : ");
+           int m2 = sc.nextInt();
+           System.out.print("Enter integer n between 1 to 5: ");
+           int n2 = sc.nextInt();
+           double sum = 0  ;
+           double sum2 = 0;
+           if (n2 &lt; 1 || n2 &gt; 5) {
+	    System.out.print("The value of doesn't suitable");
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match39-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_33.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            while (n2 &gt;=1 && n2 &lt;=5) {
+            sum2=sum;
+	    sum = sqrt(m2 + sum2);
+	    n2--;
+            System.out.println(sum); 
+	   }
+           }   
+           break;
+           case 3:
+           System.out.println ("a(x^2) + bx +c =0");
+           double a,b,c;
+           System.out.print("Enter a: ");
+           a= sc.nextDouble();
+           System.out.print("Enter b: ");
+           b = sc.nextDouble();
+           System.out.print("Enter c: ");
+           c = sc.nextDouble();
+            if 
+                   (b * b - (4 * a * c) &lt; 0) {
+            System.out.println("There is nothing to be solved");
+        } else if (a == 0 & b != 0 & c != 0) {
+            double x = -c / b;
+            System.out.println("There is one root x");
+        } else if (b * b - (4 * a * c) &gt;= 0) {
+      
+        double x1 = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+        double x2 = (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+        System.out.println(x1 + " is the first root");
+        System.out.println(x2 + " is the second root");
+        }
+        
+        break;
+           case 4:
+</FONT>               int y;
+        do {
+            System.out.print("Enter the size of the triangle: ");
+            y = sc.nextInt();
+            if (y &gt;= 1 && y &lt;= 5) {
+                for (int r = 1; r &lt;= y; r++) {
+                    for (int i = y - r; i &gt; 0; i--) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 1; j &lt;= r; j++) {
+                        System.out.print("*");
+                    }
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match39-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    for (int k = 2; k &lt;= r; k++) {
+                        System.out.print("*");
+                    }
+                    System.out.println();
+                }
+            } else if (y &gt; 5 || y &lt; 1) {
+                {
+                    System.out.println("Unsuitable value");
+</FONT>                }
+            }
+        } while (n &gt; 5 || n &lt; 1);
+          break;
+       }
+
+    }
+   }
+
+}
+
+            
+             
+       
+   
+    
+
+    
+
+
+    
+  
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match39-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:39 GMT -->
+</HTML>

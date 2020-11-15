@@ -1,0 +1,151 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match122-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeVietTung_97763_assignsubmission_file_AssignmentX.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeVietTung_97763_assignsubmission_file_AssignmentX.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignmentx;
+
+import java.util.Scanner;
+
+public class AssignmentX {
+
+    public static void main(String[] args) {
+        boolean isContinue;
+
+        Scanner sc = new Scanner(System.in);
+
+        do {
+            System.out.println("Chooses an option: "
+                    + "\n1.Convert a decimal (base 10) integer to binary (base 2)"
+                    + "\n2.Compute a consecutive square root"
+                    + "\n3.Solve a quadratic equation"
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match122-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_34.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    + "\n4.Print a triangle given its size"
+            );
+            int x = sc.nextInt();
+
+            switch (x) {
+                case 1:
+                    int o,
+                     v;
+                    String k = "";
+                    System.out.print("Enter any decimal number:");
+                    o = sc.nextInt();
+                    while (o &gt; 0) {
+                        v = o % 2;
+
+                        k = v + "" + k;
+                        o = o / 2;
+                    }
+                    System.out.println("Binary number:" + k);
+                    break;
+                case 2:
+                    System.out.print("Enter m: ");
+            int m = sc.nextInt();
+            System.out.print("Enter n (1 ≤ n ≤ 5): ");
+            int n = sc.nextInt();
+            double A = 0;
+            
+            if (n &gt;= 1 && n &lt;= 5) {
+                for (int i = 1; i &lt;= n; i++) {
+                    A = Math.sqrt(m + A);
+                }
+                System.out.println("A= " + A);
+            }    
+            else {
+                while (n &lt; 1 || n &gt; 5) {
+                    System.out.print("But you must enter an integer between 1 and 5: ");
+                    int b = sc.nextInt();
+                    if (b &gt;= 1 && b &lt;= 5) {
+                        for (int i = 1; i &lt;= n; i++) {
+                            A = Math.sqrt(m + A);
+</FONT>                        }
+                        System.out.println("A= " + A);
+                    }
+                }
+            }
+                    break;
+                case 3:
+                    System.out.println("Enter the value of a: ");
+                    double a = sc.nextDouble();
+                    System.out.println("Enter the value of b: ");
+                    double b = sc.nextDouble();
+                    System.out.println("Enter the value of c: ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match122-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    double c = sc.nextDouble();
+
+                    double delta = (b * b) - (4 * a * c);
+                    double sqrt = Math.sqrt(delta);
+
+                    if (delta &gt; 0) {
+</FONT>                        double FirstRoot = (-b + sqrt) / 2 * a;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match122-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        double SecondRoot = (-b - sqrt) / 2 * a;
+                        System.out.println("The equation has two roots: " + FirstRoot + " and " + SecondRoot);
+                    } else if (delta == 0) {
+</FONT>                        System.out.println("The equation has one root x= " + -b / (2 * a));
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match122-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    } else {
+                        System.out.println("The equation has no root");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Enter the number of rows to be printed");
+                    int r = sc.nextInt();
+                    if (1 &lt;= r && r &lt;= 5) {
+                        for (int i = 1; i &lt;= r; i++) {
+
+                            for (int j = r; j &gt;= i; j--) {
+                                System.out.print(" ");
+                            }
+
+                            for (int j = 1; j &lt;= i; j++) {
+                                System.out.print("* ");
+                            }
+
+                            System.out.println();
+                        }
+                    } else {
+</FONT>                        System.out.println("The number n must in condition: 1&lt;= n &lt;=5");
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid input");
+                    break;
+            }
+
+            sc = new Scanner(System.in);
+            System.out.println("Do you want to use the program again? Y/N");
+            String answer = sc.nextLine();
+            if (answer.equalsIgnoreCase("y")) {
+                isContinue = true;
+            } else {
+                System.out.println("Adios mi amigo!!");
+                isContinue = false;
+            }
+        } while (isContinue == true);
+
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match122-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+</HTML>

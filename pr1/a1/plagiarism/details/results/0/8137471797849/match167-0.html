@@ -1,0 +1,146 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match167-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeMaiAnh_97728_assignsubmission_file_MidTerm.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeMaiAnh_97728_assignsubmission_file_MidTerm.java<p><PRE>
+package midterm;
+
+import java.util.Scanner;
+
+public class MidTerm {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i = 0;
+        while (i != 5) {
+            try {
+
+                System.out.println("----Hello! Welcome to my assignment----");
+                System.out.println("|             Exercise 1              |");
+                System.out.println("|             Exercise 2              |");
+                System.out.println("|             Exercise 3              |");
+                System.out.println("|             Exercise 4              |");
+                System.out.println("---------------------------------------");
+                System.out.println("Please choose an option: ");
+                i = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println(" You have to choose numbers from 1 to 5");
+            }
+        }
+        switch (i) {
+            case 1:
+                System.out.println("Exercise 1: Convert a decimal integer to binary");
+                System.out.println("Enter an integer");
+                int x,
+                 y;
+                x = sc.nextInt();
+                do {
+                    y = x % 2;
+                    System.out.println("a");
+                } while ((x /= 2) != 0);
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match167-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Do you want to continue?" + "Yes or No");
+                break;
+            case 2:
+                System.out.println("Exercise 2: Compute a consecutive square root");
+                System.out.println("Enter m: ");
+                int m = sc.nextInt();
+</FONT>                System.out.println(" Enter n(1 &lt;= n &lt;= 5: ");
+                int n = sc.nextInt();
+                double result;
+                if (n == 1) {
+                    result = (double) Math.sqrt(m);
+                    System.out.println(" a square root of: " + m + "pick" + n + "/" + result);
+                } else if (n == 2) {
+                    result = (double) Math.sqrt(m + Math.sqrt(m));
+                    System.out.println(" a square root of: " + m + "pick" + n + "/" + result);
+                } else if (n == 3) {
+                    result = (double) Math.sqrt(m + Math.sqrt(m + (Math.sqrt(m))));
+                    System.out.println(" a square root of: " + m + "pick" + n + "/" + result);
+                } else if (n == 4) {
+                    result = (double) Math.sqrt(m + Math.sqrt(m + (Math.sqrt(m + (Math.sqrt(m))))));
+                    System.out.println(" a square root of: " + m + "pick" + n + "/" + result);
+                } else if (n == 5) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match167-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    result = (double) Math.sqrt(m + Math.sqrt(m + (Math.sqrt(m + (Math.sqrt(m + Math.sqrt(m)))))));
+                    System.out.println(" a square root of: " + m + "pick" + n + "/" + result);
+</FONT>                } else {
+                    System.out.println("please enter n");
+                    System.out.println("Do you want to continue?" + " Yes or No");
+                    break;
+                }
+            case 3:
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match167-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Exercise 3: Solve a quadratic quation");
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+                int c = sc.nextInt();
+                int x0,
+                 x1,
+                 x2,
+                 x3;
+                int delta = b * b - (4 * a * c);
+                if (a == 0 && b == 0 && c == 0) {
+</FONT>                    System.out.println("many root");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match167-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                } else if (a == 0 && b == 0 && c != 0) {
+                    System.out.println(" no root");
+                } else if (a == 0 && b != 0 && c != 0) {
+                    x0 = -c / b;
+                    System.out.println(" a root: " + x0);
+                } else if (a != 0 && b != 0 && c != 0) {
+                    if (delta &gt; 0) {
+                        x2 = (int) ((-b + Math.sqrt(delta)) / (2 * a));
+                        x3 = (int) ((-b + Math.sqrt(delta)) / (2 * a));
+                        System.out.println(" root :x2 " + x2 + ",x3" + x3);
+                    } else if (delta == 0) {
+                        x1 = -b / 2 * a;
+                        System.out.println(" a root: " + x1);
+                    } else {
+                        System.out.println("no root");
+                    }
+
+                    System.out.println("Do you want to continue?" + " Yes or No");
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match167-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    break;
+                }
+
+            case 4:
+                System.out.println("Exercise 4: Print a triangle given its size");
+                int n1;
+                System.out.println("Enter n1 (1 &lt;= n &lt;= 5)");
+                n1 = sc.nextInt();
+                if (n1 &gt;= 1 && n1 &gt;= 5) {
+</FONT>                    for (int t = 0; n1 + 1 &gt;= t; t++) {
+                        for (int k = n1; k &gt;= t; k++) {
+                            System.out.print("");
+                        }
+                        for (int d = 0; d &lt; (2 * t - 1); d++) {
+                            System.out.print("*");
+                        }
+                        System.out.print("");
+                    }
+                } else {
+                    System.out.print("please try again");
+                }
+
+        }
+
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match167-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

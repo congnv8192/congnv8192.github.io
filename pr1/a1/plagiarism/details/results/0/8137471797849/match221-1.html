@@ -1,0 +1,122 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match221-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040095NguyenucHoang_97646_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenBaTrungKien_97627_assignsubmission_file_NguyenBaTrungKien_1901040105_2C19.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match221-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package nguyenbatrungkien_1901040105_2c19;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Nguyen Ba Trung Kien - 1901040105
+ */
+public class NguyenBaTrungKien_1901040105_2C19 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+         String answer;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Please choose the following function you want to perform: ");
+            System.out.println(" 1. Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println(" 2. Compute a consecutive square root");
+</FONT>            System.out.println(" 3. Solve a quadratic equation");
+            System.out.println(" 4. Print a triangle given its size");
+            Integer function = sc.nextInt();
+            //Function 1//
+            switch(function){
+			case 1:
+                System.out.println("Please enter your number: ");
+                Integer number = sc.nextInt();
+                System.out.println("The number converted to binary is: " + Integer.toBinaryString(number));
+				break;
+            //Function 2//
+			case 2:
+                System.out.println("Please enter the number of time that you want the square root to be repeated (bigger or equal to 1 and smaller or equal to 5): ");
+                int n = sc.nextInt();
+                while (n&lt;1 || n&gt;5){
+                    System.out.println ("The number entered doesn't coordinate with the condition");
+                }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match221-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please enter the number you want to add: ");
+                double m = sc.nextDouble();
+                double ketqua = 0;
+                for (int i = 1; i &lt;= n; i++) {
+</FONT>                    ketqua = Math.sqrt(ketqua + m);
+                }
+                System.out.println("The result is: " + ketqua);
+				break;
+            //Function 3//
+			case 3:
+                System.out.println("Please enter a: ");
+                double a = sc.nextDouble();
+                System.out.println("Please enter b: ");
+                double b = sc.nextDouble();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match221-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please enter c: ");
+                double c = sc.nextDouble();
+                double delta = ((b * b) - (4 * a * c));
+                if (delta &lt; 0) {
+                    System.out.println("There is no solution to this quadratic equation");
+                }
+                if (delta == 0) {
+                    System.out.println("There is only one solution to this quadratic equation: x = " + -b / (2 * a));
+                }
+                if (delta &gt; 0) {
+                    double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+</FONT>                    System.out.println("There are two solution to this quadratic equation: x1 = " + x1 + " and x2 = " + x2);
+                }
+				break;
+            //Function 4//
+			case 4:
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match221-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please enter the desired height of your triangle: ");
+                int h = sc.nextInt();
+                for (int i = 1; i &lt;= (h * 2); i += 2) {
+                    for (int space = (h * 2); space &gt;= i; space--) {
+                        System.out.print(" ");
+                    }
+                    for (int star = 1; star &lt;= i; star++) {
+                        System.out.print("* ");
+                    }
+                    System.out.println();
+                }
+				break;
+</FONT>            }
+            answer = sc.nextLine();
+            System.out.println("Do you want to continue with other functions? (Y/N)");
+            answer = sc.nextLine();
+        }
+        while (answer.equals("Y") || answer.equals("y"));
+    }
+}
+
+
+    
+    
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match221-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

@@ -1,0 +1,155 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match156-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040113NguyenTuanHung_97668_assignsubmission_file_NguyenTuanHung_1801040113_5C18_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040113NguyenTuanHung_97668_assignsubmission_file_NguyenTuanHung_1801040113_5C18_A1.java<p><PRE>
+package Assignment1;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match156-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+	/*
+	 * @author: Nguyen Tuan Hung
+	 * 1801040113
+	 * 5C-18
+	 *
+	 */
+public class NguyenTuanHung_1801040113_5C18_A1 {
+	
+	
+		public static void main (String[] args) {
+			Scanner sc = new Scanner(System.in);
+			char z;
+			do {
+				System.out.print("Menu:"
+							+"\n1.Convert a demical (base 10) integer to binary."
+							+"\n2.Compute a consecutive square root."
+							+"\n3.Solve a quadratic equation."
+</FONT>							+"\n4.Print a triangle given its size."	
+							+ "\nWhich function do you want to perform?");
+			int choice = sc.nextInt();
+			// Request 1
+			if (choice == 1) {
+				String bi = ""; 
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match156-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("Enter the decimal number: ");
+	             int a = sc.nextInt();
+	             while (a != 0) {
+	                 int result = a / 2;
+	                 int remainder = a % 2;
+	                 a = result;
+	                 String y = Integer.toString(remainder);
+	                 //Adding the gotten string into the "bi" string 
+	                 bi = y + bi;
+			}
+	             System.out.println("Binary form of the entered number is: " + bi);
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match156-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			}
+			// Request 2
+			else if (choice == 2) {
+				System.out.print("Please enter a number m: ");
+				double m = sc.nextDouble();
+				System.out.print("Please enter a number n: ");
+</FONT>				double n = sc.nextDouble();
+				double result = Math.sqrt(m);
+				/*because I have calculate the square root one time outside the for loop,
+				 *so i &lt; n - 1
+				 */
+				for (int i = 1; i &lt;= n-1; i++) {
+					result = Math.sqrt(m + result);
+				}
+				System.out.println("The result is: " + result);
+			}
+			// Request 3
+			else if (choice == 3) {
+				System.out.print("Please enter number a, b c: ");
+				double a = sc.nextDouble();
+				double b = sc.nextDouble();
+				double c = sc.nextDouble();
+				double x1, x2, x ;
+				// Checking the situations as if there's any input equals 0! 
+				if (a == 0 && b == 0 && c == 0) {
+					System.out.println("There's nothing to be solved!");
+				}
+				else if (a == 0 && b == 0 && c != 0) {
+					System.out.println("The equation has no root!");
+				}
+				else if (a == 0 && b != 0 && c != 0) {
+					System.out.println("There's one root: " + (-c/b));
+				}
+				else {
+					// Checking the situations of delta!
+					double delta = b*b - 4*a*c;
+					if (delta &lt; 0) {
+						System.out.println("No solution!!!");
+					}
+					else if (delta == 0) {
+						x = -b/(2*a);
+						System.out.println("There's one root: " + x);
+					}
+					else {
+					x1 = (-b + Math.sqrt(delta))/(2*a);
+					x2 = (-b - Math.sqrt(delta))/(2*a);
+					System.out.println("There's two roots: " + x1 + " and " + x2);
+					}
+					}
+			}
+			// Request 4
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match156-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_30.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			else if (choice == 4) {
+				 String a = "        *";
+	             String b = "      * * *";
+	             String c = "    * * * * *";
+	             String d = "  * * * * * * *";
+	             String e = "* * * * * * * * *";
+	             System.out.println("Enter a number n (from 1 to 5): ");
+	             int n = sc.nextInt();
+	             switch (n) {
+	                 case 1:
+	                     System.out.println(a);
+	                     break;
+	                 case 2:
+	                     System.out.println(a + "\n" + b);
+	                     break;
+	                 case 3:
+	                     System.out.println(a + "\n" + b + "\n" + c);
+	                     break;
+	                 case 4:
+	                     System.out.println(a + "\n" + b + "\n" + c + "\n" + d);
+	                     break;
+	                 case 5:
+	                     System.out.println(a + "\n" + b + "\n" + c + "\n" + d + "\n" + e);
+	                     break;
+	                 default:
+	                     System.out.println("Invalid Input!!!");
+	                     break;
+			}
+			}
+			// The situation if user input a number bigger than 4!
+			else {
+				System.out.println("Invalid choice!!!");
+			}
+			//Asking user as if they want to continue or not.
+	        System.out.println("Do you want to continue?(y/n) ");
+	        z = sc.next().charAt(0);
+	    } while(z =='y');
+</FONT>			sc.close();
+		}
+			
+		}
+
+
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match156-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

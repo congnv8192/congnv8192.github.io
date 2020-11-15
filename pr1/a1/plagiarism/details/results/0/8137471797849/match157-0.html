@@ -1,0 +1,212 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match157-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>angPhuongThao_97704_assignsubmission_file_DangPhuongThao_2T19_1901060045.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+angPhuongThao_97704_assignsubmission_file_DangPhuongThao_2T19_1901060045.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match157-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package midterm.assignment;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author DangPhuongThao
+ * ID: 1901060045
+ * Class: 2TĐ19
+ */
+public class DangPhuongThao_2TĐ19_1901060045 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean control = true;
+        //Use "control" to control the loop.
+        do {
+            System.out.println("\nThis is a menu -based program.");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+            System.out.println("2. Compute a consecutive square root.");
+            System.out.println("3. Solve a quadratic equation.");
+</FONT>            System.out.println("4. Print a triangle given its size.");
+            System.out.println("5. Exit the program.");
+            System.out.println("Select Function : [1- 5].");
+            System.out.println("Your choice :");
+            String choice = input.nextLine();
+            switch (choice) {
+                //choice =1 go to case = 1.   
+                //choice =2 go to case = 2.
+                //choice =3 go to case = 3.
+                //choice =4 go to case = 4.
+                //choice =5 go to case = 5.
+                case "1":
+                    l1();
+                    //Calling the l1()function.
+                    break;
+                case "2":
+                    l2();
+                    //Calling the l2()function.
+                    break;
+                case "3":
+                    l3();
+                    //Calling the l3()function.
+                    break;
+                case "4":
+                    l4();
+                    //Calling the l4()function.
+                    break;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match157-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                case "5":
+                    System.out.println("Exit.");
+                    control = false;
+                    break;
+                //Report ending program.
+                default:
+                    System.out.println("Enter incorrectly, please re-enter.");
+                    control = true;
+                    break;
+</FONT>            }
+        } while (control);
+        //If choice = 1,2,3,4 or else! = 1,2,3,4,5 then control = false will return to the loop.
+        //If choice = 5 then control = true will end the program.
+
+    }
+
+    static void l1() {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match157-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the Integer: ");
+        Integer input = sc.nextInt();
+        System.out.println("Binary number:" + Integer.toBinaryString(input));
+</FONT>        //Use the Integer.toBinaryString () function to convert the integer to a base 2 binary number.
+    }
+
+    static void l2() {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match157-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the integer m: ");
+        Integer m = sc.nextInt();
+
+        double total = 0;
+        Integer n = 0;
+        do {
+            System.out.print("Enter the integer n: ");
+            n = sc.nextInt();
+</FONT>            if (n &lt; 6 && n &gt; 0) {
+                //If n is greater than 6 and greater than 0, then enter for.
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match157-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                for (int i = 1; i &lt;= n; i++) {
+                    total = Math.sqrt(m + total);
+                    //Caculate the total.
+                    //The math.sqrt function calculates the square root of 2.
+                }
+                System.out.println(total);
+                //Display the result.
+            } else if (n &gt; 5 || n &lt; 1) {
+                //If n is greater than 5 or less than 1 the error is reported.
+                System.out.println("n from 1 to 5");
+            }
+        } while (n &gt; 5 || n &lt; 1);
+</FONT>        //If n satisfies 1 &lt;= n &lt;= 5 terminates the loop and prints the result, n does not satisfy the loop return error. 
+
+    }
+
+    static void l4() {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match157-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        Integer n;
+        do {
+            System.out.print("Enter the integer n: ");
+            n = sc.nextInt();
+            if (n &gt;= 1 && n &lt;= 5) {
+                //If n is greater than or equal to 1 and n is less than or equal to 5, start in the for loop.
+                for (int i = 1; i &lt;= n; i++) {
+</FONT>                    for (int j = 1; j &lt;= n - i; j++) {
+                        System.out.print("  ");
+                        //The range from the beginning of the line to the left to right, respectively vs j.
+                    }
+                    for (int k = 1; k &lt;= 2 * i - 1; k++) {
+                        System.out.print("* ");
+                        //Print out the number * corresponding to k.
+                    }
+                    System.out.println("");
+                    //The line number corresponds to n.
+                }
+            } else if (n &gt; 5 || n &lt; 1) {
+                //If n is less than 1 or more than 5 it is faulty. 
+                System.out.println("n from 1 to 5");
+            }
+        } while (n &gt; 5 || n &lt; 1);
+        //If n is greater than 5 or n is less than 1, the loop will be repeated.
+        //If less than or equal to 5 and greater than or equal to 1, print the loop result and final result.  
+    }
+
+    static void l3() {
+        double a, b, c;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input a: ");
+        a = sc.nextInt();
+        System.out.print("Input b: ");
+        b = sc.nextInt();
+        System.out.print("Input c: ");
+        c = sc.nextInt();
+        //There are 2 cases where a = 0 and a nonzero.
+        if (a == 0) {
+            //Case: a=0.
+            if (b != 0) {
+                //If a = 0, b is different from 0, the equation has a solution -c / b
+                System.out.println("The equation has one solution: "
+                        + "x = " + (-c / b));
+
+            } else {
+                if (c != 0) {
+                    //If a = 0, b = 0, c! = 0 equations with solutions.
+                    System.out.println("The equation has no solution!");
+                } else {
+                    //If a = 0, b = 0, c = 0 equations have infinite solutions.
+                    System.out.println("The equation has countless solutions");
+                }
+            }
+
+        } else {
+            //In case a is non-zero, delta, Math.pow () calculates square root.
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match157-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            double dt = Math.pow(b, 2) - (4 * a * c);
+            double x1;
+            double x2;
+            //In calculating delta, there will be 3 cases where delta is greater than 0, delta is less than zero, delta is 0.
+            if (dt &gt; 0) {
+                //Delta greater than 0 will have 2 solutions (-b + Math.sqrt (dt) / (2 * a) and (-b - Math.sqrt (dt) / (2 * a)  
+                x1 = (double) ((-b + Math.sqrt(dt)) / (2 * a));
+                x2 = (double) ((-b - Math.sqrt(dt)) / (2 * a));
+                System.out.println("The equation has two solutions: " + "x1 = " + x1 + ",x2 = " + x2);
+</FONT>            } else if (dt == 0) {
+                //Delta = 0 equations with double karma -b / (2 * a).  
+                x1 = (-b / (2 * a));
+                System.out.println("The equation have double solutions: " + "x1,x2 = " + x1);
+            } else {
+                //Delta &lt;0 inexplicable equations.
+                System.out.println("The equation has no solution!");
+            }
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match157-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

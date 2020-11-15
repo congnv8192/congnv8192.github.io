@@ -1,0 +1,262 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match57-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHoangNhat_97445_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenHoangNhat_97445_assignsubmission_file_Assignment1.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/* Full name: Nguyễn Hoàng Nhật.
+ * Class: 1TĐ19.
+ * Student ID: 1901060038.
+ */
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match57-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package assignment;
+import java.util.Scanner;
+public class Assignment1{
+// PART 1: Show the menu to let the user choose which function to perform.
+    public static void main(String[] args) {
+        int choice = 0;
+        boolean isContinued = false;
+        Scanner sc = new Scanner(System.in);  
+        while(true) {
+            System.out.println("*************Menu************* \n"
+                + "1. Convert decimal integer to binary.\n"
+                + "2. Compute a consecutive square root.\n"
+                + "3. Solve a quadratic equation.\n"
+                + "4. Print a triangle.\n"
+</FONT>                + "5. Exit.");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match57-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("Your choice: \n");
+            try {
+            choice = sc.nextInt();
+            sc.nextLine();
+              } catch(Exception e) {
+                  sc.nextLine();
+                  System.out.println("Invalid  input! Please enter again!");
+              }        
+            switch(choice) {
+                case 1:
+                  convertToBinary(); 
+                  isContinued = true;
+                  break;
+                case 2:
+                    computeSquareRoot();
+                     isContinued = true;
+                    break;
+                case 3:
+                    calculateQuadraticEquation();
+                     isContinued = true;
+                    break;
+                case 4:
+                    printTriangle();
+                     isContinued = true;
+</FONT>                    break;
+                case 5:
+                    sc.close();
+                    System.exit(0);
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match57-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                default:
+                    System.out.println("You must enter value in range 1 - 5"); 
+                    isContinued = false;
+            }
+            if(isContinued) {
+                System.out.print("\nDo you want to continue ?\nPress 'Spacebar' then 'Enter' to Continue.\nEnter any value to stop.\n");             
+                String answer = sc.nextLine();
+                if(answer.equalsIgnoreCase(" ")) {                   
+            } else {
+                break;
+            }
+            }
+            
+        }     
+    }
+    
+// PART 2:  Convert a decimal (base 10) integer to binary. 
+    public static void convertToBinary() {
+        int m; 
+</FONT>        int[] array = new int[99];
+        int i = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your number: ");
+        m = sc.nextInt();
+        while(m &lt; 0) {  
+          System.out.println("Number can not be negative!");
+          System.out.println("Enter your number again: ");
+          m = sc.nextInt();            
+        } 
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match57-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        if(m == 0) {
+          System.out.println(m);}
+ 
+        while(m &gt; 0) {
+             array[i++] = m % 2;
+             m = m / 2; 
+        }     
+        for(int j = i - 1; j &gt;= 0; j--){
+            System.out.print(array[j]);}       
+</FONT>    }
+   
+//PART 3: Compute a consecutive square root.    
+    public static void computeSquareRoot() {
+          int m, n; //Ask the user to input two integers: m and n (1 ≤ n ≤ 5);  The square root is taken n times.
+        Scanner sc = new Scanner(System.in);   
+      System.out.println("Enter your value: ");
+        m = sc.nextInt();
+        System.out.println("Enter the number of root calculation: ");
+        n = sc.nextInt();
+        while(m &lt; 0 || n &lt; 1 || n &gt; 6) {
+            System.out.println("Invalid inputs! Your value must be greater than 0 and smaller than 6");
+            System.out.println("Enter your value again: ");
+            m = sc.nextInt();
+            System.out.println("Enter the number of root calculation n again: ");
+            n = sc.nextInt();          
+        }
+        
+        if(m == 0) {
+            System.out.println(m);
+        }
+       switch(n) {
+           case 1:
+               System.out.println(Math.sqrt(m));
+               break;
+           case 2:
+               System.out.println(Math.sqrt(Math.sqrt(m) + m));
+               break;
+           case 3:
+               System.out.println(Math.sqrt(m + Math.sqrt(m + Math.sqrt(m))));
+               break;
+           case 4:
+               System.out.println(Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)))));
+               break;
+           case 5:
+               System.out.println(Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m))))));
+               break;            
+       }         
+     }
+
+//PART 4: Solve a quadratic equation.
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match57-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+     public static void calculateQuadraticEquation() {
+         // The quadratic formula: ax^2+bx+c = 0;
+         double a = 0, b = 0, c = 0, d; 
+         // d is the formula for a quadratic function 's discriminant (Δ).
+         boolean validA = false, validB = false, validC = false;
+         Scanner sc = new Scanner(System.in); 
+         
+        // Check whether the constants are true or not. 
+        while(!validA) {
+          try{
+              System.out.println("Enter a:");
+              a = sc.nextInt();
+              validA = true;
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match57-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        } catch(Exception e) {
+              sc.nextLine();
+              validA = false;
+              System.out.println("Invalid value! Please try again.");
+        }
+        while(!validB) {
+          try{
+              System.out.println("Enter b:");
+              b = sc.nextInt();
+              validB = true;
+</FONT><A NAME="7"></A><FONT color = #0000FF><A HREF="match57-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        } catch(Exception e) {
+              sc.nextLine();
+              validB = false;
+              System.out.println("Invalid value! Please try again.");
+        }
+        while(!validC) {
+          try{
+              System.out.println("Enter c:");
+              a = sc.nextInt();
+              validC = true;
+</FONT>        } catch(Exception e) {
+              sc.nextLine();
+              validC = false;
+              System.out.println("Invalid value! Please try again.");
+        }
+                c = sc.nextInt();
+        
+        //Solving quadratic equations with the quadratic formula     
+        if( a == 0) {
+            if(b == 0) {
+                if(c == 0) {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match57-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("The equation has infinite set of roots!");
+                } else {
+                    System.out.println("The equation has no root!");
+                }
+            }else {   
+                System.out.println("The equation has one root: x1 = " + (-c/b));
+            }
+        } else {
+            d = Math.sqrt(b)  - (4*a*c);
+</FONT>            if(d &gt; 0) {
+                double x1, x2;
+                x1 = ((-b - Math.sqrt(d)) / (2*a));
+                x2 = ((-b + Math.sqrt(d)) / (2*a));
+                System.out.println("The equation has two roots: x1 = " + x1 + ", x2 = " + x2);
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match57-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if(d == 0) {
+                System.out.println("The equation has only 1 root: x = " + (-b / (2 * a)));
+            } else {
+                System.out.println("The equation has no root.");
+            }
+            
+            }
+        }
+        }
+    }
+    }
+// PART 5: Print a triangle given its size.
+    public static void printTriangle() {
+            Scanner sc = new Scanner(System.in);
+              int s = 0, n;
+</FONT>            //s: the number of the stars; n: the height of the triangle.
+              
+            System.out.println("Enter the height of the triangle: ");
+            n = sc.nextInt();    
+            while(!(1 &lt;= n && n &lt;= 5)) {
+            System.out.println("Your value must be in range 1 - 5");
+            System.out.println("Please enter your value again!");
+            n = sc.nextInt();}
+                        
+            for(int i = 0; i &lt;= n; i++) {
+              for(int j = 0; j &lt; n - i + 1; j++) {                  
+                  System.out.print(" ");
+              }
+              for(s = 2*i - 1; s &gt;= 1; s--) {
+                  System.out.print("*");
+              }
+              System.out.println();
+              }
+        }
+    }
+
+//                        ***********THE END***********</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match57-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:47 GMT -->
+</HTML>

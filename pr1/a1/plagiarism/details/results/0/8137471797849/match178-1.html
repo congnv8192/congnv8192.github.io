@@ -1,0 +1,157 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match178-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040073BuiThiHanh_97464_assignsubmission_file_BuiThiHanh_1C18_1801040073_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040212TrinhKhanhThien_97455_assignsubmission_file_assignment1.java<p><PRE>
+package Assignment1;
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match178-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+public class assignment1 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String repeat = null;
+		int option;
+		do {
+			// Create a menu with switch/case statement
+			System.out.println("Problem 1: Convert a decimal integer to binary");
+			System.out.println("Problem 2: Compute a consecutive square root");
+			System.out.println("Problem 3: Solve quadratic equation");
+			System.out.println("Problem 4: Print a triangle given its size");
+			System.out.println("Select a problem you want to solve: ");
+			option = sc.nextInt();
+			sc.nextLine();
+			switch (option) {
+			case 1:
+				Problem1();
+				break;
+			case 2:
+				Problem2();
+				break;
+			case 3:
+				Problem3();
+				break;
+			case 4:
+				Problem4();
+				break;
+			default:
+				System.out.println("This problem does not exist.");
+				break;
+			}
+			System.out.println("");
+</FONT>			System.out.println("Do you want to continue with another problem ? yes/no ");
+			repeat = sc.nextLine();
+		} while (repeat.equals("yes") == true);
+	}
+
+	public static void Problem1() {
+		// Input a new integer from user's keyboard
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter an integer: ");
+		int a = sc.nextInt();
+		int b;
+		String s = "";
+
+		while (a &gt; 0) {
+			b = a % 2;
+			a = a / 2;
+			s = String.valueOf(b) + s; // Store results of b into String s
+		}
+		System.out.println("Binary number= " + s);
+	}
+
+	public static void Problem2() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Input an integer: ");
+		int m = sc.nextInt();
+		double st = m; // Store the value of m into other variable
+		double X = 0;
+		System.out.println("How many times can the square root be taken ?");
+		int n = sc.nextInt();
+		int k = 0;
+
+		if (1 &lt;= n && n &lt;= 5) {
+			while (k &lt; n) {
+				X = Math.sqrt(st);
+				st = m + X;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match178-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				k++;
+			}
+			System.out.println("The square root is " + X);
+		} else {
+			System.out.println("The number is NOT between 1 and 5. Please input again !");
+		}
+	}
+
+	public static void Problem3() {
+		Scanner sc = new Scanner(System.in);
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match178-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter a: ");
+		float a = sc.nextFloat();
+		System.out.print("Enter b: ");
+		float b = sc.nextFloat();
+		System.out.print("Enter c: ");
+</FONT>		float c = sc.nextFloat();
+		double delta = Math.pow(b, 2) - 4 * a * c;
+
+		// Compute a quadratic equation
+		if (a == 0) {
+			if (b == 0) {
+				if (c == 0) {
+					System.out.println("The equation has infinitely many solutions.");
+				} else {
+					System.out.println("The equation has no solution.");
+				}
+			} else {
+				System.out.println("The equation has an unique solution: X= " + -c / b);
+			}
+		} else if (delta == 0) {
+			System.out.println("The equation has only one solution: X= " + -b / (2 * a));
+		} else if (delta &gt; 0) {
+			System.out.println("The equation has two solutions: X1= " + (-b + Math.sqrt(delta)) / (2 * a) + " and X2= "
+					+ (-b - Math.sqrt(delta)) / (2 * a));
+		} else {
+			System.out.println("The equation has no solution.");
+		}
+	}
+
+	public static void Problem4() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the size of triangle in range [1,5]: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match178-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int i, j, k;
+		k = sc.nextInt();
+
+		if (k &gt;= 1 && k &lt;= 5) {
+			System.out.println("The triangle: ");
+			for (i = 0; i &lt; k; i++) { // Number of rows
+				for (j = 0; j &lt;= 2 * k; j++) {
+					if (j &gt;= (k - 1 - i) && j &lt;= k - 1 + i) { // Number of stars for each row
+						System.out.print(" * ");
+					} else {
+						System.out.print("   ");
+					}
+				}
+				System.out.println("");
+			}
+		} else {
+			System.out.println("The input number is out of the range!");
+</FONT>		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match178-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

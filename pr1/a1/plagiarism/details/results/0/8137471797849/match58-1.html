@@ -1,0 +1,205 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match58-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040208NguyenMinhThao_97765_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+BaoAnhNguyenLe_97658_assignsubmission_file_Nguyenlebaoanh_7c18_1801040007.java<p><PRE>
+package nguyenlebaoanh_7c18_180104007;
+// @Nguyen Le Bao Anh 7C18 1801040007
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match58-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+public class Nguyenlebaoanh_7c18_1801040007 {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println(" Welcome to Assigment2 Function,we are pleasure to serve:");
+            System.out.println("[1]. Convert a decimal (base 10) integer to binary (base 2)"
+</FONT>                    + "\n[2]. Compute a consecutive square root"
+                    + "\n[3]. Solve a quadratic equation"
+                    + "\n[4]. Print a triangle given its size");
+
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match58-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            String function;
+            do {
+                System.out.print("Choose a function: ");
+                function = sc.nextLine();
+                boolean check = false;
+
+                switch (function) {
+
+                    case "1":
+                        while (!check) {
+                            System.out.println(" Welcome to Convert a decimal (base 10) integer to binary (base 2) function");
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match58-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.print("\nEnter a decimal number to convert to binary: ");
+                            try {
+                                int decimal = sc.nextInt();
+                                check = true;
+                                System.out.println("The binary string of " + decimal + " is: " + Integer.toBinaryString(decimal));
+                            } catch (Exception e) {
+                                check = false;
+                                System.out.println("Invalid input ,please try again:");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case "2":
+                        while (!check) {
+</FONT>                            System.out.println(" Welcome to Compute a consecutive square root function! ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match58-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.print("\nEnter m: ");
+                            try {
+                                int m = sc.nextInt();
+                                System.out.print("Enter n (1 ≤ n ≤ 5): ");
+                                try {
+                                    int n = sc.nextInt();
+                                    check = true;
+                                    double x = m;// x is the stored variable
+                                    if (1 &lt;= n && n &lt;= 5) {
+                                        for (int i = 1; i &lt;= n; i++) {
+                                            x = m + Math.sqrt(x);
+                                        }
+                                        System.out.println("The result is: "+(x - m));
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match58-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                    } else {
+                                        System.out.println("Invalid condition of n (1 ≤ n ≤ 5)!");
+                                        check = false;
+                                    }
+                                } catch (Exception e) {
+                                    check = false;
+                                    System.out.println("Invalid input, please try again!");
+                                    sc.nextLine();
+                                }
+                            } catch (Exception e) {
+                                check = false;
+                                System.out.println("The input data must be a integer number, please try again!");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case "3":
+                        System.out.println(" Welcome to Solve the quaratic equation function");
+</FONT>                        System.out.println("Find solution: ax^2 + bx + c = 0.");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match58-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        while (!check) {
+                            System.out.print("Enter a: ");
+                            try {
+                                double a = sc.nextDouble();
+                                System.out.print("Enter b: ");
+                                try {
+                                    double b = sc.nextDouble();
+                                    System.out.print("Enter c: ");
+                                    try {
+                                        double c = sc.nextDouble();
+                                        check = true;
+</FONT>                                        double delta;
+                                        if (a == 0 && b == 0 && c == 0) {
+                                            System.out.println(" there is nothing to solve!");
+                                        } else if (a == 0 && b == 0 && c != 0) {
+                                            System.out.println(" the equation has no root!");
+                                        } else if (a == 0 && b != 0 && c != 0) {
+                                            System.out.println(" the equation has 1 root :" + (-c / b));
+                                        } else {
+                                            delta = b * b - 4 * a * c;
+                                            if (delta &gt; 0) {
+                                                double x1 = (-b - Math.sqrt(delta)) / 2 * a;
+                                                double x2 = (-b + Math.sqrt(delta)) / 2 * a;
+
+                                                System.out.println(" the equation has 2 roots: " + x1 + " and: " + x2);
+                                            } else if (delta == 0) {
+                                                System.out.println(" the equation has 1 root " + (-b / 2 * a));
+                                            } else {
+                                                System.out.println(" the equation has no root!");
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        check = false;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match58-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                        System.out.println("The coefficient must be a number, please try again:");
+                                        sc.nextLine();
+                                    }
+                                } catch (Exception e) {
+                                    check = false;
+                                    System.out.println("The coefficient must be a number, please try again:");
+                                    sc.nextLine();
+                                }
+                            } catch (Exception e) {
+                                check = false;
+                                System.out.println("The coefficient must be a number, please try again:");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case "4":
+                        while (!check) {
+                            System.out.println(" Welcome to Print a triangle given its size function ");
+</FONT>                            System.out.print("\nEnter the height of triangle you want: ");
+                            int h = sc.nextInt();
+                            try {
+                                check = true;
+
+                                int line = 1;
+                                String result = "";
+                                String record = "";
+                                while (line &lt;= h) {
+                                    String ch = " ";// ch is the character:"*"
+                                    String sp = " ";// sp is the space :" " 
+                                    for (int s = 1; s &lt;= h - line; s++) {
+                                        sp += " ";
+                                    }
+                                    for (int c = 1; c &lt;= 2 * line - 1; c++) {
+                                        ch += "*";
+                                    }
+
+                                    record = sp + ch + "\n";
+                                    result += record;
+                                    line++;
+
+                                }
+                                System.out.println(" Your triangle here:");
+                                System.out.println(result);
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match58-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            } catch (Exception e) {
+                                check = false;
+                                System.out.println("The size of triangle must be an integer number, please try again:");
+                                sc.nextLine();
+                            }
+                        }
+                }
+            } while (!(function.equals("1") || function.equals("2") || function.equals("3") || function.equals("4")));
+
+            System.out.print("\nDo you want to continue with other function or quit? (yes/no): ");
+            sc.nextLine();
+
+        } while (sc.nextLine().equals("yes"));
+</FONT>
+        System.out.println("----------END----------");
+
+    }
+
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match58-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+</HTML>

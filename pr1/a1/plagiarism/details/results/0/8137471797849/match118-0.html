@@ -1,0 +1,166 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match118-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHongThai_97541_assignsubmission_file_NguyenHongThai_7c19_1901040199.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenHongThai_97541_assignsubmission_file_NguyenHongThai_7c19_1901040199.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package JavaApplication1;
+/**
+ *
+ * Nguyen Hong Thai 7c19
+ * ID: 1901040199
+ */
+import java.util.Scanner;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match118-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Stack;
+public class NguyenHongThai_7c19_1901040199 {
+    	public static void main(String[] args) {
+		        Scanner scanner = new Scanner(System.in);
+		        boolean Continue= true;
+		        while( Continue == true)
+		        {
+		        int option = 0;
+		        do{
+		            System.out.println("**************************Menu*************************");
+		            System.out.println("* 1. Convert a decimal (base 10) integer to binary(base 2)*");
+		            System.out.println("* 2. Compute a consecutive square root                    *");
+</FONT>		            System.out.println("* 3. Solve a quadratic equation                           *");
+		            System.out.println("* 4. Print a triangle given its size                      *");
+		            System.out.println("* 5. Goodbye                                              *");
+		            System.out.println("*******************************************************");
+		            System.out.println("Choose your option");
+		            
+		            try
+		            {
+		                option = scanner.nextInt();
+		                System.out.println("");
+		            }
+		            catch (Exception e)
+		            {
+		                scanner.nextLine();
+		                System.out.println("");
+		            }
+		            switch (option) {
+		                case 1:
+		                    System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match118-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		                    int dn = scanner.nextInt();
+		                    System.out.println("Binary representation of "+ dn+" : ");
+		                    System.out.println(Integer.toBinaryString(dn));
+		                    break;
+		                case 2:
+		                    System.out.println("2. Compute a consecutive square root");
+		                    Scanner scan = new Scanner(System.in);
+		                    int m ,n;
+</FONT>		                    do {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match118-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		                        System.out.println("Please enter m : ");
+		                        m = scan.nextInt();
+		                        System.out.println("Please enter n with (1 &lt;= n &lt;= 5): ");
+		                        n = scan.nextInt();
+		                    } while ( n &lt; 1 || n &gt; 5);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match118-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		                    double t = Math.sqrt(m);
+		                    for (int i = 1; i &lt; n; i++) {
+		                        t = Math.sqrt(m + t);
+</FONT>		                    }
+		                     while (n &lt; 1 || n &gt; 5);
+		                    System.out.println(t);
+		                    break;
+
+		                case 3:
+                                    Scanner sc = new Scanner(System.in);
+		                    System.out.println("3. Solve a quadratic equation");
+		                    System.out.print("\na=");
+                                    double a = sc.nextDouble();
+                                    System.out.print("b=");
+                                    double b = sc.nextDouble();
+                                    System.out.print("c=");
+                                    double c = sc.nextDouble();
+		                    double delta = Math.pow(b, 2) - 4 * a * c;
+                                    
+		                    if (a == 0) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match118-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		                        if (b == 0) {
+		                            if (c == 0) {
+		                                System.out.println("There is nothing to be solved");
+		                            } else {
+		                                System.out.println("The equation has no root");
+		                            }
+		                        } else if (c == 0) {
+		                            System.out.println("The equation has infinitely many root");
+		                        } else {
+		                            System.out.println("There is one root x = " + -c / b);
+		                        }
+
+		                    } else if (b != 0 && c != 0) {
+		                        if (delta &lt; 0) {
+		                            System.out.println("The equation has no real root");
+		                        } else {
+		                            System.out.println("There are two roots: ");
+		                            System.out.println("x1= " + (-b + Math.sqrt(delta)) / (2 * a) + ", "
+		                                    + "x2= " + (-b - Math.sqrt(delta)) / (2 * a));
+		                        }
+		                    }
+		                    break;
+		                case 4:
+</FONT>		                    int i, p, k, space = 1;
+		                System.out.println("Enter number of rows n with 1 &lt;= n &lt;= 5: ");
+		                do {
+		                    i = scanner.nextInt();
+		                    if (i &lt; 1 || i &gt; 5) {
+		                        System.out.println("Please input n with 1 &lt;= n and n &lt;= 5 !!!");
+		                        System.out.print("\nn = ");
+		                    }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match118-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		                } while (i &lt; 1 || i &gt; 5);
+		                space = i - 1;
+		                for (k = 1; k &lt;= i; k++) {
+		                    for (p = 1; p &lt;= space; p++) {
+		                        System.out.print(" ");
+		                    }
+		                    space--;
+		                    for (p = 1; p &lt;= 2 * k - 1; p++) {
+		                        System.out.print("*");
+		                    }
+		                    System.out.print("\n");
+		                } break;
+		                case 5:
+</FONT>                                    Continue = false;
+		                    System.out.println("Goodbye");                                    
+		                    break;
+		                default:
+		                    System.out.println("\nYour option must be 1-5!!Please try again!!\n");
+		                }		            
+		        }
+		        while (option != 5);{
+		        break;
+		    }
+		        
+		  }
+		              
+		        
+	}
+		    
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match118-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+</HTML>

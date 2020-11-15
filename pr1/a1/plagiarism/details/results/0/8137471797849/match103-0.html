@@ -1,0 +1,250 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match103-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeVanSon_97760_assignsubmission_file_LeVanSon_1901040175_2C19.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeVanSon_97760_assignsubmission_file_LeVanSon_1901040175_2C19.java<p><PRE>
+package com.company;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.lang.*;
+
+public class LeVanSon_1901040175_2C19 {
+
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+        boolean continued = false;
+        while (true) {
+            System.out.println("\nPlease chose your option: ");
+            System.out.println("1: Convert a Decimal to Binary");
+            System.out.println("2: Compute square root");
+            System.out.println("3: Solve the quartic equation");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match103-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("4: Print the Triangle ");
+            try {
+                option = sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Invalid input! Please enter again!");
+            }
+            switch (option) {
+                case 1:
+                    convertToBinary();
+                    continued = true;
+                    break;
+                case 2:
+                    computeSquareRoot();
+                    continued = true;
+                    break;
+                case 3:
+                    solveQuarticEquation();
+                    continued = true;
+                    break;
+                case 4:
+                    printTriangle();
+                    continued = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice!!!");
+                    continued = false;
+</FONT>                    System.out.println("Invalid choice!!!");
+                    continued = false;
+            }
+            if(continued) {
+                System.out.print("Do you want to continue ? Enter y to continue!");
+                String answer = sc.nextLine();
+                if(answer.equalsIgnoreCase("y")) {
+                } else {
+                    break;
+                }
+            }
+        }
+
+    }
+
+    static void convertToBinary()
+    {
+        Scanner sc = new Scanner(System.in);
+        int[] binaryNum = new int[32];
+        int i = 0;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match103-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int n = -1;
+        while (n &lt; 0) {
+            System.out.println("Please enter a number:");
+            try {
+                n = sc.nextInt();
+                sc.nextLine();
+            } catch(InputMismatchException e) {
+                sc.nextLine();
+                System.out.println("Invalid number! Enter again!");
+            }
+        }
+        if(n == 0) {
+            System.out.print(n);
+        }
+        while(n &gt; 0) {
+            binaryNum[i] = n % 2;
+</FONT>            n = n / 2;
+            i++;
+
+
+        }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match103-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int j = i - 1; j &gt;= 0; j--)
+            System.out.print(binaryNum[j]);
+        System.out.println("");
+    }
+
+
+
+
+    public static void computeSquareRoot(){
+        int n = 0,m = 0;
+</FONT>        double result;
+        Scanner sc = new Scanner(System.in);
+
+        while (n&lt;1 || n &gt; 5){
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match103-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Please reenter n(n must be between 2 and 5):");
+            try{
+                n = sc.nextInt();
+                sc.nextLine();
+            }catch(Exception e) {
+                sc.nextLine();
+                System.out.println("Invalid input! Enter again!");
+</FONT>            }
+        }
+        System.out.println("Please enter m:");
+            try {
+                m = sc.nextInt();
+                sc.nextLine();
+            }catch(Exception e){
+                sc.nextLine();
+                System.out.println("Invalid input! Enter again!");
+            }
+        result = 0;
+        for (int i=1; i &lt;= n; i ++){
+            result = Math.sqrt(result+ m);
+        }
+        System.out.println("Result is: " + result);
+    }
+
+
+    static void solveQuarticEquation(){
+        double a = 0, b = 0, c = 0;
+        Scanner input = new Scanner(System.in);
+        boolean isA = false, isB = false, isC= false;
+        while(!isA) {
+            System.out.print("Input a: ");
+            try {
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match103-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                a = input.nextDouble();
+                input.nextLine();
+                isA = true;
+            } catch(Exception e) {
+                input.nextLine();
+                isA = false;
+                System.out.println("Invalid input! Enter again!");
+</FONT>
+
+            }
+
+        }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match103-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while(!isB) {
+            System.out.println("Input b: ");
+            try {
+            b = input.nextDouble();
+            isB = true;
+            input.nextLine();
+            } catch(Exception e) {
+                input.nextLine();
+                isB = false;
+                System.out.println("Invalid input! Enter again!");
+</FONT>
+            }
+        }
+       while(!isC) {
+           System.out.println("Input c: ");
+           try {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match103-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+               c = input.nextDouble();
+               isC = true;
+               input.nextLine();
+           } catch (Exception e) {
+               input.nextLine();
+               isB = false;
+               System.out.println("Invalid input! Enter again!");
+</FONT>
+           }
+       }
+        double result = b * b - 4.0 * a * c;
+
+        if (!(result &gt; 0.0)) {
+            if (result == 0.0) {
+                double r1 = -b / (2.0 * a);
+                System.out.println("The root is " + r1);
+            } else {
+                System.out.println("The equation has no real roots.");
+            }
+        } else {
+            double r1 = (-b + Math.pow(result, 0.5)) / (2.0 * a);
+            double r2 = (-b - Math.pow(result, 0.5)) / (2.0 * a);
+            System.out.println("The roots are " + r1 + " and " + r2);
+        }
+
+    }
+
+
+    static void printTriangle(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of rows:");
+        int rows = sc.nextInt();
+
+        while (rows &lt; 1 || rows &gt; 5) {
+            System.out.println("Please Reenter number from 1 to 5: : ");
+            try {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match103-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                rows = sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Invalid input!Please enter again!");
+            }
+        }
+
+            for (int i = 1; i &lt;= rows; i++) {
+                for (int j = i; j &lt; rows + 1; j++) {
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match103-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("  ");
+                }
+                for (int j = 2 * i - 1; j &gt; 0; j--) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+</FONT>            }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match103-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+</HTML>

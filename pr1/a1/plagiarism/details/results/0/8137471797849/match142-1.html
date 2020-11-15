@@ -1,0 +1,181 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match142-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenThiNgocNhi_97705_assignsubmission_file_NguyenThiNgocNhi_2TD19_1901060039.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+TruongucDuy_97503_assignsubmission_file_TruongDucDuy_2TD19_1901060011.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package midterm.assignment;
+
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author APC
+ */
+public class TruongDucDuy_2TD19_1901060011 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in) ;
+        int choice;
+        do {
+            System.out.println("\nThis is a menu-based program.");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+            System.out.println("2. Compute a consecutive square root.");
+            System.out.println("3. Solve a quadratic equation.");
+            System.out.println("4. Print a triangle given its size.");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match142-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("5. Exit the program.");
+            System.out.println("Select Function : [1- 5].");
+            System.out.print("Your Choice :");
+            choice = sc.nextInt();
+            //choice =1 do the first exercise.
+            //choice =2 do the second exercise.
+            //choice =3 do the third exercise  .
+            //choice =4 do the fouth exercise.
+            //choice =5 thì end the program.
+            if (choice == 1) {
+                System.out.print("Enter the integer: ");
+</FONT>                int input = sc.nextInt();
+                System.out.println("Binary number is :" + Integer.toBinaryString(input));
+                // use Integer.toBinaryString() converts the integer to the base 2 binary number.
+            } else if (choice == 2) {
+                System.out.print("Enter the integer m: ");
+                int m = sc.nextInt();
+                double sqr = 0;
+                int n;
+                do {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match142-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter the integer n: ");
+                    n = sc.nextInt();
+                    if (n &gt; 0 && n &lt; 6) {
+                        //If n satisfies 0 &lt;n &lt;6 then for loop starts. 
+                        for (int i = 1; i &lt;= n; i++) {
+                            sqr = Math.sqrt(m + sqr);
+                            //Math.sqrt () function is used to calculate square root.
+                        }
+                        System.out.println(sqr);
+</FONT>                        // in for the result .
+                    } else {
+                        // If n does not satisfy 0 &lt;n &lt;6 then an error will occur.
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match142-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("0&lt;n&lt;6");
+                    }
+
+                } while (n &gt; 5 || n &lt; 1);
+                //If it is greater than or less than one, it will report an error and return to the loop.
+                //If n is less than or equal to 5 and n is greater than or equal to 1, print the result and end the loop. 
+            } else if (choice == 3) {
+                System.out.print("Input a: ");
+</FONT>                float a = sc.nextInt();
+                System.out.print("Input b: ");
+                float b = sc.nextInt();
+                System.out.print("Input c: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match142-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                float c = sc.nextInt();
+                if (a == 0) {
+                    //when a=0.
+                    if (b != 0) {
+//                        in case a = 0, b! = 0 the equation has a solution of -c / b
+                        System.out.println("The equation has one solution: "
+                                + "x = " + (-c / b));
+
+                    } else {
+                        //in case a = 0, b = 0.
+                        if (c != 0) {
+                            //in case a = 0, b = 0, c! = 0 equations with solutions.    
+                            System.out.println("The equation has no solution!");
+                        } else {
+                            //in the case a = 0, b = 0, c = 0 equations with infinite solutions. 
+                            System.out.println("The equation has countless solutions");
+                        }
+                    }
+
+                } else {
+                    // a! = 0.
+                    double x1;
+                    double x2;
+                    if (b * b - 4 * a * c &gt; 0) {
+                        //delta&gt; 0 equations with 2 distinct solutions (-b + Math.sqrt (delta)) / (2 * a) and (-b - Math.sqrt (delta)) / (2 * a).
+                        x1 = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match142-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        x2 = (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+                        System.out.println("The equation has two solution: "
+                                + "x1 = " + x1 + " và x2 = " + x2);
+                    } else if (b * b - 4 * a * c == 0) {
+                        //delta = 0 equations with double solutions -b / (2 * a).
+                        x1 = (-b / (2 * a));
+                        System.out.println("The equation has double solutions: "
+                                + "x1 = x2 = " + x1);
+                    } else {
+                        //delta &lt;0 inexplicable equations.
+                        System.out.println("The equation has no solution!");
+                    }
+                }
+
+            } else if (choice == 4) {
+                int n;
+                do {
+                    System.out.print("Enter the integer n: ");
+                    n = sc.nextInt();
+                    if (n &gt;= 1 && n &lt;= 5) {
+                        //If n satisfies 1 &lt;= n &lt;= 5 then start in for round.
+                        for (int i = 1; i &lt;= n; i++) {
+</FONT>                            for (int j = n - i; j &gt; 0; j--) {
+                                System.out.print(" ");
+                                //shows distance from left to right corresponding to j.
+                            }
+                            for (int k = 1; k &lt;= i; k++) {
+                                System.out.print("*");
+                                // displays number * corresponding to k.
+                            }
+                            for (int l = 2; l &lt;= i; l++) {
+                                //the first for the for loop does not run, because l cannot &lt;= 1.
+                                System.out.print("*");
+                                //displays the number * corresponding to l.
+                            }
+                            System.out.println();
+                            //print the line number.
+                        }
+                    } else {
+                        // if n does not satisfy 1 &lt;= n &lt;= 5 then an error is reported.
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match142-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("1&lt;=n&lt;=5");
+                    }
+
+                } while (n &gt; 5 || n &lt; 1);
+                //If n is not satisfied n &lt;= 1 &lt;= 5 error continues the loop, is satisfied then print the end result of the loop. 
+            } else if (choice == 5) {
+                //end the program.
+                break;
+            }
+            if (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
+</FONT>                // If choice! = 1, choice! = 2, choice! = 3, choice! = 4 then error message, try again.
+                System.out.println("Enter incorrectly, please re-enter.");
+            }
+
+        } while (choice != 1 || choice != 2 || choice != 3 || choice != 4);
+        // 
+    }
+    
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match142-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

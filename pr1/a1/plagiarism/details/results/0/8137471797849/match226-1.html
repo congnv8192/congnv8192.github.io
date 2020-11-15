@@ -1,0 +1,161 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match226-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040004oVietAnh_97683_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+DuongVietHoang_97507_assignsubmission_file_MidtermTut0204.java<p><PRE>
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Win 8.1 Version 2
+ */
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match226-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public class hoang12 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 0;
+        do {
+            
+                System.out.println("Please choose a feature listed below: ");
+                System.out.println("1. Convert a decimal to binary");
+                System.out.println("2. Compute a consecutive square root");
+</FONT>                System.out.println("3. Solve a quadratic equation");
+                System.out.println("4. Print a triangle given its size");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match226-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("5. Quit program");
+                System.out.print(" Choose an option: ");
+                n = sc.nextInt();                                    
+            switch (n) {
+                case 1:
+                    function1(sc);
+                    break;
+                case 2:
+                    function2(sc);
+                    break;
+                case 3:
+                    function3(sc);
+                    break;
+                case 4:
+                    function4(sc);
+                    break;
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Try again");
+            }
+        } while (n!=5);
+    }
+
+    public static void function1(Scanner sc) {
+</FONT>        System.out.println("Enter a number: ");
+        int number = sc.nextInt();
+        String rmd = "";
+    while (number!=0) {
+        int q = number/2;
+        int r = number%2;
+        number = q;
+        rmd = r + rmd;
+    }
+        System.out.println("The binary is: "+rmd);
+ 
+    }
+
+    public static void function2(Scanner sc) {
+        System.out.println("Enter integer m: ");
+        int m = sc.nextInt();
+        System.out.println("Enter integer n (1 &lt;= n &lt;= 5 ): ");
+        int n = sc.nextInt();
+        double a = 0;
+        double b;
+        
+        while (n!=0) {
+        b = a;    
+        a = Math.sqrt(m + b);
+        n--;
+        }
+        System.out.println("Result is "+a);
+    }
+    public static void function3(Scanner sc) {
+        System.out.println(" The equation ax2+bx+c=0 ");
+        
+        System.out.println("enter a = ");
+        int a= sc.nextInt();
+        System.out.println("enter b = ");
+        int b= sc.nextInt();
+        System.out.println("enter c = ");
+        int c= sc.nextInt();
+    double d= (b*b)-4*a*c;
+    
+    if (a!=0){
+    if (d&gt;0){
+        double x1=((-b)+Math.sqrt(d))/(2*a);
+        double x2=((-b)-Math.sqrt(d))/(2*a);
+        System.out.println("The equation has 2 solutions x1 = "+x1+"  ;  x2 = "+x2);
+            }
+    if (d&lt;0){
+        System.out.println("The equation has no root");
+    }
+    if (d==0){
+        double x3 = (-b)/(2*a);
+        System.out.println("The equation has a unique solution x = "+x3);
+    }
+        
+}
+if (a==0){
+    if (b!=0){
+        double x4 = (-c)/b;
+        System.out.println("The equation has a unique solution x ="+x4);
+    }
+    if (b==0){
+        if (c==0){
+            System.out.println("The equation has many roots");
+        } else 
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match226-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("The equation has no root");
+    }
+        
+}
+}
+    
+
+    public static void function4(Scanner sc) {
+        System.out.println("Enter integer n (1 ≤ n ≤ 5): ");
+        int a = sc.nextInt();
+        if (a &gt;= 1 && a &lt;= 5) {
+            for (int b = 0; b &lt; a + 1; b++) {
+                for (int c = a; c &gt;= b; c--) {
+                    System.out.print(" ");
+                }
+                for (int d = 0; d &lt; (2 * b - 1); d++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("Please try again");
+</FONT>        }
+}
+}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match226-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

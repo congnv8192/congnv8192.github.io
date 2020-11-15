@@ -1,0 +1,175 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match64-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenVanong_97515_assignsubmission_file_midTerm.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenVanong_97515_assignsubmission_file_midTerm.java<p><PRE>
+package midTerm;
+
+import java.util.Scanner;
+
+public class midTerm {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		char choice = 'y';
+		while (choice == 'y' || choice == 'Y') {
+
+			System.out.println("----Menu----");
+			System.out.println("1. Covert a decimal (base 10) integer to binary (base 2)");
+			System.out.println("2. Compute a consecutive square root");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match64-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println("3. Solve a quadric equation");
+			System.out.println("4. Print a triangle given its size");
+			System.out.print("Choose option: ");
+
+			int option = sc.nextInt();
+			System.out.println(" ");
+
+			switch (option) {
+			case 1:
+				option1();
+				break;
+			case 2:
+				option2();
+				break;
+			case 3:
+				option3();
+				break;
+</FONT>			case 4:
+				option4();
+				break;
+
+			default:
+				System.out.println("Oops!");
+				System.out.println("Invalid Option-");
+			}
+			System.out.println(" ");
+			System.out.println("--Try again--");
+			System.out.print("--Yes / No: ");
+			choice = sc.next().charAt(0);
+		}
+		System.out.println("Goodbye!");
+	}
+
+	public static void option1() {
+		Scanner sc = new Scanner(System.in);
+		
+// new array to store remainder
+		int arr[] = new int[100];
+		System.out.print("Enter integer number: ");
+		int n = sc.nextInt();
+		int i = 0;
+
+//loop to divide the integer number
+		while (n &gt; 0) {
+			arr[i++] = n % 2;
+			n = n / 2;
+		}
+		System.out.print("Convert to binary number: ");
+
+//loop to rewrite the remainder
+		for (int j = i - 1; j &gt;= 0; j--) {
+			System.out.print(arr[j]);
+		}
+	}
+
+	public static void option2() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Consecutive square root of m with m = ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match64-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_52.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		double m = sc.nextInt();
+
+		System.out.print("How many n times (1 &lt;= n &lt;= 5): ");
+		double n = sc.nextInt();
+		double a = m, result = 0;
+
+//if users enter wrong input ask them to enter again
+		while (n &lt; 1 || n &gt; 5) {
+			System.out.println("n must be between 1 & 5: ");
+			n = sc.nextInt();
+		}
+
+//loop to compute the square root from the inside to the outside
+		for (int i = 0; i &lt; n; i++) {
+			result = Math.sqrt(m);
+			m = result + a;
+		}
+		System.out.println("Consecutive square root = " + result);
+	}
+
+	public static void option3() {
+		Scanner sc = new Scanner(System.in);
+		double a, b, c, delta, x1, x2;
+		System.out.print("Enter a: ");
+		a = sc.nextDouble();
+
+		System.out.print("Enter b: ");
+		b = sc.nextDouble();
+
+		System.out.print("Enter c: ");
+		c = sc.nextDouble();
+
+		delta = (b * b) - (4 * a * c);
+		if (a == 0) {
+			if (b == 0) {
+				if (c == 0) {
+					System.out.println("There is nothing to be solved.");
+				} else {
+					System.out.println("The equation has no root.");
+				}
+			} else {
+				System.out.println("There is one root: x = " + ((-c) / b));
+			}
+		} else {
+			if (delta &lt; 0) {
+				System.out.println("The equation has no real root.");
+			} else {
+				x1 = ((-b) + Math.sqrt(delta)) / (2 * a);
+				x2 = ((-b) - Math.sqrt(delta)) / (2 * a);
+				System.out.println("x1 = " + x1);
+				System.out.println("x2 = " + x2);
+			}
+		}
+	}
+
+	public static void option4() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter row: ");
+		int row = sc.nextInt();
+
+//if users enter wrong input ask them to enter again
+		while (row &lt; 1 || row &gt; 5) {
+			System.out.println("Row must be between 1 & 5: ");
+			row = sc.nextInt();
+		}
+
+//loop to iterate number of row
+		for (int i = 1; i &lt;= row; i++) {
+
+//loop to print the number of space between stars
+			for (int j = row; j &gt;= i; j--) {
+				System.out.print("  ");
+			}
+
+//loop to print the number of star in each row
+			for (int k = 1; k &lt;= (2 * i) - 1; k++) {
+</FONT>				System.out.print("* ");
+			}
+
+//print the new line after printing each row
+			System.out.println();
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match64-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+</HTML>

@@ -1,0 +1,160 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match170-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>TranThiMinhThu_97611_assignsubmission_file_TranThiMinhThu_4C19_1901040221.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+VuinhDuy_97580_assignsubmission_file_VuDinhDuy_4c19_1901040047_B01.java<p><PRE>
+/* Name: Vu Dinh Duy; ID student: 1901040047
+
+*/
+import java.util.Scanner;
+public class VuDinhDuy_4c19_1901040047_B01 {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match170-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to our caculation program!");
+        do {
+            System.out.println("Please choose a function you want to apply: ");
+            System.out.println("1: Demical to Binary     2: Consecutive square root     3: Quadratic equation     4: Triangle");
+</FONT>            System.out.println("Your choice:");
+            int choice = sc.nextInt();
+            while (choice!=1&&choice!=2&&choice!=3&&choice!=4){
+                          System.out.println("Sorry!Choose 1 or 2 or 3 or 4 to countinue!");
+                          System.out.println("Your choice:");
+                          choice = sc.nextInt();}
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match170-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Function 1: Convert a decimal integer to binary.");
+                    System.out.println("Please enter a decimal number: ");
+                    int Demical = sc.nextInt();
+                    String binary="";
+</FONT>                    do {
+                        binary= binary + (Demical%2);
+                        Demical =Demical/2;
+                       } while(Demical&gt;=1);
+                    System.out.println("Binary number coverted from your number: ");
+                    for (int i = binary.length()-1; i&gt;=0; i--){
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match170-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print(binary.charAt(i));  
+                    }
+                    System.out.println(" ");
+                    break;
+
+                case 2: 
+                    System.out.println("The expression will take the form:");
+                    System.out.println("(m +(m + m^(1/2))^(1/2))^(1/2)");
+</FONT>                    System.out.println("With the square root is taken n times");
+                    System.out.println("Please enter m: ");
+                    double m = sc.nextDouble();
+                    System.out.println("Please enter n(0&lt;n&lt;6): ");
+                    double n = sc.nextDouble();
+                    while (n &lt; 1 || n &gt; 5){
+                          System.out.println("Invalid! n must be between 1 and 5");
+                          System.out.println("Please enter n again: ");
+                          n = sc.nextInt(); 
+                    }
+                    double answer = 0, m1 = m;
+                    for (int i=0;i&lt;n;i++){
+                       answer = Math.sqrt(m);
+                       m = m1 + answer;
+                    }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match170-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("The square root is: " + answer);
+                    break;
+
+                case 3:
+                    System.out.println("Function 3: Solve a quadratic equation.");
+                    System.out.println("a.x^2 + b.x + c = 0");
+                    System.out.println("Please enter coefficient a: ");
+                    double a = sc.nextDouble();
+</FONT>                    System.out.println("PLease enter coefficient b: ");
+                    double b = sc.nextDouble();
+                    System.out.println("Please enter coefficient c: ");
+                    double c = sc.nextDouble();
+                    double delta = b * b - 4 * a * c;
+                    double x1,x2;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match170-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    if (a == 0) {
+                        if (b != 0) {
+                            double x = -c / b;
+                            System.out.println("The solution of the equation is: " + x);
+                        } else if (b == 0 && c != 0) {
+</FONT>                            System.out.println("There is no solution.");
+                        } else if (b == 0 && c == 0) {
+                            System.out.println("There is nothing to be solved!");
+                        }
+                   } else {
+                        if (delta&gt;0){
+                        x1 = ((-b) + Math.sqrt(delta)) / (2 * a);
+                        x2 = ((-b) - Math.sqrt(delta)) / (2 * a);
+                        System.out.println("The solutions of the equation are: x1 = " + x1 + " and x2 = " + x2);
+                        }
+                        else if(delta&lt;0){
+                            System.out.println("There is no solution.");
+                        }
+                        else if(delta==0){
+                            x1=(-b)/(2*a);
+                            System.out.println("The solutions of the equation are: x1 = x2 =  " + x1);
+                        }
+                           
+                   }
+                    break;
+
+                case 4: 
+                       System.out.println("Function 4: Print a triangle given its size.");
+                       System.out.println("Please enter a integer number a (0&lt;a&lt;6) ");
+                       n = sc.nextInt();
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match170-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                       while (n &lt; 1 || n &gt; 5){
+                           System.out.println("Invalid! n must be between 1 and 5");
+                           System.out.println("Please enter again: ");
+                        n = sc.nextInt(); 
+                        }
+                        if (n &lt;= 5) {System.out.println("Pattern builded from your number("+n+"):");
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match170-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for (int i = 1; i &lt;= n; i++) {
+                               System.out.println();
+                               for (int j = 1; j &lt;= n - i; j++) {
+                                  System.out.print(" ");
+                                }
+                                for (int k = 1; k &lt;= i; k++) {
+                                  System.out.print("* ");
+                                }
+                            }
+                        }
+                        System.out.println(" ");
+                    break;
+            }
+            System.out.println("Do you want to continue with another function?");
+            System.out.println("1. Yes     2. No");
+            System.out.println("Your choice:");
+</FONT>            int choice2 = sc.nextInt();
+            while (choice2!=1&&choice2!=2){
+                          System.out.println("Sorry!Choose 1 or 2 to countinue!");
+                          System.out.println("Your choice:");
+                          choice2 = sc.nextInt(); 
+                    }
+            if (choice2 == 2) {
+                System.out.println("Thank for using our service! See you later!");
+                break;
+            }
+        } while (true);
+    }
+}</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match170-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

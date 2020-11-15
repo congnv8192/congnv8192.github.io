@@ -1,0 +1,151 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match114-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040057BuiHuuat_97620_assignsubmission_file_BuiHuuDat_1C18_1801040057_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+inhThiDieuThuy_97582_assignsubmission_file_midterm.java<p><PRE>
+package assignment1;
+import java.util.Scanner;
+public class midterm {
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	int n1 = 0;
+	while (n1 != 5) {
+		try {
+			System.out.println("Please choose one of the numbers listed below: ");
+			System.out.println("1. Convert a demical (base 10) interger to binary (base 2).");
+			System.out.println("2. Compute a consecutive square root.");
+			System.out.println("3. Solve a quadratic equation.");
+			System.out.println("4. Print a triangle given its size.");
+			System.out.println("5. Out the program");
+			System.out.println(" Please choose an option: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match114-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			n1 = sc.nextInt ();
+		} catch (Exception e) {
+			System.out.println(" You must choose number from 1 to 5!");
+			sc.nextLine();
+		}
+		switch (n1) {
+		case 1:
+			option1(sc);
+			break;
+		case 2:
+			option2(sc);
+			break;
+		case 3:
+			option3(sc);
+			break;
+		case 4:
+			option4(sc);
+			break;
+		case 5:
+			System.out.println("Goodbye!");
+			break;
+			default:
+				System.out.println("Try again");
+			
+		}
+	}
+}
+public static void option1(Scanner sc) {
+	int dec,bin;
+	System.out.println("Please enter a decimal number: ");
+	dec = sc.nextInt();
+	
+	do {
+		bin = dec % 2;
+		System.out.println(bin);
+	} while ( ( dec /= 2) !=0);
+	System.out.println("");
+		
+	}
+public static void option2(Scanner sc) {
+	System.out.println("Enter m: ");
+</FONT>	int m = sc.nextInt();
+	System.out.println("Enter n(1&lt;= n &lt;= 5): ");
+	int n = sc.nextInt();
+	double result;
+if (n == 1) {
+	result = Math.sqrt(m);
+	System.out.println("A square root of " + m + "taken"+ n + "times: " + result);
+}else if (n == 2) {
+	result = Math.sqrt(m + Math.sqrt(m));
+	System.out.println("A square root of " + m + "taken"+ n + "times: " + result);
+}else if (n == 3) {
+	result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)));
+	System.out.println("A square root of " + m + "taken"+ n + "times: " + result);
+}else if (n == 4) {
+	result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m))));
+	System.out.println("A square root of " + m + "taken"+ n + "times: " + result);
+}else if (n == 5) {
+	result = Math.sqrt(m + (m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)))));
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match114-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	System.out.println("A square root of " + m + "taken"+ n + "times: " + result);
+}else {
+	System.out.println ("The number you input is out of the range");	
+	}
+}
+public static void option3(Scanner sc) {
+	System.out.println("Input a : ");
+	double a = sc.nextDouble();
+	System.out.println ("Input b : ");
+	double b = sc.nextDouble();
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match114-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	System.out.println( "Input c: ");
+	double c = sc.nextDouble();
+	
+	double z = (b * b) - 4*a*c;
+	if (z &gt; 0) {
+		double x1 = (-b + Math.sqrt(z))/ (2 * a);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match114-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_21.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		double x2 = (-b + Math.sqrt(z))/ (2 * a);
+		System.out.println("the equation has 2 real roots: " + x1 + "and" + x2);
+	}
+	if (z == 0)	{
+		double x = -b / (2 * a);
+		System.out.println("the equation has one real root: " + x);
+	}
+	if (z &lt; 0) {
+		System.out.println ("The equation has no real root");
+	}
+}
+public static void option4(Scanner sc) {
+		System.out.println("Enter interger n (1 ≤ n ≤ 5): ");
+		int a1 = sc.nextInt();
+		if (a1 &gt;= 1 && a1 &lt;= 5) {
+			for (int a2 = 0; a2 &lt; a1 + 1; a2++) {
+				for (int a3 = a1; a3 &gt;= a2; a3--) {
+					System.out.print(" ");
+				}
+				for (int a4 = 0; a4 &lt; (2 * a2 -1); a4++) {
+					System.out.print("*");
+				}
+				System.out.println();
+			}
+		} else {
+			System.out.println("Please try again");
+</FONT>		}
+      }	
+	}
+		
+		
+		
+		
+		
+		
+	
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match114-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+</HTML>

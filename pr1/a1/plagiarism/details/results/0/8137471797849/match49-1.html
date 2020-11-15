@@ -1,0 +1,297 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match49-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeQuangSang_97761_assignsubmission_file_LeQuangSang_2c19_1901040174_B03.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+TrinhLongVu_97613_assignsubmission_file_TrinhLongVu_2C19_1901040245_A1.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author trinh
+ */
+import java.util.Scanner;
+
+public class TrinhLongVu_2C19_1901040245_A1 {
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match49-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);                            //Instal Scanner
+        System.out.print("Welcome to Application Thinggy! ");           //Display welcome banner
+        int Choice = 0;                                                 
+        outerloop:
+        while (Choice != 5) {
+            try {
+                System.out.println("Please choose one of the following functions to perform: \n"        //Display menu
+                        + "1, Convert a decimal (base 10) ingerger to binary (base 2). \n"
+                        + "2, Compute a concecutive square root. \n"
+                        + "3, Solve a quadratic equation. \n"
+                        + "4, Print a triangle given its size. \n"
+</FONT>                        + "5, Exit application.");
+                Choice = sc.nextInt();      //Get Function Selection
+                switch (Choice) {
+                    default:                        //Setting default case for the switch
+                        System.out.println("Invalid input! Please enter a number from 1 to 5.");        
+                        break;
+
+                    case 1:
+                        boolean case1 = false;              
+                        while (case1 == false) {                //Get a loop so that when user enter wrong input, they can enter again
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match49-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println("Please enter a decimal integer:");
+                            try {                               //Performing the conversion
+                                int decimal = sc.nextInt();                        
+                                System.out.println(decimal + " converted to binary is: " + Integer.toBinaryString(decimal) + ".");
+</FONT>                                case1 = true;
+                            } catch (Exception e1) {  
+                                System.out.println("Invalid input! Please enter an integer:");
+                                sc.nextLine();
+                            }
+                        }
+                        boolean Exe1a = false;
+                        while (Exe1a == false) {//Check if the user want to continue
+                            try {
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match49-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                System.out.println("Would you like to continue? \n"
+                                        + "1, Yes! \n"
+                                        + "2, No!");
+                                int leave = sc.nextInt();
+                                if (leave == 2) {
+                                    System.out.println("Thank you for using The Application Thinggy! Have a nice day!");
+</FONT>                                    Exe1a = true;
+                                    break outerloop;
+                                } else if (leave == 1) {
+                                    Exe1a = true;
+                                } else {
+                                    System.out.println(" Please enter 1 or 2 to select an option!");
+                                }
+                            } catch (Exception e1a) {
+                                System.out.println("Input must be a number!");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        boolean case2 = false;
+                        while (case2 == false) {   //Get a loop so that when user enter wrong input, they can enter again
+                            try {
+                                System.out.println("Please enter ingeger m: ");         //Getting input
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match49-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                int m = sc.nextInt();
+                                System.out.println("Please enter integer n (1 &lt;=n &lt;= 5): ");
+                                int n = sc.nextInt();
+                                if (n &lt; 1 || n &gt; 5) {           //Check if n satisfied condition
+                                    while (true) {
+                                        System.out.println("'n' invalid. Please enter again with (1 &lt;=n &lt;= 5)");
+                                        sc.nextLine();
+                                        int nFake = sc.nextInt();
+                                        n = nFake;
+                                        if (1 &lt;= n && n &lt;= 5) {
+                                            break;
+                                        }
+
+                                    }
+                                }
+                                double Bonk = 0;        // Doing the math
+                                for (int i = 0; i &lt;= n; i++) {
+                                    Bonk = Math.sqrt(m);
+                                    Bonk = Math.sqrt(m + Bonk);
+                                }
+
+                                System.out.println("Your result is: " + Bonk + "."); // Print out result
+</FONT>                                case2 = true;
+                            } catch (Exception e2) {  //Catching exception
+                                System.out.println("Invalid input! Please enter an integer number!");
+                                sc.nextLine();
+                            }
+                        }
+                        boolean Exe2b = false;              //Checking if the user want to continue
+                        while (Exe2b == false) {
+                            try {
+                                System.out.println("Would you like to continue? \n"
+                                        + "1, Yes! \n"
+                                        + "2, No!");
+                                int leave = sc.nextInt();
+                                if (leave == 2) {
+                                    System.out.println("Thank you for using The Application Thinggy! Have a nice day!");
+                                    Exe2b = true;
+                                    break outerloop;
+                                } else if (leave == 1) {
+                                    Exe2b = true;
+                                } else {
+                                    System.out.println(" Please enter 1 or 2 to select an option!");
+                                }
+                            } catch (Exception e2b) {
+                                System.out.println("Input must be a number!");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("A quadratic equation comes in the form of 'a*x*x + b*x + c=0'. ");
+
+                        boolean case3 = false;      //Get a loop so that when user enter wrong input, they can enter again
+                        while (case3 == false) {
+                            try {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match49-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                System.out.println("Now please enter 3 coefficients a, b, and c: ");        //Getting input values
+                                double a = sc.nextDouble();
+                                double b = sc.nextDouble();
+                                double c = sc.nextDouble();
+                                double x;
+                                double u = (b * 2) - 4 * a * c;
+
+                                if (a == 0) {           //Doing the math
+                                    if (b == 0) {
+                                        if (c == 0) {
+                                            System.out.println("There is nothing to be solved!");
+</FONT>                                            case3 = true;
+                                        }
+                                    } else {
+                                        x = -c / b;
+                                        System.out.println("The equation have 1 root: " + x + ".");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match49-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                        case3 = true;
+                                    }
+                                } else if (u == 0) {
+                                    x = -b / (2 * a);
+                                    System.out.println("The equation have 1 root: " + x + ".");
+</FONT>                                    case3 = true;
+                                } else if (u &lt; 0) {
+                                    System.out.println("The equation has no real root.");
+                                    case3 = true;
+                                } else {
+                                    double x1 = (-b + Math.sqrt(u)) / (2 * a);
+                                    double x2 = (-b - Math.sqrt(u)) / (2 * a);
+                                    System.out.println("The equation has 2 roots: " + x1 + " and " + x2);
+                                    case3 = true;
+                                }
+                            } catch (Exception e3) {        //Catching exception
+                                System.out.println("Please enter a number!");
+                                sc.nextLine();
+                            }
+                        }
+                        boolean Exe3c = false;          //Ask if the user want to continue
+                        while (Exe3c == false) {
+                            try {
+                                System.out.println("Would you like to continue? \n"
+                                        + "1, Yes! \n"
+                                        + "2, No!");
+                                int leave = sc.nextInt();
+                                if (leave == 2) {
+                                    System.out.println("Thank you for using The Application Thinggy! Have a nice day!");
+                                    Exe3c = true;
+                                    break outerloop;
+                                } else if (leave == 1) {
+                                    Exe3c = true;
+                                } else {
+                                    System.out.println(" Please enter 1 or 2 to select an option!");
+                                }
+                            } catch (Exception e3c) {
+                                System.out.println("Input must be a number!");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case 4:
+                        boolean case4 = false;      //Get a loop so that when user enter wrong input, they can enter again
+                        while (case4 == false) {
+                            try {
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match49-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                System.out.println("Please insert your triangle size (from 1 to 5): ");     //Getting input
+                                int size = sc.nextInt();
+                                if (size &lt; 1 || size &gt; 5) {         //Check if input is valid
+                                    while (true) {
+                                        System.out.println("Size invalid. Please enter a number from 1 to 5!");
+                                        sc.nextLine();
+                                        int sizeFake = sc.nextInt();
+                                        size = sizeFake;
+                                        if (1 &lt;= size && size &lt;= 5) {
+                                            break;
+                                        }
+                                    }
+                                }
+                                System.out.println("This is your triangle: ");      //Print out the triangle
+                                for (int i = 0; i &lt; size; i++) {
+                                    for (int j = 0; j &lt; size * 2 - 1; j++) {
+                                        if (j &gt;= size - 1 - i && j &lt; size + i) {
+                                            System.out.print("* ");
+                                        } else {
+                                            System.out.print("  ");
+                                        }
+                                    }
+                                    System.out.println("\n");
+</FONT>                                }
+                                case4 = true;
+                            } catch (Exception e4) {        //Catching exception
+                                System.out.println("Input must be a number!");
+                                sc.nextLine();
+                            }
+                        }
+                        boolean Exe4d = false;          //Check if the user want to continue
+                        while (Exe4d == false) {
+                            try {
+                                System.out.println("Would you like to continue? \n"
+                                        + "1, Yes! \n"
+                                        + "2, No!");
+                                int leave = sc.nextInt();
+                                if (leave == 2) {
+                                    System.out.println("Thank you for using The Application Thinggy! Have a nice day!");
+                                    Exe4d = true;
+                                    break outerloop;
+                                } else if (leave == 1) {
+                                    Exe4d = true;
+                                } else {
+                                    System.out.println(" Please enter 1 or 2 to select an option!");
+                                }
+                            } catch (Exception e4) {
+                                System.out.println("Input must be a number!");
+                                sc.nextLine();
+                            }
+                        }
+                
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match49-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                break;
+
+            
+        case 5:
+                        System.out.println("Thank you for using The Application Thinggy! Have a nice day!");        //End program
+                        break outerloop;
+
+                }
+
+            } catch (Exception e) {     //Catching exception
+                System.out.println("Invalid input! Please enter a number from 1 to 5!");
+                sc.nextLine();
+</FONT>            }
+
+    }
+
+}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match49-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:44 GMT -->
+</HTML>

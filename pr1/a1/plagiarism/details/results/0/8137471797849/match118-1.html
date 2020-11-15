@@ -1,0 +1,253 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match118-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHongThai_97541_assignsubmission_file_NguyenHongThai_7c19_1901040199.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenTranTu_97577_assignsubmission_file_TranTu_7c19_1901040187.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package TranTu_7c19_1901040187;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match118-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+/**
+ *
+ * @author TOAN NGHIA
+ */
+public class TranTu_7c19_1901040187 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean Continue = true;
+        while (Continue == true) 
+        {
+            int option = 0;
+            do 
+            {
+                System.out.println("**************************Menu*****************************");
+                System.out.println("* 1. Convert a decimal (base 10) integer to binary(base 2)*");
+                System.out.println("* 2. Compute a consecutive square root                    *");
+</FONT>                System.out.println("* 3. Solve a quadratic equation                           *");
+                System.out.println("* 4. Print a triangle given its size                      *");
+                System.out.println("* 5. Goodbye                                              *");
+                System.out.println("***********************************************************");
+               
+                boolean test = false;
+                while(!test)
+                {
+                	try 
+                	{
+                		System.out.println("Choose your option");
+                		option = scanner.nextInt();
+                		test= true;
+                	}
+                	catch (Exception e)
+                	{
+                		System.err.println(" Wrong!!Try again");
+                		scanner.nextLine();
+                	}
+                }
+                switch (option) 
+                {
+                    case 1:
+                        System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+                        int dn = 1;
+                        boolean check = false;
+                        while (check == false) 
+                        {
+                            try {
+                                System.out.println("Enter Decimal Number:");
+                                dn = scanner.nextInt();
+                                check = true;
+                            } catch (Exception e) {
+                                System.err.println("You must enter a number");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match118-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                scanner.nextLine();
+                            }
+                        }
+                        System.out.println("Binary representation of " + dn + " : ");
+                        System.out.println(Integer.toBinaryString(dn));
+                        break;
+                    case 2:
+                        System.out.println("2. Compute a consecutive square root");
+                        Scanner scan = new Scanner(System.in);
+                        int m = 0,n = 0;
+</FONT>                        boolean ch = false;
+                        while (ch == false) 
+                        {
+                            try 
+                            {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match118-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+                                n = scanner.nextInt();
+                                System.out.print("Enter m: ");
+                                m = scanner.nextInt();
+                                while (n &lt; 1 || n &gt; 5) 
+</FONT>                                {
+                                	System.err.println("You must enter n value in range [1,5]");
+                                	System.out.print("Enter n: ");
+                                	n = scanner.nextInt();
+                                }
+                                ch = true;
+                            } 
+                            catch (Exception e) 
+                            {
+                                System.err.println("You must enter a integer!");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match118-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                scanner.nextLine();
+                            }
+                        }
+                       
+                        double t = Math.sqrt(m);
+                        for (int i = 1; i &lt; n; i++) 
+                        {
+                            t = Math.sqrt(m + t);
+</FONT>                        }
+                        System.out.println(t);
+                        break;
+
+                    case 3:
+                        System.out.println("3. Solve a quadratic equation");
+                        double a = -1;
+                        double b = -1;
+                        double c = -1;
+                        double delta = Math.pow(b, 2) - 4 * a * c;
+                        boolean chck = false;
+                        while (chck == false) 
+                        {
+                            try {
+                                System.out.print("Enter a: ");
+                                a = scanner.nextDouble();
+                                System.out.print("Enter b: ");
+                                b = scanner.nextDouble();
+                                System.out.print("Enter c: ");
+                                c = scanner.nextDouble();
+                                chck = true;
+                            } catch (Exception e) 
+                            {
+                                System.err.println("You must enter a integer!");
+                                scanner.nextLine();
+                            }
+                        }
+                   
+                          if (a == 0) 
+                          {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match118-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                if (b == 0) 
+                                {
+                                    if (c == 0) 
+                                    {
+                                        System.out.println("There is nothing to be solved");
+                                    } 
+                                    else 
+                                    {
+                                        System.out.println("The equation has no root");
+                                    }
+                                } 
+                                else if (c == 0) 
+                                {
+                                    System.out.println("The equation has infinitely many root");
+                                } 
+                                else 
+                                {
+                                    System.out.println("There is one root x = " + -c / b);
+                                }
+
+                            }
+                          else if (b != 0 && c != 0) 
+                          {
+                                if (delta &lt; 0) 
+                                {
+                                    System.out.println("The equation has no real root");
+                                }
+                                else 
+                                {
+                                    System.out.println("There are two roots: ");
+                                    System.out.println("x1= " + (-b + Math.sqrt(delta)) / (2 * a) + ", "
+                                            + "x2= " + (-b - Math.sqrt(delta)) / (2 * a));
+                                }
+                           }
+                           break;   
+                        case 4:
+</FONT>                        int i=-1, p, k, space = 1;
+                        boolean Result = false;
+                        while(!Result)
+                        {
+                        	try
+                        	{
+                        		System.out.println("Enter number of rows n with 1 &lt;= n &lt;= 5: ");
+                        		i = scanner.nextInt();
+                        		while (i &lt; 1 || i &gt; 5)
+                        		{
+                        			System.out.println("Please input n with 1 &lt;= n and n &lt;= 5 !!!");
+                        			System.out.print("\nn = ");
+                        		}
+                        		Result = true;
+                        	}
+                        	catch( Exception e)
+                        	{
+                        		System.err.println("Enter the number! ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match118-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        		scanner.close();
+                        	}
+                        }
+                        space = i - 1;
+                        for (k = 1; k &lt;= i; k++) 
+                        {
+                            for (p = 1; p &lt;= space; p++) 
+                            {
+                                System.out.print(" ");
+                            }
+                            space--;
+                            for (p = 1; p &lt;= 2 * k - 1; p++) 
+                            {
+                                System.out.print("*");
+                            }
+                            System.out.print("\n");
+                        }
+                        break;
+                    case 5:
+</FONT>                    
+                        System.out.println("Goodbye");
+                        break;
+                    default:
+                        System.out.println("Your option must be 1-5!!Please try again!!");
+                }
+                System.out.println("\nDo you want to continue (yes or no)?");
+                String tmp = scanner.next();
+                if (tmp.equalsIgnoreCase("yes")) 
+                      {
+                      }
+                else if (tmp.equalsIgnoreCase("no")) 
+                      {
+                           Continue = false;
+                           System.out.println("Goodbye !");
+                      }
+                else 
+                      {
+                           System.err.println("Enter again!");
+                           continue;
+                       }
+                }
+                while (option != 5);
+	}
+
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match118-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+</HTML>

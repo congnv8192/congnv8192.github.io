@@ -1,0 +1,167 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match50-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenKimCuc_97623_assignsubmission_file_NguyenKimCuc_2TD19_1901060006.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenMinhNgoc_97722_assignsubmission_file_Assignment.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match50-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package Assignment1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * Nguyen Minh Ngoc - 3C19 - id number : 1901040148
+ *
+ */
+public class Assignment {
+
+    public static void main(String[] args) {
+        int choiceentry = 0;
+</FONT>        Scanner sc = new Scanner(System.in);
+        while (true) {
+
+            System.out.println("*** Welcome to my programm ***");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+            System.out.println("2. Compute a consecutive square root.");
+            System.out.println("3. Solve a quadratic equation.");
+            System.out.println("4. Print a triangle given its size.");
+            System.out.println("Select option ?");
+            try {
+                choiceentry = sc.nextInt();
+            } catch (Exception ex) {
+                sc.nextLine();
+                System.out.println("You must input a number");
+            }
+            boolean exit = false;
+            switch (choiceentry) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match50-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_22.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                case 1:
+                    // pro 1
+                    System.out.println("Convert a decimal (base 10) integer to binary (base 2)");
+                    try {
+                        System.out.print("Input your number: ");
+                        int n = sc.nextInt();
+                        System.out.print("Binary representation of " + n + " :");
+                        System.out.println(Integer.toBinaryString(n));
+                    } // use .toBinaryString() to convert a decimal (base 10) integer to binary (base 2)
+                    catch (Exception ex) {
+                        System.out.println("You must input a number");
+                        sc.next();
+                    }
+                    break;
+                case 2:
+                    // pro 2
+                    System.out.println("Compute a consecutive square root.");                   
+                    System.out.println(" Input n: ");
+                    int n1 = sc.nextInt();
+                    System.out.println("Input m: ");
+                    int m1 = sc.nextInt();
+                    double s1 = 0;
+
+                    for (int i = 0; i &lt; n1; i++) {
+                        s1 = Math.sqrt(m1 + s1);
+                    }
+                    System.out.println("Consecutive square root: " + s1);
+
+                    break;
+
+                case 3:
+</FONT>                    // pro 3
+                    double a = 0,
+                     b = 0,
+                     c = 0,
+                     x = 0,
+                     x1,
+                     x2;
+                    System.out.println("Solve a quadratic equation.");
+                    try {
+                        System.out.print("Input a: ");
+                        a = sc.nextDouble();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match50-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Input b: ");
+                        b = sc.nextDouble();
+                        System.out.print("Input c: ");
+                        c = sc.nextDouble();
+                    } catch (Exception ex) {
+                        System.out.println("You must input number.");
+                        sc.nextLine();
+                    }
+                    if (a == 0 && b == 0 && c == 0) {// In case 3 a, b, c coeficient input 0
+                        System.out.println("There's nothing to be solved.");
+</FONT>                    } else if (a == 0 && b == 0 && c != 0) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match50-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("The equation has no root.");
+                    } else if (a == 0 && b != 0 && c != 0) {
+                        System.out.println("There is one root: " + (x = (-c / b)));
+                    } else { //In the case all 3 input factors are nonzero
+                        double del;
+                        del = b * b - 4 * a * c;
+                        x1 = (-b + Math.sqrt(del)) / (2 * a);
+                        x2 = (-b - Math.sqrt(del)) / (2 * a);
+
+                        if (del &lt; 0) {
+                            System.out.println("The system has no real root.");
+                        } else {// del &gt; 0
+                            System.out.println("There are 2 roots: " + x1 + " and " + x2);
+                        }
+                    }
+                    break;
+                case 4:
+                    // pro 4
+</FONT>                    System.out.println("Print a triangle given its size.");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match50-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_18.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Input your number between 1 to 5: ");
+                    int n3 = sc.nextInt();
+                    for (int i = 0; i &lt; n3; i++) {
+                        for (int j = 0; j &lt; 2 * (n3 - i - 1); j++) {
+                            System.out.print(" ");
+                        }
+                        for (int j = 0; j &lt; 2 * i + 1; j++) {
+                            System.out.print("* ");
+                        }
+
+                        System.out.println();
+                    }
+
+                    break;
+
+                default:
+                    System.out.println("Invalid number");
+
+            }
+            System.out.println("Do you want to continue (y/n)? ");
+            String s = sc.next();
+            if (s.equalsIgnoreCase("n")) {
+                exit = true;
+</FONT>            }
+            if (exit) {
+                break;
+            }
+        }
+
+        System.out.println(
+                "Thanks for use my program !");
+        
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match50-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:45 GMT -->
+</HTML>

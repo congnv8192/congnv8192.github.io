@@ -1,0 +1,162 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match199-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeThuTrang_97547_assignsubmission_file_LeThuTrang_2TD19_1901060052.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenThiYen_97686_assignsubmission_file_midterm.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment1;
+
+import java.util.Scanner;
+
+/**
+ *Name: Nguyễn Thị Yến 
+ *ID: 1901060058
+ * Class: 2TĐ19
+ * Email: 1901060058@s.hanu.edu.vn 
+ */
+public class midterm {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match199-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {      
+        Scanner scanner = new Scanner(System.in);                              
+        System.out.println("1.Convert Decimal To Binary");
+        System.out.println("2.Consecutive Square Root");
+        System.out.println("3.Quadratic Equation");
+</FONT>        System.out.println("4.Triangle Given");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match199-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_20.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Please; choose a number :"); 
+        int f = scanner.nextInt();
+       
+        switch(f){
+            case 1:
+                System.out.println("You choose 1"); 
+                System.out.print("Choose a decimal number : ");
+                int dec = scanner.nextInt();
+                midterm.ConvertDecimalToBinary(dec);
+               break;
+            case 2:
+                System.out.println("You choose 2");
+                System.out.print("Choose a number for m: ");
+                int m = scanner.nextInt();
+              
+                System.out.print("Choose a number for n:");
+                int n = scanner.nextInt();
+                
+                double kq = midterm.ConsecutiveSquareRoot(m, n);
+                System.out.println("Result:" + kq); 
+              break;
+            case 3:
+                System.out.println("You choose 3");
+                System.out.print("Choose a number for a: ");
+                double a = scanner.nextDouble();
+</FONT>       
+                System.out.print("Choose a number for b: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match199-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                double b = scanner.nextDouble();
+              
+                System.out.print("Choose a number for c: ");
+                double c = scanner.nextDouble();
+            
+                midterm.QuadraticEquation(a, b, c);
+                break;
+               
+            case 4:
+                System.out.println("You choose 4");
+                System.out.print("Choose number of row: ");
+                int row = scanner.nextInt();
+       
+                midterm.TriangleGiven(row);
+                break;
+</FONT>                        
+        }
+    //1.  Convert a decimal to binary
+    public static void ConvertDecimalToBinary(int dec) 
+    {  
+        String result = "";             
+        int num = dec;       
+        while (num &gt; 1)
+            {
+                int remainder = num % 2;
+                result = String.valueOf(remainder) + result;
+                num /= 2;
+            }
+        result = String.valueOf(num) + result;
+        System.out.println("Binary corresponding: " + result);
+    }
+    //2. Compute a consecutive square root
+    public static double ConsecutiveSquareRoot(int m, int n)
+    {              
+        double sr = Math.sqrt(m);
+        do {          
+            sr = Math.sqrt(m+sr);
+            n --;
+        } while (n &gt; 5 || n &lt; 1);
+        return sr;
+    }
+    
+    //3. Solve a quadratic equation
+    public static void QuadraticEquation(double a, double b, double c)
+    {
+        if (a == 0) {
+            if (b == 0) {
+                System.out.println("The equation has no solution!");
+            } else {
+                System.out.println("The equation has a solution: " + "x = " + (-c / b));
+            }
+        }
+        
+        double delta = b*b - 4*a*c;
+        double x1;
+        double x2;
+        
+        if (delta &gt; 0) {
+            x1 = (double) ((-b + Math.sqrt(delta)) / (2*a));
+            x2 = (double) ((-b - Math.sqrt(delta)) / (2*a));
+            System.out.println("The equation has two solutions: "
+                    + "x1 = " + x1 + " và x2 = " + x2);
+        } else if (delta == 0) {
+            x1 = (-b / (2 * a));
+            System.out.println("Equations have double solutions: "
+                    + "x1 = x2 = " + x1);
+        } else {
+            System.out.println("The equation has no solution!");
+        }
+    }
+    
+    //4. Print a triangle given its size
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match199-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void TriangleGiven(int n){
+        int row,temp,star;                 
+        temp = n;
+        for ( row = 1 ; row &lt;= n ; row++ )
+        {
+            for ( star = 1 ; star &lt; temp ; star++ )
+                System.out.print(" ");
+                temp--;
+</FONT>                for ( star = 1 ; star &lt;= 2*row - 1 ; star++ )
+                    System.out.print("*");
+                    System.out.println("");
+        }
+    }
+}
+
+    
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match199-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

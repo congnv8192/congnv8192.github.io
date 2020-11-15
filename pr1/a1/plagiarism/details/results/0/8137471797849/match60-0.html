@@ -1,0 +1,171 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match60-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LaiHanhVan_97550_assignsubmission_file_LaiHanhVan_2TD19_1901060057_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LaiHanhVan_97550_assignsubmission_file_LaiHanhVan_2TD19_1901060057_A1.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author PT
+ */
+public class LaiHanhVan_2TD19_1901060057_A1 {
+    //Task 1
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match60-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void ConvertDecimalToBinary (int dec) 
+    {
+    String result = "";             
+        int number = dec; //define the bounds       
+        while (number &gt; 1)
+            {
+                int remainder = number % 2;
+                result = String.valueOf(remainder) + result;
+                number /= 2;
+            }
+        result = String.valueOf(number) + result;
+        System.out.print("Binary corresponding: " + result);// Print the result
+    }  
+        //Task 2
+    public static double ConsecutiveSquareRoot(int m, int n)
+    {              
+        double sr = Math.sqrt(m);
+        do {          
+            sr = Math.sqrt(m+sr);
+            n --;
+        } while (n &gt; 1);
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match60-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return sr;
+    }
+
+        //Task 3
+        public static void QuadraticEquation(double a, double b, double c)
+    {
+        if (a == 0) { //A if-else statement
+            if (b == 0) {
+                System.out.println("The equation has no solution!");//Print the result
+            } else {
+                System.out.println("The equation has a solution:" + "x = " + (-c / b));//Print the result
+</FONT>            }
+            return;
+        }
+        
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match60-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double delta = b*b - 4*a*c;
+        double x1;
+        double x2;
+        if (delta &gt; 0) { // A if-else if-else statement
+            x1 = (double) ((-b + Math.sqrt(delta)) / (2*a)); //formula for calculating x1
+            x2 = (double) ((-b - Math.sqrt(delta)) / (2*a)); //formula for calculating x2
+            System.out.println("The equation has 2 solutions: " + "x1 = " + x1 + " và x2 = " + x2);//Print the result
+</FONT>        } else if (delta == 0) {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match60-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            x1 = (-b / (2 * a));
+            System.out.println("The equation has double solutions: " + "x1 = x2 = " + x1); //Print the result
+        } else {
+            System.out.println("The equation has no solution!");//Print the result
+        }
+    }
+        //Task 4
+        public static void TriangleGiven(){
+</FONT>        Scanner in = new Scanner(System.in);
+        int number = in.nextInt();
+        Triangle(number);
+         }
+        private static void Triangle(int number) {
+        for(int i = 1; i &lt;= number; i++) {
+            for(int j = 1; j &lt;= number-i; j++) {
+                System.out.printf(" ");
+            }
+            for(int j = 1; j &lt;= i; j++) {
+                System.out.printf("* "); 
+            }
+            System.out.printf("\n");
+        }
+        return;
+    }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match60-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        public static void main(String[] srgs) {
+            //declare variables
+            Scanner input = new Scanner(System.in);
+            System.out.println("Menu:");
+            System.out.println("(1) Task 1:");//Print the result
+            System.out.println("(2) Task 2:");//Print the result
+</FONT>            System.out.println("(3) Task 3:");//Print the result
+            System.out.println("(4) Task 4:");//Print the result
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match60-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("(5) Please choose.");//Print the result
+            int e = input.nextInt();
+            switch (e){
+                case 1://do task 1
+                    //convert a decimal (base 10) integer to binary (base 2)
+                    System.out.println("Task 1:"); //Print the result 
+                    System.out.println("Enter the decimal number to convert:"); // Print the result
+                    int dec = input.nextInt();
+                    LaiHanhVan2TD19.ConvertDecimalToBinary(dec);
+                    break;
+                case 2://do task 2
+                    //Compute a consecutive square root
+                    System.out.println("Task 2:");//Print the result
+                    System.out.println("Enter the number to be calculated:");//Print the result
+                    int m = input.nextInt();
+              
+                    System.out.println("Enter the number of times:");//Print the result
+                    int n = input.nextInt();
+              
+                    double kq = LaiHanhVan2TD19.ConsecutiveSquareRoot(m, n);
+                    System.out.println("Result:" + kq); //Print the result
+                 break;
+                case 3://do task 3
+                    //Solve a quadratic equation
+                    System.out.println("Task 3:"); //Print the result
+                    System.out.println("Enter quadratic radix:");//Print the result
+                    double a = input.nextDouble();
+</FONT>       
+                    System.out.print("Enter the first radix:");//Print the result
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match60-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    double b = input.nextDouble();
+              
+                    System.out.print("Enter the zero radix:");//Print the result
+                    double c = input.nextDouble();
+            
+                    LaiHanhVan2TD19.QuadraticEquation(a, b, c);
+                break;
+                    
+                case 4://do task 4
+                    //Print a triangle given its size
+                    System.out.println("Task 4:");//Print the result
+                    System.out.println("Enter no of Layers to Pyramid:");//Print the result
+</FONT>                  
+                    LaiHanhVan2TD19.TriangleGiven();
+                default:
+                System.out.println("Goodbye.");//Print the result           
+        }
+            System.out.println("END.");//Print the result
+        }
+    }
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match60-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+</HTML>

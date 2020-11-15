@@ -1,0 +1,163 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match55-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenTheAnh_97601_assignsubmission_file_NguyenTheAnh8c191901040015.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenTheAnh_97601_assignsubmission_file_NguyenTheAnh8c191901040015.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match55-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package assignment.pkg1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author admin
+ */
+public class NewClass {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+</FONT>        int s = 0;
+        while (s != 5) {
+            try {
+
+                System.out.println("Welcome");
+                System.out.println("1 Convert a decimal (base 10) integer to binary (base 2)");
+                System.out.println("2 Compute a consecutive square root");
+                System.out.println("3 Solve a quadratic equation");
+                System.out.println("4 Print a triangle given its size");
+                System.out.println("5 Exit");
+                System.out.print("Choose the option: ");
+                s = sc.nextInt();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match55-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_25.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } catch (Exception e) {
+                System.out.println("You must input number not character");
+                sc.nextLine();
+            }
+            switch (s) {
+                case 1:
+                    int k = 0;
+
+                    System.out.print("Enter an integer: ");
+                    k = sc.nextInt();
+
+                    System.out.println("Invalid input");
+
+                    String bin = Integer.toBinaryString(k);
+                    System.out.println(bin);
+                    break;
+                case 2:
+                    int n = 0;
+                    int m = 0;
+                    double total = 0;
+
+                    while (n &lt; 1 || n &gt; 5) {
+                        try {
+                            System.out.println("Input m ");
+                            m = sc.nextInt();
+                            System.out.println("Input n from 1 to 5 ");
+                            n = sc.nextInt();
+                        } catch (Exception f) {
+                            System.out.println("Invalid input");
+                            sc.nextLine();
+                        }
+                    }
+                    for (int i = 1; i &lt;= n; i++) {
+                        total = Math.sqrt(total + m);
+                    }
+                    System.out.println("Total = " + total);
+</FONT>
+                    break;
+                case 3:
+
+                    System.out.print("Input a: ");
+                    double a = sc.nextDouble();
+                    System.out.print("Input b: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match55-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    double b = sc.nextDouble();
+                    System.out.print("Input c: ");
+                    double c = sc.nextDouble();
+
+                    double e = Math.sqrt(b * b - 4 * a * c);
+
+                    double x1 = (-b + e) / (2 * a);
+                    double x2 = (-b - e) / (2 * a);
+                    double x = -c / b;
+
+                    if (a == 0 && b == 0 && c == 0) {
+                        System.out.println("There is nothing to be solved");
+                    } else if (a == 0 && b == 0 && c != 0) {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match55-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_21.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("The equation has no root");
+                    } else if (a == 0 && b != 0 && c != 0) {
+                        System.out.println("There is one root x = " + x);
+                    } else if (e &lt; 0) {
+                        System.out.println("The equation has no real root");
+                    } else {
+                        System.out.println("x1 = " + x1);
+                        System.out.println("x2 = " + x2);
+                    }
+
+                    break;
+                case 4:
+
+                    int r = 0;
+
+                    while (r &lt; 1 || r &gt; 5) {
+                        try {
+
+                            System.out.print("Enter an integer from 1 to 5: ");
+                            r = sc.nextInt();
+                        } catch (Exception y) {
+                            System.out.println("Invalid input");
+                            sc.nextLine();
+                        }
+                    }
+                    for (int i = 1; i &lt;= r; i++) {
+
+                        for (int j = 1; j &lt;= r - i; j++) {
+</FONT>                            System.out.print("  ");
+
+                        }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match55-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        for (int l = 1; l &lt;= 2 * i - 1; l++) {
+                            System.out.print("* ");
+
+                        }
+                        System.out.println("");
+
+                    }
+                    break;
+                case 5:
+                    System.out.println("Thank you");
+                    break;
+</FONT>                default:
+                    break;
+            }
+
+        }
+    }
+}
+
+}
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match55-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:46 GMT -->
+</HTML>

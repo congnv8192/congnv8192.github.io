@@ -1,0 +1,152 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match33-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeucNang_97757_assignsubmission_file_LeucNang3c191901040142.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenDuyNam_97456_assignsubmission_file_Assignment1.java<p><PRE>
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match33-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_29.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+public class Assignment1 {
+
+    /*1. Convert a decimal (base 10) integer to binary (base 2)*/
+    public static String reverse(String s) {
+        String tmp = "";
+        for (int i = s.length() - 1; i &gt;= 0; i--) {
+            tmp += s.charAt(i);
+        }
+        return tmp;
+    }
+
+    public static String p1(int n) {
+        String s = "";
+        while (n &gt; 0) {
+            s += String.valueOf(n % 2);
+            n /= 2;
+        }
+        s = reverse(s);
+        return s;
+    }
+
+    /*2. Compute a consecutive square root*/
+    public static double p2(int m, int n) {
+        double res = 0;
+        for (int i = 0; i &lt; n; i++) {
+            res = Math.sqrt(m + res);
+        }
+        return res;
+    }
+
+    /*3. Solve a quadratic equation*/
+    public static void p3(int a, int b, int c) {
+        if (a == 0) {
+            if (b == 0 && c == 0) {
+                System.out.println("This equation has countless solutions");
+            } else if (b == 0) {
+                System.out.println("This equation has no solution");
+            } else if (c == 0) {
+                System.out.println("This equation has only one solution: x = 0");
+            } else {
+</FONT>                double x = (-c) / b;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match33-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.printf("This equation has only one solution: x = %f\n", x);
+            }
+        } else {
+            int delta = b * b - 4 * a * c;
+            if (delta &lt; 0) {
+                System.out.println("There is no solution");
+</FONT>            } else if (delta == 0) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match33-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_28.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                double x = (-b) / (2 * a);
+                System.out.printf("This equation has only one solution: x = %f\n", x);
+            } else {
+                double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                System.out.println("This equation has two solutions: ");
+                System.out.printf("x1 = %f\n", x1);
+                System.out.printf("x2 = %f\n", x2);
+            }
+        }
+    }
+
+    /*4. Print a triangle given its size   */
+    public static void p4(int n) {
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; 2 * (n - i - 1); j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j &lt; 2 * i + 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("*********************MENU*********************");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("2. Compute a consecutive square root");
+</FONT>            System.out.println("3. Solve a quadratic equation");
+            System.out.println("4. Print a triangle given its size");
+            System.out.println("Please input your selection: ");
+            int choose = sc.nextInt();
+            switch (choose) {
+                case 1:
+                    System.out.println("Enter an integer: ");
+                    int n = sc.nextInt();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match33-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println(p1(n));
+                    break;
+                case 2:
+                    System.out.println("Enter m: ");
+                    int m = sc.nextInt();
+                    System.out.println("Enter n: ");
+</FONT>                    int n1 = sc.nextInt();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match33-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println(p2(m, n1));
+                    break;
+                case 3:
+                    System.out.println("Enter a: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c: ");
+                    int c = sc.nextInt();
+                    p3(a, b, c);
+                    break;
+                case 4:
+                    System.out.print("Enter n: ");
+                    int n3 = sc.nextInt();
+                    p4(n3);
+                    break;
+                default:
+                    System.out.println("Wrong selection");
+            }
+            System.out.println("Do you want continue? (Y/N)");
+            String s = sc.next();
+            if (s.equalsIgnoreCase("n")) {
+</FONT>                break;
+            }
+        }
+    }
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match33-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:36 GMT -->
+</HTML>

@@ -1,0 +1,192 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match157-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>angPhuongThao_97704_assignsubmission_file_DangPhuongThao_2T19_1901060045.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+oucMinh_97733_assignsubmission_file_DoDucMinh_2T19_1901060034.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match157-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package midterm.assignment;
+
+import java.util.Scanner;
+
+/**
+ * @author Do Duc Minh
+ * Class: 2TĐ19
+ * ID: 1901060034
+ */
+public class DoDucMinh_2TĐ19_1901060034 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean cont = true;
+        //Create a menu-based program
+        do {
+            System.out.println("\nHello User !");
+            System.out.println("This is a menu-based program.");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+            System.out.println("2. Compute a consecutive square root.");
+</FONT>            System.out.println("3. Solve a quadratic equation.");
+            System.out.println("4. Print a triangle given its size.");
+            System.out.println("5. Exit the program.");
+            System.out.println("Select Function : [1 - 5].");
+            System.out.println("Your choice: ");
+            int choice = sc.nextInt();
+            //Use switch to check user choice and do the task in each choice
+            switch (choice) {
+                case 1:
+                    exercise1();              //Calling function exercise1
+                    break;
+                case 2:
+                    exercise2();              //Calling function exercise2
+                    break;
+                case 3:
+                    exercise3();              //Calling function exercise3
+                    break;
+                case 4:
+                    exercise4();              //Calling function exercise4
+                    break;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match157-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                case 5:                       //Exit program
+                    System.out.println("Exit program.\n");
+                    cont = false;
+                    break;
+                default:                      //If user choose another option, the program will show error announcement
+                    System.out.println("Invalid choice, please re-enter.");
+                    cont = true;
+                    break;
+</FONT>            }
+        } while (cont);
+
+    }
+
+    public static void exercise1() {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match157-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        //Ask user to enter a number
+        System.out.print("Enter an integer: ");
+        Integer input = sc.nextInt();
+        //Use Integer.toBinaryString to change an integer to binary number
+        System.out.println("The binary number of " + input + " is: " + Integer.toBinaryString(input));
+</FONT>    }
+
+    public static void exercise2() {
+        //Import scanner
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match157-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        //Ask user to enter a number m
+        System.out.print("Enter the integer m: ");
+        Integer m = sc.nextInt();
+
+        double ans = 0;
+        Integer n = 0;
+        do {
+            //Ask user to enter a number n
+            System.out.print("Enter the integer n: ");
+            n = sc.nextInt();
+</FONT>            //Check condition if 1&lt;=n&lt;=5, if true do the for loop to find the answer, else show error announcement
+            if (n &gt;= 1 && n &lt;= 5) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match157-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                for (int i = 1; i &lt;= n; i++) {
+                    ans = Math.sqrt(m + ans);
+                }
+                System.out.println(ans);
+            } else if (n &gt; 5 || n &lt; 1) {
+                {
+                    System.out.println("1 &lt;= n &lt;= 5");
+                }
+            }
+        } while (n &gt; 5 || n &lt; 1);
+</FONT>
+    }
+
+    public static void exercise3() {
+        Scanner sc = new Scanner(System.in);
+        //Enter the value of a,b,c
+        System.out.print("Input a: ");
+        double a = sc.nextInt();
+        System.out.print("Input b: ");
+        double b = sc.nextInt();
+        System.out.print("Input c: ");
+        double c = sc.nextInt();
+//Checking condition        
+        if (a == 0) {
+            if (b == 0) {
+                System.out.println("The equation has no solution!");
+            } else {
+                System.out.println("The equation has one solution: "
+                        + "x = " + (-c / b));
+            }
+            return;
+        }
+        //Create variable delta=b^2-4ac
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match157-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double delta = b * b - 4 * a * c;                     
+        double x1;
+        double x2;
+        if (delta &gt; 0) {            //Check condition
+            x1 = (double) ((-b + Math.sqrt(delta)) / (2 * a));
+            x2 = (double) ((-b - Math.sqrt(delta)) / (2 * a));
+            System.out.println("The equation has two distinct solutions: "
+                    + "x1 = " + x1 + " and x2 = " + x2);
+</FONT>        } else if (delta == 0) {
+            x1 = (-b / (2 * a));
+            System.out.println("The equation has double solutions: "
+                    + "x1 = x2 = " + x1);
+        } else {
+            System.out.println("The equation has no solution!");
+        }
+    }
+
+    public static void exercise4() {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match157-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        Integer n;
+        do {
+            //Input the size of the triangle
+            System.out.print("Enter the size of the triangle: ");           
+            n = sc.nextInt();
+            //Check the condition, if the condition is not valid show error announcement below
+            if (n &gt;= 1 && n &lt;= 5) {                     
+                for (int r = 1; r &lt;= n; r++) {
+</FONT>                    for (int i = n - r; i &gt; 0; i--) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 1; j &lt;= r; j++) {
+                        System.out.print("*");
+                    }
+                    for (int k = 2; k &lt;= r; k++) {
+                        System.out.print("*");
+                    }
+                    System.out.println();
+                }
+            } else if (n &gt; 5 || n &lt; 1) {            
+                {
+                    System.out.println(" 1 &lt;= n &lt;= 5 ");
+                }
+            }
+        } while (n &gt; 5 || n &lt; 1);
+
+    }
+    
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match157-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

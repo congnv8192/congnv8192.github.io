@@ -1,0 +1,115 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match104-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1701040043NguyenDuyHai_97769_assignsubmission_file_Assigment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1701040043NguyenDuyHai_97769_assignsubmission_file_Assigment1.java<p><PRE>
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match104-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_24.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/**
+ * .
+ */
+public class Assigment1 {
+	public static void main(String[] args) {
+		boolean isContinued = true;
+		while (isContinued) {
+			System.out.println("Choose a function:");
+			System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+			System.out.println("2. Compute a consecutive square root");
+			System.out.println("3. Solve a quadratic equation");
+			System.out.println("4. Print a triangle given its size");
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Please enter your choice: ");
+			int x = sc.nextInt();
+			switch (x) {
+			case 1:
+				
+				System.out.println("Enter an integer:  ");
+				int decNum = sc.nextInt();
+				System.out.println("its binary equivalent is: ");
+				System.out.println(Integer.toBinaryString(decNum));
+				break;
+			case 2:
+				System.out.println("m = ");
+</FONT>				double m = sc.nextDouble();
+				System.out.println("n (1 &lt;= n &lt;= 5) = ");
+				int n = sc.nextInt();
+				double y = m;
+				m = Math.sqrt(m);
+				if (1 &lt;= n && n &lt;= 5) {
+					for (int i = 1; i &lt; n; i++) {
+						m = Math.sqrt(y + m);
+					}
+					System.out.println("Result is: " + m);
+				} else {
+					System.out.println("n is not sastified!!!");
+				}
+				break;
+			case 3:
+				
+				System.out.println("Enter coefficient a =  ");
+				double a = sc.nextDouble();
+				System.out.println("Enter coefficient b = ");
+				double b = sc.nextDouble();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match104-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("Enter coefficient c = ");
+				double c = sc.nextDouble();
+
+				double delta = b * b - 4 * a * c;
+
+				if (a == 0 && b == 0 && c == 0) {
+</FONT>					System.out.println("There's nothing to be solved!!");
+				} else if (a == 0 && b == 0 && c != 0) {
+					System.out.println("The equation has no root!!");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match104-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_38.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				} else if (a == 0 && b != 0 && c != 0) {
+					System.out.println("There's one root : x = " + -c / a);
+				} else if (delta &lt; 0) {
+					System.out.println("The equation has no real root!!");
+				} else {
+					System.out.println("There are two roots:" + "\n+" + "x1 = " + (-b + Math.sqrt(delta)) / (2 * a)
+							+ "\n" + "x2 = " + (-b - Math.sqrt(delta)) / (2 * a));
+				}
+				break;
+			case 4:
+				
+				System.out.println(" Enter n (1 &lt;= n &lt;= 5): " + "\n" + " n = ");
+				int n1 = sc.nextInt();
+
+				while (n1 &lt; 1 || n1 &gt; 5) {
+					System.out.println(" Please try again ( 1 &lt;= n &lt;= 5): n =  ");
+					n1 = sc.nextInt();
+				}
+				int k = 0;
+				for (int j = n1; j &gt; 0; j--) {
+					for (int i = 1; i &lt; j; i++) {
+						System.out.printf(" ");
+					}
+					for (int i = 0; i &lt;= k; i++) {
+						System.out.printf("*");
+					}
+					System.out.println();
+					k += 2;
+				}
+				break;
+			}
+			System.out.println("Do you want to continue?");
+			isContinued = sc.nextBoolean();
+		}
+		System.out.println("goodbye!");
+</FONT>	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match104-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+</HTML>

@@ -1,0 +1,172 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match11-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenDuyAnh_97675_assignsubmission_file_Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenDuyAnh_97675_assignsubmission_file_Assignment.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match11-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_21.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package javaapplication1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Danh n3`
+ */
+public class JavaApplication1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application9 logic here
+        boolean Continue = true;
+        while (Continue) {
+        System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+        System.out.println("2. Compute a consecutive square root");
+        System.out.println("3. Solve a quadratic equation");
+        System.out.println("4. Print a triangle given its size");
+        System.out.print("Choose the function that you want to perform: ");
+        Scanner sc = new Scanner(System.in);
+        int function = sc.nextInt();
+            switch (function) {
+                case 1:
+                    int n ;
+                    System.out.print("Enter the decimal number: ");
+                    n = sc.nextInt();
+                    int Dec ;
+                    int Bin = 0;
+                    int i = 1;
+                    while (n &gt; 0) {
+                        Dec = n%2;
+                        n = n/2;
+                        Bin = Bin + (Dec*i);
+                        i = i*10;
+                    }
+                    System.out.println(Bin);
+                    break;
+                    
+                    
+                    
+                    
+                case 2:
+                    double h;
+</FONT>                    double u;
+                    double root;
+                    double t;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match11-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_20.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter the number: ");
+                    h = sc.nextDouble();
+                    System.out.print("Enter the number of roots that you want (1-5): ");
+                    u = sc.nextDouble();
+                    root = 0;
+                    boolean valid = false;
+                    while ( u &gt;= 1 && u &lt;= 5) {
+                        valid = true;
+                        for ( int g = 1; g &lt;= u; g++) {
+                            root = Math.sqrt(h + root);
+                        } System.out.println("A= " + root);
+                        break;
+                    }
+                    while (!valid) {
+                        System.out.println("Sorry, you must choose the number of roots from 1 to 5");
+                        System.out.print("Enter the number of roots that you want (1-5):");
+                        t = sc.nextDouble();
+                        if ( t &gt;= 1 && t &lt;= 5) {
+                        for ( int g = 1; g &lt;= t; g++) {
+                            root = Math.sqrt(h + root);
+                        } System.out.println("A = " + root);
+                        break;
+                        }
+                    }
+                    break;
+                    
+                    
+                    
+                case 3:
+</FONT>                    double a;
+                    double b;
+                    double c;
+                    double d;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match11-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    double e;
+                    System.out.println("Enter 3 number: ");
+                    System.out.print("Enter a = ");
+                    a = sc.nextInt();
+                    System.out.print("Enter b = ");
+                    b = sc.nextInt();
+                    System.out.print("Enter c = ");
+                    c = sc.nextInt();
+                    if (a==0 && b==0 && c==0) {
+                        System.out.println("There's nothing to be solved");
+</FONT>                    } else if (a==0 && b==0 && c!=0) {
+                        System.out.println("The equation has no root");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match11-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_40.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    } else if (a==0 && b!=0 && c!=0) {
+                        System.out.println("There is one root x = " + -c/b);
+                    } else if (b*b - 4*a*c &lt; 0) {
+                        System.out.println("The quation has no real root");
+                    } else if (b*b - 4*a*c &gt;0) {
+                    d = (-b + Math.sqrt(b*b-4*a*c))/(2*a);
+                    e = (-b - Math.sqrt(b*b-4*a*c))/(2*a);
+                        System.out.println("There are two roots:");
+                        System.out.println("x1 = " + d);
+                        System.out.println("x2 = " + e);
+                    }
+                    break;
+                    
+                    
+                    
+                    
+                case 4:
+                int a2, y;
+                System.out.print("Enter the size of triangle that you want (1-5): " + " n = ");
+	            a2 = sc.nextInt();
+	            while (a2 &lt; 1 || a2 &gt; 5) {
+	            System.out.println("Sorry, but the size of triangle is from 1 to 5");
+                    System.out.println("Enter the size of triangle that you want (1 &lt;= n &lt;= 5): " + " n = ");
+	            a2 = sc.nextInt();
+	            }
+	            y = 0;
+	            for (int j = a2; j &gt; 0; j--) {
+	                for (int k = 1; k &lt; j; k++) {
+		            System.out.printf("  ");
+	                }
+	            for (int k = 0; k &lt;= y; k++) {
+	            System.out.printf("*" + " ");
+	            }
+	            System.out.println();
+	            y = y + 2;
+	        }
+                    break;
+            } 
+            if (function &gt;= 1 && function &lt;= 5) {
+                System.out.println("Do you want to continue? (True/False)");
+                Continue = sc.nextBoolean();
+            } else if (function &lt; 1 || function &gt; 4) {
+                System.out.println("Sorry, but you must choose the function from 1 to 4.");
+                System.out.println("Do you want to continue? (True/False)");
+                Continue = sc.nextBoolean();
+            }
+        } 
+        System.out.println("Thank you!");
+</FONT>    }
+}</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match11-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:21 GMT -->
+</HTML>

@@ -1,0 +1,216 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match237-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040152BuiKhanhNam_97639_assignsubmission_file_BuiKhanhNam_1C18_1801040152_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040152BuiKhanhNam_97639_assignsubmission_file_BuiKhanhNam_1C18_1801040152_A1.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match237-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author: Bui Khanh Nam - 1C18 - 1801040152 
+ * 
+ * Requirements: Write a Java program which has the features below: It should shows
+ * a menu to let the user choose which function to perform. Additionally, it may ask 
+ * the user if he/she wanted to continue with another function.
+ */
+public class BuiKhanhNam_1C18_1801040152_A1 {
+
+    public static void ConvertDecimalToBinary() { //1st method
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter a decimal: ");
+        int decimal = sc.nextInt(); //Get a decimal from the keyboard 
+        int binaryNumber[] = new int[100]; //This is an array of 100 zeros
+        System.out.print("The binary number of " + decimal + " is: ");
+        int No = 0; // Assign an intial value for No; after that we bring it into the while loop 
+        
+        while (decimal &gt; 0) {
+            binaryNumber[No] = decimal % 2; //Division which takes the remainder
+            decimal = decimal / 2; // Division which takes the natural part
+            No++; // Increase No to 1 for every time it reachs the end of the while loop
+        }
+
+        for (int index = No - 1; index &gt;= 0; index--) {
+// If we assign index = No, so the result of binaryNumber[index] in the first iteration will output 0 value , which is totally wrong !!
+/* We have to use index -- because this will loop through agian from the last to the first iteration of 
+   the remainder part from the while loop above to get the result of binaryNumber[No - 1] respectively
+ */
+            System.out.print(binaryNumber[index]);
+</FONT>        }
+        System.out.println(); //Create a new line
+        return; // Finished the execution of this method
+    }
+
+    public static void ComputeConsecutiveSquareRoot() { //2nd method
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input a number: m = ");
+        Double m = sc.nextDouble(); //Get a double from the keyboard
+        double intial = m; // This initial variable will alaways store the initial value of m, which will be use in the while loop below.
+        int n ;//Let n be uninitialized
+
+        
+        //In do...while loop, the number of iterations is not specific but always &gt;= 1
+
+        do {
+            System.out.print("How many times the square root is taken ? (From 1 to 5): n = ");
+            n = sc.nextInt(); // Get a new integer from the keyboard
+        } while (n &lt; 1 || n &gt; 5) ; //Repeate this code if the users do not follow the condition 1 ≤ n ≤ 5
+                
+        if (n &gt;= 1 && n &lt;= 5) {
+            double x = 0; //Assign an intial value for variable x and bring it in the while loop
+            double squareRootResult = 0; //Assign an intial value for variable squareRootResult and bring it in the while loop
+            while (x &lt; n) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match237-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                squareRootResult = Math.sqrt(m); //Math.sqtr(m) means square root of variable m
+                m = intial + squareRootResult;  
+                x++; //Increase x to 1 for every time it reachs the end of the while loop
+            }
+            System.out.println("The result is: " + squareRootResult);
+        }
+        System.out.println(); //Create a new line
+</FONT>        return; // Finished the execution of this method
+    }
+
+    public static void SolveQuadraticEquation() {  //3rd method
+        // a*x^2 + b*x + c = 0
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please input 3 coefficients a, b and c ! ");
+        System.out.print("Cofficient a: ");
+        int a = sc.nextInt();//Get the first cofficient from the keyboard 
+        System.out.print("Cofficient b: ");
+        int b = sc.nextInt();//Get the second cofficient from the keyboard  
+        System.out.print("Cofficient c: ");
+        int c = sc.nextInt();//Get the third cofficient from the keyboard 
+        double delta = (b * b) - 4 * a * c;
+        double squareRoot = Math.sqrt(delta); //Math.sqrt(delta) means square root of variable delta
+
+        // The first case: a = b = c = 0: There is nothing to be solved because the equation has infinity roots !!
+        // 0*x^2 + 0*x + 0 = 0
+        if (a == 0 && b == 0 && c == 0) {
+            System.out.println("There is nothing to be solved ");
+        } 
+        // The second case: a = b = 0 and c different to 0: The equation will have no root because the value of c is different to zero
+        // 0*x^2 + 0*x + c = 0
+        else if (a == 0 && b == 0 && c != 0) {
+            System.out.println("The equation has no root ");
+        } 
+        //The third case: a = 0, b and c are differnt to 0: The equation will have only one root x = -c/b
+        // 0*x^2 + bx + c = 0
+        else if (a == 0 && b != 0 && c != 0) {
+            System.out.print("The equation has only one root: x = " + (-c / b));
+        } 
+        // The fourth case: Consider delta = b^2 - 4*a*c &lt; 0: The equation will have no root
+        else if (delta &lt; 0) {
+            System.out.println("The equation has no real root!");
+        } 
+        // The last case: delta &gt; 0: The equation has 2 roots: x1 = (-b + squareRoot)/(2*a) and x2 = (-b - squareRoot)/(2*a)    
+        else {
+            double x1 = (-b + squareRoot) / (2 * a);
+            double x2 = (-b - squareRoot) / (2 * a);
+            System.out.println("The equation has two roots: ");
+            System.out.println("x1 = " + x1 + ", x2 = " + x2);
+        }
+        System.out.println(); //Create a new line
+        return; // Finished the execution of this method
+    }
+
+    public static void PrintTriangleGivenItsSize() { //4th method
+        Scanner sc = new Scanner(System.in);
+        int n;
+        do {
+            System.out.print("Please input an integer n (1 ≤ n ≤ 5): ");
+            n = sc.nextInt(); //Get an integer from the keyboard
+        } while (n &lt; 1 || n &gt; 5); //Repeate this code if the users do not follow the condition 1 ≤ n ≤ 5
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match237-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        if (n &gt;= 1 && n &lt;= 5) {
+            for (int k = 0; k &lt; n; k++) { // This is the number of lines the program will print out according to value of n the user input
+                for (int i = k; i &lt; n - 1; i++) {
+                    System.out.print(" ");
+                    /* Create a space every time i satisfies the condition i &lt; n-1.
+                       When it no longer satisfies the condition, it will move to the next for loop below
+                     */
+                }
+                for (int l = 0; l &lt; k * 2 + 1; l++) {
+                    System.out.print("*");
+                    /* Create a "*" every time l satisfies the condition l &lt; k * 2 + 1.
+                       When it no longer satisfies the condition, it will move to the next line 
+                     */
+                }
+                System.out.println(); //Create a new line and back to the first for loop 
+</FONT>            }
+        }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match237-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return; // Finished the execution of this method
+    }
+
+    public static void main(String[] args) { //main method
+        Scanner sc = new Scanner(System.in);
+        int Selection = 0; //Assign an intial value for variable Selection and bring it in the while loop
+        while (Selection != 5) {
+</FONT>            /* - With Selection = 0, it will alaways satisfy the while loop condition Selection != 5.  
+           ==&gt; Therefore: The menu of the program will alaway run again and again when the user finish 
+           performing a particular function from 1 to 4. Only when the user input 5, the program will stop 
+             */
+            try {
+            System.out.println("&lt;---------------------------***---------------------------&gt;");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("2. Compute a consecutive square root");
+            System.out.println("3. Solve a quadratic equation");
+            System.out.println("4. Print a triangle given its size");
+            System.out.println("5. Exit the program");
+            System.out.println("Which functions above do you want to perform ? ");
+            System.out.println("&lt;---------------------------***---------------------------&gt;");
+            Selection = sc.nextInt(); // Get an integer from the keyboard
+
+            } catch (Exception e) {  // Handle the exception            
+                    sc.nextLine(); // Get a new line from the keyboard                   
+            }         
+
+            switch (Selection) {
+                /* Normally, in switch case statament, all of the cases will be executed. Therefore,
+             we need to add "break" statement at the end of every cases to stop the program from 
+             executing the other cases
+                 */
+                case 1:
+                    ConvertDecimalToBinary(); //1st method
+                    break; //Keyword break will breaks out of the switch block + stop the other cases executing
+                case 2:
+                    ComputeConsecutiveSquareRoot(); //2nd method
+                    break;
+                case 3:
+                    SolveQuadraticEquation();//3rd method
+                    break;
+                case 4:
+                    PrintTriangleGivenItsSize();//4th method
+                    break;
+                case 5:
+                    System.out.println("Thank you! Goodbye!");
+                    break;
+                default: //The default keyword specifies some code to run if there is no case match:
+                    System.out.println("Invalid input!");
+                    break;
+            }
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match237-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

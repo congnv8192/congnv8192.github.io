@@ -1,0 +1,189 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match246-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>HuaThiQuynhMai_97537_assignsubmission_file_HuaThiQuynhMai_1901060032.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenQuynhAnh_97446_assignsubmission_file_NguyenQuynhAnh_1TD19_1901060061_A02.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment1;
+
+import static java.lang.Math.sqrt;
+import java.util.Scanner;
+
+public class NguyenQuynhAnh_1TD19_1901060061_A02 {
+
+    public static void main(String[] args) { //main method
+        String enter; //declare the variable
+        Scanner sc = new Scanner(System.in); //create a scanner object
+        //output input by user
+        System.out.println("MENU:");
+        System.out.println("[1].Convert a decimal (base 10) interger to binary (base 2)");
+        System.out.println("[2].Compute a square root");
+        System.out.println("[3].Solve a quadratic equation");
+        System.out.println("[4].Print a triangle given its size");
+        System.out.println("[5].Exit the program");
+        System.out.print("Input your choice: ");
+        int n = sc.nextInt(); //get the integer from user
+        while (n &lt;= 5 || n &gt; 0) { //repeat a block of code as long as a condition holds true
+            switch (n) { //select one of many code blocks to be executed
+                case 1:
+                    convert();
+                    enter = sc.nextLine();
+                    System.out.print("Press enter to continue!");
+                    enter = sc.nextLine();
+                    break; //stop the execution of more code and case testing inside the block
+                case 2:
+                    compute_square_root();
+                    enter = sc.nextLine();
+                    System.out.print("Press enter to continue!");
+                    enter = sc.nextLine();
+                    break;
+                case 3:
+                    equation();
+                    enter = sc.nextLine();
+                    System.out.print("Press enter to continue!");
+                    enter = sc.nextLine();
+                    break;
+                case 4:
+                    print_triangle();
+                    enter = sc.nextLine();
+                    System.out.print("Press enter to continue!");
+                    enter = sc.nextLine();
+                    break;
+                default: //specify some code to run if there is no case match                
+                    break;
+            }
+            if (n == 5) { //if statement: decide whether a certain statement or block of statements will be executed or not
+                System.out.println("Thank you! Have a good day!");
+                break;
+            }
+            //output input by user
+            System.out.println("MENU:");
+            System.out.println("[1].Convert a decimal (base 10) interger to binary (base 2)");
+            System.out.println("[2].Compute a square root");
+            System.out.println("[3].Solve a quadratic equation");
+            System.out.println("[4].Print a triangle given its size");
+            System.out.println("[5].Exit the program");
+            System.out.print("Input your choice: ");
+            n = sc.nextInt(); //get the integer from user
+        }
+    }
+
+    //accessing static method "convert" without creating any object of the class.
+    static void convert() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a decimal interger: ");
+        int a = sc.nextInt(); //get the integer from user
+        String s = "", str;
+        int b = a;
+        while (b != 0) { //repeat a block of code as long as a condition holds true
+            if (b % 2 == 0) { //specify a block of code to be executed, if a specified condition is true
+                str = "0";
+                s = str.concat(s); //append one string to the end of another
+            } else { //specify a block of code to be executed, if the condition is false
+                str = "1";
+                s = str.concat(s); //append one string to the end of another
+            }
+            b /= 2; //b = b/2
+        }
+        System.out.println(a + " in binary is: " + s);
+    }
+
+    //accessing static method "compute_square_root" without creating any object of the class.
+    static void compute_square_root() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("m = ");
+        int m = sc.nextInt(); //get the integer from user
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match246-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("n = ");
+        int n = sc.nextInt(); //get the integer from user
+        double result = Math.sqrt(m); //double: fractional numbers
+        if (n &gt;= 1 && n &lt;= 5) { //specify a block of code to be executed, if a specified condition is true
+            //use the for loop when knowing exactly how many times you want to loop through a block of code
+            for (int i = 1; i &lt; n; i++) {
+</FONT>                result = Math.sqrt(m + result);
+            }
+            System.out.println("The result is: " + result);
+        } else { //specify a block of code to be executed, if the condition is false
+            System.out.println("Invalid input!");
+        }
+    }
+
+    //accessing static method "equation" without creating any object of the class.
+    static void equation() {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match246-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Equation: ax^2 + bx + c = 0 ");
+        System.out.print("a = ");
+        int a = sc.nextInt();
+        System.out.print("b = ");
+</FONT>        int b = sc.nextInt();
+        System.out.print("c = ");
+        int c = sc.nextInt();
+        double denta = b * b - 4 * a * c; //fractional numbers
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match246-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double result;
+        if (denta &lt; 0) { //specify a block of code to be executed, if a specified condition is true
+            System.out.println("The equation has no solution");
+        } else if (a == 0 && b == 0 && c == 0) { //specify a new condition to test, if the first condition is false
+            System.out.println("The equation has infinite solutions");
+        } else if (denta == 0) { //specify a new condition to test, if the first condition is false
+            result = -b / (2 * a);
+</FONT>            System.out.println("x = " + result);
+        } else { //specify a block of code to be executed, if the condition is false
+            result = (-b - sqrt(denta)) / (2 * a);
+            System.out.println("x1 = " + result);
+            result = (-b + sqrt(denta)) / (2 * a);
+            System.out.println("x2 = " + result);
+        }
+    }
+
+    //accessing static method "print_triangle" without creating any object of the class.
+    static void print_triangle() {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match246-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("n = ");
+        int n = sc.nextInt();
+        int m = 2 * n - 1;
+        if (n &gt;= 1 && n &lt;= 5) { //specify a block of code to be executed, if a specified condition is true
+            //use the for loop when knowing exactly how many times you want to loop through a block of code
+            for (int i = 1; i &lt;= n; i++) {
+                //int i = 1: set a variable before the loop starts
+                //i &lt;= n: define the condition for the loop to run
+                //i++: increase a value each time the code block in the loop has been executed
+                for (int j = 1; j &lt;= (n - i); j++) {
+                    //int j = 1: set a variable before the loop starts
+                    //j &lt;= (n - i): define the condition for the loop to run
+                    //j++: increase a value each time the code block in the loop has been executed
+                    System.out.print("  ");
+                }
+                for (int k = (n - i + 1); k &lt;= (m - n + i); k++) {
+                    //int k = (n - i + 1): set a variable before the loop starts
+                    //k &lt;= (m - n + i): define the condition for the loop to run
+                    //k++: increase a value each time the code block in the loop has been executed
+                    System.out.print(" *");
+                }
+                System.out.println();
+            }
+        } else { //specify a block of code to be executed, if the condition is false
+            System.out.println("Invalid input!");
+</FONT>        }
+    }
+}         </PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match246-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

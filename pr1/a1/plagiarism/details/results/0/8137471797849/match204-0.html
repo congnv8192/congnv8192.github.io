@@ -1,0 +1,192 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match204-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenThuyDung_97625_assignsubmission_file_NguyenThuyDung_1TD19_1901060010.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenThuyDung_97625_assignsubmission_file_NguyenThuyDung_1TD19_1901060010.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package NguyenThuyDung_1TD19_1901060010;
+
+import java.util.Scanner;
+
+/* Assignment 1
+ * Nguyen Thuy Dung
+ * Class: 1TD-19
+ * ID: 1901060010
+ */
+public class NguyenThuyDung_1TD19_1901060010 {
+//[1]. Convert a decimal (base 10) integer to binary (base 2).
+private static void case1(){     
+int x;
+Scanner scan = new Scanner(System.in);
+//Array to store binary number.
+System.out.print("Enter an integer: ");
+x = scan.nextInt();
+int[] xbi = new int [32];
+int i = 0;
+while (x &gt; 0) {
+//Store remainder in binary array.    
+xbi[i] = x % 2;
+x = x / 2;
+i++;
+}
+//Display binary array in reverse order. 
+System.out.println("Binary number: ");
+for (int j = i - 1; j &gt;= 0; j--) {
+System.out.print(xbi[j]);
+}
+}
+
+//[2]. Compute a consecutive square root.
+private static void case2(){
+Scanner sc = new Scanner (System.in);
+//Input the value of m and check whether m is an integer or not.
+System.out.print("Enter m: ");
+int m = sc.nextInt();
+//Input the value of n and check whether n is an integer or not.
+System.out.print("Enter n: ");
+int n = sc.nextInt();
+double result = 0;
+//Give condition for the integer m since square root is only available when m&gt;0.
+if(m&lt;0) {
+System.out.println("Invalid value!");
+//Limit the value of n [1;5].
+} else if (1&lt;n && n&gt;5) {
+System.out.println("Inappropriate value n");
+} else 
+for (int i = 0; i&lt;n; i++) {
+//Compute the expression where the square root is taken n times.
+result = Math.sqrt(m+ result);
+if (i == n-1){
+System.out.println("The consecutive square root = " + result);
+break;
+}
+}
+}
+
+//[3]. Solve a quadratic equation.
+private static void case3(){
+Scanner input = new Scanner(System.in);
+//Input the value of a,b,c. 
+System.out.print("Input a: ");
+double a = input.nextDouble();
+System.out.print("Input b: ");
+double b = input.nextDouble();
+System.out.print("Input c: ");
+double c = input.nextDouble();
+//a, b, c must different from 0 in order for the equation to be solved.
+if (a == 0) {
+if (b == 0) {
+if (c == 0) {
+System.out.println("There's nothing to be solved.");
+} else {
+System.out.println("The equation has no root.");
+}
+} else {
+double x = -c / b;
+System.out.println("There is one root: x = " + x);
+}
+} else {
+double delta = b * b - 4 * a * c; // Calculate delta to find x.
+//If delta &lt; 0, we have no solution for x.
+if (delta &lt; 0) {
+System.out.println("The equation has no real root.");
+//If delta = 0, we can find only one x.
+} else if (delta == 0) {
+double x = -b / (2 * a);
+System.out.println("The root is x = " + x);
+//If delta &gt; 0, we can find the solution for x1, x2.
+} else {
+//Solution for x1, x2.
+double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+System.out.println("There are 2 roots: x1 = " + x1 + ", x2 = " + x2);
+}
+}
+}
+
+//[4]. Print a triangle given its size
+private static void case4(){
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match204-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_36.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+Scanner sc = new Scanner(System.in);
+//Input number of rows to display.
+System.out.print("Enter number of rows: ");
+int n = sc.nextInt();
+int m = 2*n - 1;  
+//Place " " and "*".
+if (n &gt;= 1 && n &lt;= 5){ 
+for (int i = 0; i &lt;= n; i++) {
+for (int x = 1; x &lt;= (n-i); x++){
+System.out.print(" ");
+}
+for (int y = (n-i+1); y &lt;= (m-n+i); y++){
+System.out.print("*");
+}
+System.out.println();
+}
+} else {
+System.out.println("Invalid input");
+}
+}
+
+//Listing the menu for users.
+public static void main(String args[]) {
+int n = 0;
+Scanner sc = new Scanner(System.in);
+//Display options for users.
+while (n != 4) {
+System.out.println("[1] Convert a decimal integer to binary");
+System.out.println("[2] Compute a consecutive square root");
+System.out.println("[3] Solve a quadratic equation");
+System.out.println("[4] Print a triangle given its size");
+System.out.print("Select a function: ");
+int scan = sc.nextInt();
+//After having chosen, users will continue running the case, which they have chosen.
+switch (scan){
+            case 1:
+                case1();
+                break;
+            case 2:
+                case2();
+                break;
+            case 3:
+                case3();
+                break;
+            case 4:
+                case4();
+                break;
+default:
+//Users only have 4 options to choose.    
+System.out.println("Invalid input");
+break;
+}   
+//Ask users if they want to continue another program.
+System.out.print("Do you want to continue another program ?(Y/N): ");
+sc.nextLine();
+//If they type Y, the program will continue.
+//Display "Goodbye!" if they type N.
+if (sc.nextLine().equalsIgnoreCase("N")) {
+System.out.println("Goodbye!");
+break;
+</FONT>} else {}          
+    }
+    }
+}
+
+
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match204-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

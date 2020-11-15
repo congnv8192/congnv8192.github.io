@@ -1,0 +1,138 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match87-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenChiThanh_97598_assignsubmission_file_newJavaFile1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenChiThanh_97598_assignsubmission_file_newJavaFile1.java<p><PRE>
+//*Nguyễn Chí Thanh 4C//
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match87-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class newJavaFile1 {
+    private static void convert(){
+    	Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an integer");
+</FONT>        int b = sc.nextInt();
+        int c;
+        System.out.println("Binary equivalent");
+        while (true){
+          c=b%2;
+          b= (b-c)/2;
+          if (b&lt;2){
+              break;
+          }
+           System.out.print(c);
+        }  System.out.println("");
+    }
+    private static void consecutive(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an interger");
+        int m = sc.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match87-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter the number of consecutive square root (between 1 and 5)");
+        int n = sc.nextInt();
+        double k = Math.sqrt(m);
+        if (n&gt;=1 && n&lt;=5){
+           for (int u=1; u&lt;n; u++){
+            k = Math.sqrt(m+k);
+            }
+            System.out.println("Answer "+k);
+        }else {
+            System.out.println("Invalid input");
+        }
+    }
+    private static void quadratic(){
+        Scanner sc = new Scanner(System.in);
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match87-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("a.x^2 + b.x + c = 0");
+        System.out.println("Enter a b c");
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int z = sc.nextInt();
+        int v = y*y-4*x*z;
+        if (v&lt;0){
+            System.out.println("No solution");
+</FONT>        }else if (x==0 && y==0 && z==0){
+            System.out.println("Infinite solutions");
+        }else if (v==0){
+            System.out.println("x is "+(-y)/(2*x));
+        }else {
+            double nghiem1 = (-y-Math.sqrt(v))/(2*x);
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match87-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            double nghiem2 = (-y+Math.sqrt(v))/(2*x);
+            System.out.println("x1 is "+nghiem1);
+            System.out.println("x2 is "+nghiem2);
+        }
+    }
+    private static void triangle(){
+        
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match87-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_31.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of rows");
+        int a = sc.nextInt();
+        int b = 2 * a - 1;
+        if (a&gt;=1 && a&lt;=5){
+            for (int i=0; i&lt;=a; i++){
+            for (int m=1; m&lt;=(a-i); m++){
+                System.out.print(" ");
+            }
+            for (int n=(a-i+1); n&lt;=(b-a+i); n++){
+                System.out.print("*");
+            }
+            System.out.println();
+            }
+        }else {
+            System.out.println("Invalid input");
+        }
+    }
+    private static void point(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose one of the methods:");
+        System.out.println("1.Convert to binary  2.Compute a consecutive square root  3.Solve a quadratic equation  4.Print a star triangle");
+        int choose = sc.nextInt();
+        switch (choose){
+            case 1:
+                convert();
+                break;
+            case 2:
+                consecutive();
+                break;
+            case 3:
+                quadratic();
+                break;
+            case 4:
+                triangle();
+                break;
+            default:
+                break;
+            }
+    }
+public static void main(String args[]) {
+</FONT>            while (true){
+            point();
+               Scanner sc = new Scanner(System.in);
+               System.out.println("Do you want to continue the program? (Y/N)");
+               if(sc.nextLine().equalsIgnoreCase("n")){
+                  System.out.println("Goodbye!");
+                   break;
+               }
+            }
+        }
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match87-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+</HTML>

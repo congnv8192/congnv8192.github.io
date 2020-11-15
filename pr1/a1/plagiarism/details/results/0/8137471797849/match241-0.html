@@ -1,0 +1,134 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match241-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040173PhungAnhQuan_97475_assignsubmission_file_Assigment_1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040173PhungAnhQuan_97475_assignsubmission_file_Assigment_1.java<p><PRE>
+package Assigment_1;
+import java.util.Scanner;
+public class Assigment_1 {
+	public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 0;
+        while (n != 5) {
+        	try {
+        		System.out.println("Choose one of the function below");
+        		System.out.println("[1]Convert a decimal number to binary");
+        		System.out.println("[2]Compute a consecutive square root");
+        		System.out.println("[3]Solve a quadratic equation");
+        		System.out.println("[4]Print out a pyramid");
+        		System.out.println("[5] Quit");
+        		n = sc.nextInt();
+        	} catch (Exception e) {
+        		System.out.println("You could only enter a number from 1 to 5!");
+        		sc.nextLine();
+        	}
+        	switch (n) {
+            case 1:
+                DtB(sc);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match241-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                break;
+            case 2:
+                SQR(sc);
+                break;
+            case 3:
+                QE(sc);
+                break;
+            case 4:
+                PRM(sc);
+                break;
+            case 5:
+                System.out.println("See you later");
+                break;
+            default:
+                System.out.println("Please try again!");
+        }
+
+
+}
+	}
+	public static void DtB(Scanner sc) {
+</FONT>        int d;
+        System.out.println("Please enter a decimal number:");
+        d = sc.nextInt();
+        System.out.println("The binary equivalence is" + Integer.toBinaryString(d));
+	}
+
+	 public static void SQR(Scanner sc) {
+		 System.out.println("√(𝑚 + √(𝑚 +√(𝑚 + …))) n times with 1&lt;= n &lt;=5 ");
+	        System.out.println("Input m: ");
+	        double m = sc.nextInt();
+	        double sq = m;
+	        System.out.println("Input n (1&lt;= n &lt;= 5)");
+	        int n = sc.nextInt();
+	        int x = 0;
+	        double result = 0;
+	        if (1 &lt;= n && n &lt;= 5) {
+	            while (x &lt; n) {
+	                result = Math.sqrt(m);
+	                m = result + sq;
+	                x++;
+	            }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match241-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	            System.out.println("The result is " + result);
+	        } else {
+	            System.out.println("n =&gt;1 and &lt;=5!! ");
+	        }
+	    }
+	 
+	 public static void QE(Scanner sc) {
+	 System.out.print("Input a: ");
+     double a = sc.nextDouble();
+     System.out.print("Input b: ");
+     double b = sc.nextDouble();
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match241-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+     System.out.print("Input c: ");
+     double c = sc.nextDouble();
+
+     double result = b * b - 4 * a * c;
+
+     if (result &gt; 0) {
+         double r1 = (-b + Math.pow(result, 0.5)) / (2.0 * a);
+</FONT>         double r2 = (-b - Math.pow(result, 0.5)) / (2.0 * a);
+         System.out.println("The roots are " + r1 + " and " + r2);
+     } else if (result == 0.0) {
+         double r1 = -b / (2.0 * a);
+         System.out.println("The root is " + r1);
+     } else {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match241-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_18.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         System.out.println("The equation has no real roots.");
+     }
+
+}
+	 public static void PRM(Scanner sc) {
+	        System.out.println("Enter an integer n with 1&lt;=n&lt;=5");
+	        int a = sc.nextInt();
+	        if (a &gt;= 1 && a &lt;= 5) {
+	            for (int b = 0; b &lt; a + 1; b++) {
+	                for (int c = a; c &gt;= b; c--) {
+	                    System.out.print(" ");
+	                }
+	                for (int d = 0; d &lt; (2 * b - 1); d++) {
+	                    System.out.print("*");
+	                }
+	                System.out.println();
+	            }
+	        } else {
+	            System.out.println("n =&gt;1 and &lt;=5!! ");
+</FONT>	        }
+	    }
+	}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match241-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

@@ -1,0 +1,194 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match140-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040013VuThiPhuongAnh_97595_assignsubmission_file_1801040013_VuThiPhuongAnh.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040013VuThiPhuongAnh_97595_assignsubmission_file_1801040013_VuThiPhuongAnh.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Win 8.1 Version 2
+ */
+public class 1801040013_VuThiPhuongAnh {
+    public static void ex1(){
+    int decimalNo, quo, i=1, j;
+        int bin[] = new int[100];
+        
+        Scanner scan = new Scanner(System.in);	
+        System.out.print("Input a decimal number : ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match140-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        decimalNo = scan.nextInt();
+        if ( decimalNo &gt;= 0){
+            quo= decimalNo;	
+            while(quo != 0){
+             bin[i++] = quo %2;
+             quo = quo /2;
+</FONT>            }
+             System.out.print("Binary number is: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match140-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for(j=i-1; j&gt;0; j--){
+             System.out.print(bin[j]);
+            }
+             System.out.println("");
+        }
+        else 
+            System.out.println("Invalid input!!");
+    }
+public static void ex2(){
+</FONT>    Scanner scan = new Scanner(System.in);
+        System.out.print("Input interger m: ");
+        int m = scan.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match140-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Input interger n: ");
+        int n = scan.nextInt();
+        double result = 0;
+        if (m &gt;= 0 && n &gt;= 1 && n &lt;= 5 ){
+             for (int i=1; i &lt;= n; i++)
+             result = Math.sqrt(result + m);
+             System.out.println("Result = " + result);
+         }
+        else 
+            System.out.println("Invalid input! ");    
+    }
+    
+
+ public static void ex3(){
+      System.out.println("Input 3 coefficients:");
+      Scanner scan = new Scanner(System.in);
+      System.out.print("a: ");
+        double a= scan.nextDouble();
+        System.out.print("b: ");
+</FONT>        double b= scan.nextDouble();
+      System.out.print("c: ");
+        double c= scan.nextDouble();
+      if (a!=0){
+         double del= b*b -4*a*c;
+          if (del&gt;0){
+              double x1 =(-b+Math.sqrt(del))/(2*a);
+              double x2 = (-b-Math.sqrt(del))/(2*a);
+              System.out.println(" 2 roots: x1="+ x1
+              +"x2="+ x2);          }
+          else if(del==0){
+              double x= (-b)/2*a;
+              System.out.println("1 root: x= "+x);
+          
+          }
+          else  {
+                  System.out.println(" no root");
+                  }
+      }
+      else { 
+          if (b==0){
+              System.out.println("no root");
+          }
+          else {
+              System.out.println("1 root: x= "+ (-c/b));
+          }
+          
+          
+      
+      }
+    }
+
+
+    
+
+    public static void ex4(){
+      int a, b;
+     System.out.print("Input number of rows: ");
+     Scanner scan = new Scanner(System.in);
+     int  numRows = scan.nextInt();
+     
+        if (numRows &gt;= 1 && numRows &lt;= 5) {
+         for(a = 1 ; a &lt;= numRows ; a++){
+            for(b = 1 ; b &lt;= numRows-a ; b++)
+             System.out.print(" ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match140-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for(b = 1 ; b &lt;= 2*a-1 ; b++)
+             System.out.print("*");
+             System.out.print("\n");
+         }
+        }else 
+         System.out.println("Invalid number of rows");
+</FONT>  
+    }
+    
+
+
+
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+      String answer = "";
+        Scanner scan = new Scanner(System.in);
+        int ex=0;
+        do{
+
+        try{
+            
+            System.out.println("Assignment 1");
+            System.out.println("Exercise1:Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("Exercise2: Compute a consecutive square root");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match140-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Exercise3: Solve a quadratic equation");
+            System.out.println("Exercise4: Print a triangle given its size");
+            System.out.print("Exercise: ");
+            ex = scan.nextInt();
+            
+            while (ex &gt; 4 || ex &lt; 0) {
+            System.out.println("Invalid input! Please input again.");
+            System.out.print("Exercise: ");
+            ex = scan.nextInt();}
+
+        } catch (Exception e){
+
+            scan.nextLine();
+            System.out.print("Input an interger from 1 to 4: ");
+            ex = scan.nextInt();
+        } 
+     
+        switch(ex){
+            case (1):
+                ex1(); break;
+            case (2):
+                ex2(); break;
+            case (3):
+                ex3(); break;
+            case (4):
+                ex4(); break;
+        }
+        
+        System.out.print("Do you want to continue with another function? ");
+        answer = scan.next();
+        
+            }while (answer.equalsIgnoreCase("yes"));
+        scan.close();
+        System.out.println("Thank you!");
+</FONT>        }         
+}
+    // TODO code application logic here
+    </PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match140-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+</HTML>

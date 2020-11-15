@@ -1,0 +1,210 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match33-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeucNang_97757_assignsubmission_file_LeucNang3c191901040142.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeucNang_97757_assignsubmission_file_LeucNang3c191901040142.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match33-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_27.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/**
+ * @LêĐứcNăng_3c19_1901040142_A1
+ */
+public class LeDucNang_3c19_1901040142 {
+
+    // All problem I solve by using function to reduce code in main
+
+    /**
+     * 1. Convert a decimal (base 10) integer to binary (base 2)
+     **/
+    // function to reverse string
+    public static String reverse(String s) {
+        String tmp = "";
+        for (int i = s.length() - 1; i &gt;= 0; i--) {
+            tmp += s.charAt(i);
+        }
+        return tmp;
+    }
+
+    // function to convert n decimal to binary string
+    public static String pro_1(int n) {
+        String s = "";
+        while (n &gt; 0) {
+            s += String.valueOf(n % 2);//calculate binary 0 or 1 (n%2)
+            n /= 2;
+        }
+        s = reverse(s); //call function to reverse string s
+        return s;
+    }
+
+    /**
+     * 2. Compute a consecutive square root
+     **/
+
+    // function to solve pro_2
+    public static double pro_2(int m, int n) {
+        double res = 0;
+        //loop from 0 to n-1 to loop n times
+        for (int i = 0; i &lt; n; i++) {
+            res = Math.sqrt(m + res); //wrap res with m( n times)
+        }
+        return res;
+    }
+
+    /**
+     * 3. Solve a quadratic equation
+     **/
+
+    // function to sovle a quadratic equation
+    public static void pro_3(int a, int b, int c) {
+        //Special case a = 0 =&gt; bx + c = 0
+        if (a == 0) {
+            if (b == 0 && c == 0) {
+                // 0 = 0
+                System.out.println("System of equations has countless solution");
+            } else if (b == 0) {
+                // c = 0 and c != 0
+                System.out.println("System of inexhaustible equations");
+            } else if (c == 0) {
+                //bx = 0
+                System.out.println("System of equations has a unique solution is x = 0");
+            } else {
+</FONT>                // bx + c =0
+                double x = ((double) (-1 * c) / b);
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match33-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.printf("System of equations has a unique solution is x = %.2f\n", x); // Print type double x, 2 number after dot
+            }
+        } else {
+            int delta = b * b - 4 * a * c; // Calculate delta to find solution
+            if (delta &lt; 0) {
+                System.out.println("System of inexhaustible equations");
+</FONT>            } else if (delta == 0) {
+                // delta = 0
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match33-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_26.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                double x = ((double) (-b) / (2 * a));
+                System.out.printf("System of equations has a unique solution is x = %.2f\n", x); // Print type double x, 2 number after dot
+            } else {
+                // delta  &gt; 0
+                double x1 = (-b + Math.sqrt(delta)) / (2 * a);// calculate x1
+                double x2 = (-b - Math.sqrt(delta)) / (2 * a);// calculate x2
+                System.out.println("System of equations has 2 solutions: ");
+                System.out.printf("x1 = %.2f\n", x1); // Print type double x1
+                System.out.printf("x2 = %.2f\n", x2); // Print type double x2
+            }
+        }
+    }
+
+    /**
+     * 4. Print a triangle given its size
+     **/
+
+    // function to print a triangle given its size
+    public static void pro_4(int n) {
+        //loop from  0 to n-1 to loop n lines
+        for (int i = 0; i &lt; n; i++) {
+            // Print white backspace in line i
+            for (int j = 0; j &lt; 2 * (n - i - 1); j++) {
+                System.out.print(" ");
+            }
+            //Print * and white backspace in line
+            for (int j = 0; j &lt; 2 * i + 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();//end line
+        }
+    }
+
+    public static void main(String[] args) {
+
+        //import Scanner
+        Scanner sc = new Scanner(System.in);
+
+        // Loop infinitely
+        while (true) {
+            //Show Menu every loop
+            System.out.println("*********************MENU*********************");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("2. Compute a consecutive square root");
+</FONT>            System.out.println("3. Solve a quadratic equation");
+            System.out.println("4. Print a triangle given its size");
+            System.out.print("Please input your choice: ");
+            int choose = 0; // declare value of choose to validate to avoid errors
+            // Try/ Catch to avoid case that users input invalid value of choose
+            try {
+                choose = sc.nextInt(); // when user input valid value
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Invalid Value Input"); // show notification when user input invalid value
+            }
+            boolean exit = false; // variable check when user want to exit
+            switch (choose) {
+                case 1:
+                    /**1. Convert a decimal (base 10) integer to binary (base 2)**/
+                    // This problem can be solved by Integer.toBinaryString(n)
+                    System.out.println("Enter an integer: ");
+                    int n = sc.nextInt();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match33-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Binary String of n: " + pro_1(n));// Print Binary of integer n by calling function pro_1
+                    break;
+                case 2:
+                    /**2. Compute a consecutive square root+*/
+                    System.out.println("Enter m: ");
+                    int m = sc.nextInt();
+                    System.out.println("Enter n: ");
+</FONT>                    int n1 = sc.nextInt();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match33-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Consecutive square root: " + pro_2(m, n1));// Print consecutive square root of m loop n times by calling function pro_2
+                    break;
+                case 3:
+                    /**3. Solve a quadratic equation**/
+                    System.out.println("Enter a: ");
+                    int a = sc.nextInt();
+                    System.out.println("Enter b: ");
+                    int b = sc.nextInt();
+                    System.out.println("Enter c: ");
+                    int c = sc.nextInt();
+                    pro_3(a, b, c); // Print the result of a quadratic equation by calling function pro_3
+                    break;
+                case 4:
+                    /**4. Print a triangle given its size**/
+                    System.out.print("Enter n (1&lt;=n&lt;=5): ");
+                    int n3 = sc.nextInt();
+                    pro_4(n3); // Print triangle given its size by calling function pro_4
+                    break;
+                default:
+                    System.out.println("Wrong choice!^^"); // show when user input wrong case
+            }
+            System.out.println("Do you want to continue with another function? (Y/N)"); // Question to ask user if he/she want to continue with another function
+            String tmp = sc.next(); // declare string to receive input from user
+            if (tmp.equalsIgnoreCase("n")) { // equalsIgnoreCase to avoid case that user input uppercase or lowercase (y||Y||n||N)
+</FONT>                exit = true;
+            }
+            if (exit) {
+                break; // if true then break loop end program
+            }
+        }
+        System.out.println("Good day! ^_^");
+    }
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match33-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:36 GMT -->
+</HTML>

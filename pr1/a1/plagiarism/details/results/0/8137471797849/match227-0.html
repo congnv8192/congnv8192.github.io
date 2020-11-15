@@ -1,0 +1,169 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match227-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040207LeThiPhuongThao_97501_assignsubmission_file_LeThiPhuongThao_5C18_1801040207_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040207LeThiPhuongThao_97501_assignsubmission_file_LeThiPhuongThao_5C18_1801040207_A1.java<p><PRE>
+
+/**
+ *
+ * Full name: Lê Thị Phương Thảo
+ * Class: 5C18
+ * ID: 1801040207
+ * Email: 1801040207@s.hanu.edu.vn
+ *
+ */
+import java.util.Scanner;
+
+public class LeThiPhuongThao_5C18_1801040207_A1 {
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match227-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to Assignment");
+        do {
+            System.out.print("Which task do you want to perform?\r\n"
+</FONT>                        + "[1] Convert a decimal integer to binary\r\n"
+                        + "[2] Compute a consecutive square root\r\n"
+                        + "[3] Solve a quadratic equation\r\n"
+                        + "[4] Print a triangle given its size\r\n"
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match227-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        + "Choose an option: \r\n");
+            int choice = sc.nextInt();
+
+            // 4 Activities
+            switch (choice) {
+                case 1: // Task 1
+                    System.out.println("Task 1: Convert a decimal integer to binary");
+                    System.out.println("Enter a decimal number: ");
+                    int dec = sc.nextInt();
+                    String bin = "";
+                    while (dec &gt; 0) {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match227-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        int n = dec % 2;
+                        bin = n + bin;
+                        dec = dec / 2;
+                    }
+                    System.out.println("Binary number is: " + bin);
+
+                    break;
+                case 2: // Task 2
+                    System.out.println("Task 2: Compute a consecutive square root");
+                    System.out.println("Enter m: ");
+</FONT>                    double m = sc.nextDouble();
+                    System.out.println("Enter n: ");
+                    int n = sc.nextInt();
+
+                    switch (n) {
+                        case 1: {
+                            double s = Math.sqrt(m);
+                            System.out.println("The result is: " + s);
+                            break;
+                        }
+                        case 2: {
+                            double s = Math.sqrt(m + Math.sqrt(m));
+                            System.out.println("The result is: " + s);
+                            break;
+
+                        }
+                        case 3: {
+                            double s = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)));
+                            System.out.println("The result is: " + s);
+                        }
+                        case 4: {
+                            double s = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m))));
+                            System.out.println("The result is: " + s);
+                            break;
+                        }
+                        case 5: {
+                            double s = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)))));
+                            System.out.println("The result is: " + s);
+                            break;
+                        }
+                        default:
+                            System.out.println("Invalid n. (Requirement: 1&lt;=n&lt;=5)");
+                            break;
+                    }
+
+                    break;
+
+                case 3: // Task 3
+                    System.out.println("Task 3: Solve a quadratic equation");
+                    System.out.println("Enter coefficient a: ");
+                    double a = sc.nextDouble();
+                    System.out.println("Enter coefficient b: ");
+                    double b = sc.nextDouble();
+                    System.out.println("Enter coefficient c: ");
+                    double c = sc.nextDouble();
+                    double d = b * b - 4 * a * c;
+
+                    if (a == 0) {
+                        if (b != 0) {
+                            double x = -c / b;
+                            System.out.println("The solution is: " + x);
+                        } else if (b == 0 && c == 0) {
+                            System.out.println("Infinite many solution. ");
+                        } else if (b == 0 && c != 0) {
+                            System.out.println("Unavailable. ");
+                        }
+                    } else {
+                        double x1 = ((-b) + Math.sqrt(d)) / (2 * a);
+                        double x2 = ((-b) - Math.sqrt(d)) / (2 * a);
+                        System.out.println(" The solutions are: x1 = " + x1 + " and x2 = " + x2);
+                    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match227-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    break;
+
+                case 4: // Task 4
+                    System.out.println("Task 4: Print a triangle given its size");
+                    System.out.println("Enter an integer n: ");
+                    int n1 = sc.nextInt();
+
+                    if (n1 &lt;= 5) {
+                        for (int i = 1; i &lt;= n1; i++) {
+                            System.out.println();
+                            for (int j = 1; j &lt;= n1 - i; j++) {
+                                System.out.print(" ");
+                            }
+                            for (int k = 1; k &lt;= i; k++) {
+                                System.out.print("* ");
+                            }
+                        }
+                        System.out.println("");
+
+                    } else {
+                        System.out.println("Invalid n (Requirement: 1&lt;=n&lt;=5");
+                    }
+
+                    break;
+            }
+            System.out.println("The end.");
+
+            // continue another function 
+            System.out.println(" Do you want to continue?");
+</FONT>            System.out.println("1-Yes   2-No");
+            int choice2 = sc.nextInt();
+            if (choice2 == 2) {
+                System.out.println("Goodbye");
+                break;
+            }
+        } while (true);
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match227-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

@@ -1,0 +1,136 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match235-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040230NguyenQuangTrung_97533_assignsubmission_file_nguyenquangtrung_1801040230.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+PhuongUyenMai_97766_assignsubmission_file_maiphuonguyen_1801040231.java<p><PRE>
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match235-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package maiphuonguyen_1801040231;
+
+import java.util.Scanner;
+
+public class maiphuonguyen_1801040231 {
+	public static void main(String[] args) {
+		Function();
+	}
+
+	public static void Function() {
+		Scanner sc = new Scanner(System.in);
+		int runningLoop = 1;
+		while (runningLoop != 0) {
+			System.out.println("-----------Choose a feature-----------");
+			System.out.println("1. Convert a decimal to binary");
+			System.out.println("2. Compute a consecutive square root");
+</FONT>			System.out.println("3. Solve a quadratic equation");
+			System.out.println("4. Print a triangle");;''
+			System.out.print("Please enter a function number: ");
+			int function = sc.nextInt();
+			switch (function) {
+                        //function1
+			case 1:
+
+				System.out.print("Enter an integer: ");
+				int N;
+				N = sc.nextInt();
+				int q[] = new int[1000];
+				int index = 0;
+				// dividing decimal number by 2 until it can not divide
+				while (N &gt; 0) {
+					q[index] = N % 2;
+					index = index + 1;
+					N = N / 2;
+				}
+				for (int i = index - 1; i &gt;= 0; i--) {
+
+					System.out.print(q[i]);
+				}
+
+				break;
+                        //fuction2
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match235-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 2:
+
+				int m, n;
+				System.out.print("Enter m: ");
+				m = sc.nextInt();
+				System.out.print("Enter n: ");
+				n = sc.nextInt();
+				double h = 0;
+				if (n &lt; 1 || n &gt; 5) {
+					System.out.println("n invalid!!!");
+				} else {
+					for (int i = 1; i &lt;= n; i++) {
+						h = Math.sqrt(m + h);
+					}
+				}
+				System.out.println(h);
+				break;
+                        //function3
+			case 3:
+				System.out.println("Please enter a: ");
+				double a = sc.nextDouble();
+				System.out.println("Please enter b: ");
+</FONT>				double b = sc.nextDouble();
+				System.out.println("Please enter c: ");
+				double c = sc.nextDouble();
+				double delta = ((b * b) - (4 * a * c));
+				if (delta &lt; 0) {
+					System.out.println("There's no solution");
+				}
+				if (delta == 0) {
+					System.out.println("There's only one solution: x = " + -b / (2 * a));
+				}
+				if (delta &gt; 0) {
+					double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+					double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+					System.out.println("There are two solution: x1 = " + x1 + " and x2 = " + x2);
+				}
+				break;
+                        //function4
+			case 4: {
+				int x;
+				System.out.print("input x: ");
+				x = sc.nextInt();
+				for (int i = 1; i &lt;= x; i++) {
+					for (int j = 1; j &lt;= x - i; j++)
+						System.out.print(" ");
+					for (int j = 1; j &lt;= 2 * i - 1; j++)
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match235-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						System.out.print("*");
+					System.out.println();
+
+				}
+				break;
+			}
+			default:
+				break;
+			}
+                        //ask user to continue or not
+			System.out.println("Do you want to continue?(1:Yes,0:No)");
+			int confirm = sc.nextInt();
+			if (confirm == 1) {
+				Function();
+
+			} else if (confirm == 0) {
+				System.out.println("Thank you!");
+				return;
+			} else
+				System.out.println("invalid input! Please try again: ");
+</FONT>
+		}
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match235-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

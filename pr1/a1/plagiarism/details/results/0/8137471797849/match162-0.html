@@ -1,0 +1,162 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match162-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>HoaDucLam_97748_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+HoaDucLam_97748_assignsubmission_file_Assignment1.java<p><PRE>
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match162-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+ /*Name: Hoa Dục Lâm
+ *Class: 1TĐ19
+ * ID number: 1901060022
+ */
+public class Assignment1 {
+
+    public static void main(String[] args) {
+        //Declare variable
+        int w = 0;
+
+        // Create scanner
+        Scanner sc = new Scanner(System.in);
+
+        while (w != 5) {  //create the while loop to pop up whenever you complete a function
+            try {  // use try ... catch to detect and handle the error
+                System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2)");
+                System.out.println("[2] Compute a consecutive square root");
+                System.out.println("[3] Solve a quadratic equation");
+</FONT>                System.out.println("[4] Print a triangle given its size");
+                System.out.println("[5] Exit the program");
+                System.out.print("Choose an option: ");   //Display the menu
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match162-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                w = sc.nextInt();  //Input the option
+
+            } catch (Exception e) {
+                System.out.println("You must input number not character");
+                sc.nextLine(); // clear newline char
+            }
+            switch (w) {
+                case 1:
+                    int decimal;// Declare decimal variable
+
+                    System.out.print("Enter decimal number: ");
+                    decimal = sc.nextInt(); //User input
+
+                    //Method of conversion
+                    String binary = Integer.toBinaryString(decimal);
+
+                    System.out.println("Binary value is: " + binary);
+
+                    System.out.println("Do you want to continue with another function?"); // Ask if user want to continue perform function
+                    break;
+</FONT>                case 2:
+                    double m;
+                    double n;
+                    double output = 0;
+
+                    System.out.print("Enter the number( m &gt;= 0): ");
+                    m = sc.nextDouble();
+                    System.out.print("How many times is square root taken? (1 &lt;= n &lt;= 5)");
+                    n = sc.nextDouble();
+
+                    if (m &gt;= 0 && n &gt;= 1 && n &lt;= 5) {
+                        while (n != 0) {
+                            output = Math.sqrt(m + output);
+                            n = n - 1; // the square root serial number is execute here
+                        }
+                        System.out.println(output);
+                    } else {
+                        System.out.println("Invalid input");
+                    }
+
+                    break;
+                case 3:
+                    double a,
+                     b,
+                     c;
+                    System.out.print("Enter value of a: ");
+                    a = sc.nextDouble();
+                    System.out.print("Enter value of b: ");
+                    b = sc.nextDouble();
+                    System.out.print("Enter value of c: ");
+                    c = sc.nextDouble();
+                    //If a, b and c are all zeros, there's nothing to be solved
+                    if (a == 0 && b == 0 && c == 0) {
+                        System.out.println("There's nothing to be solved");
+                    } //If a and b are zeros and c is not, the equation has no solution.
+                    else if (a == 0 && b == 0 && c != 0) {
+                        System.out.println("The equation has no solution");
+                    } //If a is zero while b and c are not, there is one solution: x = - c/b
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match162-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    else if (a == 0 && b != 0 && c != 0) {
+                        System.out.println("There is one solution: x =  " + (-c / b));
+                    } //If none of the above cases are met, we can apply the quadratic formula
+                    else {
+                        //If b^2  – 4ac &lt; 0, the equation has no real solution
+                        if ((Math.pow(b, 2) - 4 * a * c) &lt; 0) {
+                            System.out.println("The equation has no real solution");
+                        } //Otherwise, there are two solutions
+                        else {
+                            System.out.println("There are two solutions: x1 = " + (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a) + " and x2 = " + (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a));
+                        }
+                    }
+                    System.out.println("Do you want to continue with another function?"); // Ask if user want to continue perform function
+                    break;
+                case 4:
+                    int rows,
+</FONT>                     i;
+
+                    System.out.print("Enter number of layer (from 1 to 5) in the Pyramid: ");
+                    rows = sc.nextInt();
+
+                    if (rows &lt; 1 || rows &gt; 5) {
+                        System.out.println("Invalid input");
+                        System.out.print("Please enter again (from 1 to 5): ");
+                        rows = sc.nextInt();
+                    } else {
+                        for (i = 1; i &lt;= rows; i++) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match162-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for (int j = i; j &lt;= rows; j++) {
+                                System.out.print(" ");
+                            }
+                            for (int k = 1; k &lt; (i * 2); k++) {
+                                System.out.print("*");
+                            }
+                            System.out.println();// use "println" to make row separate not in the same line
+                        }
+                    }
+
+                    System.out.println("Do you want to continue with another function?"); // Ask if user want to continue perform function
+                    break;
+                case 5:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid input");
+                    System.out.println("User must input again");
+</FONT>                    break;
+            }
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match162-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

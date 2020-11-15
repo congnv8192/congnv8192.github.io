@@ -1,0 +1,176 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match140-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040013VuThiPhuongAnh_97595_assignsubmission_file_1801040013_VuThiPhuongAnh.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040029NguyenMinhChau_97538_assignsubmission_file_NguyenMinhChau_1801040029.java<p><PRE>
+
+package javaapplication1.Assignment1;
+import java.util.Scanner;
+/**
+ *
+ * @author chaunm
+ */
+public class Nguyenminhchau1801040029 {
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+       int exercise = 0;
+        String option = "";
+            
+        do{
+
+        try{
+        
+            System.out.println("Exercise1:Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("Exercise2: Compute a consecutive square root");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match140-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Exercise3: Solve a quadratic equation");
+            System.out.println("Exercise4: Print a triangle given its size");  // print out the screen 
+            System.out.print("Please enter the exercise you want to sovle: ");
+            exercise = input.nextInt();
+            
+            while (exercise &gt; 4 || exercise &lt; 0) {
+            System.out.println("Invalid input! Please input again.");  
+            System.out.print("Exercise: ");
+            exercise = input.nextInt();}
+
+        } catch (Exception e){            // solve the problem if user enter the charater
+ 
+            input.nextLine();
+            System.out.print("Input an interger from 1 to 4: ");
+           
+                 exercise   = input.nextInt();
+        } 
+  
+         switch(exercise){
+            case (1):
+                exercise1(); break;
+            case (2):
+                exercise2(); break;
+            case (3):
+                exercise3(); break;
+            case (4):
+                exercise4(); break;
+        
+           }System.out.print("Do you want to continue with another function? ");
+        option = input.next();
+        
+            }while (option.equalsIgnoreCase("yes")); // if user input yes then continue, else print thank you
+        input.close();
+        System.out.println("Thank you!");
+</FONT>        }     
+         
+    public static void exercise1(){
+        System.out.print("Exercise 1:  Convert a decimal (base 10) integer to binary (base 2) ");
+        int integer, quotient , i=1, j;
+        int binary[] = new int[100];
+        System.out.println("Enter an integer: ");   // get ueser information
+       Scanner input = new Scanner(System.in);
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match140-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         integer = input.nextInt();
+         
+         if ( integer &gt;= 0){
+            quotient = integer;	
+            while(quotient != 0){
+             binary[i++] = quotient%2; // next binary equal quotient %2
+             quotient = quotient/2;   // quotient continue to divide 2
+</FONT>            }
+             System.out.print("Binary number is: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match140-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for(j=i-1; j&gt;0; j--){   // binary number will be got bottom up 
+             System.out.print(binary[j]);
+            }
+             System.out.println("");
+        }
+        else 
+            System.out.println("Invalid input!!");
+    }
+    public static void exercise2(){
+</FONT>        System.out.print("Exercise2: Compute a consecutive square root ");
+        System.out.print("Enter m: ");
+        Scanner input = new Scanner(System.in);
+        int m = input.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match140-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Enter n: ");
+        int n = input.nextInt();
+        double  d =0;                   
+        
+        if (m&gt;= 0 && n &gt;=1 && n &lt;= 5){         
+           for(int i=1; i &lt;= n; i++)
+         d = Math.sqrt(d+m);         
+         System.out.println("The solution is:"+ d);        
+        }else{
+            System.out.println("Requirement: 1 &lt;=n&lt;= 5 !!");
+    }
+    }
+      public static void exercise3(){
+          System.out.print("Exercise 3: Solve a quadratic equation  ");
+           Scanner input = new Scanner(System.in);
+               System.out.print("Please input a :");
+        double a = input.nextDouble();
+        System.out.print("Please input b :");
+</FONT>        double b = input.nextDouble();
+        System.out.print("Please input c :");
+        double c = input.nextDouble();       // require users enter numbers
+         if (a == 0){
+            if (b == 0 && c == 0)
+             System.out.println("The equation has infinitely many roots");  //if a,b,c = 0, equation has many results
+            else if (b == 0 && c != 0 )
+             System.out.println("The equation has no real root"); //if a,b = 0; c != 0, equation has no result
+            else 
+             System.out.println("The only root is: "+ (-c)/b);  // if a=0, b,c!=0, equation has one root
+        }
+        double denta = b*b-4*a*c;               // calculate delta
+        double x1 = ((-b) + Math.sqrt(denta)/2*a);
+        double x2 = ((-b) - Math.sqrt(denta)/2*a);
+        double x = (-b)/2*a;         
+        if(denta &lt; 0){
+      
+            System.out.print("The equation has no solution");
+        } if (denta == 0){
+            System.out.print("The quadratic equation has 1 solution: x = "+ x);
+        } if ( denta &gt; 0) {
+            System.out.print("The quadratic equation has 2 solution: x1 = "
+                     + x1+" and x2 = " + x2);
+            
+        }                    
+      }
+      public static void exercise4(){
+          System.out.println(""
+                        + "Exercise 4: Print a triangle given its size .");
+                System.out.println("Enter an integer n: ");
+                Scanner input = new Scanner(System.in);
+                    
+                int n1 = input.nextInt();
+                
+                if (n1 &lt;= 5) {                                       
+                    for (int i = 1; i &lt;= n1; i++) {                             
+                        for (int g = 1;g &lt;= n1 - i; g++)
+                            System.out.print(" ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match140-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                           for (int h = 1; h &lt;= 2*i-1; h++) 
+                            System.out.print("* ");
+                            System.out.print("\n");
+                      }
+                } else {
+                    System.out.println("Invalid n! (Requirement: 1&lt;=n&lt;=5)");
+</FONT>                } 
+                     
+       }
+      }
+    
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match140-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+</HTML>

@@ -1,0 +1,180 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match14-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LucThienVan_97609_assignsubmission_file_thienvan2c19.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+aoXuanToi_97648_assignsubmission_file_aoXuanToi.java<p><PRE>
+﻿/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.util.Scanner;
+
+
+/**
+ *
+ * @author Đào Xuân Tới
+ * 
+ */
+public class assignment {
+
+    /**
+     * @param args the command lne arguments
+     */
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match14-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Hello! Welcome to the assignment.");
+        String selection = "";
+        do {
+        System.out.println("Please choose 1 of the given exercises below (choose from number 1 to 4):");
+        System.out.println("1. EX 1");
+        System.out.println("2. EX 2");
+</FONT>        System.out.println("3. EX 3");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match14-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_47.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("4. EX 4");
+        int choice = sc.nextInt();
+        
+        switch (choice) {
+            case 1:  
+                System.out.println("EX 1:");
+                System.out.print("input an integer: ");
+                int j = sc.nextInt();
+                int n;
+                String s = "";
+                while (j &gt; 0) {
+                n = (j % 2);
+                s = n + s;
+                j = (j / 2);
+                }
+                System.out.println("Binary equivalent:" + s); 
+                
+                System.out.println("Continue? Please type Yes or No");
+                selection = sc.nextLine(); 
+            
+                break;
+                
+        
+            case 2: 
+                System.out.println("EX 2:");
+                System.out.print("Enter m: ");
+                int m = sc.nextInt();
+                System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+                int n1 = sc.nextInt();
+                double result;
+
+                if (n1 == 1) {
+                    result = Math.sqrt(m);
+                    System.out.println("A square root of " + m + " taken " + n1 + " times: " + result);
+                } else if (n1 == 2) {
+                    result = Math.sqrt(m + Math.sqrt(m));
+                    System.out.println("A square root of " + m + " taken " + n1 + " times: " + result);    
+                } else if (n1 == 3) {
+                    result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)));
+                     System.out.println("A square root of " + m + " taken " + n1 + " times: " + result);
+                } else if (n1 == 4) {
+                    result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m))));
+                    System.out.println("A square root of " + m + " taken " + n1 + " times: " + result);
+                } else if (n1 == 5) {
+                    result = Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m + Math.sqrt(m)))));
+                    System.out.println("A square root of " + m + " taken " + n1 + " times: " + result);
+                } else {
+                    System.out.println("Please enter n that satisfies the given condition.");
+                }
+                
+                System.out.println("Do you want to continue? Type Yes or No.");
+                selection = sc.nextLine(); 
+                break;          
+        
+            case 3:
+                System.out.println("Exercise 3:");
+
+               System.out.print("Press a: ");
+            double a = sc.nextDouble();
+</FONT>            System.out.print("Press b: ");
+            double b = sc.nextDouble();
+            System.out.print("Press c: ");
+            double c = sc.nextDouble();
+
+            double result1 = b * b - 4.0 * a * c;
+
+            if (result1 &gt; 0.0) {
+                double x1 = (-b + Math.pow(result1, 0.5)) / (2.0 * a);
+                double x2 = (-b - Math.pow(result1, 0.5)) / (2.0 * a);
+                System.out.println("x1: " + x1 + " and x2: " + x2);
+            } else if (result1 == 0.0) {
+                double x1 = -b / (2.0 * a);
+                System.out.println("x: " + x1);
+            } else {
+                System.out.println("The equation has no solution.");
+            }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match14-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_24.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Do you want to continue? Type Yes or No.");
+                selection = sc.nextLine(); 
+                break;
+        
+            case 4:
+                
+                System.out.println("EX 4:");
+                int rows,column,n2,a2;
+                System.out.print("Input an integer n (1 &lt;= n &lt;= 5): ");
+                n2 = sc.nextInt();
+                a2 = n2;
+
+                for (rows = 1 ; rows &lt;= n2 ; rows++) {
+                    for (column = 1 ; column &lt; a2 ; column++) 
+                        System.out.print("  ");
+
+                    a2--;
+
+                    for (column = 1 ; column &lt; 2*rows; column++)
+                        System.out.print(" *");
+
+                    System.out.println("");
+                }
+                System.out.println("Do you want to continue? Type Yes or No.");
+                selection = sc.nextLine(); 
+                break;
+        
+            default: 
+                System.out.println("There are no more than four EXs.");
+                System.out.println("Do you want to continue? Type Yes or No.");
+                selection = sc.nextLine();   
+                break;
+        }
+          System.out.print("=&gt; ");
+          selection = sc.nextLine(); 
+          if (selection.equals("No") || selection.equals("no")) {
+              System.out.println("Thank you for checking.");
+          }
+     } while (selection.equals("Yes") || selection.equals("yes"));
+</FONT>    }
+    }
+    
+    
+
+        
+        
+        
+        
+        // TODO code application logic here
+    
+    
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match14-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:25 GMT -->
+</HTML>

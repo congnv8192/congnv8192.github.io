@@ -1,0 +1,153 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match179-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040030NguyenThiChung_97529_assignsubmission_file_a1_1801040030.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040077PhamThiHang_97489_assignsubmission_file_A1_1801040077.java<p><PRE>
+package a1_1801040077;
+
+import java.util.Scanner;
+
+public class A1_1801040077 {
+
+	public static void Ex1() {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match179-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a decimal (base 10) integer: ");
+		int a = sc.nextInt();
+		int b;
+		String s = "";
+		while (a &gt; 0) {
+			b = a % 2;
+			s = b + "" + s;
+			a = a / 2;
+		}
+		System.out.println("Binary form (base 2): " + s);
+	}
+
+	public static void Ex2() {
+</FONT>		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter m (value): ");
+		double m = sc.nextDouble();
+		System.out.println("Enter n (times of square root): ");
+		int n = sc.nextInt();
+
+		double m0 = m;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match179-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		double result = 0;
+		int i = 1;
+		if (n &gt;= 1 && n &lt;= 5) {
+			while (i &lt;= n) {
+				result = Math.sqrt(m);
+				m = m0 + result;
+				i++;
+			}
+			System.out.println("Result: " + result);
+		} else {
+			System.out.println("Invalid input.");
+		}
+
+	}
+
+	public static void Ex3() {
+		Scanner sc = new Scanner(System.in);
+</FONT>		System.out.println("Enter a: ");
+		double a = sc.nextDouble();
+		System.out.println("Enter b: ");
+		double b = sc.nextDouble();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match179-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("Enter c: ");
+		double c = sc.nextDouble();
+
+		if (a == 0) {
+			if (b == 0) {
+				if (c == 0) {
+</FONT>					System.out.println("This equation has many roots");
+				} else {
+					System.out.println("This equation has no root");
+				}
+			} else {
+				System.out.println("x = " + -c / b);
+			}
+		} else {
+			double delta = b * b - 4 * a * c;
+			if (delta &lt; 0) {
+				System.out.println("This equation has no root");
+			}
+			if (delta == 0) {
+				System.out.println("x = " + -b / (2 * a));
+			} else {
+				System.out.println("x1 = " + (-b + Math.sqrt(delta)) / (2 * a));
+				System.out.println("x2 = " + (-b - Math.sqrt(delta)) / (2 * a));
+			}
+
+		}
+
+	}
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match179-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void Ex4() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter an integer from 1 to 5: ");
+		int n = sc.nextInt();
+
+		for (int i = 1; i &lt;= n; i++) {
+			for (int j = 0; j &lt; n - i; j++) {
+				System.out.print(" ");
+			}
+			for (int j = 0; j &lt; (2 * i - 1); j++) {
+				System.out.print("*");
+</FONT>			}
+			System.out.println();
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			System.out.println("[1]. Convert a decimal (base 10) integer to binary (base 2).");
+			System.out.println("[2]. Compute a consecutive square root.");
+			System.out.println("[3]. Solve a quadratic equation.");
+			System.out.println("[4]. Print a triangle given its size.");
+			System.out.println("[5]. Quit.");
+			System.out.println("Please choose a program (enter a number from 1 to 5): ");
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match179-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			int option = sc.nextInt();
+
+			if (option == 1) {
+				Ex1();
+			}
+			if (option == 2) {
+				Ex2();
+			}
+			if (option == 3) {
+				Ex3();
+			}
+			if (option == 4) {
+				Ex4();
+			}
+			if (option == 5) {
+				System.out.println("Quit the program.");
+</FONT>				break;
+			}
+
+		}
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match179-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

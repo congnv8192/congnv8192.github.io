@@ -1,0 +1,168 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match91-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1701040113NguyenTrongNam_97519_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1701040113NguyenTrongNam_97519_assignsubmission_file_Assignment1.java<p><PRE>
+package assignment1;
+
+import java.util.Scanner;
+
+public class Assignment1 {
+	static Scanner sc	= new Scanner(System.in);
+	
+	public static void convertBinary() {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match91-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter integer: ");
+		int n = sc.nextInt();
+		
+		String temp = "";
+		int divider = n;
+		int divisor;
+		int remainder;
+</FONT>		for (;;) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match91-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			divisor = divider/2;
+			remainder = divider%2;
+			temp += remainder;
+			if (divisor == 0) {
+				break;
+			}else {
+				divider /= 2;
+			}
+		}
+		String result = "";
+		for (int i = temp.length() - 1; i &gt;= 0; i--) {
+			result += temp.charAt(i);
+</FONT>		}
+		System.out.println("Binary form: " + result);
+		System.out.println("----------------------------------");
+	}
+	
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match91-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void squareRoot() {
+		System.out.print("Enter m (m &gt;= 0): ");
+        double m = sc.nextDouble();
+        System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+        int n = sc.nextInt();
+        double y = Math.sqrt(m);
+        double result = 0;
+        if (n &gt;= 1 && n &lt;= 5) {
+</FONT>        	int i = 1;
+            while(i &lt; n){
+            	result = Math.sqrt(m + y);
+            	y = result;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match91-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            	i++;
+            }
+            System.out.println("Result is: " + y);
+        } else {
+            System.out.println("Please follow the condition of n!");
+	}
+        System.out.println("----------------------------------");
+}
+	
+	public static void quadraticEquation() {
+</FONT>		Scanner sc		= new Scanner(System.in);
+		System.out.println("Solve a quadratic equation.");
+		System.out.print("a = ");
+		double a			= sc.nextDouble();
+		System.out.print("b = ");
+		double b			= sc.nextDouble();
+		System.out.print("c = ");
+		double c			= sc.nextDouble();
+	
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match91-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_33.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		double delta	= b*b - 4*a*c;
+		
+		if (a == 0) {
+			System.out.println("There is one root: x = " + -c/b);
+		}
+		else {
+			if (delta == 0) {
+				System.out.println("The root is x = " + -b/2*a);
+			}
+			else if (delta &lt; 0) {
+				System.out.println("The equation has no real root.");
+			}
+			else {
+				System.out.println("There are 2 roots:");
+				System.out.println("x1 = " + (-b + Math.sqrt(delta))/(2*a));
+				System.out.println("x2 = " + (-b - Math.sqrt(delta))/(2*a));
+			}
+		}System.out.println("----------------------------------");
+	}
+	
+	public static void triangle() {
+		int n = 0;
+		while(n &lt; 1 || n &gt; 5) {
+		System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+			n = sc.nextInt();
+		}
+		int line	= 1;
+		String triangle	= "";
+		String space	= "";
+		String star		= "";
+		
+		while (line &lt;= n) {
+			space	= "";
+			star		= "";
+			for (int sp = 1; sp &lt;= n - line; sp++) space += "  ";
+			for (int st = 1; st &lt;= 2*line - 1; st++) star += "* ";
+			triangle += space + star + "\n";
+			line++;
+</FONT>		}
+		System.out.println(triangle);
+		System.out.println("----------------------------------");
+	}
+
+	public static void main(String[] args) {
+		
+		for(;;) {
+			System.out.println("[1] Convert a decimal integer to binary.");
+			System.out.println("[2] Compute a consecutive square root.");
+			System.out.println("[3] Solve a quadratic equation.");
+			System.out.println("[4] Print a triangle given its size.");
+			System.out.println("[5] Quit");
+			System.out.println("Choose exercise: ");
+			System.out.println("----------------------------------");
+			int option = sc.nextInt();
+			
+			switch(option) {
+			case 1:
+				convertBinary();
+				break;
+			case 2:
+				squareRoot();
+				break;
+			case 3:
+				quadraticEquation();
+				break;
+			case 4:
+				triangle();
+				break;
+			default:
+				System.out.println("Goodbye!");
+				System.exit(0);
+			}
+			
+		}
+
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match91-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+</HTML>

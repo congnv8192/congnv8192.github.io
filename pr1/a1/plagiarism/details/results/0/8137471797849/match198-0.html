@@ -1,0 +1,150 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match198-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHuyHoang_97502_assignsubmission_file_HoangAs1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenHuyHoang_97502_assignsubmission_file_HoangAs1.java<p><PRE>
+package hoangas1;
+
+import java.util.Scanner;
+
+public class HoangAs1 {
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match198-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome!");
+        do {
+            System.out.println("Please choose a function.");
+            System.out.println("1. Function 1     2. Function 2     3. Function 3     4. Function 4");
+            int hoang = sc.nextInt();
+            switch (hoang) {
+                case 1:
+                    System.out.println("Function 1: Convert a decimal integer to binary.");
+                    System.out.println("Please enter an integer: ");
+                    int h = sc.nextInt();
+                    String g = "";
+                    while (h &gt;= 0) {
+                        if (h == 0) {
+                            g = g + 0;
+                            break;
+                        } else {
+                            int d = h % 2;
+                            g = d + g;
+                            h = h / 2;
+                        }
+                    }
+                    System.out.println("Binary number is: " + g);
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match198-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    break;
+
+                case 2:
+                    System.out.println("Function 2: Compute a consecutive square root.");
+                    System.out.println("ENTER m :");
+                    int m = sc.nextInt();
+</FONT>                    System.out.println("ENTER n: ");
+                    int n = sc.nextInt();
+                    double s = 0;
+                    for (int i = 1; i &lt;= 5; i++) {
+                        if (n == i) {
+                            for (int j = 0; j &lt; n; j++) {
+                                s =Math.sqrt(s + m);
+                            }
+                        }
+                    }
+                    System.out.println(s);
+                    break;
+                case 3:
+                    System.out.println("Function 3: Solve a quadratic equation.");
+                    double a,b,c,delta,x1,x2,x;
+                    System.out.println("Coefficent a: ");
+                    a = sc.nextDouble();
+                    System.out.println("Coefficent b: ");
+                    b = sc.nextDouble();
+                    System.out.println("Coefficent c: ");
+                    c = sc.nextDouble();
+                    delta = b * b - 4 * a * c;
+                    Math.sqrt(delta);
+                    if (a != 0) {
+                        if (delta &gt; 0) {
+                            x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                            x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                            System.out.println("System has 2 root:");
+                            System.out.println("x1=" + x1);
+                            System.out.println("x2=" + x2);
+                        } else if (delta == 0) {
+                            System.out.println("System has 1 root ");
+                            x = -b / (2 * a);
+                            System.out.println("x=" + x);
+                        } else {
+                            System.out.println("System has no root");
+                        }
+                    } else {
+                        if (b == 0) {
+                            if (c == 0) {
+                                System.out.println("System has many root");
+                            } else {
+                                System.out.println("System has no root");
+                            }
+
+                        } else {
+                            System.out.println("1 root");
+                            x = -c / b;
+                            System.out.println("x=" + x);
+                        }
+                    }
+                    break;
+                case 4: 
+                    System.out.println("Function 4: Print a triangle given its size.");
+                    System.out.println("Please enter an integer n: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match198-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int e = sc.nextInt();
+
+                    if (e &lt;= 5) {
+                        for (int i = 1; i &lt;= e; i++) {
+                            System.out.println();
+                            for (int j = 1; j &lt;= e - i; j++) {
+                                System.out.print(" ");
+                            }
+                            for (int k = 1; k &lt;= i; k++) {
+                                System.out.print("* ");
+                            }
+                        }
+                        System.out.println("");
+</FONT>                    } else {
+                        System.out.println("CAN'T DO");
+                    }
+                    break;
+            }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match198-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Do you want to continue with another function?");
+            System.out.println("1.Yes     2.No");
+            int choice2 = sc.nextInt();
+            if (choice2 == 2) {
+                System.out.println("Great Job");
+                break;
+             }
+        } while (true);
+</FONT>    }
+}
+
+    
+    
+    
+    
+    
+        
+  </PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match198-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

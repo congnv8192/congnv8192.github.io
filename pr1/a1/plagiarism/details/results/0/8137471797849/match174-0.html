@@ -1,0 +1,185 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match174-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeThiHuong_97570_assignsubmission_file_Assignment1_LeThiHuong_7C19.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeThiHuong_97570_assignsubmission_file_Assignment1_LeThiHuong_7C19.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assign1.folder;
+
+import java.util.Scanner;
+
+/**
+ * Name: Le Thi Huong
+ * Class: 7C19
+ * Id: 1901040104
+ */
+public class Assignment1_LeThiHuong_7C19 {
+         static void Menu() {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match174-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Scanner sc = new Scanner(System.in);
+            boolean quit = false;
+            String op;
+            //for "option" takes the value of a string to remove inputs characters and numbers that are different from number 1 to 5.
+            do {  // main menu, use do...while for exitting when the user wants to stop the program. if "quit" equals "true", the loop ends.
+                  System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2).");
+                  System.out.println("[2] Compute a consecutive square root.");
+                  System.out.println("[3] Solve a quadratic equation.");
+                  System.out.println("[4] Print a triangle given its size.");
+                  System.out.print("Choose an option: ");
+                  op = sc.nextLine(); // creating list of options for the user to choose.
+                switch (op) {
+                // convert decimal to binary by module 2 until x = 0, get remainder from bottom to top.
+                    
+                    case "1":
+                        {
+                            System.out.print("Enter an integer: ");
+                            int x = sc.nextInt();
+                            String a = "";
+</FONT>                            int y;
+                            do {
+                                y = x % 2;
+                                if (y==0)
+                                    a = "0" + a;
+                                else
+                                    a = "1" + a;// the previous numbers found by module 2 will be pushed back of the string.
+                                x = x /2;
+                            } while (x!=0);
+                            System.out.println(a);
+                            quit = true;
+                            break;
+                        }
+                        
+                    case "2":
+                        {
+                            int m,n;
+                            System.out.print("Input m: ");
+                            m = sc.nextInt();
+                            System.out.print("Input n with (1 ≤ n ≤ 5): ");
+                            n = sc.nextInt();
+                            boolean kt;
+                            kt = (n &lt; 1 || n &gt; 5);
+                            while (kt){
+                                System.out.print("Invalid value. Please input n with (1 ≤ n ≤ 5): ");
+                                n = sc.nextInt();
+                                if ( n &gt;= 1 && n &lt;= 5)
+                                    kt = false;} // checks whether the user enters a number that satisfies a given condition.
+                            double a = Math.sqrt(m);
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match174-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for (int i = 1; i &lt; n; i++)
+                                a = Math.sqrt(m + a); // the found law of the problem is the square root of the total m and its own square root.
+                            System.out.println(a);
+                            quit = true;
+                            break;
+                        }
+               
+                    case "3":  // solve a quadratic equation with 4 cases.
+</FONT>                        {
+                            System.out.print("Input a = ");
+                            double a = sc.nextInt();
+                            System.out.print("Input b = ");
+                            double b = sc.nextInt();
+                            System.out.print("Input c = ");
+                            double c = sc.nextInt();
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match174-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            double y, x, x1, x2;
+                            if ( a==0 && b==0 && c==0){ // a,b,c are all zero
+                                System.out.println("There's nothing to be solved.");
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match174-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            } else if ( a==0 && b==0 && c!=0){ // a,b are both zero, but c isnot.
+                                System.out.println("The equation has no root.");
+                            } else if ( a==0 && b!=0 && c!=0){ // only a = 0;
+                                x = -c/b;
+                                System.out.println("The equation has one root:");
+                                System.out.println("x = " + x);
+</FONT>                            } else {
+                                y = b*b - 4*a*c; // for y takes the value of delta of the quadratic equation.
+                                if (y &lt; 0) // when y &lt; 0, Math.sqrt(y) has error, so the quadratic equation has no root.
+                                    System.out.println("The equation has no real root.");
+                                else if (y == 0){ // when y = 0. Math.sqrt(y) = 0, so the equation has only root.
+                                    x = (-b) / (2*a);
+                                    System.out.println("The equation has one root:");
+                                    System.out.println("x = " + x);
+                                }
+                                else { // when y &gt; 0
+                                    x1 = ( -b + Math.sqrt(y) )/(2*a);
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match174-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                    x2 = ( -b - Math.sqrt(y) )/(2*a);
+                                    System.out.println("The equation has two roots:");
+                                    System.out.println("x1 = " + x1 + ", x2 = " + x2);
+                                }
+                            }   
+                            quit = true;
+                            break;
+                        }
+                        
+                    case "4":
+</FONT>                        {
+                            int n;
+                            System.out.print("Input n with (1 ≤ n ≤ 5): ");
+                            n = sc.nextInt();
+                            boolean kt;
+                            kt = (n &lt; 1 || n &gt; 5);
+                            while (kt){ // checks whether the user enters a number that satisfies a given condition.
+                                System.out.print("Invalid value. Please input n with (1 ≤ n ≤ 5): ");
+                                n = sc.nextInt();
+                                if ( n &gt;= 1 && n &lt;= 5)
+                                    kt = false;}
+                            for (int i=1; i &lt; 2*n; i += 2)// use 2 * n to generate 1, 3, 5 instead of 1, 2, 3.
+                            {
+                                for (int x=0; x &lt; ((n-1) - i / 2); x++)                               
+                                    System.out.print("  ");  //  print space for triangle.                       
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match174-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                for (int y=0; y&lt;i; y++)                               
+                                    System.out.print("* ");  // print the * symbols                             
+                                System.out.println();
+                            }      
+                            quit = true;
+                            break;
+                        }
+                        
+                    default:
+                        // if the user enters letters and characters or numbers greater than the integers 1 to 5, an error appears on the screen and asks to re-enter.
+                        System.out.println("Invalid choice. Try again!");
+                        break;
+                }
+                          
+            } while (quit==false);// exit menu.
+</FONT>      }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        while(true){ // ask the user if they want to continue the program, if so, continue to give them the menu and options, otherwise exit the program and print goodbye.
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match174-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Menu();
+            System.out.print("Do you wish to continue? (Y/N) ");
+            String cont = scan.nextLine();
+             if (cont.equalsIgnoreCase("n")) {
+                System.out.println("Goodbye!");
+                break; // exit program.
+</FONT>        }
+    }
+    }
+} 
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match174-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

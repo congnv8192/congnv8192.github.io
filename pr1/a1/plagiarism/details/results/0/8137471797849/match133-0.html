@@ -1,0 +1,139 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match133-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040088NguyenThiQuynhHoa_97708_assignsubmission_file_A1_1801040088.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040088NguyenThiQuynhHoa_97708_assignsubmission_file_A1_1801040088.java<p><PRE>
+package ass1;
+
+import java.util.Scanner;
+
+public class A1_1801040088 {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match133-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_23.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welcome!");
+
+		do {
+			System.out.println("Please choose a function.");
+			System.out.println("1. Function 1     2. Function 2     3. Function 3     4. Function 4");
+			int choice = sc.nextInt();
+
+			// perform 4 functions
+			switch (choice) {
+			case 1: // Function 1
+				System.out.println("Function 1: Convert a decimal integer to binary.");
+				System.out.println("Please enter a decimal number: ");
+				int dn = sc.nextInt();
+				String bin = "";
+				while (dn &gt;= 0) {
+					if (dn == 0) {
+						bin = bin + 0;
+						break;
+					} else {
+						int n = dn % 2;
+						bin = n + bin;
+						dn = dn / 2;
+					}
+				}
+				System.out.println("Binary number is: " + bin);
+				break;
+
+			case 2: // Function 2
+				System.out.println("Function 2: Compute a consecutive square root.");
+				System.out.println("Please enter m:");
+</FONT>				double m = sc.nextDouble();
+				System.out.println("Please enter n (1 &lt;= n &lt;= 5): ");
+				double n = sc.nextDouble();
+				double s = 0;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match133-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				for (int i = 1; i &lt; 6; i++) {
+					if (n == i) {
+						for (int k = 0; k &lt; n; k++) {
+							s = Math.sqrt(m + s);
+						}
+					}
+				}
+				System.out.println(s);
+				break;
+
+			case 3: // Function 3
+				System.out.println("Function 3: Solve a quadratic equation.");
+</FONT>				System.out.println("Please enter coefficient a: ");
+				double a = sc.nextDouble();
+				System.out.println("PLease enter coefficient b: ");
+				double b = sc.nextDouble();
+				System.out.println("Please enter coefficient c: ");
+				double c = sc.nextDouble();
+
+				if (a == 0) {
+					if (b != 0) {
+						double x = -c / b;
+						System.out.println("The unique solution is: x = " + x);
+					} else if (b == 0 && c == 0) {
+						System.out.println("Infinitely many solutions!");
+					} else if (b == 0 && c != 0) {
+						System.out.println("No solution!");
+					}
+				} else {
+					double d = b * b - 4 * a * c;
+					if (d &lt; 0) {
+						System.out.println("No solutions!");
+					} else if (d == 0){
+						double x = (-b) / (2 * a);
+						System.out.println("The solution is: x1 = x2 = " + x);
+					} else {
+						double x1 = ((-b) + Math.sqrt(d)) / (2 * a);
+						double x2 = ((-b) - Math.sqrt(d)) / (2 * a);
+						System.out.println("The solutions are: x1 = " + x1 + " and x2 = " + x2);
+					}
+				}
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match133-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_24.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				break;
+
+			case 4: // Function 4
+				System.out.println("Function 4: Print a triangle given its size.");
+				System.out.println("Please enter an integer n: ");
+				int n1 = sc.nextInt();
+
+				if (n1 &lt;= 5) {
+					for (int i = 1; i &lt;= n1; i++) {
+						System.out.println();
+						for (int j = 1; j &lt;= n1 - i; j++) {
+							System.out.print(" ");
+						}
+						for (int k = 1; k &lt;= i; k++) {
+							System.out.print("* ");
+						}
+					}
+					System.out.println("");
+				} else {
+					System.out.println("Invalid! (Notice: 1&lt;=n&lt;=5)");
+				}
+				break;
+			}
+
+			// continue with another function
+			System.out.println("Do you want to continue with another function?");
+			System.out.println("1. Yes     2. No");
+			int choice2 = sc.nextInt();
+			if (choice2 == 2) {
+				System.out.println("Thank you! Goodbye!");
+				break;
+			}
+		} while (true);
+</FONT>	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match133-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+</HTML>

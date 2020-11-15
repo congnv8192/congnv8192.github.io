@@ -1,0 +1,167 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match61-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>DuongTheCong_97674_assignsubmission_file_DuongTheCong_1C19_1901040031_.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+DuongTheCong_97674_assignsubmission_file_DuongTheCong_1C19_1901040031_.java<p><PRE>
+
+import java.util.Scanner;
+
+/** Full name: Dương Thế Công
+ *  Class : 1C19
+ *  Student ID: 1901040031
+ */
+public class DuongTheCong_1C19_1901040031_ {
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match61-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            //print out the selection (menu)
+            System.out.println("Choose a feature below that you want to use ");
+            System.out.println("(1) Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("(2) Compute a consecutive square root ");
+</FONT>            System.out.println("(3) Solve a quadratic equation ");
+            System.out.println("(4) Print a triangle given its size");
+            System.out.println("(5) Exit!!!");
+            System.out.println("Enter your selection: ");
+
+            int selection = sc.nextInt();
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match61-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            sc.nextLine();
+            switch (selection) {
+                case 1:
+                    Scanner sc1 = new Scanner(System.in);
+                    System.out.println("Enter the number you want to convert: ");
+                    int num1 = sc1.nextInt();
+                    int remain = 0;
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match61-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int arr1[] = new int[0];
+                    System.out.print("The binary (base 2) form of " + num1 + " is: ");
+                    while (num1 &gt; 0) {
+
+                        int arr2[] = new int[arr1.length + 1];
+</FONT>                        for (int i = 0; i &lt; arr1.length; i++) {
+                            arr2[i] = arr1[i];
+                        }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match61-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        arr1 = arr2;
+                        remain = num1 % 2;
+                        arr2[arr2.length - 1] = remain;
+                        num1 = num1 / 2;
+                    }
+                    for (int j = arr1.length - 1; j &gt;= 0; j--) {
+</FONT>                        System.out.print(arr1[j]);
+                    }
+                    System.out.println("      ");
+                    System.out.println("   End task!!!");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match61-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("      ");
+                    break;
+                case 2:
+                    Scanner sc2 = new Scanner(System.in);
+                    System.out.print("Enter number: ");
+                    double num2 = sc2.nextInt();
+                    System.out.print("How many time you want the square root to be taken form 1-&gt;5: ");
+</FONT>                    double total = sc2.nextInt();
+                    if (total == 1) {
+                        System.out.println("Result: " + Math.sqrt(num2));
+                    } else if (total == 2) {
+                        System.out.println("Result: " + Math.sqrt(num2 + Math.sqrt(num2)));
+
+                    } else if (total == 3) {
+                        System.out.println("Result: " + Math.sqrt(num2 + Math.sqrt(num2) + Math.sqrt(num2)));
+                    } else if (total == 4) {
+                        System.out.println("Result: " + Math.sqrt(num2 + Math.sqrt(num2) + Math.sqrt(num2) + Math.sqrt(num2)));
+                    } else if (total == 5) {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match61-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Result: " + Math.sqrt(num2 + Math.sqrt(num2) + Math.sqrt(num2) + Math.sqrt(num2) + Math.sqrt(num2)));
+</FONT>                    }
+                    System.out.println("      ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match61-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("End task!!!");
+                    break;
+                case 3:
+                    Scanner sc3 = new Scanner(System.in);
+                    System.out.println("Enter a, b, c: ");
+                    int a = sc3.nextInt();
+                    int b = sc3.nextInt();
+                    int c = sc3.nextInt();
+                    double d = b * b - 4 * a * c;
+                    if (a != 0) {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match61-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Equation:  " + a + " x^2 + " + b + "x +" + c + "=0");
+                        if (d &lt; 0) {
+                            System.out.println("No solution!!!");
+                        } else if (d == 0) {
+                            System.out.println("Has unique solution: x= " + -b / a);
+                        } else {
+                            double x1 = (-b + Math.sqrt(d) / (2 * a));
+                            double x2 = (-b - Math.sqrt(d) / (2 * a));
+</FONT>                            System.out.println("Has 2 solution: \nx1= " + x1);
+                            System.out.println("\nx2= " + x2);
+                        }
+                    } else if (a == 0) {
+                        System.out.println("Equation: " + b + "x+" + c + "Has unique solution x= " + -c / b);
+                    }
+                    System.out.println("      ");
+                    System.out.print("End task!!!");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match61-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("      ");
+                    break;
+                case 4:
+                    Scanner sc4 = new Scanner(System.in);
+                    System.out.println("Enter the number of row");
+                    int num4 = sc4.nextInt();
+                    for (int i = 1; i &lt;= num4; i++) {
+                        for (int j = num4; j &gt;= i; j--) {
+</FONT>                            System.out.println(" ");
+                        }
+                        for (int j = 1; j &lt;= i; j++) {
+                            System.out.println(" ");
+                        }
+                        System.out.println("      ");
+                        System.out.print("End tak!!!");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match61-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("      ");
+                        break;
+                    }
+                    if (selection == 5) {
+                        System.out.print("Exiting!!!");
+                        break;
+                    }
+                    System.out.println("Do you want to continue?: Y/N ");
+</FONT>                    String option = sc.nextLine();
+                    if (option.equalsIgnoreCase("Y")) {
+                        continue;
+                    }//return to menu
+                    else if (option.equalsIgnoreCase("N")) {
+                        System.out.println("Exiting!!!");
+                        break;
+                    }
+
+            }
+        }
+
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match61-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+</HTML>

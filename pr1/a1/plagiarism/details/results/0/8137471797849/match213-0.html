@@ -1,0 +1,165 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match213-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeucAnh_97655_assignsubmission_file_LeDucAnh_1C19_1901040008.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeucAnh_97655_assignsubmission_file_LeDucAnh_1C19_1901040008.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package leducanh_1c19_1901040008;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author my pc
+ */
+public class LeDucAnh_1C19_1901040008 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("[2] Compute a consecutive square root");
+            System.out.println("[3] Solve a quadratic equation");
+            System.out.println("[4] Print a triangle given its size");
+            System.out.println("[5] Exit");
+            System.out.print("Choose an option: ");
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    int x,
+                     y;
+                    String z = "";
+                    System.out.print("Enter a decimal number: ");
+                    x = sc.nextInt();
+                    while (x &gt; 0) {
+                        y = x % 2;
+                        z = y + "" + z;
+                        x = x / 2;
+                    }
+                    System.out.println("Your binary number is: " + z);
+                    break;
+                case 2:
+                    System.out.print("Enter m: ");
+                    int m = sc.nextInt();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match213-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter n (1 ≤ n ≤ 5): ");
+                    int n = sc.nextInt();
+                    double f = 0;
+                    if (n &gt;= 1 && n &lt;= 5) {
+                        for (int e = 1; e &lt;= n; e++) {
+                            f = Math.sqrt(m + f);
+                        }
+                        System.out.println("f= " + f);
+                    } else {
+                        while (n &lt; 1 || n &gt; 5) {
+</FONT>                            System.out.print("Please enter only integer between 1 and 5: ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match213-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            int b = sc.nextInt();
+                            if (b &gt;= 1 && b &lt;= 5) {
+                                for (int e = 1; e &lt;= b; e++) {
+                                    f = Math.sqrt(m + f);
+</FONT>                                }
+                                System.out.println("f= " + f);
+                            }
+                            break;
+                        }
+                    }
+
+                    break;
+
+                case 3:
+                    System.out.println("Enter the value of a: ");
+                    double a = sc.nextDouble();
+                    System.out.println("Enter the value of b: ");
+                    double b = sc.nextDouble();
+                    System.out.println("Enter the value of c: ");
+                    double c = sc.nextDouble();
+                    double root,
+                     root1,
+                     root2;
+                    double d = (b * b) - (4 * a * c);
+                    double sqrt = Math.sqrt(d);
+
+                    if (d &gt; 0) {
+                        root1 = (-b + sqrt) / (2 * a);
+                        root2 = (-b - sqrt) / (2 * a);
+                        System.out.println("There are two roots: x1= " + root1 + " and x2= " + root2);
+                    } else if (d == 0) {
+                        root = (-b) / (2 * a);
+                        System.out.println("There is one root: x= " + root);
+                    } else {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match213-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("There are no roots");
+                    }
+                    break;
+                case 4:
+                    System.out.println("Enter an integer i (1 ≤ n ≤ 5)");
+                    int i = sc.nextInt();
+                    if (1 &lt;= i && i &lt;= 5) {
+                        for (int k = 1; k &lt;= i; k++) {
+
+                            for (int j = i; j &gt;= k; j--) {
+                                System.out.print(" ");
+                            }
+
+                            for (int j = 1; j &lt;= k; j++) {
+                                System.out.print("* ");
+                            }
+
+                            System.out.println();
+                        }
+                    } else {
+                        while (i &lt; 1 || i &gt; 5) {
+</FONT>                            System.out.print("Please enter only integer between 1 and 5: ");
+                            int o = sc.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match213-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            if (o &gt;= 1 && o &lt;= 5) {
+                                for (int k = 1; k &lt;= o; k++) {
+
+                                    for (int j = o; j &gt;= k; j--) {
+                                        System.out.print(" ");
+                                    }
+
+                                    for (int j = 1; j &lt;= k; j++) {
+                                        System.out.print("* ");
+                                    }
+
+                                    System.out.println();
+
+                                }
+                                break;
+</FONT>                            }
+                            break;
+                        }
+                        if (option == 5) {
+                            System.out.println("Goodbye!");
+                            break;
+                        }
+                    }
+
+            }
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match213-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

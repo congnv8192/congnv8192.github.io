@@ -1,0 +1,179 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match85-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>PhamThiLoan_97469_assignsubmission_file_assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+PhamThiLoan_97469_assignsubmission_file_assignment.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match85-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author User: Pham Thi Loan
+ */
+public class assignment {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        loop:
+        while (true) {
+            try {
+                System.out.println("There are 5 features:");
+</FONT>                System.out.println("1.Convert a decimal interger to binary");
+                System.out.println("2.Compute a consecutive square root");
+                System.out.println("3.Solve a quadratic equation");
+                System.out.println("4.Print a triangle given its size");
+                System.out.println("5.Exit");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match85-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please choose a function (1-5):");
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                System.out.println(" ");
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("1.");
+                        while (true) {
+                            try {
+                                System.out.print("Please enter an integer:");
+                                int num = sc.nextInt();
+                                sc.nextLine();
+                                String so = Integer.toBinaryString(num);
+                                System.out.println("Your result:" + so);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match85-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Invalid input! You must enter a number. Please try again.");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.println("2.");
+                        int m,
+</FONT>                         n;
+                        while (true) {
+                            try {
+                                System.out.print("Input m:");
+                                m = sc.nextInt();
+                                System.out.print("Input n (1&lt;=n&lt;=5)");
+                                n = sc.nextInt();
+                                if (n &lt; 1 || n &gt; 5) {
+                                    System.out.println("Invalid input! Please try again. Remember 1&lt;=n&lt;=5.");
+                                } else {
+                                    double an = 0;
+                                    for (int i = 1; i &lt;= n; i++) {
+                                        an = Math.sqrt(m + an);
+                                    }
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match85-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                    System.out.println("Answer" + an);
+                                    break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Invalid input!You must enter a number. Please try again.");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        System.out.println("3.");
+</FONT>                        while (true) {
+                            try {
+                                double a, b, c, delta;
+                                System.out.println("a*x^2+b*x+c =0");
+                                System.out.print("Type a (a must be distinct from 0):");
+                                a = sc.nextDouble();
+                                System.out.print("Type b:");
+                                b = sc.nextDouble();
+                                System.out.print("Type c :");
+                                c = sc.nextDouble();
+                                if (a == 0) {
+                                    System.out.println("This is not a quadratic equation. Please try again.");
+                                    break;
+                                }
+                                delta = b * b - 4 * a * c;
+                                if (delta == 0) {
+                                    System.out.println("There are two equal roots: x1=x2=");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match85-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                } else if (delta &lt; 0) {
+                                    System.out.println("The equation has no real root.");
+                                } else {
+                                    System.out.println("There are two distinct rooots:");
+                                    double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                                    double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                                    System.out.println("x1=" + x1);
+                                    System.out.println("x2 =" + x2);
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match85-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                }
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Invalid input! You must type a number. Please try again.");
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Print a triangle given its size");
+                        int kt;
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match85-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Type n:(1&lt;=n&lt;=5)");
+                        kt = sc.nextInt();
+                        if (1 &lt;= kt & kt &lt;= 5) {
+                            System.out.println("Your triangle :");
+
+                            for (int i = 0; i &lt; kt; i++) {
+                                for (int j = 0; j &lt; kt * 2 - 1; j++) {
+                                    if (j &gt;= kt - 1 - i & j &lt; kt + i) {
+                                        System.out.print("* ");
+                                    } else {
+                                        System.out.print("  ");
+                                    }
+                                }
+                                System.out.println("\n");
+</FONT>                            }
+                        } else {
+                            System.out.println("Invalid input. Please try again with 1&lt;=n&lt;=5.");
+                        }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match85-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        break;
+                    case 5:
+                        System.out.println("Goodbye!");
+                        break loop;
+                    default:
+                        System.out.println("Invalid input! You must enter a number between 1 and 5. Please try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println(" ");
+                System.out.println("Invalid input! you must enter a number. Please try again.");
+                sc.nextLine();
+            }
+
+        }
+        sc.close();
+</FONT>    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match85-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:50 GMT -->
+</HTML>

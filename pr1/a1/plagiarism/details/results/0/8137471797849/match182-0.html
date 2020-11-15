@@ -1,0 +1,150 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match182-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHoangLan_97484_assignsubmission_file_AsF1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenHoangLan_97484_assignsubmission_file_AsF1.java<p><PRE>
+import java.util.Scanner;
+
+public class AsF1 {
+    public static void main(String[] args) throws Exception {
+        int a = 0;
+        while (true) {
+            System.out.println("[1] Task 1");
+            System.out.println("[2] Task 2");
+            System.out.println("[3] Task 3");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match182-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("[4] Task 4");
+            System.out.println("[5] Exit");
+            System.out.println(" Enter your Choice");
+        Scanner sc = new Scanner(System.in);
+            a = sc.nextInt();
+</FONT>        
+        switch (a) {
+            case 1:
+                int dec_num, quot, i = 1, j;
+                int bin_num[] = new int[100];
+                Scanner sc1 = new Scanner(System.in);
+
+                System.out.println(" input a Decimal Number: ");
+                dec_num = sc1.nextInt();
+                quot = dec_num;
+                while (quot != 0) {
+                    bin_num[i++] = quot % 2;
+                    quot = quot / 2;
+                }
+                System.out.println(" Binary number is ");
+                for ( j = i - 1; j &gt; 0; j--) {
+                    System.out.println( bin_num[j]);
+                }
+                System.out.println("\n");
+                break;
+            case 2:
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match182-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                Scanner sc2 = new Scanner(System.in);
+                
+                int m;
+                System.out.println(" Enter your number m: ");
+                m = sc2.nextInt();
+                int n;
+                System.out.println(" Enter your number n: ");
+                n = sc2.nextInt();
+                double sum = 0;
+                for ( int l = 0; l &lt;= n; l++ ) {
+</FONT>                    sum = Math.sqrt( sum + m );
+                }
+                System.out.println(" Result: " + sum );
+                break;
+            case 3:
+                double secondRoot = 0, firstRoot = 0;
+                Scanner sc3 = new Scanner(System.in);
+                System.out.println("Enter the value of d ::");
+                double d = sc3.nextDouble();
+
+                System.out.println("Enter the value of b ::");
+                double b = sc3.nextDouble();
+
+                System.out.println("Enter the value of c ::");
+                double c = sc3.nextDouble();
+
+                double determinant = (b * b) - (4 * d * c);
+                double sqrt = Math.sqrt(determinant);
+                
+
+                if (determinant &gt; 0) {
+                    firstRoot = (-b + sqrt) / (2 * d);
+                    secondRoot = (-b - sqrt) / (2 * d);
+                    System.out.println("Roots are :: " + firstRoot + " and " + secondRoot);
+                } else if (determinant == 0) {
+                    System.out.println("Root is :: " + (-b + sqrt) / (2 * d));
+                }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match182-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                  break;
+
+            case 4:
+                int x;
+                Scanner sc4 = new Scanner(System.in);
+                System.out.println("Input an integer: ");
+                n = sc4.nextInt();
+                
+
+                if (n &lt; 1) {
+</FONT>                    System.out.println("Error: pls Enter a number from 1 to 5");
+                }
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match182-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                if (n &gt; 5) {
+                    System.out.println("Error: pls Enter a number from 1 to 5");
+                } else {
+                    System.out.println("Your pattern is: ");
+                    int odd = 1;
+                    int space = 4;
+                    for (int e = 1; e &lt;= n; e++) {
+                        for (int q = 1; q &lt;= space; q++) {
+                            System.out.print(" ");
+                        }
+                        for (int q = 1; q &lt;= odd; q++) {
+                            System.out.print("*");
+                        }
+                        System.out.println();
+                        odd = odd + 2;
+                        space = space - 1;
+                    }
+                }
+                  break;
+                  case 5:
+</FONT>                  System.out.println("Quit \n");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match182-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                  break;
+                  default:
+                    System.out.println(" not a valid number");
+                  
+
+        } 
+        System.out.println();
+        System.out.println(" Do you want to choose another function: Yes/No ");
+        String answer = sc.next();
+
+        if (answer.equalsIgnoreCase("No")) {
+            System.out.println(" Quitting");
+            break;
+</FONT>        }
+        
+  }
+}
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match182-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

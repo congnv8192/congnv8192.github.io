@@ -1,0 +1,160 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match47-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>Assignment.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+assignment.java<p><PRE>
+
+package Programming1;
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match47-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+public class assignment {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        boolean cont = true;
+</FONT>        do {
+            cont = true;
+            System.out.println("1: Convert a decimal (base 10) integer to binary (base 2) ");
+            System.out.println("2: Compute a consecutive square root");
+            System.out.println("3: Solve a quadratic equation ");
+            System.out.println("4: Print a triangle given its size");
+            System.out.println("5: Exit ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match47-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Enter your choose (1/2/3/4/5): ");
+            int choose = scan.nextInt();
+
+            switch (choose) {
+                case 1:
+                    System.out.println(" Enter an integer :");
+                    int d = scan.nextInt();
+                    String binary = "";
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match47-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_65.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int remider = d % 2;
+                    binary = binary + remider;
+                    d = d / 2;
+
+                    System.out.println(" The binary equivalent is : " + binary);
+                    break;
+                case 2:
+                    System.out.println("  Input two integers: m and n (1 ≤ n ≤ 5)");
+                    double sum = 0;
+                    int m = scan.nextInt();
+                    int n = scan.nextInt();
+                    if (n &gt;= 1 && n &lt;= 5) {
+                        for (int i = 1; i &lt;= n; i++) {
+                            sum = Math.sqrt(m + sum);
+                        }
+                        System.out.println("Sum: " + sum);
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Enter a");
+                    float a = scan.nextFloat();
+                    System.out.println("Enter b");
+                    float b = scan.nextFloat();
+                    System.out.println("Enter c");
+                    float c = scan.nextFloat();
+                    if (a == 0) {
+                        if (b == 0) {
+                            System.out.println("The equation has no solution");
+                        } else {
+                            System.out.println("Equation has 1 solution" + "x=" + (-c / b));
+                        }
+//                        return;
+                        break;
+                    }
+                    float denta = b * b - a * c * 4;
+                    float x1,
+                     x2;
+                    if (denta &lt; 0) {
+                        System.out.println("The equation has no solution");
+                    } else if (denta == 0) {
+                        System.out.println("Equations have double solutions" + "x1=x2=" + (-b / 2 * a));
+                    } else if (denta &gt; 0) {
+                        x1 = (float) ((-b + Math.sqrt(denta)) / (2 * a));
+                        x2 = (float) ((-b - Math.sqrt(denta)) / (2 * a));
+                        System.out.println("Equations have 2 distinct solutions:" + " X1 = " + x1 + " and x2= " + x2);
+                    }
+                    break;
+                case 4:
+                    System.out.println("input an integer n (1 ≤ n ≤ 5)");
+                    int z = scan.nextInt();
+                    int i,
+                     j,
+                     k,
+                     t;
+                    j = z - 1;
+                    for (i = 1; i &lt; 2 * z; i = i + 2) {
+                        if (z &gt;= 1 && z &lt;= 5) {
+                            k = i;
+                            t = j;
+                            while (t &gt; 0) {
+                                System.out.print("   ");
+                                t--;
+                            }
+                            j--;
+                            while (k &gt; 0) {
+                                System.out.print("*  ");
+                                k--;
+                            }
+                            System.out.print("\n");
+                        }
+                    }
+                    break;
+</FONT>                case 5:
+                    System.out.println("Do you really want to exit the program? (Y/N)");
+                    Scanner sc = new Scanner(System.in);
+                    String lastSelect = sc.nextLine().toUpperCase();
+                    System.out.println(lastSelect);
+                    char lastCompare = lastSelect.charAt(0);
+                    if (lastCompare == 'Y') {
+                        System.out.println("Goodbye!");
+                        cont = false;
+                    
+//                        System.exit(0);
+                    }else {
+                        cont = true;
+                    }
+                        
+                    break;
+                default:
+                    System.out.println("You have chosen a wrong functional number!");
+                    cont = true;
+                    break;
+            }
+        } while (cont == true);
+    }
+}
+
+        
+        
+
+        
+        
+
+        
+ 
+ 
+ 
+ 
+
+
+
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match47-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:42 GMT -->
+</HTML>

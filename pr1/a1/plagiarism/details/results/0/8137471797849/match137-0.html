@@ -1,0 +1,254 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match137-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040096PhamHuyHoang_97651_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040096PhamHuyHoang_97651_assignsubmission_file_Assignment1.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match137-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package assignment1;
+import java.util.Scanner;
+/**
+ *
+ * @author PhamHuyHoang
+ */
+public class Assignment1 {
+
+   static Scanner sc = new Scanner(System.in);
+
+    /*    1. Convert a decimal (base 10) integer to binary (base 2) */
+    public static void DecimalToBinary() {
+</FONT>        System.out.print("Enter a decimal: ");
+        // Enter input from keyboard
+        int N;
+        N = sc.nextInt();
+
+        int a[] = new int[10000]; // Array to save results 
+        int index = 0;
+        while (N &gt; 0) {
+            a[index] = N % 2; // Get mod
+            index = index + 1;
+            N = N / 2; // Result of devision 
+        }
+        // print format: "Reuslt: XX (binary)" 
+        System.out.print("Result: ");
+        // Print binary
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match137-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = index - 1; i &gt;= 0; i--) {
+            System.out.print(a[i]);
+        }
+        System.out.println(" (binary)");
+
+    }
+
+    /* 2. Compute a consecutive square root */
+    public static void ConsecutiveSquare() {
+        int m, n;
+</FONT>        System.out.print("Enter m: ");
+        m = sc.nextInt();
+        System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+        n = sc.nextInt();
+
+        double a = 0; // result
+
+        // n must in [1, 5]
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match137-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while (n &lt; 1 || n &gt; 5) {
+            System.out.println("n invalid!!!");
+            System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+            n = sc.nextInt();
+        }
+
+        // compute a consecutive square root
+        for (int i = 1; i &lt;= n; i++) {
+            a = Math.sqrt(m + a);
+        }
+
+        System.out.println("Result of ConsecutiveSquare is: " + a);
+    }
+
+    /* 3. Solve a quadratic equation */
+    public static void QuadraticEquation() {
+        System.out.println("Enter a, b, c in Quadratic Equation: ax^2 + bx + c = 0");
+        double a, b, c;
+        System.out.print("Enter a: ");
+        a = sc.nextDouble();
+        System.out.print("Enter b: ");
+        b = sc.nextDouble();
+        System.out.print("Enter c: ");
+        c = sc.nextDouble();
+
+        if (a == 0 && b == 0 && c == 0) {
+            System.out.println("The equation has a countless number of real roots.");
+</FONT>        } else if (a == 0 && b == 0 && c != 0) {
+            System.out.println("The equation has no root.");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match137-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        } else if (a == 0 && b != 0 && c != 0) {
+            System.out.println("The equation has one root: x = " + (-c / b));
+        } else {
+            // caculate deta 
+            double delta = (b * b - 4 * a * c);
+</FONT>            if (delta &lt; 0) {
+                System.out.println("The equation has no real root.");
+            } else if (delta == 0) {
+                System.out.println("The equation has one roots: x = " + (-b) / (2 * a));
+            } else {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match137-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("The equation has two roots: x1 = " + (-b + Math.sqrt(delta)) / (2 * a) + " and x2 = " + (-b - Math.sqrt(delta)) / (2 * a));
+</FONT>            }
+        }
+    }
+
+    /* 4. Print a triangle given its size */
+    public static void Triangle() {
+        System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+        int n;
+        n = sc.nextInt();
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match137-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while (n &lt; 1 || n &gt; 5) {
+            System.out.println("n invalid!");
+            System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+            n = sc.nextInt();
+        }
+
+        for (int i = 1; i &lt;= n; i++) {
+            for (int space = 0; space &lt;= n - i; space++) {
+                System.out.print("  ");
+            }
+            for (int space = 0; space &lt; (2 * i - 1); space++) {
+                System.out.print("* ");
+</FONT>
+            }
+            System.out.println();
+        }
+    }
+
+    public static void FunctionMenu() {
+        System.out.println("-----------------------ASSIGNMENT1-------------------------");
+        System.out.println("Choose a function:");
+        System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+        System.out.println("2. Compute a consecutive square root");
+        System.out.println("3. Solve a quadratic equation");
+        System.out.println("4. Print a triangle given its size");
+        System.out.println("5. Exit");
+        System.out.println("-----------------------------------------------------------");
+
+        int input; // select function
+        input = sc.nextInt();
+
+        // Check entered valid [1 -&gt; 5]
+        while (input &lt; 1 || input &gt; 5) {
+            System.out.print("Invalid!!! (Select from 1 to 5): ");
+            input = sc.nextInt();
+        }
+        switch (input) {
+            case 1:
+                /* 1. Convert a decimal (base 10) integer to binary (base 2) */
+                DecimalToBinary();
+                // Continue with another function.
+                System.out.print("Do you want to continue with another function? (Enter 1 (Yes) or 0 (No)): ");
+                int confirm1 = sc.nextInt();
+
+                while (confirm1 != 0 && confirm1 != 1) {
+                    System.out.print("Invalid!!! Enter 1 or 0: ");
+                    confirm1 = sc.nextInt();
+                }
+                if (confirm1 == 1) {
+                    FunctionMenu();
+                } else {
+                    System.out.println("EXIT PROGRAM!");
+                    // Exit program
+                    System.exit(0);
+                }
+            case 2:
+                /* 2. Compute a consecutive square root */
+                ConsecutiveSquare();
+
+                // Continue with another function.
+                System.out.print("Do you want to continue with another function? (Enter 1 (Yes) or 0 (No)): ");
+                int confirm2 = sc.nextInt();
+                while (confirm2 != 0 && confirm2 != 1) {
+                    System.out.print("Invalid!!! Enter 1 or 0: ");
+                    confirm2 = sc.nextInt();
+                }
+                if (confirm2 == 1) {
+                    FunctionMenu();
+                } else {
+                    System.out.println("EXIT PROGRAM!");
+                    // Exit program
+                    System.exit(0);
+                }
+            case 3:
+                /* 3. Solve a quadratic equation */
+                QuadraticEquation();
+
+                // Continue with another function.
+                System.out.print("Do you want to continue with another function? (Enter 1 (Yes) or 0 (No)): ");
+                int confirm3 = sc.nextInt();
+                while (confirm3 != 0 && confirm3 != 1) {
+                    System.out.print("Invalid!!! Enter 1 or 0: ");
+                    confirm3 = sc.nextInt();
+                }
+                if (confirm3 == 1) {
+                    FunctionMenu();
+
+                } else {
+                    System.out.println("EXIT PROGRAM!");
+                    // Exit program
+                    System.exit(0);
+                }
+            case 4:
+                /* 4. Print a triangle given its size */
+                Triangle();
+
+                // Continue with another function.
+                System.out.print("Do you want to continue with another function? (Enter 1 (Yes) or 0 (No)): ");
+                int confirm4 = sc.nextInt();
+                while (confirm4 != 0 && confirm4 != 1) {
+                    System.out.print("Invalid!!! Enter 1 or 0: ");
+                    confirm4 = sc.nextInt();
+                }
+                if (confirm4 == 1) {
+                    FunctionMenu();
+                } else {
+                    System.out.println("EXIT PROGRAM!");
+                    // Exit program
+                    System.exit(0);
+                }
+            case 5:
+                System.out.println("EXIT PROGRAM!");
+                // Exit program
+                System.exit(0);
+            default:
+                System.out.println("EXIT PROGRAM!");
+                // Exit program
+                System.exit(0);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Menu to select function
+        FunctionMenu();
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match137-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+</HTML>

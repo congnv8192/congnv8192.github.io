@@ -1,0 +1,209 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match223-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenKhacHung_97701_assignsubmission_file_Act1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenVanQuan_97536_assignsubmission_file_Assignment1.java<p><PRE>
+package midtermproject;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match223-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+public class Assignment1 {
+
+	public static void main(String[] args) {
+		boolean Continue = true;
+		Scanner sc = new Scanner(System.in);
+		while(Continue == true)
+		{
+			System.out.println("Please choose which function to perform:");
+			System.out.println("1. Convert a decimal integer to binary");
+			System.out.println("2. Compute a consecutive square root");
+			System.out.println("3. Solve a quadratic equation");
+</FONT>			System.out.println("4. Print a triangle given its size");
+			System.out.print("Function you want to choose: ");
+			
+			int option = sc.nextInt();
+			if(option == 1)
+			{
+				act1();
+				
+			}
+			else if(option == 2 )
+			{
+				act2();
+				
+			}
+			else if(option == 3)
+			{
+				act3();
+			}
+			else if( option == 4)
+			{
+				act4();
+			}
+			else
+			{
+				 System.err.println("Invalid option!");
+		            continue;
+			}
+			System.out.println("\nDo you want to continue (yes or no)?");
+            String tmp = sc.next();
+            if (tmp.equalsIgnoreCase("yes")) 
+            {
+            } 
+            else if (tmp.equalsIgnoreCase("no")) 
+            {
+                Continue = false;
+                System.out.println("Goodbye !");
+            }
+            else 
+            {
+                
+                 System.err.println("Enter again!");
+                 continue;                         
+            } 
+			
+		}
+		sc.close();
+	}
+	public static void act1()
+	{
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Enter Decimal Number: ");
+		int n = sc.nextInt();
+		int du;
+		String coso = "";
+		while(n != 0)	
+		{
+			du=n%2;
+			n=n/2;
+			coso = coso+du; 
+			if(n==0)
+			{
+				System.out.print("Binary is: ");
+				for (int i = coso.length(); i &gt; 0; i--)
+				{
+					 System.out.print(coso.substring(i-1,i));
+				} 
+			}
+
+		}
+	}
+	public static void act2()
+	{
+		System.out.print("Enter m: ");
+		Scanner sc= new Scanner(System.in);
+		int m = sc.nextInt();
+		System.out.println("Enter n, (1&lt;= n &lt;= 5): ");
+		int n= sc.nextInt();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match223-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		double s= Math.sqrt(m);
+		while(n &lt; 1 || n &gt; 5)
+		{
+			System.err.println("You must enter n with 1&lt;= n &lt;=5.");
+			System.out.print("  Enter n: ");
+			n = sc.nextInt();
+		}
+		for( int i = 1; i &lt;n ; i ++)
+</FONT>		{
+			s=Math.sqrt(m+s);
+		}
+		System.out.println(s);
+	}
+	public static void act3()
+	{
+		Scanner sc = new Scanner(System.in);
+			System.out.print("Enter a: ");
+			double a = sc.nextDouble();
+			System.out.print("Enter b: ");
+			double b = sc.nextDouble();
+			System.out.print("Enter c: ");
+			double c = sc.nextDouble();
+			if(a==0)
+			{
+				if(b==0)
+				{
+					if(c==0)
+					{
+						System.out.println("there's nothing to be solved.");
+					}
+					else
+					{
+						System.out.println("the equation has no root.");
+					}
+				}
+				else
+				{
+						System.out.println("there is one root: x= " + -c/b);
+				}
+			}
+			else
+			{
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match223-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				double s= Math.pow(b, 2) - 4*a*c;
+				if(s &lt; 0)
+				{
+					System.out.println("the equation has no root.");
+				}
+				else
+				{
+					if(s==0)
+</FONT>					{
+						System.out.println("the equation has a solution: x= " + -b/(2*a));
+					}
+					else
+					{
+					double x1 = (-b + Math.sqrt(s))/ (2*a);
+					double x2 = (-b - Math.sqrt(s))/ (2*a);
+					System.out.print("the equation has solution: x1= " +Math.floor(x1*10)/10 + ", ");
+					System.out.println("x2= " +Math.floor(x2*10)/10);
+					}
+				}
+				
+			}
+	}
+	public static void act4()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match223-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int n = sc.nextInt();
+		while(n&lt;1 || n&gt;5)
+		{
+			System.err.println("You must enter n with 1&lt;= n &lt;=5.");
+			System.out.print("  Enter n: ");
+			n= sc.nextInt();
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match223-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		}
+		String a="";
+		String b="*";
+		String c="";
+		for(int i = 0; i &lt; n; i++)
+		{
+			a=a+" ";
+			
+		}
+		for( int i = 0; i &lt;n ; i++ )
+		{
+			
+			a= a.substring(a.length()-n+1) + b ;
+			System.out.println(a+ c);
+			c= c+"*"; 
+</FONT>		}
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match223-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

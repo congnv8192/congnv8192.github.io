@@ -1,0 +1,147 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match168-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeMinhuc_97635_assignsubmission_file_LeMinhDuc_4C19_1901040060_B03.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+inhQuocTrung_97524_assignsubmission_file_assignment.java<p><PRE>
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match168-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package assignment1.pkg1901040230.dinh.quoc.trung;
+import java.util.Scanner;
+public class assignment {
+    private static void EX1(){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter an integer"); 
+</FONT>          int a=sc.nextInt();
+          String s="";
+        System.out.println("Binary equivalent");
+        while(a&gt;0){
+            int tmp=a%2;
+            s=s+String.valueOf(tmp);
+            a=a/2;
+          }
+        for(int i=s.length()-1;i&gt;=0;i--){
+            System.out.print(s.charAt(i));
+          }
+        }
+    
+    private static void EX2(){
+        Scanner sc= new Scanner(System.in);
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match168-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("a*x^2+b*x+c=0");
+        System.out.println("Please enter a,b,c");
+        int a= sc.nextInt();
+        int b= sc.nextInt();
+        int c= sc.nextInt();
+        int d= b*b-4*a*c;
+         if(d&lt;0){
+             System.out.println("There is no solution!");
+</FONT>         }else if (d==0){
+             System.out.println("x is: "+(-b)/(2*a));
+         }else if (a==0 && b==0 && c==0){
+             System.out.println("Infinite solutions");
+         }else if(d&gt;0){
+             double x1= (-b + Math.sqrt(b*b-4*a*c))/2*a;
+             double x2= (-b - Math.sqrt(b*b-4*a*c))/2*a;
+             System.out.println("x1= "+ x1);
+             System.out.println("x2= "+ x2);
+         }
+        
+    }
+    private static void EX3(){
+        Scanner sc= new Scanner(System.in);
+         System.out.println("Enter an interger");
+        int m = sc.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match168-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         System.out.println("Enter the number of consecutive square root (between 1 and 5)");
+        int n = sc.nextInt();
+        double k = Math.sqrt(m);
+        if (n&gt;=1 && n&lt;=5){
+           for (int u=1; u&lt;n; u++){
+            k = Math.sqrt(m+k);
+            }
+            System.out.println("Answer "+k);
+        }else {
+            System.out.println("Invalid input");
+        }
+        
+    }
+     private static void EX4(){
+        
+        Scanner sc = new Scanner(System.in);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match168-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter number of rows");
+        int a = sc.nextInt();
+        int b = 2 * a - 1;
+        if (a&gt;=1 && a&lt;=5){
+            for (int i=0; i&lt;=a; i++){
+            for (int m=1; m&lt;=(a-i); m++){
+                System.out.print(" ");
+              }
+            for (int n=(a-i+1); n&lt;=(b-a+i); n++){
+                System.out.print("*");
+              }
+            System.out.println();
+            }
+        }else {
+            System.out.println("Invalid input");
+            }
+    }
+     
+    public static void set(){
+</FONT>        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose one of the methods:");
+        System.out.println("1.Convert to decimal  2.Compute a consecutive square root  3.Solve a quadratic equation  4.Print a triangle * ");
+        int choose = sc.nextInt();
+        switch (choose){
+            case 1:
+                EX1();
+                break;
+            case 2:
+                EX2();
+                break;
+            case 3:
+                EX3();
+                break;
+            case 4:
+                EX4();
+                break;
+            default:
+                break;
+            }
+            
+    }
+     
+    public static void main(String args[]) {
+        String q="";
+        Scanner sc = new Scanner(System.in);
+        set();
+       while(true){
+            System.out.println("");
+            System.out.println("Do you want to continue another program ? (Y/N)");
+            q = sc.nextLine();
+            if(q.equals("N")){
+                return;
+            }
+            set();
+       }                  
+    }
+}
+ 
+
+   
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match168-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

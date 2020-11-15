@@ -1,0 +1,184 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match165-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040066NguyenTienTranuc_97495_assignsubmission_file_NguyenTienTranDuc_1801040066_3C18.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040066NguyenTienTranuc_97495_assignsubmission_file_NguyenTienTranDuc_1801040066_3C18.java<p><PRE>
+package PR1.assignment1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Tran Duc
+ */
+public class NguyenTienTranDuc_1801040066_3C18 {
+
+    static Scanner sc = new Scanner(System.in); //Scanner for getting input from user
+
+    public static void task1() {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match165-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Please enter a decimal (base 10) integer: "); //ask users
+        int a = sc.nextInt();//a is the number user want to convert
+	int b; //b is the remainder of a/2 (0 or 1)
+        String s = "";
+        while (a &gt; 0) {
+            b = a % 2;
+            s = b + "" + s;
+            a = a / 2;
+        }
+        System.out.println("Binary form (base 2): " + s); //print the result
+    }
+
+    public static void task2() {
+        System.out.print("Please input m: "); //ask users
+</FONT>        double m = sc.nextDouble(); //input m
+        double m0 = m;
+        System.out.print("Please input n: "); //ask users
+        int n = sc.nextInt(); //input n
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match165-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double result = 0;
+        int i = 1;
+        if (n &gt;= 1 && n &lt;= 5) { //condition of n
+            while (i &lt;= n) { //while loop when get true condition
+                result = Math.sqrt(m);
+                m = m0 + result;
+                i++; //stop while loop when i = n
+            }
+            System.out.println("Result: " + result); //print the result
+</FONT>        } else {
+            System.out.println("Invalid input."); //print this when get wrong condition
+        }
+    }
+
+    public static void task3() {
+        System.out.println("Please input a, b and c of the equation: "); //ask user
+        System.out.print("Enter a: ");//input a
+        double a = sc.nextInt();
+        System.out.print("Enter b: ");//input b
+        double b = sc.nextInt();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match165-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Enter c: ");//input c
+        double c = sc.nextInt();
+        if (a == 0) {
+            if (b == 0) {
+                if (c == 0) {
+                    System.out.println("There's nothing to be sovled."); 
+                } else {
+                    System.out.println("The equation has no root.");
+                }
+            } else {
+                System.out.println("The equation haa one root: x = " + -c / b); //calculate and print the one root
+            }
+        } else {
+            double delta = (b * b - 4 * a * c); //calculate the delta
+            if (delta &lt; 0) {
+                System.out.println("The equation has no real root.");
+</FONT>            } else {
+                double z = Math.sqrt(delta);
+                double x1 = (-b + z) / 2 * a; //calculate root 1
+                double x2 = (-b + z) / 2 * a; //calculate root 2
+                System.out.println("The equation has 2 roots: " + x1 + " " + x2); //print the 2 roots
+            }
+        }
+    }
+
+    public static void task4() {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match165-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Please enter an integer from 1 to 5: ");//ask users
+        int n = sc.nextInt();
+        
+        for (int i = 1; i &lt;= n; i++) { 
+            for (int j = 0; j &lt; n - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j &lt; (2 * i - 1); j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void tasks(int opt) { //this method includes all tasks above and will execute each task base on user's input
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match165-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        if (opt == 1) {
+            task1(); //call method task1
+        }
+        if (opt == 2) { 
+            task2(); //call method task2
+        }
+        if (opt == 3) {
+            task3(); //call method task3
+        }
+        if (opt == 4) {
+            task4(); //call method task 4
+        }
+        if (opt == 5) {
+            System.out.println("Thank you!"); //print this when user want to exit
+</FONT>        }
+    }
+
+    public static void menu() { //this method print the menu for users to choose 
+        System.out.println("1. Convert a decimal (base 10) integer to binary (base 2) ");
+        System.out.println("2. Compute a consecutive square root ");
+        System.out.println("3. Solve a quadratic equation ");
+        System.out.println("4. Print a triangle given its size ");
+        System.out.println("5. Quit.");
+    }
+
+    public static void choose() { //this method requires users to take an option
+        menu(); //print the menu to users 
+        System.out.print("Please take an option: ");
+        int n = sc.nextInt(); //input the option
+        while (n &lt; 1 || n &gt; 5) { 
+            System.out.println("Sorry, you have to enter a number from 1 to 5."); //print this when user's input meet the condition of while loop
+            menu(); //print the menu again
+            System.out.print("Please take your option again: ");
+            n = sc.nextInt(); //ask user to input again
+        }
+        tasks(n); //call the tasks method 
+        if (n &lt; 5) {
+            System.out.println("Do you want to take another option? "); //ask user 
+            rechoose(); //call the rechoose method
+        }
+    }
+
+    public static void rechoose() { //this method ask user want to continue or not
+        boolean rechoose = true;
+        while (rechoose) { 
+            String choice = sc.nextLine(); //input yes or no
+            if (choice.equalsIgnoreCase("Yes")) {
+                choose(); //call choose method when user input Yes
+                rechoose = false;
+            } else if (choice.equalsIgnoreCase("No")) {
+                System.out.println("Thank you!"); //print when user input No
+                rechoose = false;
+            } else {
+                System.out.println("Input Yes or No: "); //ask user 
+            }
+        }
+    }
+
+    public static void main(String[] args) { //main for running the program
+        try { //if the program get errors then throws the exception
+            choose(); //call the choose method
+        } catch (Exception e) {
+            System.err.println("Invalid input!"); 
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match165-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

@@ -1,0 +1,206 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match215-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenThiNgocNhi_97705_assignsubmission_file_NguyenThiNgocNhi_2TD19_1901060039.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenThiThuHuong_97439_assignsubmission_file_NguyenThiThuHuong_2T19_1901060021.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package midterm.assignment;
+
+import java.util.Scanner;
+
+/**
+ *
+ * Nguyen Thi Thu Huong
+ * Class: 2TĐ19
+ * Student ID: 1901060021
+ */
+public class NguyenThiThuHuong_2TĐ19_1901060021 {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match215-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+          Integer q;
+        do {
+            System.out.println("\nThis is a menu-based program.");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+            System.out.println("2. Compute a consecutive square root.");
+</FONT>            System.out.println("3. Solve a quadratic equation.");
+            System.out.println("4. Print a triangle given its size.");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match215-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("5. Exit the program.");
+            System.out.println("Select Function : [1- 5].");
+            System.out.print("Your Choice :");
+            q = sc.nextInt();
+            if (q == 1) {
+</FONT>                lesson1();
+                //call the lesson1 () function.
+            } else if (q == 2) {
+                lesson2();
+                //call the lesson2 () function.
+            } else if (q == 3) {
+                lesson3();
+                //call the lesson3 () function.
+            } else if (q == 4) {
+                lesson4();
+                //call the lesson4 () function.
+            } else if (q == 5) {
+                System.out.println("Exit the program.");
+                break;
+                //End program.
+            }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match215-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            if (q != 1 && q != 2 && q != 3 && q != 4 && q != 5) {
+                //If q differs from {1,2,3,4,5} =&gt; the error is reported.
+                System.out.println("Enter incorrectly, please re-enter.");
+            }
+
+        } while (q != 1 || q != 2 || q != 3 || q != 4 || q != 5);
+</FONT>        //If q = {1,2,3,4} =&gt; Do the exercise with the corresponding case of if.
+        //If q = 5 =&gt; End program.
+    }
+
+    static void lesson1() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the integer: ");
+        Integer input = sc.nextInt();
+        System.out.println("Binary number is :" + Integer.toBinaryString(input));
+        //Use Integer.toBinaryString() to convert the integer to binary (base 2).
+    }
+
+    static void lesson2() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the integer m: ");
+        Integer m = sc.nextInt();
+
+        double o = 0;
+        Integer n = 0;
+        do {
+            System.out.print("Enter the integer n: ");
+            n = sc.nextInt();
+            if (n &gt;= 1 && n &lt;= 5) {
+                // If n satisfies the condition 1 &lt;= n &lt;= 5, it is allowed to enter the loop.
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match215-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                for (int i = 1; i &lt;= n; i++) {
+                    o = Math.sqrt(m + o);
+                    // calculate the sum of the roots
+                    //Math.sqrt () function calculates the square root of 2.
+                }
+                System.out.println(o);
+                //print out the results
+            } else if (n &gt; 5 || n &lt; 1) {
+                //If n is greater than 5 and less than 1, the error will be reported.
+                System.out.println("1&lt;=n&lt;=5");
+            }
+        } while (n &gt; 5 || n &lt; 1);
+</FONT>        //If n satisfies 1 &lt;= n &lt;= 5 then print the result, if n does not satisfy 1 &lt;= n &lt;= 5 then report error and return to the loop.
+
+    }
+
+    static void lesson3() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input a: ");
+        double a = sc.nextInt();
+        System.out.print("Input b: ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match215-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double b = sc.nextInt();
+        System.out.print("Input c: ");
+        double c = sc.nextInt();
+
+        if (a == 0) {
+            //Case 1: a =0.
+            if (b != 0) {
+                //a=0,b is different from 0 =&gt; there is an unique solution (-c/b).
+                System.out.println("The equation has one solution: "
+                        + "x = " + (-c / b));
+
+            } else {
+                if (c != 0) {
+                    //a=0,b=0,c is different from 0 =&gt; there is no solution.
+                    System.out.println("The equation has no solution!");
+                } else {
+                    //a=0,b=0,c=0 =&gt; infinite many solutions.
+                    System.out.println("The equation has countless solutions");
+                }
+            }
+
+        } else {
+            double delta = b * b - 4 * a * c;
+</FONT>            // a is different from 0, calculating delta.
+            double x1;
+            double x2;
+            if (delta == 0) {
+                // delta == 0 =&gt; equations has 2 equal solutions -b / (2 * a).
+                x1 = (-b / (2 * a));
+                System.out.println("The equations has double solutions: "
+                        + "x1 = x2 = " + x1);
+            } else if (delta &gt; 0) {
+                //delta&gt; 0 equation has 2 solutions (-b + Math.sqrt (delta)) / (2 * a) and (-b - Math.sqrt (delta)) / (2 * a).
+                //Math.sqrt () calculates the square root of 2.
+                x1 = (double) ((-b + Math.sqrt(delta)) / (2 * a));
+                x2 = (double) ((-b - Math.sqrt(delta)) / (2 * a));
+                System.out.println("The equation has two solution: "
+                        + "x1 = " + x1 + " và x2 = " + x2);
+            } else {
+                //delta &lt;0 =&gt; there is no solution.
+                System.out.println("The equation has no solution!");
+            }
+        }
+
+    }
+
+    static void lesson4() {
+        Scanner sc = new Scanner(System.in);
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match215-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Integer n;
+        do {
+            System.out.print("Enter the integer n: ");
+            n = sc.nextInt();
+            if (n &gt;= 1 && n &lt;= 5) {
+                // If n satisfies n &lt;= 1 &lt;= 5 then go to for loop
+                for (int r = 1; r &lt;= n; r++) {
+</FONT>                    for (int i = n - r; i &gt; 0; i--) {
+                        System.out.print(" ");
+                        //the distance from the left to the right corresponds to i.
+                    }
+                    for (int j = 1; j &lt;= r; j++) {
+                        System.out.print("*");
+                        //display number * increments corresponding to j.
+                    }
+
+                    for (int k = 2; k &lt;= r; k++) {
+                        //for the first time the for loop does not run because k cannot be less than or equal to 1 because k = 2.
+                        System.out.print("*");
+                        //displays number * corresponding to k.
+                    }
+                    System.out.println();
+                    //the number of lines corresponding to r
+                }
+            } else if (n &gt; 5 || n &lt; 1) {
+                //If n is greater than 5 or less than 1 =&gt; the error is reported.
+                System.out.println("1&lt;=n&lt;=5");
+            }
+        } while (n &gt; 5 || n &lt; 1);
+        //If n satisfies code 1 &lt;= n &lt;= 5 then print the result and end the loop, n does not satisfy the report the error and returns to the loop.
+
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match215-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

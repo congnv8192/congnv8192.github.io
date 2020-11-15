@@ -1,0 +1,184 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match59-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenPhuongTan_97663_assignsubmission_file_Main.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenPhuongTan_97663_assignsubmission_file_Main.java<p><PRE>
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int N;
+        boolean error =false;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("FRIENDLY MATH TUTOR DESIGNED BY 1901040184");/* NGUYEN PHUONG TAN TUT2-LEC2 (sorry teacher for not changing the file name as your 
+        requirement
+        I am afraid that make my assignment error. I've spent 10 days just to finish this work)*/
+        while (!error) {
+
+            System.out.println("Press 1 to convert a decimal to a binary");
+            System.out.println("Press 2 to compute a consecutive square ");
+            System.out.println("Press 3 to solve a quadratic function");
+            System.out.println("Press 4 to print a triangle");
+            System.out.println("Press 5 to exit the program");
+try{
+            N = sc.nextInt();
+            sc.nextLine();
+
+            switch (N) {
+                case 1:
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match59-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int dec_num, rem, quot, i = 1, j;
+                    int bin_num[] = new int[100];
+                    Scanner scan = new Scanner(System.in);
+
+                    System.out.print("Please type a Decimal Number : ");
+                    dec_num = scan.nextInt();
+
+                    quot = dec_num;
+
+                    while (quot != 0) {
+                        bin_num[i++] = quot % 2;
+                        quot = quot / 2;
+</FONT>                    }
+
+                    System.out.print("Your binary number is: ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match59-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    for (j = i - 1; j &gt; 0; j--) {
+                        System.out.print(bin_num[j]);
+                    }
+                    System.out.print("\n");
+
+                    break;
+                case 2:
+                    System.out.println("This is the program that help u calculate the sum of your conductive square root");
+
+                    int m = 0;
+                    int n = 0;
+                    double sum = 0;
+                    while (m &lt; 1 || (n &lt; 1 || n&gt;5)) {
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match59-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Type your M and N (M,N&gt;0) and N&lt;=5 (as the requirement of teacher: ) ");
+                        try {
+                            m = sc.nextInt();
+                            sc.nextLine();
+                            n = sc.nextInt();
+                            sc.nextLine();
+                        } catch (Exception e) {
+                            sc.nextLine();
+                            System.err.println(" A ALPHABET CHARACTER? HOW CAN I CALCULATE IT?");
+</FONT>                            System.err.println(" PLEASE TEACH ME, I'M WILLING TO LEARN IT");
+                        }
+
+                    }
+                    for (int i1 = 1; i1 &lt;= n; i1++) {
+                        sum = Math.sqrt((sum + m));
+                    }
+
+                    System.out.println("Your result is " + sum);
+                    break;
+                case 3:
+                    System.out.print("THIS IS A PROGRAM TO SOLVE A QUADRATIC FUNCTION\nPLEASE ENTER YOUR 3 NUMBERS");
+
+
+                    boolean error1=false;
+                    while (!error1)
+                    { try{
+                        double a = sc.nextDouble();
+                        sc.nextLine();
+                        double b = sc.nextDouble();
+                        sc.nextLine();
+                        double c = sc.nextDouble();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match59-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_19.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        sc.nextLine();
+                        double d = b * b - 4 * a * c;
+                        double x1 = (-b + Math.sqrt(d)) / 2 * a;
+                        double x2 = (-b - Math.sqrt(d)) / 2 * a;
+
+                        if (a == 0) {
+                            if (b == 0) {
+                                if (c == 0) {
+                                    System.out.println("This equation has infinitive roots");
+                                } else {
+                                    System.out.println("This equation has no root");
+                                }
+                            } else {
+                                System.out.println("The equation has single root x= " + -c / b);
+                            }
+                        } else {
+                            if (d &lt; 0)
+                                System.out.println("The equation has no root");
+                            if (d == 0)
+                                System.out.println("The equation has duplicate solutions x1 = x2= " + (-b) / (2 * a));
+
+                            if (d &gt; 0)
+                                System.out.println("The equation has two different roots x1= " + x1 + " x2= " + x2);
+</FONT>                        } error1=true;
+                    }catch (Exception e){
+                        System.err.print("A QUADRATIC FUNCTION WITH ALPHABET CHARACTER???? NO NO NO\n");
+                        System.err.print("TRY AGAIN!!");
+                        sc.nextLine();
+                    }
+
+                    }
+                    break;
+                case 4:
+                    int h = 0;
+
+
+                    System.out.println("Press your height of your triangle then we will draw it for u");
+
+
+                    while (h &lt; 1||h&gt;5) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match59-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Number must be greater than 0 and smaller than 6");
+                        try {
+                            h = sc.nextInt();
+                            sc.nextLine();
+                        } catch (Exception e) {
+                            sc.nextLine();
+                            System.err.println("THIS IS NOT EVEN A NUMBER TT ");
+                        }
+                    }
+                    for (i = 1; i &lt;= h; i = i + 1) {
+                        for (j = 1; j &lt;= 2 * h - 1; j++) {
+                            if (j &gt;= h - i + 1 && j &lt;= h + i - 1)
+                                System.out.print("*");
+
+                            else
+                                System.out.print(" ");
+                        }
+                        System.out.print("\n");
+
+                    }
+                    break;
+                case 5:
+                    System.out.println("See u next time teacher!");
+                    System.exit(0);
+                default:
+                    System.out.println("PLEASE CHOOSE THE NUMBER FROM 1 TO 5");}
+</FONT>            }catch (Exception e){
+    System.err.print("THIS IS NOT A NUMBER !!!!\n");
+    System.err.print("SYNTAX ERROR\n");
+    sc.nextLine();
+}
+        }
+    }
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match59-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:48 GMT -->
+</HTML>

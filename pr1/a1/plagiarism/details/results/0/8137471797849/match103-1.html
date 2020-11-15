@@ -1,0 +1,287 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match103-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeVanSon_97760_assignsubmission_file_LeVanSon_1901040175_2C19.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+oHongHue_97452_assignsubmission_file_DoHongHue_1701040061_6C17.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment;
+import java.util.Scanner;
+
+/**
+ *
+ * @author asus
+ */
+public class DoHongHue_1701040061_6C17 {
+    public static void main(String[] args) {
+        int choice = 0;
+        boolean isContinued = false;
+        Scanner sc = new Scanner(System.in);  
+        while(true) {
+              System.out.println("Choose one of the follow choices: \n"
+                + "1. Binary Conversion\n"
+                + "2. Square Root Calculation\n"
+                + "3. Equation Calculation\n"
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match103-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                + "4. Triangle Print");
+              try {
+            choice = sc.nextInt();
+            sc.nextLine();
+              } catch(Exception e) {
+                  sc.nextLine();
+                  System.out.println("Invalid  input! Please enter again!");
+                 
+              }        
+            switch(choice) {
+                case 1:
+                  convertToBinary(); 
+                  isContinued = true;
+                  break;
+                case 2:
+                    computeSquareRoot();
+                     isContinued = true;
+                    break;
+                case 3:
+                    calculateQuadraticEquation();
+                     isContinued = true;
+                    break;
+                case 4:
+                    printTriangle();
+                     isContinued = true;
+                    break;
+                default:
+                    System.out.println("You need to enter value in range 1 - 4!"); 
+                    isContinued = false;
+</FONT>            }
+            if(isContinued) {
+                System.out.print("Do you want to continue ?\nEnter Y to continue\nEnter any value to stop\n");             
+                String answer = sc.nextLine();
+                if(answer.equalsIgnoreCase("Y")) {                   
+            } else {
+                break;
+            }
+            }         
+        }     
+    }
+    
+     public static void convertToBinary() {
+        int number = -1;
+        //create empty array with length of 99 to store the values of each mod function to 2
+        int[] array = new int[99];
+        int i = 0;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match103-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);       
+        /*
+        while loop is used to catch the error, if number entered by user is smaller than 0, then require user to enter relevant number
+        require users to enter the valid input if the input is not a number
+        */
+      while(number &lt; 0) {  
+        System.out.println("Enter your non-negative number: ");
+        try {
+        number = sc.nextInt();
+        sc.nextLine();
+        } catch(Exception e) {
+            sc.nextLine();
+            System.out.println("Invalid value!\nRetry again!");
+        }          
+        } 
+      //if entered number is 0, then return 0
+      if(number == 0) {
+          System.out.print(number);
+      }
+      /*
+      if the enter value is 0, then return it's binary representation
+      while loop is used to create a loop for mod function until the number is equal or smaller than 0
+      i is the index of elements in array for each element is the result of mod function to 2
+      index is incremented for each mod function conducted
+      */
+      while(number &gt; 0) {
+             array[i++] = number % 2;
+</FONT>          number = number / 2; 
+        }     
+      //print array - binary representation of entered number
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match103-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+      for(int j = i - 1; j &gt;= 0; j--) {
+            System.out.print(array[j]);
+        }  
+      System.out.println("");
+    }
+     public static void computeSquareRoot() {
+          int m = -1, n = 0;
+</FONT>          double output = 0;
+          boolean validM = false;
+        Scanner sc = new Scanner(System.in);         
+       //require user to enter again if the input is not number - user enter character
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match103-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while(!validM) {           
+            System.out.println("Enter number for calculatation: ");
+             try {
+                m = sc.nextInt();
+                validM = true;
+                sc.nextLine();
+        } catch(Exception e) {
+                sc.nextLine();
+                validM = false;
+                System.out.println("Invalid  input!\nRetry again!");                   
+</FONT>        }        
+        }
+        //require user to enter number in range 1 to 5 and must be number
+        while(n &lt; 1 || n &gt; 5) {
+            System.out.println("The number of roots are in range 1 - 5");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match103-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Enter the number of root calculation again: ");
+             try {               
+                    n = sc.nextInt();
+                    sc.nextLine();
+            } catch(Exception e) {
+                    sc.nextLine();
+                    System.out.println("Invalid  input!\nRetry again!");                          
+</FONT>        } 
+        }    
+        //return soon the value of m if it is equal to 0
+        if(m == 0) {
+            System.out.println(m);
+        }
+        
+      for(int i = 0; i &lt; n; i++) {
+          output  = Math.sqrt(output + m);
+      }
+         System.out.println(output);
+              
+     }   
+     public static void calculateQuadraticEquation() {
+          double a = 0, b = 0, c = 0, delta;
+          boolean validA = false, validB = false, validC = false;
+        Scanner sc = new Scanner(System.in);  
+        /*
+        user while loop and boolean value to catch the inputmismatchexception and always requires user to enter number if user enter character
+        if user enter number the code in try will be run and the boolean value will be reassign to true 
+        else when user enter character, inputmismatchexception will be caught, boolean value is false and the condition in while loop will executed, the code in try will be run, 
+        requires user to enter the number
+        */
+        while(!validA) {
+     try {
+        System.out.println("Enter value for a");
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match103-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        a = sc.nextInt();
+        sc.nextLine();
+        validA = true;
+     } catch(Exception e) {  
+            sc.nextLine();            
+            validA = false;
+            System.out.println("Invalid value!Retry again");         
+</FONT>        }
+        }
+        //simiar to above comment
+   while(!validB) {
+       try {
+        System.out.println("Enter value for b");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match103-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        b = sc.nextInt();
+        validB = true;
+        sc.nextLine();
+     } catch(Exception e) {
+            sc.nextLine();
+            validB = false;
+            System.out.println("Invalid value!Retry again:");          
+</FONT>     }
+   }
+   
+    //simiar to above comment
+     while(!validC) {
+       try {
+        System.out.println("Enter value for c: ");
+        c = sc.nextInt();
+        validC = true;
+        sc.nextLine();
+        } catch(Exception e) {
+            sc.nextLine();
+            validC = false;
+            System.out.println("Invalid value!\nRetry again:");  
+        }
+     }        
+        if( a == 0) {
+            if(b == 0) {
+                if(c == 0) {
+                    System.out.println("The equation has infinite set of roots!");
+                } else {
+                    System.out.println("The equation has no root!");
+                }
+            } else {
+                System.out.println("The equation has one root: x1 = " + (-c /b));
+            }
+        } else {
+           delta = (b*b)  - (4 * a * c);
+            if(delta &gt; 0) {
+                System.out.println("The equation has two roots: x1 = " + (-b + Math.sqrt(delta)/ (2 * a))+ ", x2 = " + (- b - Math.sqrt(delta) / (2 * a)));
+            } else if(delta == 0) {
+                System.out.println("The equation has only 1 root: x1 = " + (-b / (2 * a)));
+            } else {
+                System.out.println("The equation has no root!");
+            }          
+        }            
+     }    
+     public static void printTriangle() {
+           Scanner sc = new Scanner(System.in);
+           int n = 0;
+           /*
+           while loop is used to require user to enter number in range 1 - 5
+           try - catch is used to catch the inputmismatchexception and require used to reenter the correct input.
+           try - catch is put inside the while loop to make the function always requires user to enter the valid input
+           */
+           while(n &lt; 1 || n &gt; 5) {
+                 System.out.println("The height needs to be in range 1 - 5");
+                 System.out.println("Enter the height of the triangle: ");
+           try {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match103-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                 n = sc.nextInt();   
+                 sc.nextLine();
+          } catch(Exception e) {
+                sc.nextLine();
+                System.out.println("Invalid height!\nRetry!");         
+          }     
+          }      
+           /*use three for loop with 2 for loop nested in another. 
+           The first nested for loop will print the space
+           The second nested for loop will print the * character
+            */
+          for(int i = 1; i &lt;= n; i++) {
+              for(int j = i; j &lt;= n; j++) {                  
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match103-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                  System.out.print("  ");
+              }
+              for(int k = 2*i -1; k &gt; 0; k--) {
+                  System.out.print("* ");
+              }
+              //for each outer for loop, break the line
+              System.out.println();
+</FONT>          }
+    }
+          
+     
+        }
+
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match103-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:52 GMT -->
+</HTML>

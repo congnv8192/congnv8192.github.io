@@ -1,0 +1,144 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match24-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHuyenTrang_97647_assignsubmission_file_NguyenHuyenTrang_2TD19_1901060053.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+TranHaPhuong_97656_assignsubmission_file_TranHaPhuong_2TD19_1901060042.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package midterm.assignment;
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match24-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Hello
+ */
+public class TranHaPhuong_2TD19_1901060042 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Integer choice;
+        do {
+            System.out.println("\nThis is a menu-based program.");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+            System.out.println("2. Compute a consecutive square root.");
+</FONT>            System.out.println("3. Solve a quadratic equation.");
+            System.out.println("4. Print a triangle given its size.");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match24-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("5. Exit the program.");
+            System.out.println("Select Function : (1-5).");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            if (choice == 1) {
+                System.out.print("Enter an integer: ");
+                Integer input = sc.nextInt();
+                System.out.println("Binary number of " + input + " is :" + Integer.toBinaryString(input));
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match24-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_56.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if (choice == 2) {
+                System.out.print("Enter an integer m: ");
+                Integer m = sc.nextInt();
+                double result = 0;
+                Integer n;
+                do {
+                    System.out.print("Enter an integer n: ");
+                    n = sc.nextInt();
+                    if (n &gt; 0 && n &lt; 6) {
+                        for (int i = 1; i &lt;= n; i++) {
+                            result = Math.sqrt(m + result);
+                        }
+                        System.out.println(result);
+                    } else if (n &gt; 5 || n &lt; 1) {
+                        System.out.println("1&lt;=n&lt;=5");
+                    }
+                } while (n &gt; 5 || n &lt; 1);
+            } else if (choice == 3) {
+                System.out.print("Input a: ");
+                double a = sc.nextInt();
+                System.out.print("Input b: ");
+                double b = sc.nextInt();
+                System.out.print("Input c: ");
+                double c = sc.nextInt();
+                if (a == 0) {
+                    if (b != 0) {
+                        System.out.println("The equation has one solution: "
+                                + "x = " + (-c / b));
+                                } else {
+
+                if (c != 0) {
+                        
+                System.out.println("The equation has no solution!");
+                        } else {       
+                            System.out.println("The equation has countless solutions");
+                        }
+                    }
+                } else {
+                    double x1;
+                    double x2;
+                    if (b * b - 4 * a * c &gt; 0) {
+                        x1 = (double) ((-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a));
+                        x2 = (double) ((-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a));
+                        System.out.println("The equation has two solutions: "
+                                + "x1 = " + x1 + " và x2 = " + x2);
+                    } else if (b * b - 4 * a * c == 0) {
+                        x1 = (-b / (2 * a));
+                        System.out.println("The equations has double solutions: "
+                                + "x1 = x2 = " + x1);
+                    } else {
+                        System.out.println("The equation has no solution!");
+                    }
+                }
+
+            } else if (choice == 4) {
+                Integer n;
+                do {
+                    System.out.print("Enter the integer n: ");
+                    n = sc.nextInt();
+                    if (n &gt;= 1 && n &lt;= 5) {
+                        for (int i = 1; i &lt;= n; i++) {
+</FONT>                            for (int j = 1; j &lt;= n - i; j++) {
+                                System.out.print("  ");
+                            }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match24-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for (int k = 1; k &lt;= 2 * i - 1; k++) {
+                                System.out.print("* ");
+                            }
+                            System.out.println("");
+                        }
+                    } else if (n &gt; 5 || n &lt; 1) {
+                        System.out.println("1&lt;=n&lt;=5");
+                    }
+                } while (n &gt; 5 || n &lt; 1);
+            } else if (choice == 5) {
+                break;
+            }
+            if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5) {
+                System.out.println("Enter incorrectly, please re-enter.");
+            }
+        } while (choice != 1 || choice != 2 || choice != 3 || choice != 4 || choice != 5);
+</FONT>       
+
+    }
+}
+
+                
+    
+    
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match24-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:30 GMT -->
+</HTML>

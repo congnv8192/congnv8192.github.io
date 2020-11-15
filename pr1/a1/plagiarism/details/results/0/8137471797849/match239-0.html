@@ -1,0 +1,259 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match239-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040192NguyenThiCamTu_97684_assignsubmission_file_a1_1801040192_NguyenThiCamTu.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040192NguyenThiCamTu_97684_assignsubmission_file_a1_1801040192_NguyenThiCamTu.java<p><PRE>
+package assingment.pro1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Leo
+ */
+public class a1_1801040192_NguyenThiCamTu {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        // loop: while user option !=5
+        do {
+
+            //show memu
+            try {
+                System.out.println("\n-------------MENU------------");
+                System.out.println("1. Convert a decimal(base 10) integer to binary(base 2)");
+                System.out.println("2. Compute a consecutive square root");
+                System.out.println("3. Solve a quadratic equation: ax^2 + bx + c = 0");
+                System.out.println("4. Print a triangle given its size");
+                System.out.println("-------------^_^--------------");
+
+                //get user option  
+                System.out.print("Choose an option: ");
+                choice = sc.nextInt();
+                boolean check = false;// check input from user
+
+                //display each function
+                switch (choice) {
+                    case 1:
+                        System.out.println("Convert a decimal(base 10) integer to binary(base 2)");//show function name
+                        
+                        //loop while: user choice is valid(1) 
+                        while (!check) {
+                            
+                            //get user number
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match239-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.print("Input your integer to convert binary: ");
+
+                            try {
+                                int number = sc.nextInt();//user enters number
+                                check = true; //check user input
+
+                                //use Integer.toBinaryString() method to convert
+                                System.out.println("The binary of " + number + " is " + Integer.toBinaryString(number) + ".\n");
+</FONT>                            } 
+                            // if the user input is not an integer, catch will handle the error
+                            catch (Exception e) {
+                                check = false;
+                                System.err.println("Error!!! Your number is not an integer, please try again!\n");//show error mesage 
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        System.out.println("Calculate a consecutive square root");//show function name
+                        
+                        //loop while: user choice is valid(2)
+                        while (!check) {
+
+                            //get user m, n
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match239-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.print("Input m: ");//show command that requires the user to enter m
+                            try {
+                                int m = sc.nextInt();//user enter m
+                                System.out.print("Input n(1 &lt;= n &lt;= 5): ");//show command that requires the user to enter n
+
+                                try {
+                                    int n = sc.nextInt();//user enter n
+                                    check = true;//n is valid
+                                    double result = m;
+
+                                    //condition if... else: user sqrt()method to calculate
+                                    if (1 &lt;= n && n &lt;= 5) {
+                                        for (int i = 1; i &lt;= n; i++) {
+                                            result = m + Math.sqrt(result);
+                                        }
+                                        System.out.println(result - m);
+</FONT>                                    } else {
+                                        check = false;// n is not valid(unsatisfy condition)
+                                        System.out.println("The input n does not satisfy the condition of n, please try again!\n");
+                                    }
+                                } // if the user input n is not an integer, catch will handle the error
+                                catch (Exception e) {
+                                    check = false;// n is not valid
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match239-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                    System.err.println("The input data of n isn't an integer, please try again!\n");//show error message
+                                    sc.nextLine();
+                                }
+                            } // if the user input m is not an integer, catch will handle the error
+                            catch (Exception e) {
+                                check = false;// m is not valid
+                                System.err.println("The input data of m isn't an integer, please try again!\n");//show error message
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case 3:
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match239-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Find the solution: ax^2 + bx + c = 0.");//show function name
+                        
+                        //loop while: user choice is valid(3)
+                        while (!check) {
+                            
+                            //get user a, b, c
+                            System.out.print("Input number a: ");
+                            try {
+                                double a = sc.nextDouble();
+
+                                System.out.print("Input number b: ");
+                                try {
+                                    double b = sc.nextDouble();
+
+                                    System.out.print("Input number c: ");
+                                    try {
+                                        double c = sc.nextDouble();
+                                        check = true;
+</FONT>                                        
+                                        //find solutions
+                                        if (a != 0) {
+                                            double delta = Math.pow(b, 2) - 4 * a * c;
+                                            
+                                            //a != 0
+                                            if (delta &lt; 0) {
+                                                System.out.println("The equation is no root.\n");//show result
+                                            } else if (delta == 0) {
+                                                double x;
+                                                x = (-b) / (2 * a);
+                                                System.out.println("The equation has a unique root: " + x + "\n");//show result
+                                            } else {
+                                                double x1, x2;
+                                                x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                                                x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                                                System.out.println("The equation has 2 roots: x1 = " + x1 + ", x2 = " + x2 + "\n");//show result
+                                            }
+                                        } else {
+                                            if (b == 0) {
+                                                if (c == 0) {
+                                                    System.out.println("There's nothing to be solved!!\n");//show result
+                                                } else {
+                                                    System.out.println("The equation has no root.\n");//show result
+                                                }
+                                            } else if (c == 0) {
+                                                System.out.println("The equation has a root: 0.\n");//show result
+                                            } else {
+                                                double x;
+                                                x = -c / b;
+                                                System.out.println("There is one root: " + x + "\n");//show result
+                                            }
+                                        }
+                                    } 
+                                    // if the user input c is not an integer, catch will handle the error
+                                    catch (Exception e) {
+                                        check = false;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match239-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                        System.err.println("The input data of c isn't a number, please try again!\n");//show error message
+                                        sc.nextLine();
+                                    }
+                                }
+                                // if the user input b is not an integer, catch will handle the error
+                                catch (Exception e) {
+                                    check = false;
+                                    System.err.println("The input data of b isn't a number, please try again!\n");//show error message
+                                    sc.nextLine();
+                                }
+                            } 
+                            // if the user input a is not an integer, catch will handle the error
+                            catch (Exception e) {
+                                check = false;
+                                System.err.println("The input data of a isn't a number, please try again!\n");//show error message
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    case 4:
+</FONT>                        System.out.println("Display a triangle given its size");//show function name
+                        
+                        //loop while: user choice is valid(4)
+                        while (!check) {
+                            
+                            //get user n
+                            System.out.print("Enter value of n (1 &lt;= n &lt;= 5): ");
+                            try {
+                                int star = sc.nextInt();
+                                check = true;//
+                                
+                                //Condition if...else: how to stars are represented
+                                if (star &gt;= 1 && star &lt;= 5) {
+                                    for (int i = 0; i &lt; star; i++) {
+                                        for (int j = star - i; j &gt; 1; j--) {
+                                            System.out.print("  ");
+                                        }
+                                        for (int j = 0; j &lt;= 2 * i; j++) {
+                                            System.out.print("* ");
+                                        }
+                                        System.out.print("\n\n");
+                                    }
+                                } else {
+                                    System.out.println("The input data doesn't satisfy the condition of n.\nPlease try again!\n");
+                                    check = false;
+                                }
+                            } 
+                            // if the user input star is not an integer, catch will handle the error
+                            catch (Exception e) {
+                                check = false;
+                                System.err.println("The input data of n isn't an integer!\nPlease try again!\n");//show error message
+                                sc.nextLine();
+                            }
+                        }
+                        break;
+
+                    //if user enter choice !(1, 2, 3 , 4)
+                    default:
+                        System.out.println("Invalid choice! Choice again!");
+                        break;
+                }
+            } //if the user input is not an integer, catch will handle the error 
+            catch (Exception e) {
+                System.err.println("This is not an integer! Choice again!");//show error message                
+            }
+
+            //ask user to choose another option
+            System.out.print("Do you want to choose another function?(N/Y): ");
+            sc.nextLine();
+            
+        } while (sc.nextLine().toUpperCase().equals("YES"));// user can input (YES || YEs || YeS || Yes || yES || yEs || yeS || yes)
+        
+        //User say no or other input
+        System.out.println("Thank you!&gt;_&lt; \nSee you again!!");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match239-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

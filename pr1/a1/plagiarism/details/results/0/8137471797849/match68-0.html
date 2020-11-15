@@ -1,0 +1,212 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match68-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1701040112aoPhuongNam_97555_assignsubmission_file_assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1701040112aoPhuongNam_97555_assignsubmission_file_assignment1.java<p><PRE>
+import java.util.Scanner;
+
+public class assignment1 {
+
+	public static void printMenu() {
+
+		System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+		System.out.println("2. Compute a consecutive square root.");
+		System.out.println("3. Solve a quadratic equation: ax^2 + bx + c = 0.");
+		System.out.println("4. Print a triangle given its size.");
+	}
+
+	public static String getFunction() {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Choose 1 method: ");
+		String function = sc.nextLine();
+		return function;
+	}
+
+	public static void menu() {
+		Scanner sc1 = new Scanner(System.in);
+		printMenu();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match68-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		String function = getFunction();
+		boolean check = false;
+
+		switch (function) {
+		case "1":
+			while (!check) {
+				System.out.print("Enter number to convert binary: ");
+				try {
+					int num = sc1.nextInt();
+					check = true;
+					System.out.println("The binary of " + num + " is " + Integer.toBinaryString(num));
+				} catch (Exception e) {
+					check = false;
+					System.out.println("The input data must be a number, please try again!");
+					sc1.nextLine();
+</FONT>				}
+			}
+			isContinued();
+			break;
+		case "2":
+			while (!check) {
+				System.out.print("Enter m: ");
+				try {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match68-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					double m = sc1.nextDouble();
+					System.out.print("Enter n (0 &lt; n &lt; 6): ");
+					try {
+						int n = sc1.nextInt();
+						check = true;
+						double result = m;
+						if (0 &lt; n && n &lt; 6) {
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match68-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							for (int i = 1; i &lt;= n; i++) {
+								result = m + Math.sqrt(result);
+							}
+							System.out.println(result - m);
+						} else {
+							System.out.println("You must follow the condition of n(0 &lt; n &lt; 6)!");
+							check = false;
+						}
+					} catch (Exception e) {
+						check = false;
+						System.out.println("You must enter an integer");
+						sc1.nextLine();
+					}
+				} catch (Exception e) {
+					check = false;
+</FONT>					System.out.println("You must enter an integer!");
+					sc1.nextLine();
+				}
+			}
+			isContinued();
+			break;
+		case "3":
+
+			while (!check) {
+				System.out.println("Find solution: ax^2 + bx + c = 0.");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match68-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.print("Enter a: ");
+				try {
+					double a = sc1.nextDouble();
+					System.out.print("Enter b: ");
+					try {
+						double b = sc1.nextDouble();
+						System.out.print("Enter c: ");
+						try {
+							double c = sc1.nextDouble();
+							check = true;
+</FONT>							if (a == 0 && b == 0 && c == 0) {
+								System.out.println("No thing to be solved.");
+							} else if (a == 0 && b == 0 && c != 0) {
+								System.out.println("The equation has no root.");
+							} else if (a == 0 && b != 0 && c != 0) {
+								double x = -c / b;
+								System.out.println("There is one root: x = " + x);
+							} else {
+								double delta = b * b - 4 * a * c;
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match68-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+								if (delta &lt; 0) {
+									System.out.println("The equation has no root.");
+								} else {
+									double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+									double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match68-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+									System.out.print("There are 2 root: x1 = " + x1 + ";2 x2 = " + x2);
+								}
+
+							}
+						} catch (Exception e) {
+							check = false;
+							System.out.println("You must enter a number!");
+							sc1.nextLine();
+						}
+					} catch (Exception e) {
+						check = false;
+						System.out.println("You must enter a number!");
+						sc1.nextLine();
+					}
+				} catch (Exception e) {
+					check = false;
+</FONT>					System.out.println("You must enter a number!");
+					sc1.nextLine();
+				}
+			}
+			isContinued();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match68-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			break;
+		case "4":
+			while (!check) {
+				System.out.print("Enter value of n (0 &lt; n &lt; 6): ");
+				try {
+					int num = sc1.nextInt();
+					check = true;
+					if (num &gt;= 1 && num &lt;= 5) {
+						for (int i = 0; i &lt; num; i++) {
+							for (int j = num - i; j &gt; 1; j--) {
+								System.out.print("  ");
+							}
+							for (int j = 0; j &lt;= 2 * i; j++) {
+								System.out.print("* ");
+							}
+							System.out.print("\n\n");
+						}
+
+					} else {
+						System.out.println("You must follow the condition of n(0 &lt; n &lt; 6)!!");
+						check = false;
+					}
+				} catch (Exception e) {
+					check = false;
+					System.out.println("You must enter an integer, please try again!");
+					sc1.nextLine();
+</FONT>				}
+			}
+			isContinued();
+			break;
+		default:
+			System.out.println("Invalid input!");
+			isContinued();
+			break;
+
+		}
+	}
+
+	public static void isContinued() {
+		System.out.println("Do you want to continue? (Y/N)");
+		Scanner sc2 = new Scanner(System.in);
+		String s = sc2.nextLine();
+		if (s.equals("y")) {
+			System.out.println("Choose another function!");
+			menu();
+		} else if (s.equals("n")) {
+			System.out.println("Goodbye!");
+		} else {
+			System.out.println("Invalid input!");
+			isContinued();
+		}
+
+	}
+
+	public static void main(String args[]) {
+		menu();
+
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match68-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+</HTML>

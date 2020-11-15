@@ -1,0 +1,197 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match134-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040152BuiKhanhNam_97639_assignsubmission_file_BuiKhanhNam_1C18_1801040152_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+VoManhDung_97497_assignsubmission_file_assignmentt.java<p><PRE>
+ /*
+  * To change this license header, choose License Headers in Project Properties.
+  * To change this template file, choose Tools | Templates
+  * and open the template in the editor.
+  */
+
+/**
+ *
+ * @author Manh Dung - 1901040044
+ */
+ import java.util.Scanner;
+
+ public class assignmentt {
+
+     public static void main(String[] args) {
+         userMenu();
+     }
+
+     public static Scanner sc = new Scanner(System.in);
+
+     public static void askUser(){
+         Scanner cf = new Scanner(System.in);
+         String choice;
+         System.out.println("Do you want to try again with another option?");
+         System.out.println("Y(yes)/N(no)");
+         choice = cf.nextLine();
+         if (choice.equalsIgnoreCase("y")){
+             userMenu();
+         } else if (choice.equalsIgnoreCase("n")){
+             System.out.println("Goodbye!");
+             System.exit(0);
+         } else {
+             System.out.println("Invalid input!");
+             askUser();
+         }
+     }
+
+     public static void userMenu(){
+         int n = 0;
+         while (n != 5){
+             System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2)");
+             System.out.println("[2] Compute a consecutive square root");
+             System.out.println("[3] Solve a quadratic equation");
+             System.out.println("[4] Print a triangle given its size");
+             System.out.println("[5] Quit");
+             System.out.print("Choose an option: ");
+             n = sc.nextInt();
+             switch (n) {
+                 case 1:
+                     ConvertDecimalToBinary();
+                     askUser();
+                     break;
+                 case 2:
+                     ComputeConsecutiveSquareRoot();
+                     askUser();
+                     break;
+                 case 3:
+                     SolveQuadraticEquation();
+                     askUser();
+                     break;
+                 case 4:
+                     PrintTriangleGivenItsSize();
+                     askUser();
+                     break;
+                 case 5:
+                     System.out.println("Goodbye! \n");
+                     System.exit(0);
+                 default:
+                     System.out.println("Invalid input! \n");
+                     break;
+             }
+         }
+     }
+
+     public static void ComputeConsecutiveSquareRoot(){
+         System.out.println("Please input a number: m = ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match134-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         double m = sc.nextDouble();
+         double initial = m;
+         int n;
+         do {
+             System.out.println("How many times the square root is taken ? (From 1 to 5): n = ");
+             n = sc.nextInt();
+         } while (n &lt; 1 || n &gt; 5);
+</FONT>
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match134-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         double x = 0;
+         double squareRootResult = 0;
+         while (x &lt; n) {
+             squareRootResult = Math.sqrt(m);
+             m = initial + squareRootResult;
+             x++;
+         }
+         System.out.println("The result is: " + squareRootResult);
+         System.out.println();
+</FONT>     }
+
+     public static void ConvertDecimalToBinary() {
+         System.out.println("Please enter a decimal: ");
+         int decimal = sc.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match134-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         int[] binaryNumber = new int[100];
+         System.out.println("The binary number of " + decimal + " is: ");
+         int No = 0;
+         while (decimal &gt; 0) {
+             binaryNumber[No] = decimal % 2;
+             decimal = decimal / 2;
+             No++;
+         }
+
+         for (int index = No - 1; index &gt;= 0; index--) {
+
+             System.out.print(binaryNumber[index]);
+</FONT>         }
+         System.out.println();
+     }
+
+     public static void SolveQuadraticEquation() {
+         // a*x^2 + b*x + c = 0
+         System.out.println("Please input 3 coefficients a, b and c ! ");
+         System.out.println("Cofficient a: ");
+         int a = sc.nextInt();
+         System.out.println("Cofficient b: ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match134-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         int b = sc.nextInt();
+         System.out.println("Cofficient c: ");
+         int c = sc.nextInt();
+         double delta = (b * b) - 4 * a * c;
+         double squareRoot = Math.sqrt(delta);
+
+
+         if (a == 0 && b == 0 && c == 0) {
+             System.out.println("There is nothing to be solved ");
+</FONT>         } else if (a == 0 && b == 0) {
+             System.out.println("The equation has no root ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match134-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         } else if (a == 0 && c != 0) {
+             System.out.print("The equation has only one root: x = " + (-c / b));
+         } else if (delta &lt; 0) {
+             System.out.println("The equation has no real root!");
+         } else {
+             double x1 = (-b + squareRoot) / (2 * a);
+             double x2 = (-b - squareRoot) / (2 * a);
+             System.out.println("The equation has two roots: ");
+             System.out.println("x1 = " + x1 + ", x2 = " + x2);
+</FONT>         }
+     }
+
+     public static void PrintTriangleGivenItsSize() {
+         int n;
+         do {
+             System.out.print("Please input an integer n (1 ≤ n ≤ 5): ");
+             n = sc.nextInt();
+         } while (n &lt; 1 || n &gt; 5);
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match134-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+         for (int k = 0; k &lt; n; k++) {
+             for (int i = k; i &lt; n - 1; i++) {
+                 System.out.print(" ");
+
+             }
+             for (int l = 0; l &lt; k * 2 + 1; l++) {
+                 System.out.print("*");
+
+             }
+             System.out.println();
+</FONT>         }
+     }
+ }
+
+
+
+
+
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match134-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+</HTML>

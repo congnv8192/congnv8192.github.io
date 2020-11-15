@@ -1,0 +1,179 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match249-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040117TranVuPhucKhanh_97500_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040117TranVuPhucKhanh_97500_assignsubmission_file_Assignment1.java<p><PRE>
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match249-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+public class Assignment1 {
+
+	// 1. Convert a decimal (base 10) integer to binary (base 2)
+	public static void Ex1() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Input a demical number: ");
+</FONT>		int decimal = sc.nextInt();
+		int binary;
+		do {
+			binary = decimal % 2;
+			System.out.print(binary);
+		} while ((decimal /= 2) != 0);
+		System.out.println("");
+	}
+
+	// 2. Compute a consecutive square root
+	public static void Ex2() {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match249-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a number: ");
+		double in = sc.nextInt();
+		double in1 = in; // make a backup of in
+		System.out.println("How many times the square root is taken ? (From 1 to 5)");
+</FONT>		int n = sc.nextInt();
+		int x = 0;
+		double result = 0;
+		if (1 &lt;= n && n &lt;= 5) {
+			while (x &lt; n) {
+				result = Math.sqrt(in);
+				in = result + in1;
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match249-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				x++;
+			}
+			System.out.println("Result: " + result);
+
+		} else {
+			System.err.println("The number you input is not in range");
+		}
+	}
+
+	// 3. Solve a quadratic equation
+	public static void Ex3() {
+		
+		// get the number from user
+		Scanner sc = new Scanner(System.in);
+</FONT>		System.out.println("Enter three coefficients");
+		System.out.println("Input a: ");
+		double a = sc.nextDouble();
+		System.out.println("Input b: ");
+		double b = sc.nextDouble();
+		System.out.println("Input c: ");
+		double c = sc.nextDouble();
+		
+		// consider the cases
+		if (a == 0) {
+			if (b == 0) {
+				if (c == 0) {
+					System.out.println("There's nothing to be solved.");
+				} else {
+					System.out.println("The equation has no root.");
+				}
+			} else {
+
+				double delta = b * b - 4 * a * c;
+
+				if (delta &gt; 0) {
+					double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+					double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+					System.out.println("The equation has two real roots " + x1 + " and " + x2);
+				}
+				if (delta == 0) {
+					double x = -b / (2 * a);
+					System.out.println("The equation has one root " + x);
+				}
+
+				else {
+					System.out.println("The equation has no real root");
+
+				}
+
+			}
+		}
+	}
+
+	// 4. Print a triangle given its size
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match249-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void Ex4() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" Input an integer (from 1 to 5): ");
+		int n = sc.nextInt();
+		if (n &gt;= 1 && n &lt;= 5) {
+</FONT>			for (int i = 0; i &lt; n + 1; i++) {
+				for (int j = n; j &gt;= i; j--) {
+					System.out.print(" ");
+				}
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match249-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				for (int k = 0; k &lt; (2 * i - 1); k++) {
+					System.out.print("*");
+				}
+				System.out.println();
+			}
+
+		} else {
+			System.err.println("Please try again with n&gt;=1 and n&lt;=5");
+		}
+	}
+
+	// Create menu
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String repeat = null;
+		int n;
+</FONT>		do {
+			
+			// show menu
+			System.out.println("|****************MENU******************|");
+			System.out.println("|1: Convert a decimal integer to binary|");
+			System.out.println("|2: Compute a consecutive square root  |");
+			System.out.println("|3: Solve quadratic equation           |");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match249-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println("|4: Print a triangle given it's size   |");
+			System.out.println("|Select an option:                     |");
+			System.out.println("|______________________________________|");
+			
+			// get option
+			n = sc.nextInt();
+			sc.nextLine();
+</FONT>			
+			// print function
+			switch (n) {
+			case 1:
+				Ex1();
+				break;
+			case 2:
+				Ex2();
+				break;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match249-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 3:
+				Ex3();
+				break;
+			case 4:
+				Ex4();
+				break;
+			default:
+				System.err.println("Please select again!!!");
+				break;
+			}
+			System.out.println("Do you want to continue with another function ? yes/ no");
+			repeat = sc.nextLine();
+		} while (repeat.equals("yes") == true);
+</FONT>	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match249-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:58 GMT -->
+</HTML>

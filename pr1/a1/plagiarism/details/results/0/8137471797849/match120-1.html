@@ -1,0 +1,142 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match120-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeHongHung_97478_assignsubmission_file_LeHongHungA05.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+oHoangHiep_97751_assignsubmission_file_assignmenttut0202.java<p><PRE>
+import java.util.Scanner;
+public class assignmenttut0202 {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match120-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+            System.out.println("[1] Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("[2] Compute a consecutive square root");
+            System.out.println("[3] Solve a quadratic equation");
+</FONT>            System.out.println("[4] Print a triangle given its size");
+    while (true) {
+            System.out.print("Choose an option: ");
+            int n = sc.nextInt();
+            
+        // part 1
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match120-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    if (n == 1) {
+                int  quot, i = 1 , j ;
+                int bin[] = new int[100];
+                System.out.print("Enter an Decimal number: ");
+</FONT>                int  dec = sc.nextInt();
+                quot = dec;
+            while (quot != 0){
+                bin[i++] = quot % 2;
+                quot =quot / 2;            
+                }
+                System.out.print("Binary representation is: ");
+            for ( j = i - 1; j &gt; 0; j --) {
+                System.out.print(bin[j]);
+                }    
+                System.out.print("\n");
+            }
+
+        // part 2
+    else if (n == 2) {
+            while(true){
+                System.out.print("Enter integer m (m &gt;= 0): ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match120-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                int m2 = sc.nextInt();
+                System.out.print("Enter integer n (1 &lt;= n &lt;= 5): ");
+                int n2 = sc.nextInt();
+                double answer = 0;
+                double g;
+</FONT>            if(m2 &gt;= 0 && n2 &gt;= 1 && n2 &lt;= 5) {
+            while ( n2 != 0) {
+                g = answer;
+                answer = Math.sqrt(m2 + g);
+                n2 = n2 - 1 ;
+                }
+                System.out.println(answer);
+                break;
+                }
+            else{
+                    System.out.println("n or m doesn't satisfy the condition!\nPlease run again! ");
+                }
+                }
+            }    
+
+        // part 3
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match120-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    else if ( n == 3) {
+                System.out.println("ax^2 + bx + c = 0");
+                System.out.print("Enter a: ");
+                double a = sc.nextDouble();
+                System.out.print("Enter b: ");
+                double b = sc.nextDouble();
+                System.out.print("Enter c: ");
+                double c = sc.nextDouble();
+                double root1, root2;
+                 double determinant = b * b - 4 * a * c ;
+  
+            if (a == 0 && b == 0 && c == 0) {
+</FONT>                System.out.println("There's not thing to be solved!");
+            }else if (a == 0 && b == 0 && c != 0){
+                System.out.println("The euation has no root!");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match120-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            }else if (a == 0 && b != 0 && c !=0){
+                System.out.println("The equation has onr root x = " + (-c/b));
+            }else if (determinant &lt; 0) {
+                System.out.println("The equation has no real root!");
+            }else if (determinant &gt;=0){
+                root1 = (-b + Math.sqrt(determinant)) / (2 * a);
+                root2 = (-b - Math.sqrt(determinant)) / (2 * a);
+               System.out.println("The equation has two root\nx1 = " + root1 + " and x2 = " + root2);
+               }
+            }
+
+        // part 4
+    else if ( n == 4) {
+</FONT>            while(true){
+                System.out.print("Enter the integer n (1 &lt;= n &lt;= 5): ");
+                int n4 = sc.nextInt();
+                int k = 0 ;
+            if(n4 &gt;=1 && n4 &lt;=5){
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match120-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            for(int i = 1; i &lt;= n4; ++i, k = 0) {
+                for(int space = 1; space &lt;= n4 - i;  ++space ){
+                System.out.print("  ");
+                }
+            while(k != 2 * i - 1){
+                System.out.print("* ");
+                ++k;
+                }
+                System.out.println();
+                }
+                break;
+                }
+            else{
+                System.out.println("n doesn't satisfy the condition!\nPlease run again! ");
+                } 
+                }   
+            }    
+
+                System.out.print("Do you want to coutinue with anouther function! (yes/no): ");
+                String coutinue = sc.next();
+            if ( coutinue.equals("no")) {
+                System.out.println("Goodbye !");
+                break;
+</FONT>            }    
+        }
+    }
+}</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match120-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+</HTML>

@@ -1,0 +1,152 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match66-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenHoangLan_97484_assignsubmission_file_AsF1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenHuyVan_97584_assignsubmission_file_MidtermAssignment.java<p><PRE>
+import java.util.Scanner;
+
+public class MidtermAssignment {
+    public static void main(String[] args) throws Exception {
+        Scanner input = new Scanner(System.in);
+        int n;
+        char answer;
+        do {
+            System.out.println("Pls chose your activity:");
+            System.out.println("1.Act 1");
+            System.out.println("2.Act 2:");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match66-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("3.Act 3:");
+            System.out.println("4.Act 4:");
+            System.out.println("5.Quit");
+
+            Scanner sc = new Scanner(System.in);
+            n = sc.nextInt();
+</FONT>            if (n &gt; 5 || n &lt; 1) {
+                throw new Exception("Invalid number entered ( n &gt; 5 || n &lt; 1 )");
+            }
+
+            switch (n) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match66-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                case 1:
+                    int dec_num, quot, i = 1, j;
+                    int bin_num[] = new int[100];
+                    Scanner sc1 = new Scanner(System.in);
+
+                    System.out.print("Input a Decimal Number : ");
+                    dec_num = sc1.nextInt();
+
+                    quot = dec_num;
+
+                    while (quot != 0) {
+                        bin_num[i++] = quot % 2;
+                        quot = quot / 2;
+</FONT>                    }
+
+                    System.out.print("Binary number is: ");
+                    for (j = i - 1; j &gt; 0; j--) {
+                        System.out.print(bin_num[j]);
+                    }
+                    System.out.print("\n");
+                    System.out.println("Do you wish to continue(y/n)?");
+                    break;
+                case 2:
+                    int m2, n2;
+                    Scanner sc2 = new Scanner(System.in);
+
+                    System.out.println("Enter m: ");
+                    m2 = sc2.nextInt();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match66-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Enter n: ");
+                    n2 = sc2.nextInt();
+
+                    double res = 0;
+                    for (int i2 = 0; i2 &lt; n2; i2++) {
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match66-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        res = Math.sqrt(m2 + res);
+                    }
+                    System.out.println("Result: " + res);
+                    break;
+                case 3:
+                    double secondRoot = 0, firstRoot = 0;
+                    Scanner sc3 = new Scanner(System.in);
+                    System.out.println("Enter the value of a:");
+                    double a3 = sc3.nextDouble();
+</FONT>
+                    System.out.println("Enter the value of b:");
+                    double b3 = sc3.nextDouble();
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match66-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_34.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Enter the value of c:");
+                    double c3 = sc3.nextDouble();
+
+                    double determinant = (b3 * b3) - (4 * a3 * c3);
+                    double sqrt = Math.sqrt(determinant);
+
+                    if (determinant &gt; 0) {
+                        firstRoot = (-b3 + sqrt) / (2 * a3);
+                        secondRoot = (-b3 - sqrt) / (2 * a3);
+                        System.out.println("Roots are: " + firstRoot + " and " + secondRoot);
+                    } else if (determinant == 0) {
+                        System.out.println("Root is: " + (-b3 + sqrt) / (2 * a3));
+                    }
+                    break;
+                case 4:
+                    int n4;
+                    Scanner sc4 = new Scanner(System.in);
+                    System.out.println("Input an integer: ");
+                    n4 = sc4.nextInt();
+
+                    if (n4 &lt; 1) {
+                        System.out.println("Error: pls Enter a number from 1 to 5");
+                    }
+                    if (n4 &gt; 5) {
+                        System.out.println("Error: pls Enter a number from 1 to 5");
+                    } else {
+                        System.out.println("Your pattern is: ");
+                        int odd = 1;
+                        int space = 4;
+                        for (int a4 = 1; a4 &lt;= n4; a4++) {
+                            for (int b4 = 1; b4 &lt;= space; b4++) {
+                                System.out.print(" ");
+                            }
+                            for (int b4 = 1; b4 &lt;= odd; b4++) {
+                                System.out.print("*");
+                            }
+                            System.out.println();
+                            odd = odd + 2;
+                            space = space - 1;
+                        }
+                    }
+                    break;
+</FONT>
+                default:
+                    System.out.println("Goodbye!");
+                    System.out.println();
+                    n = 0;
+
+            }
+            System.out.println("Do u want to continue?");
+            System.out.println("Yes / No");
+            System.out.print("Answer: ");
+            answer = input.next().charAt(0);
+        }
+        while (answer == 'y' || answer == 'Y');
+        System.out.println("See you again...");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match66-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:49 GMT -->
+</HTML>

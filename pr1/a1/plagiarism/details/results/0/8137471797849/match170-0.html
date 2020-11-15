@@ -1,0 +1,144 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match170-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>TranThiMinhThu_97611_assignsubmission_file_TranThiMinhThu_4C19_1901040221.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+TranThiMinhThu_97611_assignsubmission_file_TranThiMinhThu_4C19_1901040221.java<p><PRE>
+import java.util.Scanner;
+
+public class pr1 {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match170-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome!");
+        do {
+            System.out.println("1: Demical to Binary     2: Consecutive square root     3: Quadratic equation     4: Triangle");
+            System.out.print("Please choose a function: ");
+</FONT>            int choice = sc.nextInt();
+            // perform 4 functions
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match170-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            switch (choice) {
+                case 1: // Function 1
+                    System.out.println("Function 1: Convert a decimal integer to binary.");
+                    System.out.print("Please enter a decimal number: ");
+                    int Demical = sc.nextInt();
+                    String binnary = "";
+</FONT>                    while (Demical &gt;= 0) {
+                        if (Demical== 0) {
+                            binnary = binnary + 0;
+                            break;
+                        } else {
+                            int n = Demical % 2;
+                            binnary = n + binnary;
+                            Demical= Demical/ 2;
+                        }
+                    }
+                    System.out.print("Binary number is: ");
+                    for (int i = 0; i &lt; binnary.length() - 1; i++) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match170-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print(binnary.charAt(i));
+                    }
+                    System.out.println("");
+                    break;
+
+                case 2: // Function 2
+                    System.out.println("Function 2: Compute a consecutive square root.");
+                    System.out.print("Please enter m: ");
+</FONT>                    double m = sc.nextDouble();
+                    System.out.print("Please enter n: ");
+                    double n = sc.nextDouble();
+                    double s = 0, r = m, answer = 0;
+                    
+                    while (s &lt; n){
+                        answer = Math.sqrt(m);
+                        m = r + answer;
+                        s++;
+                    }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match170-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("The square root is: " + answer);
+                    break;
+
+                case 3: // Function 3
+                    System.out.println("Function 3: Solve a quadratic equation.");
+                    System.out.println("a.x^2 + b.x + c = 0");
+                    System.out.print("Please enter coefficient a: ");
+                    double a = sc.nextDouble();
+</FONT>                    System.out.print("PLease enter coefficient b: ");
+                    double b = sc.nextDouble();
+                    System.out.print("Please enter coefficient c: ");
+                    double c = sc.nextDouble();
+                    double d = b * b - 4 * a * c;
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match170-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    if (a == 0) {
+                        if (b != 0) {
+                            double x = -c / b;
+                            System.out.println("The solution of the equation is: " + x);
+                        } else if (b == 0 && c == 0) {
+</FONT>                            System.out.println("There is nothing to be solved!");
+                        } else if (b == 0 && c != 0) {
+                            System.out.println("There is no solution.");
+                        }
+                    } else {
+                        double x1 = ((-b) + Math.sqrt(d)) / (2 * a);
+                        double x2 = ((-b) - Math.sqrt(d)) / (2 * a);
+                        System.out.println("The solutions of the equation are: x1 = " + x1 + " and x2 = " + x2);
+                    }
+                    break;
+
+                case 4: // Function 4
+                    System.out.println("Function 4: Print a triangle given its size.");
+                    System.out.print("Please enter an integer n: ");
+                    int n1 = sc.nextInt();
+                    
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match170-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    while (n1 &lt; 1 || n1 &gt; 5){
+                        System.out.println("Invalid! n must be between 1 and 5");
+                        System.out.print("Please enter again: ");
+                        n1 = sc.nextInt(); 
+                    }
+                    
+                    if (n1 &lt;= 5) {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match170-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        for (int i = 1; i &lt;= n1; i++) {
+                            System.out.println();
+                            for (int j = 1; j &lt;= n1 - i; j++) {
+                                System.out.print(" ");
+                            }
+                            for (int k = 1; k &lt;= i; k++) {
+                                System.out.print("* ");
+                            }
+                        }
+                        System.out.println("");
+                    }
+                    break;
+            }
+
+            // continue with another function
+            System.out.println("Do you want to continue with another function?");
+            System.out.println("1. Yes     2. No");
+            System.out.print("Please choose: ");
+</FONT>            int choice2 = sc.nextInt();
+            if (choice2 == 2) {
+                System.out.println("Goodbye!");
+                break;
+            }
+        } while (true);
+    }
+}</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match170-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

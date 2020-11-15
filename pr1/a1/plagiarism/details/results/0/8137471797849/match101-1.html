@@ -1,0 +1,198 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match101-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040004oVietAnh_97683_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040057BuiHuuat_97620_assignsubmission_file_BuiHuuDat_1C18_1801040057_A1.java<p><PRE>
+package Assignment;
+
+import java.util.Scanner; // package to use Scanner class 
+
+/**
+ * Java program for Assignment 1
+ *
+ * @author Bui Huu Dat 
+ * Class: 1C18 
+ * Student ID: 1801040057
+ * 
+ */
+
+public class BuiHuuDat_1C18_1801040057_A1 {
+
+	/*
+	 * main method to execute menu to 
+	 * let the user choose
+	 *  which function to perform
+	 **/
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int choose = 0;
+		// WHILE LOOP for users to continue with another function
+		while (choose != 5) {
+			try {
+				//selections of menu
+				System.out.println(" What do you want to do?");
+				System.out.println("1. Convert a decimal (base 10) to binary (base 2)");
+				System.out.println("2. Compute a consecutive square root");
+				System.out.println("3. Solve a quadratic equation");
+				System.out.println("4. Print a triangle given its size");
+				System.out.println("5. Quit program");
+
+				System.out.println(" Choose an option: ");
+				choose = scan.nextInt();
+				// try-catch to catch input errors without selection of 1-5
+			} catch (Exception e) {
+				System.out.println("You must enter an integer number from 1-5");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match101-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				scan.nextLine();
+			}
+
+			// Switch-case to choose function from menu
+			switch (choose) {
+			case 1:
+				Task1(scan);
+				break;
+			case 2:
+				Task2(scan);
+				break;
+			case 3:
+				Task3(scan);
+				break;
+			case 4:
+				Task4(scan);
+				break;
+			case 5:
+				System.out.println("Goodbye!");
+				break;
+			default:
+				System.out.println("Please choose again from 1 to 5!");
+</FONT>
+			}
+		}
+	}
+
+	// Convert a decimal (base 10) integer to binary (base 2)
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match101-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_14.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void Task1(Scanner scan) {
+		int dec_num, bin_num;
+
+		// Ask user to enter number for decimal to binary conversion
+		System.out.println("Enter a decimal number to convert into binary: ");
+		dec_num = scan.nextInt();
+
+		// do-while loop to convert decimal to binary
+		do {
+			bin_num = dec_num % 2;
+			System.out.print(bin_num);
+		} while ((dec_num /= 2) != 0);
+		System.out.println("");
+	}
+
+	// Compute a consecutive square root
+	public static void Task2(Scanner scan) {
+		// Ask users to input a number
+		System.out.println("Input a positive integer: ");
+		double m = scan.nextInt();
+		double t = m;
+		System.out.println("How many times the square root is taken? (From 1 to 5)");
+</FONT>		int n = scan.nextInt();
+		int x = 0;
+		double result = 0;
+		// if valid input between 1 and 5, the code will show the result and contrary.
+		if (1 &lt;= n && n &lt;= 5) {
+			while (x &lt; n) {
+				result = Math.sqrt(m);
+				m = result + t;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match101-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				x++;
+			}
+			System.out.println("Result: " + result);
+
+		} else {
+			System.out.println("Invalid! Please choose the number from 1 to 5.");
+		}
+	}
+
+	// Solve a quadratic equation
+	public static void Task3(Scanner scan) {
+
+		// Ask users to input 3 numbers of the equation
+		System.out.println("Input a: ");
+		double a = scan.nextDouble();
+		System.out.println("Input b: ");
+		double b = scan.nextDouble();
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match101-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("Input c: ");
+		double c = scan.nextDouble();
+		
+        //the general formula for calculating delta
+		double delta = b * b - 4 * a * c;
+
+		// using if-else to consider delta in 3 situations
+
+		// delta &gt; 0 ---&gt; 2 roots
+		if (delta &gt; 0) {
+			double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match101-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_27.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+			System.out.println("The equation has two real roots " + x1 + " and " + x2);
+		}
+
+		// delta = 0 ---&gt; only one root
+		if (delta == 0) {
+			double x = -b / (2 * a);
+			System.out.println("The equation has one root " + x);
+		}
+
+		// delta &lt; 0 ----&gt; no root
+		if (delta &lt; 0) {
+			System.out.println("The equation has no real root");
+		}
+	}
+
+	// Print a triangle given its size
+	public static void Task4(Scanner scan) {
+		// Ask users to input height of triangle
+		System.out.println("Enter height of the triangle (1 to 5) : ");
+		int n = scan.nextInt();
+
+		/*
+		 * if-else to check the input 
+		 * from 1 to 5: show the triangle 
+		 * outside 1 and 5:ask users to input again
+		 */
+		if (n &gt;= 1 && n &lt;= 5) {
+			// loop to iterate for the specified number of rows
+			for (int i = 0; i &lt; n + 1; i++) {
+				// loop to print the number of spaces before the star
+				for (int j = n; j &gt;= i; j--) {
+					System.out.print(" ");
+				}
+				// loop to print the number of stars in each row
+				for (int k = 0; k &lt; (2 * i - 1); k++) {
+					System.out.print("*");
+				}
+				// for new line after printing each row
+				System.out.println();
+			}
+
+		} else {
+			System.out.println("Please try again with 1 &lt;= n &lt;= 5");
+</FONT>		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match101-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:51 GMT -->
+</HTML>

@@ -1,0 +1,102 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match208-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040095NguyenucHoang_97646_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+problem4.java<p><PRE>
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match208-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package com.company;
+import java.util.Scanner;
+
+public class problem4 {
+    //Ex 1//
+    public static void main(String[] args) {
+        String answer;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Please choose the function you want to do: ");
+            System.out.println(" 1. Decimal to binary");
+            System.out.println(" 2. Multiple square root");
+</FONT>            System.out.println(" 3. Solve quadratic equation");
+            System.out.println(" 4. Print a triangle given its size");
+            Integer function = sc.nextInt();
+            //Function 1//
+            switch(function){
+			case 1:
+                System.out.println("Please enter your number: ");
+                Integer number = sc.nextInt();
+                System.out.println("The number in binary is: " + Integer.toBinaryString(number));
+				break;
+            //Function 2//
+			case 2:
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match208-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please enter how many time do you want to repeat the square root (bigger or equal to 1 and smaller or equal to 5): ");
+                int n = sc.nextInt();
+                System.out.println("Please enter the number you want to add: ");
+                double m = sc.nextDouble();
+                double ketqua = 0;
+                for (int i = 1; i &lt;= n; i++) {
+</FONT>                    ketqua = Math.sqrt(ketqua + m);
+                }
+                System.out.println("Your result: " + ketqua);
+				break;
+            //Function 3//
+			case 3:
+                System.out.println("Please enter a: ");
+                double a = sc.nextDouble();
+                System.out.println("Please enter b: ");
+                double b = sc.nextDouble();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match208-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please enter c: ");
+                double c = sc.nextDouble();
+                double delta = ((b * b) - (4 * a * c));
+                if (delta &lt; 0) {
+                    System.out.println("There's no solution");
+                }
+                if (delta == 0) {
+                    System.out.println("There's only one solution: x = " + -b / (2 * a));
+                }
+                if (delta &gt; 0) {
+                    double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+</FONT>                    System.out.println("There are two solution: x1 = " + x1 + " and x2 = " + x2);
+                }
+				break;
+            //Function 4//
+			case 4:
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match208-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_18.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please enter the height of your triangle: ");
+                int h = sc.nextInt();
+                for (int i = 1; i &lt;= (h * 2); i += 2) {
+                    for (int space = (h * 2); space &gt;= i; space--) {
+                        System.out.print(" ");
+                    }
+                    for (int star = 1; star &lt;= i; star++) {
+                        System.out.print("* ");
+                    }
+                    System.out.println();
+                }
+				break;
+</FONT>            }
+            answer = sc.nextLine();
+            System.out.println("Do you want to use other functions? (Y/N)");
+            answer = sc.nextLine();
+        }
+        while (answer.equals("Y") || answer.equals("y"));
+    }
+}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match208-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

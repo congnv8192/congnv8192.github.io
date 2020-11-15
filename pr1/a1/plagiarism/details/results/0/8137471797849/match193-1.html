@@ -1,0 +1,190 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match193-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenManhHung_97544_assignsubmission_file_NguyenManhHung_1C19_1901040103.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+PhiDuongLuong_97652_assignsubmission_file_Main.java<p><PRE>
+package com.rain.assignmenthanu;
+
+import java.util.Scanner;
+
+/**
+ * 
+ * @author RainVN
+ *
+ */
+
+public class Main {
+	private static Scanner sc = new Scanner(System.in);
+	private static Scanner sc2;
+
+	// main method used to cast 2 sub-method
+	public static void main(String[] args) {
+		showSelectionMenu();
+		gatheringInput();
+	}
+
+	private static void executeProgram1() {
+		try {
+			System.out.println("Enter your number for convert: ");
+			int tempInt = sc.nextInt();
+			String converted = "";
+			if (tempInt &lt;= 0)
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match193-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.err.println("Only number &gt; 0 !!");
+			while (tempInt &gt; 0) {
+				converted = ((tempInt % 2) == 0 ? "0" : "1") + converted;
+				tempInt = tempInt / 2;
+			}
+			System.out.println(converted);
+</FONT>		} catch (Exception InputMismatchException) {
+			System.err.println("Out of integer memory!!");
+		}
+		showConfirmDialog();
+	}
+
+	private static void executeProgram2() {
+		System.out.println("Enter number (m):");
+		int m = sc.nextInt();
+		if (m &lt; 0) {
+			System.err.println("Error with your input, m should be positive!");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match193-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			executeProgram2();
+		}
+		System.out.println("Enter loop times (n):");
+		int n = sc.nextInt();
+		if (!(n &gt;= 1 && n &lt;= 5)) {
+			System.err.println("Invalid n, try again!");
+</FONT>			executeProgram2();
+		}
+		double rs = 0;
+		for (int i = 1; i &lt;= n; i++) {
+			rs = Math.sqrt(m + rs);
+		}
+		System.out.println(rs);
+		showConfirmDialog();
+	}
+
+	private static void executeProgram3() {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match193-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Quadratic equation form: ax^2 + bx + c = 0 " + "\nEnter a: ");
+		int a = sc.nextInt();
+		System.out.print("Enter b: ");
+		int b = sc.nextInt();
+		System.out.print("Enter c: ");
+		int c = sc.nextInt();
+
+		if (a == 0 && b == 0 && c == 0) {
+			System.out.println("The equation has many solutions");
+</FONT>		} else if (a == 0 && b != 0 && c != 0) {
+			System.out.println("x=" + -c / b);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match193-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		} else if (a == 0 && b == 0 && c != 0) {
+			System.out.println("The equation has no solution");
+		}
+
+		double delta = Math.pow(b, 2) - 4 * a * c;
+		double r1 = (-b + Math.sqrt(delta)) / (2 * a);
+		double r2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+		System.out.println(delta == 0 ? "x=" + r1
+				: delta &gt; 0 ? "The equation has 2 roots" + "\nroot 1 = " + r1 + " and " + "root 2 = " + r2
+						: "The equation has no solution");
+</FONT>		showConfirmDialog();
+	}
+
+	private static void executeProgram4() {
+		System.out.println("Enter row: ");
+		int row = sc.nextInt();
+		if (row &gt; 20) {
+			System.err.println("Becareful, the triangle will be too big to show in Console");
+			executeProgram4();
+		} else if (row &lt;= 0) {
+			System.err.println("Check your input again");
+			executeProgram4();
+		}
+		for (int i = 1; i &lt;= row; i++) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match193-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			for (int j = 1; j &lt;= row - i; j++) {
+				System.out.print("   ");
+			}
+			for (int j = 1; j &lt;= i * 2 - 1; j++) {
+				System.out.print("*  ");
+			}
+			System.out.println("\n");
+</FONT>		}
+		showConfirmDialog();
+	}
+
+	// Menu method
+	private static void showSelectionMenu() {
+		System.out.println(
+				"\n=====================================\nChoose program to run: " + "\n[1] Convert int to binary "
+						+ "\n[2] Compute consecutive square root" + "\n[3] Solve quadratic equation"
+						+ "\n[4] Draw triangle" + "\n[5] Quit program" + "\n=====================================");
+	}
+
+	// Separate from menu to reuse for recursion
+	// Try/catch used for catching exception in whole program
+	private static void gatheringInput() {
+		try {
+			System.out.println("\nEnter your choice:");
+			sc2 = new Scanner(System.in);
+			int selection = sc2.nextInt();
+			switch (selection) {
+			case 1:
+				executeProgram1();
+			case 2:
+				executeProgram2();
+			case 3:
+				executeProgram3();
+			case 4:
+				executeProgram4();
+			case 5:
+				System.out.println("Closed program!! Goodbye &lt;3 ");
+				System.exit(0);
+			default:
+				System.err.println("Wrong input, only int number 1,2,3 or 4");
+				gatheringInput();
+			}
+		} catch (Exception e) {
+			System.err.println("\nWrong input! Try again please");
+			gatheringInput();
+		}
+	}
+
+	// Show a confirm message in console, Y/N or y/n are acceptable
+	private static void showConfirmDialog() {
+
+		sc = new Scanner(System.in);
+		System.out.println("Choose another function? Y/N");
+		String choice = sc.nextLine();
+		if (choice.equalsIgnoreCase("Y")) {
+			showSelectionMenu();
+			gatheringInput();
+		} else if (choice.equalsIgnoreCase("N")) {
+			System.out.println("Closed program!! Goodbye &lt;3 ");
+			System.exit(1);
+			sc.close();
+		} else {
+			System.err.println("Wrong input, only Y or N!");
+			showConfirmDialog();
+		}
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match193-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:56 GMT -->
+</HTML>

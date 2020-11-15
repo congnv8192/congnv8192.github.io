@@ -1,0 +1,168 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match212-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040062VuTienat_97727_assignsubmission_file_VuTienDat_7C18_1801040062_A1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+Assignment1.java<p><PRE>
+/*
+ * Student name: Tran Tien Tung
+ * Class: 3CK19
+ * Student ID: 1901040195
+ * Email: hung2522001@gmail.com
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match212-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+ */
+import java.util.Scanner;
+public class Assignment1 {
+    public static void main(String[] args) {
+        int h;
+        do{
+            System.out.println("[1] Task 1");
+            System.out.println("[2] Task 2");
+            System.out.println("[3] Task 3");
+            System.out.println("[4] Task 4");
+</FONT>            System.out.println("[5] Quit");
+            System.out.println("Enter the choice");
+            Scanner sc = new Scanner(System.in);
+            h = sc.nextInt();
+        } while (h &lt;= 1 && h &gt;= 5);
+        switch(h){
+case 1:
+        Scanner sc = new Scanner(System.in);        
+        int[]remainder = new int[10];
+        System.out.println("Enter a decimal number: ");
+        int decimal = sc.nextInt();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match212-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int i = 1;
+        int j;
+        while(decimal!=0){
+            remainder[i++]=decimal%2;
+            decimal= decimal/2;
+        }
+        System.out.println("The binary number is: ");
+        for(j= i-1; j &gt;=0; j--){
+            System.out.print(remainder[j]);
+        }
+</FONT>        System.out.print("\n");
+        break;
+case 2: 
+        Scanner sca = new Scanner(System.in);
+        System.out.println(" Compute a consecutive square root");
+        System.out.println(" Input two integers: m and n (1 ≤ n ≤ 5)");
+        
+        
+        do{
+            double m,n;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match212-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Enter m: ");
+            m = sca.nextDouble();
+            System.out.println("Enter n: ");
+            n = sca.nextDouble();
+            if (n &gt;=1 && n&lt;= 5){
+            double square = 0;
+            for (int c = 0; c &lt;= n; c++){
+            square= Math.sqrt(square + m);
+        }
+            System.out.println("The result is : " + square);
+            break;
+</FONT>        }  else{
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match212-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                while(true){
+            System.out.println("Value of m and n must be available with the condition  ");
+            System.out.println("Pleease enter the intergers m and n agains: ");
+        }
+    }
+}
+        while(true);
+        break;
+</FONT>case 3: 
+        double a,b,c,x1,x2,delta;
+        Scanner scan = new Scanner(System.in);
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match212-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("To solve the equation ax^2 + bx + c = 0");
+        do{
+            System.out.println("Enter the first number a(a#0): ");
+            a = scan.nextDouble();
+        } while(a == 0);
+        System.out.println("Enter b: ");
+        b = scan.nextDouble();
+        System.out.println("Enter c: ");
+</FONT>        c =scan.nextDouble();
+        //calculate the delta = b*b-4*a*c;
+        delta = Math.pow(b, 2)- 4*a*c;
+        if (delta &lt; 0){
+            System.out.println("The equation has no real roots");
+            //if delta &lt; 0 then the equation has no solution
+        }
+        else if ( delta == 0){
+            x1 = x2= -b/(2*a);
+            System.out.println("The equation has double solution: x1 = x2 =  " + x1);
+            //if delta = 0 the the equation has a unique solution x1 = x2 = -b/2a
+        }
+        else {
+            x1 = (- b + Math.sqrt(b*b-4*a*c))/(2*a);
+            x2 = ( -b - Math.sqrt(b*b-4*a*c))/(2*a);
+            System.out.println("The result is x1 = " + x1 + ", and x2 = " + x2);
+            //if delta &lt; 0 then the quation has 2 distinct solution
+        }
+        // break the result
+        break;
+case 4:
+    int m, n, k, number;
+    Scanner user_input;
+    user_input = new Scanner(System.in);
+    System.out.println("Print a triangle given its size");
+    System.out.println("Enter the number: ");
+    number = user_input.nextInt();
+        if (number &lt; 1 || number &gt; 5) {
+            System.out.println("Please  input an integer n (1 ≤ n ≤ 5)");
+            System.out.println("");
+            //print some validation/error message
+        } else {
+            //write pattern logic
+            //write all loop code
+            for (m = 1; m &lt;= number; m++) 
+             // inner loop to handle number spaces 
+            // values changing acc to requirement
+            {
+                for (n = m; n &lt; number; n++) {
+                    System.out.print(" ");// printing spaces
+                }
+                for (k = 1; k &lt; (m * 2); k++) {
+                    //  inner loop to handle number of columns 
+                    //  values changing acc. to outer loop 
+                    System.out.print("*");
+                }
+                // ending line after each row
+                System.out.print("\n");
+            }
+        }
+        break;
+case 5: 
+    System.out.println("Quit");
+    break;
+default:
+    System.out.println("not a valid number, please come back and do it again");
+            
+    }
+
+    // Driver Function 
+    //block, end the programing 
+    }
+        
+}  
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match212-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

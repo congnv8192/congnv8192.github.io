@@ -1,0 +1,171 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match52-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>CanThiMaiAnh_97521_assignsubmission_file_midterm.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+CanThiMaiAnh_97521_assignsubmission_file_midterm.java<p><PRE>
+package midterm;
+
+import java.util.Scanner;
+
+/**
+ * 
+ * @author imac of Mai Anh
+ *
+ */
+
+public class midterm {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Scanner sc =new Scanner(System.in);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match52-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Boolean giveup = false;
+        String option;
+        //for option which bring us to option 1 to 5
+        do { // The loop will always be executed at least once, even if the condition stop is false, because the code block is executed before the condition is tested.
+        	System.out.println("[1] convert a decimal (base 10) integer to binary (base 2)");
+        	System.out.println("[2] compute a consecutive square root");
+        	System.out.println("[3] solve a quadratic equation");
+        	System.out.println("[4] print a triangle given its size");
+        	System.out.println("choose an option: ");
+        	option= sc.nextLine(); //This will give list of option for user to choose.
+        	switch (option) {
+        	case "[1]": //convert a decimal integer to binary by modula 2.
+        	{
+        		System.out.println("input a decimal integer; ");
+        		int x = sc.nextInt();
+        		String a = "";
+        		int y;
+        		do{
+        			y=x%2;
+        			if (y==0)
+        				a="0"+a;
+        			else
+        				a="1"+a;
+        			x=x/2;
+        			
+        			
+        		}while (x!=0);
+        		System.out.println(a);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match52-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        		break;
+        	    }
+        	case "[2]": //compute a consecutive square root.
+        	{
+        		int m,n;
+        		System.out.println("input m: ");
+        		m=sc.nextInt();
+        		System.out.println("input n with (1&lt;= n &lt;=5 : ");
+        		n=sc.nextInt();
+        		boolean check;
+        		check= (n&lt;1|| n&gt;5);
+        		while (check) {
+        			System.out.println(" It is invalid value. Please input n with (1&lt;=n &lt;=5): ");
+        			n=sc.nextInt();
+        			if (n&gt;=1 && n&lt;=5)
+        				check=false;
+        			}
+        		double a = Math.sqrt(m);
+        		for (int i=1; i&lt;n; i++)
+        			a=Math.sqrt(m+a);
+        		System.out.println(a);
+</FONT>        		break;}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match52-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        	case "[3]": //solve a quadratic equation.
+        	{
+        		System.out.println("input a= ");
+        		double a= sc.nextInt();
+        		System.out.println("input b= ");
+        		double b= sc.nextInt();
+        		System.out.println("input c= ");
+        		double c= sc.nextInt();
+        		double x,y,x1,x2;
+        		if (a==0 && b==0 && c==0) {// the value of a,b,c are equal 0.
+        			System.out.println("there is nothing to be solves");
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match52-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        		}else if (a==0 && b!=0 && c!=0) {//a equal 0 but b and c not equal 0.
+        			x=-c/b;
+        			System.out.println("The equation has 1 sol");
+        			System.out.println("x="+x);
+</FONT>        		
+        		}else if (a==0 && b==0 && c!=0) {// the value of c not equal 0.
+        			System.out.println("the equation has no sol");
+        		
+        		} else {
+        			y=b*b-4*a*c; //this is the sol of equation when a,b,c!=0.
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match52-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        			if (y==0) {// when y=0, the equation has a sol x=-b/2a.
+        				x=(-b)/2*a;
+        				System.out.println("the equation has a sol");
+        				System.out.println("x"+ x);
+        			} else if (y&lt;0) {
+</FONT>        				System.out.println("the equation has no sol");
+        			}else {//when y&gt;0.
+        				x1=(-b+ Math.sqrt(y)) / (2*a);
+        				x2=(-b- Math.sqrt(y)) / (2*a);
+        				System.out.println("x1="+x1);
+        				System.out.println("x2="+x2);
+        				
+        				
+        			}
+        			
+        		}
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match52-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        		break;
+        		
+        	
+        	}
+        	case "[4]": //print a triangle given its size.
+        	{
+        		int n;
+                System.out.print("Input n with (1 ≤ n ≤ 5): ");
+                n = sc.nextInt();
+                boolean kt;
+                kt = (n &lt; 1 || n &gt; 5);
+                while (kt){ // checks whether the user enters a number that satisfies a given condition.
+                    System.out.print("Invalid value. Please input n with (1 ≤ n ≤ 5): ");
+                    n = sc.nextInt(); 
+                    if ( n &gt;= 1 && n &lt;= 5)
+                        kt = false;}
+                for (int i = 1; i &lt;= n; i++) { // Print a triangle.
+</FONT>                    for (int j = n; j &gt;= i; j--)  
+                        System.out.print(" "); 
+                    for (int j = 1; j &lt;= i; j++)  
+                        System.out.print("* "); 
+                    System.out.println(); 
+              }
+                break;}
+        	 
+        	
+          
+              default: // if the user enters letters and characters or numbers greater than the integers 1 to 5, an error appears on the screen and asks to re-enter.
+                System.out.println("Invalid choice. Try again!");
+                }  
+            sc.nextLine();
+            System.out.println("Do you wish to continue? (Y/N) ");// ask the user if they want to continue the program, if so, continue to bring up the menu and options, otherwise exit the program and print goodbye.
+            if (sc.nextLine().equalsIgnoreCase("n"))
+                 giveup=true;
+        
+        } while (!giveup);// exit program.
+             System.out.println("Goodbye!");
+      }
+         
+	}
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match52-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:46 GMT -->
+</HTML>

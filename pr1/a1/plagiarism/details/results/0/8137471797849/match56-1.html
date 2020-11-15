@@ -1,0 +1,214 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match56-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1701040112aoPhuongNam_97555_assignsubmission_file_assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1701040183angThiThuUyen_97721_assignsubmission_file_MidtermAss.java<p><PRE>
+
+
+import java.util.Scanner;
+
+public class MidtermAss {
+	public static void main(String[] args) {
+		menu();
+
+	}
+
+	public static void menu() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+		System.out.println("2. Compute a consecutive square root.");
+		System.out.println("3. Solve a quadratic equation: ax^2 + bx + c = 0.");
+		System.out.println("4. Print a triangle given its size.");
+
+		System.out.print("Choose one method: ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match56-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		String function = sc.nextLine();
+		boolean valid1 = false;
+
+		switch (function) {
+
+		case "1":
+			while (!valid1) {
+				System.out.print("Enter number to convert binary: ");
+				try {
+					int dec = sc.nextInt();
+					valid1 = true;
+					System.out.println("The result: " + Integer.toBinaryString(dec));
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match56-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				} catch (Exception e) {
+					valid1 = false;
+					System.out.println("Please, You must enter an integer!");
+					sc.nextLine();
+				}
+			}
+			continuebox();
+			break;
+
+		case "2":
+			while (!valid1) {
+				System.out.print("Enter m: ");
+				try {
+					double m = sc.nextDouble();
+					System.out.print("Enter n (0 &lt; n &lt; 6): ");
+					try {
+						int n = sc.nextInt();
+						valid1 = true;
+						double result = m;
+						if (1 &lt;= n && n &lt;= 5) {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match56-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							for (int i = 1; i &lt;= n; i++) {
+								result = m + Math.sqrt(result);
+							}
+							System.out.println(result - m);
+						} else {
+							System.out.println("Please, You must enter n from 1 to 5!");
+							valid1 = false;
+						}
+					} catch (Exception e) {
+						valid1 = false;
+						System.out.println("Please, You must enter an integer");
+						sc.nextLine();
+					}
+				} catch (Exception e) {
+					valid1 = false;
+					System.out.println("Please, You must enter an integer!");
+					sc.nextLine();
+				}
+			}
+			continuebox();
+			break;
+
+		case "3":
+</FONT>			System.out.println("The quadratic equation: ax^2 + bx + c = 0.");
+			while (!valid1) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match56-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.print("Enter a: ");
+				try {
+					double a = sc.nextDouble();
+					System.out.print("Enter b: ");
+					try {
+						double b = sc.nextDouble();
+						System.out.print("Enter c: ");
+						try {
+							double c = sc.nextDouble();
+							valid1 = true;
+</FONT>							double delta = Math.pow(b, 2) - 4 * a * c;
+							if (a == 0 && b == 0 && c == 0) {
+								System.out.println("No solutions");
+							} else if (a == 0 && b == 0 && c != 0) {
+								System.out.println(" the equation has no root.");
+							} else if (a == 0 && b != 0 && c != 0) {
+
+								System.out.println(" x = " + -c / b);
+							} else {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match56-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+								if (delta &lt; 0) {
+									System.out.println("There is no solution!");
+								} else {
+									double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+									double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+</FONT>									if (x1 == x2) {
+										System.out.println("Double root: " + x1);
+									} else {
+										System.out.println("x1 = " + x1);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match56-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+										System.out.println("x2 = " + x2);
+									}
+								}
+							}
+						} catch (Exception e) {
+							valid1 = false;
+							System.out.println("Please, You must enter a number!");
+							sc.nextLine();
+						}
+					} catch (Exception e) {
+						valid1 = false;
+						System.out.println("Please, You must enter a number!");
+						sc.nextLine();
+					}
+				} catch (Exception e) {
+					valid1 = false;
+					System.out.println("Please, You must enter a number!");
+					sc.nextLine();
+				}
+			}
+			continuebox();
+			break;
+
+		case "4":
+			while (!valid1) {
+				System.out.print("Enter value of n (0 &lt; n &lt; 6): ");
+				try {
+					int n1 = sc.nextInt();
+					valid1 = true;
+					if (n1 &gt;= 1 && n1 &lt;= 5) {
+</FONT>						String str = "     *     ";
+						char[] cha = str.toCharArray();
+						int i = 0, s = 5, r = 5;
+						while (i &lt; n1) {
+							System.out.println(cha);
+							i++;
+							s--;
+							r++;
+							cha[s] = '*';
+							cha[r] = '*';
+						}
+
+					} else {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match56-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						System.out.println("You must enter n from 1 to 5!");
+						valid1 = false;
+					}
+				} catch (Exception e) {
+					valid1 = false;
+					System.out.println("You must enter an integer, please try again!");
+					sc.nextLine();
+				}
+			}
+			continuebox();
+			break;
+		default:
+			System.err.println("Invalid input!");
+			continuebox();
+			break;
+		}
+
+	}
+
+	public static void continuebox() {
+		System.out.println("Do you want to continue(Y/N)");
+		Scanner con = new Scanner(System.in);
+</FONT>		switch (con.nextLine().toUpperCase()) {
+		case "N":
+			System.out.println("Thanks and goodbye!");
+			break;
+
+		case "Y":
+			System.out.println("Lets choose another function!");
+			menu();
+			break;
+		default:
+			System.err.println("Invalid input!");
+			continuebox();
+			break;
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match56-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:47 GMT -->
+</HTML>

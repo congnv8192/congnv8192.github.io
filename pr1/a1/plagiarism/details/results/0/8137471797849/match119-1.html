@@ -1,0 +1,193 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match119-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040208NguyenMinhThao_97765_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+1801040213TranQuangThinh_97671_assignsubmission_file_AssigmentMAU.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignmentmau;
+
+
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Administrator
+ */
+class AssignmentMAU {
+
+    /**
+     * @param args the command line arguments
+     */
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match119-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+   Scanner sc = new Scanner(System.in);
+    do 
+    {System.out.println("1. Convert a demical (base 10) integer to binary (base2)");
+     System.out.println("2. Compute a consecutive square root");
+     System.out.println("3. Solve a quadratic equation: ax^2 + bx + c = 0");
+     System.out.println("4. Print a triangle given its size");
+     String method;
+     do { System.out.print("choose one method: ");
+        method = sc.nextLine();
+        boolean check = false;
+        switch (method){
+            case "1":
+</FONT>                int dec_num, quot, i=1, j;
+                int bin_num[] = new int[100];
+                Scanner scan = new Scanner(System.in);
+                System.out.print("Input a Demical number: ");
+                dec_num = scan.nextInt();
+                quot = dec_num;
+                while(quot != 0)
+                { bin_num[i++] = quot%2;
+                  quot = quot/2;
+                }
+                System.out.print("Binary number is: ");
+                for(j=i-1; j&gt;0; j--)
+                { System.out.print(bin_num[j]);
+                }
+                System.out.print("\n");              
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match119-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                break;
+            case "2":
+                while (!check) { System.out.print("Enter m: ");
+                   try {
+                        int m = sc.nextInt();
+                        System.out.print("Enter n (1 ≤ n ≤ 5): ");
+                       try {
+                            int n = sc.nextInt();
+                            check = true;
+                            double result = m;
+                            if (1 &lt;= n && n &lt;= 5) {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match119-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                for (i = 1; i &lt;= n; i++) {
+                                   result = m + Math.sqrt(result); 
+                                }
+                                System.out.println(result - m);
+                            } else {
+                                System.out.println("You must follow the condition of n (1 ≤ n ≤ 5)!");
+                                        check = false; 
+                            }
+                                } catch (Exception e) {
+                                    check = false;
+                                    System.out.println("Invalid input, please try again!");
+                                    sc.nextLine();
+                                }
+                   }
+                             catch (Exception e) {
+                                check = false;
+                                System.out.println("The input data must be a number, please try again!");
+                                sc.nextLine(); 
+                             }
+                }
+                break;
+                case "3":
+                    System.out.print("enter a = ");
+</FONT>                    float a = sc.nextFloat();
+                    System.out.print("enter b = ");
+                    float b = sc.nextFloat();
+                    System.out.print("enter c = ");
+                    float c = sc.nextFloat();
+                    if (a == 0) {
+            	    if (b == 0) {
+                	System.out.println("no solution");
+            }       else {
+                	System.out.println("one root: " + "x = " + (-c / b));
+                
+            }
+                    return;
+        }
+        	float delta = b*b - 4*a*c;
+        	float x1;
+        	float x2;
+           	    if (delta &gt; 0) {
+            		x1 = (float) ((-b + Math.sqrt(delta)) / (2*a));
+            		x2 = (float) ((-b - Math.sqrt(delta)) / (2*a));
+            		System.out.println("two root: " + "x1 = " + x1 + " và x2 = " + x2);
+        }  	    else if (delta == 0) {
+            		x1 = (-b / (2 * a));
+            		System.out.println("double root: " + "x1 = x2 = " + x1);
+        } 	    else {
+            		System.out.println("no solution");
+        }
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match119-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+ 		break;
+
+                    case "4":
+                        while (!check) {
+                            System.out.print("\nEnter value of n (1 ≤ n ≤ 5): ");
+                            try {
+                                int num = sc.nextInt();
+                                check = true;
+                                if (num &gt;= 1 && num &lt;= 5) {
+</FONT>                                    for (i = 0; i &lt; num; i++) {
+                                        for (j = num - i; j &gt; 1; j--) {
+                                            System.out.print("  ");
+                                        }
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match119-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                        for (j = 0; j &lt;= 2 * i; j++) {
+                                            System.out.print("* ");
+                                        }
+                                        System.out.print("\n\n");
+                                    }
+                                } else {
+                                    System.out.println("You must follow the condition of n (1 ≤ n ≤ 5)!");
+                                    check = false;
+                                }
+                            } catch (Exception e) {
+                                check = false;
+                                System.out.println("The input data must be an number, please try again!");
+                                sc.nextLine();
+                            }
+                        }
+                }
+            } 		while (!(method.equals("1") || method.equals("2") || method.equals("3") || method.equals("4")));
+
+            		System.out.print("Do you want to continue with another funtion? (YES/NO): ");
+            		sc.nextLine();
+
+        } 		while (sc.nextLine().toUpperCase().equals("YES"));
+        		System.out.println("----------END----------");
+</FONT>
+    }
+
+
+}
+
+
+                    
+                    
+     
+     
+     
+     
+     
+                
+     
+        
+     
+    
+    
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match119-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:53 GMT -->
+</HTML>

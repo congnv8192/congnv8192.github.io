@@ -1,0 +1,187 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match137-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040096PhamHuyHoang_97651_assignsubmission_file_Assignment1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+oHongHa_97566_assignsubmission_file_Assignment1_1701040037.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match137-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package Assignment1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author dohongha
+ */
+public class Assignment1_1701040037 {
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+</FONT>        boolean shouldmore = true;
+        while (shouldmore) {
+            System.out.println("Choose a function:");
+            System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+            System.out.println("2. Compute a consecutive square root");
+            System.out.println("3. Solve a quadratic equation");
+            System.out.println("4. Print a triangle given its size");
+            System.out.println("5. Exit");
+            System.out.println("---------------------------------------------------------");
+            int option = sc.nextInt();
+
+            while (option &lt; 1 || option &gt; 5) {
+                System.out.print("Invalid!!! (Select from 1 to 5): ");
+                option = sc.nextInt();
+            }
+            if (option == 1) {
+                DecimalToBinary();
+            } else if (option == 2) {
+                ConsecutiveSquare();
+            } else if (option == 3) {
+                QuadraticEquation();
+            } else if (option == 4) {
+                Triangle();
+            } else {
+                System.out.println("EXIT PROGRAM!");
+                System.exit(0);
+            }
+            while (true) {
+                try {
+                    System.out.println("Do you want to continue(yes/no)?");
+                    String c = sc.next().toLowerCase();
+                    if (c.equals("no")) {
+                        shouldmore = false;
+                        break;
+                    } else if (c.equals("yes")) {
+                        shouldmore = true;
+                        break;
+                    } else {
+                        System.out.println("Wrong Type. Input again!");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Wrong Type. Input again!");
+                }
+            }
+        }
+        System.out.println("EXIT PROGRAM!");
+        System.exit(0);
+    }
+
+    public static void DecimalToBinary() {
+        int dec, i = 1, j;
+        int bin[] = new int[10000];
+
+        System.out.print("Enter a decimal: ");
+        dec = sc.nextInt();
+
+        while (dec &gt; 0) {
+            bin[i++] = dec % 2;
+            dec = dec / 2;
+        }
+
+        System.out.print("Binary number is: ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match137-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (j = i - 1; j &gt;= 0; j--) {
+            System.out.print(bin[j]);
+        }
+        System.out.print("\n");
+    }
+
+    public static void ConsecutiveSquare() {
+        int m, n;
+</FONT>        double con = 0;
+
+        System.out.print("Enter m: ");
+        m = sc.nextInt();
+        System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+        n = sc.nextInt();
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match137-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while (n &lt; 1 || n &gt; 5) {
+            System.out.println("n invalid!!!");
+            System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+            n = sc.nextInt();
+        }
+
+        for (int i = 1; i &lt;= n; i++) {
+            con = Math.sqrt(m + con);
+        }
+
+        System.out.println("The consecutive square root is: " + con);
+    }
+
+    public static void QuadraticEquation() {
+        System.out.println("Enter a, b, c in Quadratic Equation: ax^2 + bx + c = 0");
+        double a, b, c;
+        System.out.print("Enter a: ");
+        a = sc.nextDouble();
+        System.out.print("Enter b: ");
+        b = sc.nextDouble();
+        System.out.print("Enter c: ");
+        c = sc.nextDouble();
+
+        if (a == 0 && b == 0 && c == 0) {
+            System.out.println("The equation has a countless number of roots.");
+</FONT>        } else if (a == 0 && b == 0 && c != 0) {
+            System.out.println("The equation has no root.");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match137-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        } else if (a == 0 && b != 0 && c != 0) {
+            System.out.println("The equation has one root: x = " + (-c / b));
+        } else {
+            double delta = (b * b - 4 * a * c);
+</FONT>            if (delta &gt; 0) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match137-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("The equation has two roots: x1= " + (-b + Math.sqrt(delta)) / (2 * a) + " and x2= " + (-b - Math.sqrt(delta)) / (2 * a));
+</FONT>            } else if (delta == 0) {
+                System.out.println("The equation has one root: " + (-b) / (2 * a));
+            } else {
+                System.out.println("The equation has no root");
+            }
+        }
+    }
+
+    public static void Triangle() {
+        int n;
+
+        System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+        n = sc.nextInt();
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match137-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while (n &lt; 1 || n &gt; 5) {
+            System.out.println("n invalid!!!");
+            System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+            n = sc.nextInt();
+        }
+
+        for (int i = 1; i &lt;= n; i++) {
+            for (int space = 0; space &lt;= n - i; space++) {
+                System.out.print("  ");
+            }
+            for (int space = 0; space &lt; (2 * i - 1); space++) {
+                System.out.print("* ");
+</FONT>            }
+            System.out.println();
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match137-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:54 GMT -->
+</HTML>

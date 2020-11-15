@@ -1,0 +1,202 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match223-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>NguyenKhacHung_97701_assignsubmission_file_Act1.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+NguyenKhacHung_97701_assignsubmission_file_Act1.java<p><PRE>
+/* Nguyen Khac Hung-7c19
+ * 
+ * ID student: 1901040102*/
+package midterm;
+
+import java.util.InputMismatchException;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match223-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+public class Act1 {
+
+	public static void main(String[] args) {
+		boolean CONTINUE = true;
+		Scanner sc = new Scanner(System.in);
+		while (CONTINUE == true) {
+			System.out.println("***********Menu***********");
+			System.out.println("1. Convert decimal (base 10) integer to binary (base 2)");
+			System.out.println("2. Compute a consecutive square root");
+			System.out.println("3. Solve a quadratic equation");
+</FONT>			System.out.println("4. Print a triangle given its size");
+			System.out.println(".......................................................");
+			int option = 0;
+			boolean ktra = false;
+			while (ktra == false) {
+				try {
+					System.out.print("Please enter a function which you want to choose: ");
+					option = sc.nextInt();
+					ktra = true;
+				} catch (Exception e) {
+					System.err.println("You must enter a number!");
+					sc.nextLine();
+				}
+			}
+			switch (option) {
+			case 1:
+				int x = 0;
+				boolean check = false;
+				while (check == false) {
+					try {
+						System.out.print("Enter an integer: ");
+						x = sc.nextInt();
+						check = true;
+					} catch (Exception e) {
+						System.err.println("You must enter a integer!");
+						sc.nextLine();
+					}
+				}
+				System.out.print("Binary representation of " + x + " : ");
+				System.out.println(Integer.toBinaryString(x));
+				break;
+			case 2:
+				int n = 0, m = 0;
+				boolean xem = false;
+				while (xem == false) {
+					try {
+						System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+						n = sc.nextInt();
+						System.out.print("Enter m: ");
+						m = sc.nextInt();
+						xem = true;
+					} catch (Exception e) {
+						System.err.println("You must enter a integer!");
+						sc.nextLine();
+					}
+				}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match223-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				double ket_qua = Math.sqrt(m);
+				while (n &lt; 1 || n &gt; 5) {
+					System.err.print("You have to enter n value in the range [1;5]: ");
+					System.out.print("Enter n: ");
+					n = sc.nextInt();
+				}
+				for (int i = 1; i &lt;= n; i++) {
+</FONT>					ket_qua = Math.sqrt(ket_qua + m);
+				}
+				System.out.println(ket_qua);
+				break;
+			case 3:
+				double a = 1, b = 2, c = 3;
+				boolean CHECK = false;
+				while (CHECK == false) {
+					try {
+						System.out.print("Enter a: ");
+						a = sc.nextDouble();
+						System.out.print("Enter b: ");
+						b = sc.nextDouble();
+						System.out.print("Enter c: ");
+						c = sc.nextDouble();
+						CHECK = true;
+					} catch (Exception e) {
+						System.err.println("You must enter a integer!");
+						sc.nextLine();
+					}
+				}
+				if (a == 0) {
+					if (b == 0) {
+						if (c == 0)
+							System.out.println("There's nothing to be solved.");
+						else
+							System.out.println("No solution");
+					} else {
+						double H = -c / b;
+						System.out.println("The equation has one root: x = " + H);
+					}
+				} else {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match223-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					double delta = Math.pow(b, 2) - 4 * a * c;
+					if (delta &lt; 0)
+						System.out.println("No solution");
+					else if (delta == 0) {
+</FONT>						double H = -b / (2 * a);
+						System.out.println("The equation has one root: x = " + H);
+					} else {
+						double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+						double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+						System.out.println("The equation has two roots: x1 = " + x1 + " x2 = " + x2);
+					}
+				}
+				break;
+			case 4:
+				int r = 0;
+				boolean KQUA = false;
+				while (KQUA == false) 
+				{
+					try 
+					{
+						System.out.print("Enter n (1 &lt;= n &lt;= 5): ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match223-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						r = sc.nextInt();
+						while (r &lt; 1 || r &gt; 5) {
+							System.err.println("You have to enter n value in the range [1;5]: ");
+							System.out.print("Enter n: ");
+							r = sc.nextInt();
+</FONT>						}
+						KQUA = true;
+					} catch (Exception e) {
+						System.err.println("You must enter a integer!");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match223-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						sc.nextLine();
+					}
+				}
+				String q = "";
+				String w = "*";
+				String e = "";
+				for (int i = 0; i &lt; r; i++) {
+					q = q + " ";
+				}
+				for (int i = 0; i &lt; r; i++) 
+				{
+					q = q.substring(q.length() - r + 1) + w;
+					System.out.println(q + e);
+					e = e + w;
+</FONT>				}
+				break;
+			default:
+				System.err.println("Invalid option! please retype!");
+				continue;
+			}
+			System.out.println("Do you want to continue (yes or no) ?");
+			String nkh = sc.next();
+			boolean NKH = false;
+			while (NKH == false) 
+			{
+				if (nkh.equalsIgnoreCase("yes")) {
+					NKH = true;
+				} else if (nkh.equalsIgnoreCase("no")) 
+				{
+					CONTINUE = false;
+					System.out.println("Goodbye !");
+					NKH = true;
+				} else {
+
+					System.err.println("Enter again!");
+					System.out.println("Do you want to continue (yes or no) ?");
+					nkh = sc.next();
+				}
+			}
+
+		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match223-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:57 GMT -->
+</HTML>

@@ -1,0 +1,150 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match35-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LaiKhanhLinh_97578_assignsubmission_file_Assignment1.java.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LaiKhanhLinh_97578_assignsubmission_file_Assignment1.java.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match35-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package assignmentlinh;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Lai Khanh Linh 1901040123
+ */
+public class AssignmentLinh {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    int a;
+		while (true) {
+			System.out.println("1. Convert a decimal (base 10) integer to binary (base 2).");
+			System.out.println("2. Compute a consecutive square root.");
+			System.out.println("3. Solve a quadratic equation.");
+			System.out.println("4. Print a triangle given its size.");
+			System.out.println("Choose one to do: ");
+			Scanner sc = new Scanner(System.in);
+			a = sc.nextInt();
+</FONT>			switch (a) {
+                        case 1:
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match35-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				int number, i = 0;
+				int binary[] = new int[100];
+				Scanner sc1 = new Scanner(System.in);
+				System.out.print("Enter a decimal integer: ");
+				number = sc1.nextInt();
+				while (number != 0) {
+					binary[i] = number % 2;
+					number = number / 2;
+</FONT>					i++;
+				}
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match35-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.print("Binary value is : \n");
+				for (int j = i - 1; j &gt;= 0; j--) {
+					System.out.print("" + binary[j]);
+				}
+				break;
+</FONT>
+			         
+                        case 2:
+				Scanner sc2 = new Scanner(System.in);
+				int m, n;
+				System.out.println(" Enter number m, n: ");
+				m = sc2.nextInt();
+				n = sc2.nextInt();
+				double square = 0;
+				for (int z = 1; z &lt;= n; z++) {
+					square = Math.sqrt(square + m);
+				}
+				System.out.println("Result: \n" + square);
+				break;        
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match35-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_49.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 3:
+				Scanner sc3 = new Scanner(System.in);
+				System.out.print("Input a: ");
+				double d = sc3.nextDouble();
+				System.out.print("Input b: ");
+				double b = sc3.nextDouble();
+				System.out.print("Input c: ");
+				double c = sc3.nextDouble();
+				double result = b * b - 4.0 * d * c;
+				if (result &gt; 0.0) {
+					double r1 = (-b + Math.pow(result, 0.5)) / (2.0 * d);
+					double r2 = (-b - Math.pow(result, 0.5)) / (2.0 * d);
+					System.out.println("The roots are \n" + r1 + " and \n" + r2);
+				} else if (result == 0.0) {
+					double r1 = -b / (2.0 * d);
+					System.out.println("The root is  \n" + r1);
+				} else {
+					System.out.println("The equation has no solution. \n");
+				}
+
+				break;
+
+			case 4:
+				int n1;
+				Scanner sc4 = new Scanner(System.in);
+				System.out.println("Please Enter a number");
+				n1 = sc4.nextInt();
+				if (n1 &lt; 1 && n1 &gt; 5) {
+					System.out.println("Invalid number");
+				} else {
+					System.out.println("Triangle: ");
+					int star = 1;
+					int NumOfSpace = 4;
+					for (int e = 1; e &lt;= n1; e++) {
+						for (int f = 1; f &lt;= NumOfSpace; f++) {
+							System.out.print(" ");
+						}
+						for (int g = 1; g &lt;= star; g++) {
+							System.out.print("*");
+						}
+						System.out.println();
+						star = star + 2;
+						NumOfSpace = NumOfSpace - 1;
+					}
+				}
+				break;
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match35-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        default:
+				System.out.println("Invalid number!");
+			        }
+			        System.out.println();
+			        System.out.println(" Do you want to try another function? (Y/N)");
+
+			        String answer = sc.next();
+			        if (answer.equalsIgnoreCase("N")) {
+				System.out.println("Thank you!");
+                                }
+				break;
+</FONT>			
+			
+			}
+		}
+	}
+    
+    
+
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match35-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:37 GMT -->
+</HTML>

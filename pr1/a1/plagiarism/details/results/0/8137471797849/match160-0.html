@@ -1,0 +1,183 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match160-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>LeThuTrang_97547_assignsubmission_file_LeThuTrang_2TD19_1901060052.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+LeThuTrang_97547_assignsubmission_file_LeThuTrang_2TD19_1901060052.java<p><PRE>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package LeThuTrang_2TD19_1901060052;
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match160-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_21.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+
+/**
+ *
+ * @author LeThuTrang
+ * 2TD19
+ * Student ID 1901060052
+ */
+public class LeThuTrang_2TD19_1901060052 {
+    //1
+    public static String convertBinary() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter number: ");
+        int n = input.nextInt();
+        int x = 1;
+        String binary = "";
+        boolean kt= true;
+        
+        while (kt == true) {
+            if ( n &gt; 0 ) {
+                x = x * 10 + n % 2;
+                n = n / 2;
+            } else {
+                kt = false;
+            }
+            
+            
+        }
+        char [] x1 = Integer. toString(x).toCharArray();
+        for (int i = x1.length - 1; i &gt;0; i--){
+            binary += x1 [i];
+        }
+        return binary;
+        
+        }
+     
+   //2
+    public static double MultiSqrt() {
+        int n;
+        int m;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Input m; ");
+        m = input.nextInt();
+        System.out.println("Input n: ");
+</FONT>        n = input.nextInt();
+        
+        double x = Math.sqrt(m);
+        
+        for (int i = 1; i &lt;= n - 1; i++) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match160-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            x= Math.sqrt(m + x);
+        }
+        return x; 
+        
+    }
+    //3
+    public static void QuadraticEquation() {
+        double x1, x2, x3, x4, delta;
+        Scanner input = new Scanner(System.in);
+        System.out.println("ax^2 + bx + c = 0");
+        System.out.println("Input a: ");
+        double a = input.nextDouble();
+        System.out.println("Input b: ");
+        double b = input.nextDouble();
+        System.out.println("Input c: ");
+        double c = input.nextDouble();
+        
+        delta = (b*b - 4 * a * c);
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match160-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        if (a==0){
+            x1 = -c / b;
+            System.out.println("Phuong trinh co mot nghiem la" + x1);
+        } else {
+            if (delta &gt; 0){
+                x2 = (-b - Math.sqrt(delta) / ( 2 * a));
+</FONT>                x3 = (-b + Math.sqrt(delta) / ( a * 2));
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match160-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Phuong trinh co hai nghiem phan biet" + x2 + "va" + x3);
+        } else {
+            if (delta &lt; 0){
+                System.out.println("Phuong trinh vo nghiem");
+        } else {
+            if (delta == 0){
+                x4 = -b/ a * 2;
+</FONT>                System.out.println("Phuong trinh co nghiem duy nhat la" + x4);
+            }
+            }    
+            }
+        }
+    }
+    //4
+    public static void triangle() {
+        int row, temp, star;
+        temp = n;
+        for (row = 1; row &lt;= n ; row ++)
+        {
+            for ( star = 1 ; star &lt; temp; star ++ )
+                System.out.print("*");
+                System.out.println("");    
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1.ConvertDecimalToBinary");
+        System.out.println("2.ConsecutiveSquareRoot");
+        System.out.println("3.QuadraticEquation");
+        System.out.println("4. TriangleGiven");
+        System.out.println("Vui long chon");
+        int x = scanner.nextInt();
+        
+        switch(x){
+            case 1:
+                System.out.println("Ban chon 1.");
+                System.out.println("Nhap so thap phan muon chuyen: ");
+                int dec = scanner.nextInt();
+                Bai4.convertBinary(dec);
+                break;
+            case 2:
+                System.out.println("Ban chon 2.");
+                System.out.println("Nhap so muon tinh: ");
+                int m = scanner.nextInt();
+                
+                System.out.print("Nhap so can: ");
+                int n = scanner.nextInt();
+                 
+                double kq = Bai4.ConsecutiveSquareRoot(m , n );
+                System.out.println("Result:" + kq );
+                break;
+            case 3:
+                System.out.println("Ban chon 3. ");
+                System.out.println("Nhap so bac 2: ");
+                double a = scanner.nextDouble();
+                  
+                System.out.println("Nhap so bac 1");
+                double b = scanner.nextDouble();
+                
+                System.out.println("Nhap so bac 0");
+                double c = scanner.nextDouble();
+                
+                Bai4.QuadraticEquation(a, b, c);
+                break;
+            case 4: 
+                System.out.println("Ban chon 4.");
+                System.out.println("Nhap so hang cua tam giac");
+                int row = scanner.nextInt();
+                 
+                Bai4.TriangleGiven(row);
+                break;
+            default:
+                System.out.println("Ban chua lua chon.");       
+        }
+        System.out.println("Ket thuc chuong trinh.");
+    }
+}
+    </PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match160-0.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>

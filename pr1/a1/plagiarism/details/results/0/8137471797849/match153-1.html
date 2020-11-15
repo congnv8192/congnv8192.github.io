@@ -1,0 +1,177 @@
+<HTML>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match153-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>1801040030NguyenThiChung_97529_assignsubmission_file_a1_1801040030.java</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+A1.java<p><PRE>
+//1701040104_HoangBaoLoc_6C17
+import java.util.Scanner;
+
+public class A1 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int choice = 0;
+		//a condition to stop while loop if user want to exit
+		boolean secondChoice = true;
+
+		while (secondChoice) {
+			//print menu
+			System.out.println("                          MENU");
+	        System.out.println("1. Convert a decimal (base 10) integer to binary (base 2)");
+	        System.out.println("2. Compute a consecutive square root");
+	        System.out.println("3. Solve a quadratic equation");
+	        System.out.println("4. Print a triangle given its size");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match153-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_24.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	        System.out.println("0. Exit");
+	        System.out.print("Your option: ");
+	        choice = input.nextInt();
+			
+	        //check if user's choice is valid
+			if (choice &gt;= 1 && choice &lt;=4) {
+				while (true) {
+					switch (choice) {
+					//Convert decimal integer to binary 
+					case 1:
+						int dec_num, quot, i = 1, j;
+				        int bin_num[] = new int[100];
+				       
+				        System.out.print("Enter a Decimal Number : ");
+				        dec_num = input.nextInt();
+						
+				        quot = dec_num;
+						
+				        while(quot != 0) {
+				            bin_num[i++] = quot % 2;
+				            quot = quot/2;
+				        }
+						
+				        System.out.print("Binary number is: ");
+				        for(j = i - 1; j &gt; 0; j--) {
+				            System.out.print(bin_num[j]);
+				        }
+				        System.out.print("\n");
+						break;
+</FONT>					//compute square root
+					case 2:
+						//get user's input
+						System.out.print("Enter integer m (square root of m): ");
+				        int number = input.nextInt();
+				        System.out.print("Enter integer n (1 &lt;= n &lt;= 5) where the square root is taken n times: ");
+				        int time = input.nextInt();
+				        // A block of code to compute square root 
+				        if (number &lt; 0) {
+				            System.out.println("Can not compute square root of negative number");
+				        } else {
+				            if (time &lt; 1 || time &gt; 5) {
+				                System.out.println("Enter n in range between 1 and 5");
+				            } else {
+				                double sum = 0;
+				                for (int m = 1; m &lt;= time; m++) {
+				                    sum = number + Math.sqrt(sum);
+				                }
+				                double result = Math.sqrt(sum);
+				                System.out.printf("When m is " + number + " and n is " + time + ": " + result);
+				                System.out.println('\n');
+				            }
+				        }
+						break;
+					//solve quadratic equation
+					case 3:
+						System.out.println("ax^2 + bx+ c");
+						//get user's input 
+						System.out.print("Enter a: ");
+						int a = input.nextInt();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match153-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						System.out.print("Enter b: ");
+						int b = input.nextInt();
+						System.out.print("Enter c: ");
+						int c = input.nextInt();	
+						
+						System.out.println("result: ");
+						if(a == 0) {
+							if(b == 0) {
+								if (c == 0) {
+									System.out.println("many roots");
+								} else {
+</FONT>									System.out.println("no root");
+								}
+							} else {
+								System.out.println("x = " + (-c)/b);
+							}
+						} else { 
+							int d = b*b - 4*a*c;
+							if(d &lt; 0) {
+								System.out.println("no root");
+							} else if(d == 0) {
+								System.out.println("x = " + (-b)/(2*a));
+							} else {
+								System.out.println("x1 = " + ((-b)+Math.sqrt(d))/(2*a));
+								System.out.println("x1 = " + ((-b)-Math.sqrt(d))/(2*a));
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match153-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							}
+						}
+						break;
+					//print triangle
+					case 4:
+						System.out.print("Triangle's size (from 1 to 5): "); 
+				        int row = input.nextInt(); 
+				  
+				        //iterate for the given number of rows 
+				        for (int x = 1; x &lt;= row; x++) { 
+				  
+				            //print the number of spaces before the star 
+				            for (int z = row; z &gt;= x; z--) { 
+				                System.out.print(" "); 
+				            } 
+				  
+</FONT>				            //print the number of stars in each row 
+				            for (int z = 1; z &lt;= x; z++) { 
+				                System.out.print("* "); 
+				            } 
+				  
+				            // for new line after printing each row 
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match153-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				            System.out.println(); 
+				        } 
+						break;
+					}
+					//check if user want to continue or not
+					System.out.print("Continue with other functions?(true/false): ");
+					secondChoice = input.nextBoolean();
+					System.out.println("Thank you!");
+					//stop printing menu and exit
+</FONT>					break;
+					
+				}
+			//if user want to exit
+			} else if (choice == 0) {
+				System.out.println("Goodbye!!");
+				break;
+			//if user enter wrong number
+			} else {
+				System.out.println("Wrong choice!!");
+				System.out.print("Your option: ");
+				int y = input.nextInt();
+				choice = y;
+			}
+		
+		}
+		
+
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+
+<!-- Mirrored from moss.stanford.edu/results/0/8137471797849/match153-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Nov 2020 10:15:55 GMT -->
+</HTML>
