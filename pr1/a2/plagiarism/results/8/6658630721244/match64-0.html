@@ -1,0 +1,215 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040057BuiHuuat_106470_assignsubmission_file_BuiHuuDat_1C18_1801040057_A2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040057BuiHuuat_106470_assignsubmission_file_BuiHuuDat_1C18_1801040057_A2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040057BuiHuuat_106470_assignsubmission_file_BuiHuuDat_1C18_1801040057_A2.java
+package Assignment;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Bui Huu Dat_1801040057_1C18
+ *
+ */
+public class BuiHuuDat_1C18_1801040057_A2 {
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match64-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void deleteItem(int i) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the product ID you want to delete: ");
+		int deleteID = sc.nextInt();
+		for (i = 0; i &lt; ID.size(); i++) {
+			if (ID.get(i) == deleteID) {
+				Name.remove(i);
+				Price.remove(i);
+				ID.remove(i);
+				Quantity.remove(i);
+			}
+		}
+		System.out.println("Item has been deleted!");
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match64-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	}
+
+	public static void addProduct(int i) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter product's information: ");
+		System.out.println("Product ID: " + i);
+
+		// add() function allows users to add more specific elements into the collection
+		ID.add(i);
+		System.out.print("Product name: ");
+		Name.add(sc.nextLine());
+		System.out.print("Product price: ");
+		Price.add(sc.nextDouble());
+</FONT>		System.out.print("Product quantity: ");
+		Quantity.add(sc.nextInt());
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match64-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("Successful!");
+	}
+
+	public static void saveToTXT() throws Exception {
+		File f = new File("products.txt");
+		FileOutputStream fos = new FileOutputStream(f);
+		// write into saved file
+		try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(ID);
+			oos.writeObject(Quantity);
+			oos.writeObject(Name);
+			oos.writeObject(Price);
+		}
+		System.out.println("Your data has been saved!");
+</FONT>	}
+
+	public static void printTable() throws Exception {
+		System.out.format("%-3s|   %18s|  %10s|   %10s|%n", "ID", "Name", "Price", "Quantity");
+		for (int i = 0; i &lt; Name.size(); i++) {
+			System.out.format("%-3d|   %18s|  %10.2f|   %10d|%n", ID.get(i), Name.get(i), Price.get(i),
+					Quantity.get(i));
+		}
+	}
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match64-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_25.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void editItem(int i) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter ID number of the product you want to edit: ");
+		i = sc.nextInt();
+		while (i &lt; 0 || i &gt; ID.size()) {
+			System.err.println("Not allowed! Please enter again: ");
+			i = sc.nextInt();
+		}
+		System.out.println("Enter new product: ");
+		System.out.println("Enter new product's name: ");
+		sc = new Scanner(System.in);
+		Name.set(i, sc.nextLine());
+		System.out.println("Enter new product's quantity: ");
+		sc = new Scanner(System.in);
+		Quantity.set(i, sc.nextInt());
+		System.out.println("Enter new product's price: ");
+		sc = new Scanner(System.in);
+		Price.set(i, sc.nextDouble());
+		System.out.println("Your changes have been saved!");
+		System.out.println();
+	}
+
+	public static void searchByName(int i) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter the name: ");
+		String nameToFind = sc.nextLine();
+		for (i = 0; i &lt; Name.size(); i++) {
+			if (Name.get(i).contains(nameToFind)) {
+				System.out.println("Product ID: " + ID.get(i));
+				System.out.println("Product price: " + Price.get(i));
+				System.out.println("Product quantity: " + Quantity.get(i));
+				System.out.println("Product name: " + Name.get(i));
+</FONT>
+			}
+		}
+	}
+
+	// main method to run the menu
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match64-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void main(String[] args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		int choose = 0;
+
+		// while loop for users to continue to choose another options
+		while (choose != 8) {
+</FONT>			try {
+				System.out.println("MENU");
+				System.out.println("[1] Add products");
+				System.out.println("[2] Display products");
+				System.out.println("[3] Delete a product");
+				System.out.println("[4] Edit a product");
+				System.out.println("[5] Search for products by name");
+				System.out.println("[6] Save product to text file");
+				System.out.println("[7] Load product from the saved file");
+				System.out.println("[8] Exit the program");
+				System.out.println("Please select a feature: ");
+				choose = sc.nextInt();
+			} catch (Exception e) {
+				System.out.println("You must enter a number from 1-8!");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match64-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				sc.nextLine();
+			}
+			switch (choose) {
+			case 1:
+				addProduct(i);
+				i++;
+				break;
+			case 2:
+				printTable();
+				break;
+			case 3:
+				deleteItem(i);
+				break;
+			case 4:
+				editItem(i);
+				break;
+			case 5:
+				searchByName(i);
+				break;
+			case 6:
+				saveToTXT();
+				break;
+			case 7:
+				loadSavedTXT();
+				break;
+			case 8:
+</FONT>				System.out.println("Goodbye!");
+				break;
+			default:
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match64-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("Please choose again from 1-8!");
+			}
+		}
+	}
+
+	public static void loadSavedTXT() throws Exception {
+		File f = new File("products.txt");
+		FileInputStream fis = new FileInputStream(f);
+		// read data from saved file
+		try (ObjectInputStream ois = new ObjectInputStream(fis)) {
+			Name = (ArrayList&lt;String&gt;) ois.readObject();
+			Price = (ArrayList&lt;Double&gt;) ois.readObject();
+			ID = (ArrayList&lt;Integer&gt;) ois.readObject();
+			Quantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+		}
+		System.out.println(ID);
+		System.out.println(Name);
+		System.out.println(Quantity);
+		System.out.println(Price);
+</FONT>
+	}
+
+	// ArrayList of Integer Values to store int values for prodID and similar to
+	// others.
+	static ArrayList&lt;Integer&gt; Quantity = new ArrayList&lt;Integer&gt;();
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match64-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	static ArrayList&lt;String&gt; Name = new ArrayList&lt;String&gt;();
+	static ArrayList&lt;Double&gt; Price = new ArrayList&lt;Double&gt;();
+	static int i = 0;
+</FONT>	static ArrayList&lt;Integer&gt; ID = new ArrayList&lt;Integer&gt;();
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

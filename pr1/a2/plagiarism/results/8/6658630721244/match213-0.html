@@ -1,0 +1,196 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040166BuiTungNhat_106444_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040166BuiTungNhat_106444_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040166BuiTungNhat_106444_assignsubmission_file_Assignment2.java
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Random;
+public class Assignment2{
+        public static void main(String[] args) throws Exception{
+            File products = new File("products.txt");
+            Scanner sc = new Scanner(System.in);  
+            Random rd = new Random();
+            int i=0,j=0;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match213-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            boolean answer=true;
+            File f = new File("product.txt");
+            ArrayList&lt;String&gt; name = new ArrayList&lt;&gt;();
+            ArrayList&lt;Integer&gt; quantity = new ArrayList&lt;&gt;();
+            ArrayList&lt;Double&gt; price = new ArrayList&lt;&gt;();
+            ArrayList&lt;Integer&gt; ID  = new ArrayList&lt;&gt;();
+            do{
+               System.out.println("- Feature 1: Add products \n"
+</FONT>                    + "- Feature 2: Display products \n"
+                    + "- Feature 3: Delete a product \n"
+                    + "- Feature 4 (optional): Edit a product \n"
+                    + "- Feature 5: Search for products by name \n"
+                    + "- Feature 6 (optional): Sort products by price \n"
+                    + "- Feature 7: Save products to text/binary file \n"
+                    + "- Feature 8: Load products from the saved file \n"");
+                System.out.print("Enter the feature you want to do(from 1 to 8): ");
+                int feature = sc.nextInt();
+                switch(feature){
+                    case 1:
+                        
+                                System.out.print("Enter the number of product that you want to add: ");
+                                int num = sc.nextInt();
+                                for(i=0;i&lt;num;i++){
+                                /* Add the name of the product*/
+                                System.out.print("Enter your product's name: ");
+                                name.add(i,sc.next());
+                                /*Add the quantity of the product*/
+                                System.out.print("Enter your product's quantity: ");
+                                quantity.add(i,sc.nextInt());
+                                /*Add the price of product*/
+                                System.out.print("Enter your product's price: ");
+                                price.add(i,sc.nextDouble());
+                                /*Add the product's ID*/
+                                /*System.out.println("Your product's ID is created automatically!");*/
+                                int id;
+                                ID.add(i, id = rd.nextInt(30)+2411);
+                                
+                                System.out.println("Enter the next product information!");
+                                
+                                }break;
+                    case 2:          
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match213-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.format("%20s | %10s | %10s | %10s%n", "Name", "Quantity", "Price", "ID");
+                        for ( i= 0; i &lt;ID.size(); i++) {
+                        
+                        System.out.format("%20s | %10d | %10.1f | %10d%n", name.get(i), quantity.get(i), price.get(i), ID.get(i));}
+</FONT>                        break;
+                    case 3:
+                        System.out.print("Enter the ID of product that you want to delete: ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match213-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        int remove = sc.nextInt();
+                        
+                            for(i=0; i&lt;ID.size(); i++){
+                                if(remove==ID.get(i)){
+                                name.remove(i);
+                                ID.remove(i);
+                                quantity.remove(i);
+                                price.remove(i); 
+                                System.out.println("The product has been deleted!");
+                                }
+                            }
+                            
+                            System.out.println("New table:");
+                            System.out.format("%20s | %10s | %10s | %10s%n", "Name", "Quantity", "Price", "ID");
+                            for ( i= 0; i &lt;ID.size(); i++) {
+                            System.out.format("%20s | %10d | %10.1f | %10d%n", name.get(i), quantity.get(i), price.get(i), ID.get(i));
+</FONT>                            }break;
+                    case 4:
+                        System.out.print("Enter the ID of the product that you want to ediit: ");
+                        int edit = sc.nextInt();
+                       
+                            for(i=0; i&lt;ID.size(); i++){
+                            if(edit==ID.get(i)){                               
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match213-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                System.out.println("Choose the information that you want to edit: \n1. Product's name\n12. Product's price\n3. Product's quantity.");
+                                int choice = sc.nextInt();
+                                switch(choice){
+                                    case 1:
+                                        System.out.print("Enter the new name of the product: ");
+                                        name.set(i, sc.next());break;
+                                    case 2:
+                                        System.out.print("Enter the new price of the product: ");
+                                        price.set(i, sc.nextDouble());break;
+                                    case 3:
+                                        System.out.print("Enter the new quantity of the product: ");
+                                        quantity.set(i, sc.nextInt());break;
+                                    default:
+                                        System.out.println("Invalid choice!");
+                                    }  
+                                }
+                            } 
+                              
+                        
+                        break;
+</FONT>                      
+                    case 5:
+                        System.out.print("Enter the name of product that you want to search(keyword):");
+                        String search = sc.nextLine();
+                        if(name.contains(search)){
+                           j=name.indexOf(search);
+                           System.out.format("%20s | %10d | %10.1f | %10d", name.get(j), quantity.get(j), price.get(j), ID.get(j));}                        
+                        break;
+                    case 6:
+                        int min_pos = 0;
+                        for(i=0;i&lt;=ID.size();i++){
+                            min_pos=i;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match213-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for(j=1;j&lt;=ID.size();j++){
+                                if(price.indexOf(j)&lt;price.indexOf(min_pos)){
+                                    min_pos=j;
+                                    }
+                                }
+                            double subprice = price.get(i);
+                            price.set(i, price.get(min_pos));
+                            price.set(min_pos, subprice);
+                            String subname = name.get(i);
+                            name.set(i, name.get(min_pos));
+                            name.set(min_pos, subname);
+                            int subquant = quantity.get(i);
+</FONT>                            quantity.set(i, quantity.get(min_pos));
+                            quantity.set(min_pos, subquant);
+                        }break;
+                    case 7:
+                        
+                        FileOutputStream fos = new FileOutputStream(f);
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        oos.writeObject(ID);
+                        oos.writeObject(name);
+                        oos.writeObject(price);
+                        oos.writeObject(quantity);
+                        oos.close();
+                        System.out.println("Saved!");
+                        break;
+                    case 8:
+                        int[] newID = new int[ID.size()];
+                        FileInputStream fis = new FileInputStream(f);
+                        ObjectInputStream ois = new ObjectInputStream(fis);
+                        newID = (int[]) ois.readObject();
+                        name = (ArrayList&lt;String&gt;) ois.readObject();
+                        price = (ArrayList&lt;Double&gt;) ois.readObject();
+                        quantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+                        ois.close();
+                        System.out.println("Your product file has been load!");
+                        break;
+                    default:
+                        System.out.println("Invalid choice! ");
+                }
+                    System.out.println("Do you want to continue with other feature(Y/N): ");
+                    String con = sc.nextLine();
+                    if(con.equalsIgnoreCase("Y")){
+                            answer=true;
+                    } else if (con.equalsIgnoreCase("N")) {
+                            answer=false;
+                        }
+                    
+            } while(answer==true);
+        }
+}
+                                      
+            
+            
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,390 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenLongNhat_106297_assignsubmission_file_assign2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenNgocSon_106341_assignsubmission_file_App.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenNgocSon_106341_assignsubmission_file_App.java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class App {
+    public static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws Exception {
+        String choose = null;
+        boolean exit = false;
+        ManagerProduct managerProduct = new ManagerProduct();
+
+        int productId;
+        String productName;
+
+        // show menu
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match73-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        showMenu();
+        while (true) {
+            choose = scanner.nextLine();
+            switch (choose) {
+            case "1":
+                managerProduct.add1();
+                break;
+            case "2":
+                managerProduct.show();
+                break;
+            case "3":
+                productId = managerProduct.inputID();
+                managerProduct.delete(productId);
+                break;
+            case "4":
+                productId = managerProduct.inputID();
+                managerProduct.edit(productId);
+                break;
+            case "5":
+                productName = managerProduct.inputName();
+                managerProduct.serachByName(productName);
+</FONT>                break;
+            case "6":
+                managerProduct.sortByPrice();
+                break;
+            case "7":
+                managerProduct.saveToFile();
+                System.out.println("The Object was succesfully written to a file");
+                break;
+            case "8":
+                  System.out.println("The Object has been read from the file");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match73-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                managerProduct.readFile();
+                
+                break;
+            case "0":
+                System.out.println("exited!");
+                exit = true;
+                break;
+            default:
+                System.out.println("invalid! please choose action in below menu:");
+                break;
+            }
+            if (exit) {
+                break;
+            }
+            // show menu
+            showMenu();
+        }
+    }
+    public static void showMenu() {
+        System.out.println();
+        System.out.println("===========Menu==========");
+        System.out.println("1. Add product.");
+        System.out.println("2. DIsplay product.");
+</FONT>        System.out.println("3. Delete a product.");
+        System.out.println("4. Edit a product.");
+        System.out.println("5. Search for products by name.");
+        System.out.println("6. Sort product by price.");
+        System.out.println("7. Save to file.");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match73-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("8. Load product from saved file");
+        System.out.println("0. exit.");
+        System.out.println("=========================");
+        System.out.print("Please choose: ");
+        
+    }
+
+}
+
+/**
+ * Product
+ */
+class Product implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+</FONT>    private int productID;
+    private String productName;
+    private double productPrice;
+    private int productQuantity;
+
+    public static int id = 1000;
+
+    public Product() {
+
+    }
+
+    public Product(int productID, String productName, double productPrice, int productQuantity) {
+        super();
+        this.productID = productID;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productQuantity = productQuantity;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+}
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match73-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+class sortByPrice implements Comparator &lt;Product&gt;{
+
+    @Override
+    public int compare(Product o1, Product o2) {
+        if(o1.getProductPrice() &gt; o2.getProductPrice())
+            return 1;
+
+        return -1;
+    }
+    
+
+}
+
+class ObjectWriteToFile{
+    private static final String PRODUCT_FILE_NAME = "product.txt";
+</FONT>
+    public ObjectWriteToFile(){
+
+    }
+    public void wirteToFile(Product product){
+        try {
+            File f = new File(PRODUCT_FILE_NAME);
+            FileOutputStream fileOut = new FileOutputStream(f);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(product);
+            objectOut.close();
+            
+ 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+
+    public Object readObjectFromFile(String filepath) {
+ 
+    try {
+
+        FileInputStream fileIn = new FileInputStream(filepath);
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+
+        Object obj = objectIn.readObject();
+
+        objectIn.close();
+        return obj;
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        return null;
+    }
+}
+}
+
+
+
+class ManagerProduct implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private static final String PRODUCT_FILE_NAME = "product.txt";
+    public static Scanner scanner = new Scanner(System.in);
+    private ArrayList&lt;Product&gt; products = new ArrayList&lt;Product&gt;();
+
+    public ManagerProduct() {
+
+    }
+
+    public void add1() {
+        System.out.print("Enter number of product: ");
+        int number;
+        number = Integer.parseInt((scanner.nextLine()));
+        int i = 1;
+        do {
+            int id = i;
+            System.out.println("Product's ID: " + i);
+            String name = inputName();
+            double price = inputPrice();
+            int quantities = inputQuantity();
+            System.out.println();
+            products.add(new Product(id, name, price, quantities));
+            i++;
+        } while (number == i);
+    }
+
+    public void show() {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match73-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (Product product : products) {
+            System.out.format("%4d | ", product.getProductID());
+            System.out.format("%9s | ", product.getProductName());
+            System.out.format("%9.1f |", product.getProductPrice());
+            System.out.format("%4d%n", product.getProductQuantity());
+        }
+    }
+
+    public void delete(int id) {
+        Product product = null;
+        int size = products.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (products.get(i).getProductID() == id) {
+                product = products.get(i);
+                break;
+            }
+        }
+        if (product != null) {
+            products.remove(product);
+        } else {
+            System.out.printf("id = %d not existed%n", id);
+</FONT>        }
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match73-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void edit(int id) {
+        int size = products.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (products.get(i).getProductID() == id) {
+                products.get(i).setProductID(inputID());
+                products.get(i).setProductName(inputName());
+                products.get(i).setProductPrice(inputPrice());
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match73-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                products.get(i).setProductQuantity(inputQuantity());
+            }
+        }
+    }
+
+    public void serachByName(String name) {
+        int size = products.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (products.get(i).getProductName().equals(name)) {
+                System.out.format("%5d | ", products.get(i).getProductID());
+                System.out.format("%10s | ", products.get(i).getProductName());
+                System.out.format("%10.1f |", products.get(i).getProductPrice());
+                System.out.format("%5d%n", products.get(i).getProductQuantity());
+            } else {
+                System.out.println("Not exsited");
+            }
+        }
+    }
+
+    public void sortByPrice() {
+        Collections.sort(products, new sortByPrice());
+    }
+
+    public int inputID() {
+        System.out.print("Input product's ID: ");
+        while (true) {
+            try {
+                int id = Integer.parseInt((scanner.nextLine()));
+                return id;
+            } catch (NumberFormatException ex) {
+                System.out.print("invalid! Input product id again: ");
+            }
+        }
+    }
+
+    public String inputName() {
+        System.out.print("Input product's name: ");
+        return scanner.nextLine();
+    }
+
+    public double inputPrice() {
+        System.out.print("Input product's price: ");
+        while (true) {
+            try {
+                double price = Double.parseDouble((scanner.nextLine()));
+                return price;
+            } catch (NumberFormatException ex) {
+                System.out.print("invalid! Input product price again: ");
+            }
+        }
+    }
+
+    public int inputQuantity() {
+        System.out.print("Input product's quantities: ");
+        while (true) {
+            try {
+                int quantities = Integer.parseInt(scanner.nextLine());
+</FONT>                if (quantities &lt; 0) {
+                    throw new NumberFormatException();
+                }
+                return quantities;
+            } catch (NumberFormatException exception) {
+                System.out.print("Invalid  number! Input quantities again: ");
+            }
+        }
+    }
+
+    public void saveToFile() {
+        ObjectWriteToFile save = new ObjectWriteToFile();
+        for (Product product : products) {
+            save.wirteToFile(product);
+        }
+    }
+    public void readFile() throws FileNotFoundException {
+        ObjectWriteToFile owf = new ObjectWriteToFile();
+        
+        int size = products.size();
+        Product [] productsOut = new Product[size];
+       for (int i = 0; i &lt; size; i++){
+        productsOut[i] =  (Product) owf.readObjectFromFile(PRODUCT_FILE_NAME);
+        System.out.format("%5d | ", productsOut[i].getProductID());
+        System.out.format("%10s | ", productsOut[i].getProductName());
+        System.out.format("%10.1f |", productsOut[i].getProductPrice());
+        System.out.format("%5d%n", productsOut[i].getProductQuantity());
+        }
+    }
+    public void setProducts(ArrayList&lt;Product&gt; products) {
+        this.products = products;
+    }
+
+    public ArrayList&lt;Product&gt; getProducts() {
+        return products;
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

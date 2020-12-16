@@ -1,0 +1,166 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoangVuTungLam_106491_assignsubmission_file_HoangVuTungLam2_1C19_1901040116.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LeucAnh_106435_assignsubmission_file_LeDucAnh_1C19_1901040008.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LeucAnh_106435_assignsubmission_file_LeDucAnh_1C19_1901040008.java
+package assignment2;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match84-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Scanner;
+
+public class LeDucAnh_1C19_1901040008 {
+
+    static ArrayList&lt;Integer&gt; i = new ArrayList&lt;&gt;();
+    static ArrayList&lt;String&gt; n = new ArrayList&lt;&gt;();
+</FONT>    static ArrayList&lt;String&gt; p = new ArrayList&lt;&gt;();
+    static ArrayList&lt;String&gt; q = new ArrayList&lt;&gt;();
+    public static void main(String[] args) throws Exception {
+        while (true) {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("[1] Add products");
+            System.out.println("[2] Display products");
+            System.out.println("[3] Delete a product");
+            System.out.println("[4] Edit a product");
+            System.out.println("[5] Search for products by name");
+            System.out.println("[6] Sort products by price");
+            System.out.println("[7] Save products to text/binary file");
+            System.out.println("[8] Load products from the saved file");
+            System.out.println("[9] Exit the program");
+            System.out.print("Choose an option: ");
+            int option = scan.nextInt();
+            switch (option) {
+                case 1:
+                    String nx;
+                    String px;
+                    String qx;
+                    String x;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match84-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_51.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int automatic = 1;
+                    do {
+                        System.out.println("Enter the product ID: " + automatic);
+                        i.add(automatic);
+                        automatic++;
+                        System.out.println("Enter the product name: ");
+                        nx = scan.next();
+                        scan.nextLine();
+                        n.add(nx);
+                        System.out.println("Enter the product price: ");
+                        px = scan.next();
+                        p.add(px);
+                        System.out.println("Enter the product quantity: ");
+                        qx = scan.next();
+                        q.add(qx);
+                        System.out.println("Wanna add another product?" + "Y/N");
+                        x = scan.next();
+                    } while (x.equalsIgnoreCase("Y"));
+                    System.out.println("Have added another product!");
+                    break;
+                case 2:
+                    System.out.println("----------------------------------------------------------------------");
+                    System.out.format("|%15s| %15s| %15s| %15s|", "Product ID", "Name", "Price", "Quantity");
+                    System.out.println();
+                    for (int k = 0; k &lt; i.size(); k++) {
+                        System.out.format(" |%15s| %15s| %15s| %15s| %n", i.get(k), n.get(k), p.get(k), q.get(k));
+                    }
+                    System.out.println("----------------------------------------------------------------------");
+                    break;
+                case 3:
+                    String a;
+                    do {
+                        System.out.println("Enter the product ID: ");
+                        int del = scan.nextInt();
+                        i.set(del - 1, null);
+                        n.set(del - 1, null);
+                        p.set(del - 1, null);
+                        q.set(del - 1, null);
+                        System.out.println("Wanna delete another product?" + "Y/N");
+                        a = scan.next();
+                    } while (a.equalsIgnoreCase("Y"));
+                    break;
+                case 4:
+                    System.out.println("Enter the ID of the product you wants to edit: ");
+                    int e = scan.nextInt();
+                    System.out.println("Enter the new name: ");
+                    String newname = scan.nextLine();
+                    System.out.println("Enter the new price: ");
+                    String newprice = scan.nextLine();
+                    System.out.println("Enter the new quantity: ");
+                    String newquantity = scan.nextLine();
+                    for (int k = 0; k &lt; i.size(); k++) {
+                        if (e == k + 1) {
+                            n.set(k, newname);
+                            p.set(k, newprice);
+                            q.set(k, newquantity);
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Enter the product you need to search: ");
+                    String productname = scan.next();
+                    if (n.contains(productname)) {
+                        System.out.println("Found the product");
+                    } else {
+                        System.out.println("Product do not exist!");
+                    }
+                    break;
+                case 6:
+                    Collections.sort(p);
+                    System.out.println("List of the products in ascending price order: " + p);
+</FONT>                    Collections.sort(p, Collections.reverseOrder());
+                    System.out.println("List of the products in descending price order: " + p);
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match84-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    break;
+                case 7:
+                    File file1 = new File("C:/Users/my pc/Documents/NetBeansProjects/Assignment2/src/assignment2/products.txt");
+                    PrintWriter print = new PrintWriter(file1);
+                    for (int k = 0; k &lt; i.size(); k++) {
+                        print.write("Products ID: " + i);
+</FONT>                        print.write("Products name: " + n);
+                        print.write("Products price: " + p);
+                        print.write("Products quantity: " + q);
+                    }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match84-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    print.close();
+                    break;
+                case 8:
+                    File file2 = new File("C:/Users/my pc/Documents/NetBeansProjects/Assignment2/src/assignment2/products.txt");
+                    FileInputStream f = new FileInputStream(file2);
+                    InputStreamReader s = new InputStreamReader(f);
+                    BufferedReader b = new BufferedReader(s);
+                    String line;
+                    System.out.println("Done loading products");
+                    while ((line = b.readLine()) != null) {
+                        System.out.println(line + " ");
+                    }
+                    b.close();
+</FONT>                    break;
+                case 9:
+                    System.out.println("Exiting....");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Incorrect input!!!");
+            }
+        }
+
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

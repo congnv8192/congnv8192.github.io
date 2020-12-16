@@ -1,0 +1,255 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/TranDuongSon_106489_assignsubmission_file_Ass2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/anginhMinh_106359_assignsubmission_file_MIDTERM2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: anginhMinh_106359_assignsubmission_file_MIDTERM2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ASSIGNMENT2;
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+/**
+ *
+ * @author Admin
+ */
+public class MIDTERM2 {
+   public static Scanner sc = new Scanner(System.in);
+    public static ArrayList&lt;String&gt; Name = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Double&gt; Price = new ArrayList&lt;&gt;();
+public static ArrayList&lt;Integer&gt; Quantity = new ArrayList&lt;&gt;();
+    public static File file = new File("Assignment2");
+    public static String[] temp;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match148-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static String outPut;
+    public static void main(String[] args){
+        while(true){
+            try{
+            	
+            	System.out.println("----MENU----");
+            	System.out.print(" 1. Add and Display the products \n 2. Delete the products by the position \n 3. Edit the products \n 4. Search product by name \n 5. Sort products by price \n 6. Save the File \n 7. Load the File \n") ;   	
+		        
+		        System.out.print("The Figure: ");
+		        int number = sc.nextInt();
+		        System.out.println();
+                        switch(number){
+                            case 1: AddAndDisplay(); 
+                            break;
+                            case 2: Delete(); 
+                            break;
+                            case 3: Edit();  
+</FONT>                            break;
+                            case 4: Search(); 
+                            break;
+                            case 5: Sort();  
+                            break;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match148-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            case 6: SaveProduct();    
+                            break;                      
+                            case 7: LoadProduct(); 
+                            break;
+                            default: System.out.println("Invalid vlue!"); 
+                            
+                        }
+		  
+		        
+    }catch (Exception m){
+    	System.out.println("Stop");
+        sc.nextLine();
+</FONT>            
+    }
+    }
+        }
+    public static void AddAndDisplay(){
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match148-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Access Granted");
+        System.out.println(" ");
+       
+        System.out.println("How many product do you want to add ? \nNumber: ");
+        int b = sc.nextInt();
+        try {
+        System.out.println("Start");
+        // thêm products
+        for (int i= 0 ; i &lt; b; i++){
+            sc.nextLine();
+            System.out.println("Enter the Name: ");
+</FONT>            String name = sc.nextLine();Name.add(name);
+            System.out.println("Enter the Price: ");
+            double price = Double.parseDouble(sc.nextLine());Price.add(price);
+            System.out.println("Enter the Quantity: ");
+            int quantity = sc.nextInt();
+            boolean add = Quantity.add(quantity);
+        }
+        System.out.println("results: ");
+        System.out.println("-----------------");
+        System.out.println("|-ps---Name----Price----Quantity-|");
+        for(int i = 1; i &lt;= Price.size(); i++){
+            System.out.printf("Name.get(i-1), Price.get(i-1),Quantity.get(i-1)");
+        }
+        }catch(NumberFormatException e) {
+        	System.out.println("Something wrong." );
+        	
+        }
+   }
+    public static void Delete(){
+        System.out.println("Access granted");
+        System.out.println("");
+        System.out.println("Enter the Product ID need to be removed: ");
+        int position = sc.nextInt();
+        Name.remove(position);
+        Price.remove(position);
+        Quantity.remove(position);
+        System.out.println("-------------------");
+        System.out.println("|-ID---Name----Price---Quantity_|");
+        for(int i = 1; i &lt;= Price.size(); i++){
+            System.out.printf("Name.get(i-1), Price.get(i-1),Quantity.get(i-1)");
+        }
+    }
+    public static void Edit(){
+        System.out.println("Access granted");
+        System.out.println("");
+        System.out.printf("%S","If you want to Stop, write Stop");
+        System.out.println("");
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match148-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int test =1;
+        while (test == 1){
+        System.out.println("Enter the product ID which you want to change: ");
+        int position = sc.nextInt();
+        while(true){
+            System.out.println("The element you want to change:  ");
+</FONT>            System.out.println("Product's name : enter n");
+            System.out.println("Product's price : enter p");
+            System.out.println("Product 's quantity: enter q");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match148-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Please enter !");
+            String line = sc.nextLine();
+            if(line.equalsIgnoreCase("n")){
+            System.out.println("Change name to: ");
+            String name = sc.nextLine();
+            Name.set(position-1, name);
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match148-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                } if (line.equalsIgnoreCase("p")){
+                    System.out.println("Change price to: ");
+                    double price = Double.parseDouble(sc.nextLine());
+                    Price.set(position-1,price);
+</FONT>                   
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match148-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                } if(line.equalsIgnoreCase("q")){
+                    System.out.println("Change quantity to: ");
+                    int number = Integer.parseInt(sc.nextLine());
+                    Quantity.set(position-1, number);
+                    
+                // get out of the process of edit elements    
+                }else if(line.equalsIgnoreCase("Stop")){
+                    System.out.println("Thank you !");
+                    test=0;
+                    break;
+                }
+        else {
+            System.out.println("Invalid value!");
+            }
+            // display the new results 
+            System.out.println("The results: ");
+            System.out.println(" ---------------------------");
+            System.out.println("|-ID---Name------Price----Quantity-|");
+</FONT>        for(int i = 1; i &lt;= Price.size(); i++){
+            System.out.printf("Name.get(i-1), Price.get(i-1),Quantity.get(i-1)");
+        }
+        }
+        }
+    }
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match148-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Search(){
+    	System.out.println("Access Granted");
+        System.out.println(" ");
+        
+        while (true){
+            
+            try{
+                sc.nextLine();
+                System.out.println("If you want to stop, write Stop");
+</FONT>                System.out.println("The name of product you want to find: ");
+            String name = sc.nextLine();
+            if(name.equalsIgnoreCase("stop")){
+                System.out.println("Thank you!");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match148-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                break;
+            }else{
+                for(int i = 1 ; i &lt;= Name.size();i++){
+                if(name.equalsIgnoreCase(Name.get(i-1))){
+                    System.out.println("results: ");
+</FONT>                    break;    
+                    }
+                }
+            }for(int i = 1 ; i &lt;= Name.size();i++) {
+            if (!name.equalsIgnoreCase(Name.get(i-1))){
+            	System.out.println("------Repeat-------");
+            }
+            }
+            
+        }
+            catch(Exception e){
+                System.out.println("!!");
+            }
+        }
+    }
+    public static void Sort(){
+    
+
+    }
+    public static void SaveProduct() throws Exception {
+<A NAME="10"></A><FONT color = #FF0000><A HREF="match148-0.html#10" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    	FileOutputStream fos = new FileOutputStream(file);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(outPut);
+		oos.writeObject(temp);
+		oos.close();
+		System.out.println("Save Successfull");
+</FONT>		System.out.printf("The file have been Saved",file.getName());
+		System.out.println();
+    }
+	public static void LoadProduct() throws Exception{
+		SaveProduct();
+		System.out.println();
+		System.out.printf("Display the File: %s !",file.getName());
+		System.out.println();
+		FileInputStream fis = new FileInputStream(file);
+       try (ObjectInputStream ois = new ObjectInputStream(fis)) {
+           outPut= (String) ois.readObject();
+           temp = (String[]) ois.readObject();
+       }
+		System.out.println();
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match148-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println(outPut);
+		for(int i  = 0 ; i &lt; Price.size(); i ++) {
+		System.out.println(temp[i]);
+</FONT>		}
+  
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

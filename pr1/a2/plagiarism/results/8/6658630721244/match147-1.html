@@ -1,0 +1,197 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040030NguyenThiChung_106570_assignsubmission_file_a2_1801040030.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040077PhamThiHang_106497_assignsubmission_file_A2_1801040077.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040077PhamThiHang_106497_assignsubmission_file_A2_1801040077.java
+package a2_1801040077;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class A2_1801040077 {
+  public static void main(String[] args) throws Exception {
+        // declare the arrayList 
+        ArrayList&lt;Integer&gt; id = new ArrayList&lt;&gt;(); 
+        ArrayList&lt;String&gt; names = new ArrayList&lt;&gt;(); 
+        ArrayList&lt;Double&gt; price = new ArrayList&lt;&gt;(); 
+        ArrayList&lt;Integer&gt; quantity = new ArrayList&lt;&gt;(); 
+        
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("Enter the number of products: "); 
+        int num = sc.nextInt();
+        
+        // display menu
+        while (true) {
+            System.out.println("[1] Add products");
+            System.out.println("[2] Display products");
+            System.out.println("[3] Delete a products");
+            System.out.println("[4] Edit a products");
+            System.out.println("[5] Search for product by name");
+            System.out.println("[6] Sort products by price");
+            System.out.println("[7] Save products to text/binary file");
+            System.out.println("[8] Load products from the saved file");
+            System.out.print("[9] Quit\nYour choice: ");
+            int n = sc.nextInt();
+            
+            //run the menu-based program based on input's value
+            if (n == 1) {
+                Scanner sc1 = new Scanner(System.in);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match147-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                for (int i = 1; i &lt;= num; i++) {
+                    System.out.println("Product ID: " + i);
+                    id.add(i);
+                    System.out.print("Product name: ");
+                    names.add(sc1.nextLine());
+                    System.out.print("Product price: ");
+                    price.add(sc.nextDouble());
+                    System.out.print("Quantity: ");
+                    quantity.add(sc.nextInt());
+                }
+
+            } else if (n == 2) {
+                try {
+                    System.out.format("| %5s | %15s | %10s | %10s |%n", "ID", "Name", "Price", "Quantity");
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match147-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    for (int i = 0; i &lt; num; i++) {
+                        System.out.println("-------------------------------------------------------");
+                        System.out.format("| %05d | %15s | %10f | %10d |%n", id.get(i), names.get(i), price.get(i), quantity.get(i));
+                    }
+                } catch (Exception e) {
+                    sc.nextLine();
+                }
+
+            } else if (n == 3) {
+                System.out.print("Enter ID of the product you want to delete: ");
+                int delete = sc.nextInt();
+</FONT>                // find the index of delete position
+                int deletePos = id.indexOf(delete);
+                // remove product
+                id.remove(deletePos);
+                names.remove(deletePos);
+                price.remove(deletePos);
+                quantity.remove(deletePos);
+                System.out.println("Delete successfully!");
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match147-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if (n == 4) {
+                Scanner sc2 = new Scanner(System.in);
+                System.out.println("Enter ID of the product you want to edit: ");
+                int edit = sc.nextInt();
+</FONT>                // find the index of edit position
+                int editPos = id.indexOf(edit);
+                //edit products
+                System.out.print("New name: ");
+                names.set(editPos, sc2.nextLine());
+                System.out.print("New price: ");
+                price.set(editPos, sc.nextDouble());
+                System.out.println("New quantity: ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match147-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                quantity.set(editPos, sc.nextInt());
+
+            } else if (n == 5) {
+                System.out.print("Enter keyword of the product's name you want to search: ");
+                Scanner sc3 = new Scanner(System.in);
+                String key = sc3.nextLine();
+</FONT>                for (int i = 0; i &lt; num; i++) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match147-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    if ((names.get(i)).contains(key)) {
+                        System.out.format("| %5s | %15s | %15s | %10s |%n", "ID", "Name", "Price", "Quantity");
+                        System.out.format("| %05d | %15s | %15.3f | %10d |%n", id.get(i), names.get(i), price.get(i), quantity.get(i));
+                    }
+                }
+
+            } else if (n == 6) {
+                for (int i = 0; i &lt; num; i++) {
+</FONT>                   
+                    for (int j = num - 1; j &gt; 1; j--) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match147-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    	if (price.get(i) &gt; price.get(j)) {
+                    		
+                    		double tmp = price.get(i);
+                    		price.set(i, price.get(j));
+                    		price.set(j, tmp);
+                    		
+                    		String tmp0 = names.get(i);
+                    		names.set(i, names.get(j));
+                    		names.set(j, tmp0);
+                    		
+                    		int tmp1 = id.get(i);
+                    		id.set(i, id.get(j));
+                    		id.set(j, tmp1);
+                    	}
+                    }
+                }
+                
+                System.out.format("| %5s | %15s | %10s | %10s |%n", "ID", "Name", "Price", "Quantity");
+</FONT>                for (int i = 0; i &lt; num; i++) {
+                    System.out.println("-------------------------------------------------------");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match147-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.format("| %05d | %15s | %10f | %10d |%n", id.get(i), names.get(i), price.get(i), quantity.get(i));
+                }
+
+            } else if (n == 7) {
+                File f = new File("product.bin"); // Create a stream to write the file ..
+                 // Create FileOutputStream object to write to file.
+                FileOutputStream fos = new FileOutputStream(f);
+                // Create ObjectOutputStream object to wrap 'fos'.
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(id);
+</FONT>                oos.writeObject(names);
+                oos.writeObject(price);
+                oos.writeObject(quantity);
+                
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match147-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("The products were saved to file!");
+                oos.close();
+
+            } else if (n == 8) {
+                // Create FileOutputStream object to read to file.
+                FileInputStream fis = new FileInputStream("product.bin");
+                // Create ObjectInputStream object to wrap 'fis'.
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                id = (ArrayList&lt;Integer&gt;) ois.readObject();
+</FONT>                names = (ArrayList&lt;String&gt;) ois.readObject();
+                price = (ArrayList&lt;Double&gt;) ois.readObject();
+                quantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+                
+                System.out.format("| %5s | %15s | %10s | %10s |%n", "ID", "Name", "Price", "Quantity");
+                for (int i = 0; i &lt; num; i++) {
+                    System.out.println("-------------------------------------------------------");
+                    System.out.format("| %05d | %15s | %10f | %10d |%n", id.get(i), names.get(i), price.get(i), quantity.get(i));
+                    ois.close();
+                }
+                      
+            } else if (n == 9) {
+                System.out.println("Goodbye!");
+                break;
+
+            } else {
+                System.out.println("Invalid choice!"); 
+            }
+            
+        }
+    }
+}
+   
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

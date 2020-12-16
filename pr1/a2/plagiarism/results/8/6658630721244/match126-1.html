@@ -1,0 +1,219 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoangNguyenThuyDuong_106313_assignsubmission_file_HoangNguyenThuyDuong_1TD19_1901060012.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/aoucGiang_106421_assignsubmission_file_DaoDucGiang_1901060013_1TD19.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: aoucGiang_106421_assignsubmission_file_DaoDucGiang_1901060013_1TD19.java
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match126-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package daoducgiang_1901060013_1td9;
+
+import java.io.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class DaoDucGiang_1901060013_1TD9 {
+</FONT>
+    int id;
+    final String name;
+    final double price;
+    final int quantity;
+
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match126-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    DaoDucGiang_1901060013_1TD9(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+</FONT>        setId();
+    }
+
+    /* id is a random number */
+    void setId() {
+        this.id = (int) (Math.random() * 9000 + 1000);
+    }
+
+    void display() {
+        System.out.printf("%-5s%-15s%-10.2f%d\n", id, name, price, quantity);
+    }
+
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match126-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        DaoDucGiang_1901060013_1TD9[] allProducts = new DaoDucGiang_1901060013_1TD9[30];
+        String path = "data.txt";
+        Scanner input = new Scanner(System.in);
+        int total = 0, menu = 0;
+</FONT>        do {
+            System.out.print("Hey officer, please choose one below to proceed:\nPress 1. Add product\n"
+                    + "Press 2. Display all products\nPress 3. Delete a product\n"
+                    + "Press 4. Edit a product\nPress 5. Search for product by name\n"
+                    + "Press 6. Sort by price\nPress 7. Save to file\n"
+                    + "Press 8. Load from file\nPRESS 0 to Quit\nYour choice: ");
+            try {
+                String temp = input.nextLine();
+                menu = Integer.parseInt(temp);
+                switch (menu) {
+                    case 1: {
+                        System.out.print("Total products: ");
+                        temp = input.nextLine();
+                        total = Integer.parseInt(temp);
+                        for (int i = 0; i &lt; total; ++i) {
+                            try {
+                                insertProduct(allProducts, input, i);
+                            } catch (InputMismatchException | NumberFormatException ex) {
+                                System.out.println("Wrong format input");
+                                ex.printStackTrace();
+                            }
+                        }
+                        break;
+                    }
+                    case 2: {
+                        for (int i = 0; i &lt; total; ++i) {
+                            allProducts[i].display();
+                        }
+                        System.out.println();
+                        break;
+                    }
+                    case 3: {
+                        System.out.print("Enter product ID to delete: ");
+                        temp = input.nextLine();
+                        int id = Integer.parseInt(temp);
+                        boolean found = false;
+                        for (int i = 0; i &lt; total; i++) {
+                            if (allProducts[i].id == id) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match126-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                --total;
+                                found = true;
+                                if (total - i &gt;= 0) {
+                                    System.arraycopy(allProducts, i + 1, allProducts, i, total - i);
+                                }
+                                System.out.println("Product deleted");
+                            }
+                        }
+                        if (!found) {
+                            System.out.println("Not found");
+</FONT>                        }
+                        break;
+                    }
+                    case 4: {
+                        System.out.print("ID: ");
+                        int id = Integer.parseInt(input.nextLine());
+                        for (int i = 0; i &lt; total; ++i) {
+                            if (allProducts[i].id == id) {
+                                insertProduct(allProducts, input, i);
+                                System.out.println("Edited");
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    case 5: {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match126-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Enter product name to search: ");
+                        if (input.hasNextLine()) {
+                            String name = input.nextLine();
+                            boolean found = false;
+                            for (int i = 0; i &lt; total; i++) {
+                                if (allProducts[i].name.equals(name)) {
+                                    found = true;
+                                    allProducts[i].display();
+                                }
+                            }
+                            if (!found) {
+                                System.out.println("Not found!");
+                            }
+                        } else {
+                            System.out.println("Invalid input!");
+</FONT>                        }
+                        break;
+                    }
+                    case 6: {
+                        for (int i = 0; i &lt; total; ++i) {
+                            for (int j = 0; j &lt; total - i - 1; j++) {
+                                if (allProducts[j].price &gt; allProducts[j + 1].price) {
+                                    DaoDucGiang_1901060013_1TD9 tmp = allProducts[j];
+                                    allProducts[j] = allProducts[j + 1];
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match126-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                    allProducts[j + 1] = tmp;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                    case 7:
+                        writeFile(allProducts, path, total);
+                        break;
+                    case 8:
+                        total = readFile(allProducts, path, total);
+                        break;
+                    default:
+                        System.out.println("Out of range\n");
+                }
+            } catch (InputMismatchException | NumberFormatException | IOException ex) {
+                System.out.println("Try again");
+                ex.printStackTrace();
+            }
+        } while (menu != 0);
+        input.close();
+</FONT>    }
+
+    static void insertProduct(DaoDucGiang_1901060013_1TD9[] allProducts, Scanner input, int i) {
+        System.out.print("Product name: ");
+        String name = input.nextLine();
+        System.out.print("Product price: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match126-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double price = Double.parseDouble(input.nextLine());
+        System.out.print("Product quantity: ");
+        int quantity = Integer.parseInt(input.nextLine());
+        allProducts[i] = new DaoDucGiang_1901060013_1TD9(name, price, quantity);
+        System.out.println("ID: " + allProducts[i].id);
+</FONT>    }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match126-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static int readFile(DaoDucGiang_1901060013_1TD9[] allProducts, String output, int total) {
+        try {
+            File file = new File(output);
+            if (file.exists()) {
+                Scanner fileScan = new Scanner(file);
+                int i = total;
+                while (fileScan.hasNextLine()) {
+                    String[] info = fileScan.nextLine().split(" ");
+                    allProducts[i++] = new DaoDucGiang_1901060013_1TD9(info[0], Double.parseDouble(info[1]), Integer.parseInt(info[2]));
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match126-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                }
+                total = i;
+                System.out.println("Read successfully");
+                fileScan.close();
+            }
+        } catch (Exception e) {
+</FONT>            System.out.println("An error occurred");
+        }
+        return total;
+    }
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match126-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static void writeFile(DaoDucGiang_1901060013_1TD9[] allProducts, String path, int total) throws IOException {
+        File outFile = new File(path);
+        BufferedWriter writeFile = new BufferedWriter(new FileWriter(outFile));
+        for (int i = 0; i &lt; total; i++) {
+            writeFile.write(allProducts[i].name + " " + allProducts[i].price + " " + allProducts[i].quantity + "\n");
+</FONT>        }
+        writeFile.close();
+        System.out.println("Successfully!");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

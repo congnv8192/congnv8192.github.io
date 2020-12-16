@@ -1,0 +1,285 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/PhamMinhuc_106332_assignsubmission_file_Products.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamMinhuc_106332_assignsubmission_file_Products.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamMinhuc_106332_assignsubmission_file_Products.java
+package Assignment2;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import Assignment.Assignment;
+
+class Assignment2 implements Serializable {
+
+	private int ID;
+	private String Name;
+	private float Price;
+	private int Quantity;
+	
+
+	public Assignment2(int ID, String Name, float Price, int Quantity) {
+		this.ID = ID;
+		this.Name = Name;
+		this.Price = Price;
+		this.Quantity = Quantity;
+	}
+
+	public Assignment2() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public float getPrice() {
+		return Price;
+	}
+
+	public int getQuantity() {
+		return Quantity;
+	}
+
+	public void setID(int ID) {
+		this.ID = ID;
+	}
+
+	public void setName(String Name) {
+		this.Name = Name;
+	}
+
+	public void setPrice(float Price) {
+		this.Price = Price;
+	}
+
+	public void setQuantity(int Quantity) {
+		this.Quantity = Quantity;
+	}
+
+}
+
+//	public String toString() {
+//		return ID+ "-" + Name+ " : " + Price +"-"+ Quantity+" .";
+//
+//	}
+class function {
+	private static final int ArrayList = 0;
+	private static ArrayList&lt;Assignment2&gt; product = new ArrayList&lt;&gt;();
+	public static void showMenu() {
+		System.out.println(" __________________________________________________");
+		System.out.println("|                                                  |");
+		System.out.println("|  Feature 1: Add products                         |");
+		System.out.println("|  Feature 2: Display products                     |");
+		System.out.println("|  Feature 3: Delete a product                     |");
+		System.out.println("|  Feature 4 (optional): Edit a product            |");
+		System.out.println("|  Feature 5: Search for products by name          |");
+		System.out.println("|  Feature 6 (optional): Sort products by price    |");
+		System.out.println("|  Feature 7: Save products to text/binary file    |");
+		System.out.println("|  Feature 8: Load products from the saved file    |");
+		System.out.println("|__________________________________________________|");
+	}
+
+	public static void addProduct() {
+		Assignment2 prod = new Assignment2();
+		Scanner add = new Scanner(System.in);
+
+		System.out.println("Enter ID: ");
+		prod.setID(add.nextInt());
+		add.nextLine();
+
+		System.out.println("Enter Name: ");
+		prod.setName(add.nextLine());
+
+		System.out.println("Enter Price: ");
+		prod.setPrice(add.nextFloat());
+
+		System.out.println("Enter Quantity: ");
+		prod.setQuantity(add.nextInt());
+		product.add(prod);
+	}
+
+	public static void displayProducts() {
+		System.out.printf("| %6s | %-30s | %-10s | %-9s | \n", "ID", "Name", "Price", "Quantity");
+		for (Assignment2 pro : product) {
+			System.out.printf("| %6d | %-30s | %-10.2f | %-9d | \n", pro.getID(), pro.getName(), pro.getPrice(),
+					pro.getQuantity());
+		}
+	}
+
+	public static void deleteProduct() {
+		Scanner delete = new Scanner(System.in);
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match247-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter ID you want to delete: ");
+		int iddel = delete.nextInt();
+		for (Assignment2 prt : product) {
+			if (prt.getID() == iddel) {
+				product.remove(prt);
+				break;
+			}
+		}
+	}
+
+	public static void editProduct() {
+</FONT>		Scanner edit = new Scanner(System.in);
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match247-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter ID you want to edit: ");
+		int ided = edit.nextInt();
+		edit.nextLine();
+		for (Assignment2 prt : product) {
+			if (prt.getID() == ided) {
+				System.out.println("Enter new name: ");
+				String newname = edit.nextLine();
+</FONT>				System.out.println("Enter new price: ");
+				float newpr = edit.nextFloat();
+				System.out.println("Enter new quantity: ");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match247-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				int newqu = edit.nextInt();
+
+				prt.setName(newname);
+				prt.setPrice(newpr);
+				prt.setQuantity(newqu);
+				break;
+			}
+		}
+	}
+
+	public static void searchProducts() {
+</FONT>		Scanner search = new Scanner(System.in);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match247-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter name of product you want to search: ");
+		String key = search.nextLine();
+
+		ArrayList&lt;Assignment2&gt; list = new ArrayList&lt;&gt;();
+		for (Assignment2 prt : product) {
+			if (prt.getName().contains(key)) {
+				list.add(prt);
+			}
+		}
+		System.out.printf("| %6s | %-30s | %-10s | %-4s | \n", "ID", "Name", "Price", "Quantity");
+</FONT>		for (Assignment2 pro : list) {
+			System.out.printf("| %6d | %-30s | %-10.2f | %-4d | \n", pro.getID(), pro.getName(), pro.getPrice(),
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match247-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					pro.getQuantity());
+		}
+	}
+
+	public static void sortProducts() {
+		ArrayList&lt;Assignment2&gt; sort = new ArrayList&lt;&gt;(product);
+
+		Assignment2 sortbypr;
+		for (int i = 0; i &lt; sort.size() - 1; i++) {
+			for (int j = i + 1; j &lt; sort.size(); j++) {
+</FONT>				if (sort.get(i).getPrice() &gt; sort.get(j).getPrice()) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match247-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					sortbypr = sort.get(i);
+					sort.set(i, sort.get(j));
+					sort.set(j, sortbypr);
+				}
+			}
+		}
+		System.out.printf("| %6s | %-30s | %-10s | %-4s | \n", "ID", "Name", "Price", "Quantity");
+</FONT>		for (Assignment2 pro : sort) {
+			System.out.printf("| %6d | %-30s | %-10.2f | %-4d | \n", pro.getID(), pro.getName(), pro.getPrice(),
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match247-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					pro.getQuantity());
+		}
+	}
+
+	public static void saveProducts() throws IOException {
+		File f = new File("src/Assignment2/Products.txt");
+		FileOutputStream fos = new FileOutputStream(f);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+</FONT>		oos.writeObject(product);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match247-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("Saved !");
+		oos.close();
+	}
+
+	public static void loadProducts() throws IOException, ClassNotFoundException {
+		FileInputStream pis = new FileInputStream("src/Assignment2/Products.txt");
+		ObjectInputStream ois = new ObjectInputStream(pis);
+		ArrayList&lt;Assignment2&gt; listpro = (ArrayList&lt;Assignment2&gt;) ois.readObject();
+		ois.close();
+
+		System.out.printf("| %6s | %-30s | %-10s | %-9s | \n", "ID", "Name", "Price", "Quantity");
+		for (Assignment2 pro : product) {
+</FONT>			System.out.printf("| %6d | %-30s | %-10.2f | %-9d | \n", pro.getID(), pro.getName(), pro.getPrice(),
+					pro.getQuantity());
+		}
+	}
+}
+
+public class Products {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		int n = 0;
+		do {
+			function.showMenu();
+			Scanner all = new Scanner(System.in);
+			System.out.println("Choose a feature: ");
+			n = all.nextInt();
+			all.nextLine();
+			switch (n) {
+			case 1:
+				function.addProduct();
+				break;
+			case 2:
+				function.displayProducts();
+				break;
+			case 3:
+				function.deleteProduct();
+				break;
+			case 4:
+				function.editProduct();
+				break;
+			case 5:
+				function.searchProducts();
+				break;
+			case 6:
+				function.sortProducts();
+				break;
+			case 7:
+				function.saveProducts();
+				break;
+			case 8:
+				function.loadProducts();
+				break;
+			default:
+				System.out.println("Enter number from 1 to 8 !!");
+
+			}
+
+		} while (n != 8);
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

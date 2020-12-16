@@ -1,0 +1,372 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1701040113NguyenTrongNam_106322_assignsubmission_file_Assignment2_1701040113.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1701040113NguyenTrongNam_106322_assignsubmission_file_Assignment2_1701040113.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1701040113NguyenTrongNam_106322_assignsubmission_file_Assignment2_1701040113.java
+package assignment_pr1;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Assignment2_1701040113 {
+
+	static Scanner sc = new Scanner(System.in);
+	static Product[] products = new Product[30];
+	static String thisLine = null;
+
+	public static void main(String[] args) throws FileNotFoundException {
+		File myObj = new File("database.txt");
+		try {
+			if (myObj.createNewFile()) {
+				System.out.println("File created: " + myObj.getName());
+			}
+		} catch (IOException e1) {
+		
+			e1.printStackTrace();
+		}
+		
+		
+		FileReader fr = new FileReader("database.txt");
+		BufferedReader br = new BufferedReader(fr);
+		try {
+			int temp = -1;
+			while ((thisLine = br.readLine()) != null) {
+				thisLine = thisLine.replace("[", "");
+				thisLine = thisLine.replace("]", "");
+				String[] element = thisLine.split(",");
+				int count = 0;
+				String name = null;
+				double price = 0;
+				int quantity = 0;
+				for (String e : element) {
+
+					String[] fragment = e.split(":");
+					String secondPart = fragment[1].trim();
+					if (count == 1) {
+						name = secondPart;
+						count++;
+
+					} else if (count == 2) {
+						price = Double.parseDouble(secondPart);
+						count++;
+					} else {
+						quantity = Integer.parseInt(secondPart);
+						count++;
+					}
+				}
+				Product p = new Product(name, price, quantity);
+				for (int i = 0; i &lt; products.length; i++) {
+					if (products[i] != null) {
+
+						temp++;
+					}
+				}
+				products[temp + 1] = p;
+			}
+		} catch (IOException ex) {
+			Logger.getLogger(Assignment2_1701040113.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		for (;;) {
+			System.out.println("[1]. Add products\n" 
+					+ "[2]. Display products\n" 
+					+ "[3]. Delete a product\n"
+					+ "[4]. Edit a product\n" 
+					+ "[5]. Search for products by name\n" 
+					+ "[6]. Sort products by price\n"
+					+ "[7]. Save products to text/binary file\n" 
+					+ "[8]. Load products from the saved file\n"
+					+ "[9]. Quit");
+
+			int option = 0;
+			do {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match188-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				try {
+					System.out.print("Choose an option: ");
+					option = Integer.parseInt(sc.nextLine());
+					break;
+				} catch (Exception e) {
+					sc.nextLine();
+</FONT>				}
+			} while (Character.isLetter(option) || option &lt; 1 || option &gt; 9);
+
+			switch (option) {
+			case 1:
+				addProduct();
+				break;
+			case 2:
+				displayProduct();
+				break;
+			case 3:
+				deleteProduct();
+				break;
+			case 4:
+				editProduct();
+				break;
+			case 5:
+				searchByName();
+				break;
+			case 6:
+				sortByPrice();
+				break;
+			case 7:
+				saveProduct();
+				break;
+			case 8:
+				loadProduct();
+				break;
+			case 9:
+				System.exit(0);
+				break;
+			}
+		}
+	}
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match188-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	private static void addProduct() {
+		System.out.println("ADD PRODUCT");
+		System.out.print("Product's name: ");
+		String name = sc.nextLine();
+		System.out.print("Price: ");
+		double price = Double.parseDouble(sc.nextLine());
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match188-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Quantity: ");
+		int quantity = Integer.parseInt(sc.nextLine());
+
+		Product product = new Product(name, price, quantity);
+</FONT>		int count = -1;
+		for (int i = 0; i &lt; products.length; i++) {
+			if (products[i] != null) {
+				System.out.println(i);
+				count++;
+			}
+		}
+		products[count + 1] = product;
+	}
+
+	private static void displayProduct() {
+		System.out.println("DISPLAY PRODUCT");
+
+		if (products.length == 0) {
+			System.out.println("Nothing!");
+		} else {
+			String infor = "";
+			for (Product p : products) {
+				if (p != null) {
+					infor += p.toString() + "\n";
+				}
+			}
+			System.out.println(infor);
+		}
+	}
+
+	private static void deleteProduct() {
+		System.out.println("DELETE PRODUCT");
+
+		if (products.length != 0) {
+			int tempLength = products.length;
+			System.out.print("Input product's id: ");
+			int id = Integer.parseInt(sc.nextLine());
+
+			for (int i = 0; i &lt; products.length; i++) {
+				if (products[i] != null) {
+					if (products[i].getId() == id) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match188-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						products = removeTheElement(products, i);
+						System.out.println("Product deleted!");
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	private static void editProduct() {
+		System.out.println("EDIT PRODUCT");
+		System.out.print("Enter the ID of the product you want to edit: ");
+		int id = Integer.parseInt(sc.nextLine());
+
+		for (Product p : products) {
+			if (p != null) {
+</FONT>				if (p.getId() == id) {
+					System.out.print("Name: ");
+					String name = sc.nextLine();
+					System.out.print("Price: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match188-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					double price = Double.parseDouble(sc.nextLine());
+					System.out.print("Quantity: ");
+					int quantity = Integer.parseInt(sc.nextLine());
+
+					p.setName(name);
+					p.setPrice(price);
+					p.setQuantity(quantity);
+					System.out.println("Successfully!");
+				}
+			}
+		}
+	}
+
+	private static void searchByName() {
+		System.out.println("Search product by name");
+		System.out.print("Input name: ");
+		String name = sc.nextLine();
+
+		for (Product p : products) {
+			if (p != null) {
+</FONT>				if (p.getName().contains(name)) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match188-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					System.out.println(p.toString());
+				}
+			}
+		}
+	}
+
+	private static void sortByPrice() {
+		System.out.println("Sort products by price");
+
+		for (int i = 0; i &lt; products.length; i++) {
+			for (int j = i; j &lt; products.length; j++) {
+</FONT>				if (products[i] != null && products[j] != null) {
+					if (products[j].getPrice() &gt; products[i].getPrice()) {
+
+						Product temp = products[i];
+						products[i] = products[j];
+						products[j] = temp;
+					}
+				}
+			}
+		}
+	}
+
+	private static void saveProduct() {
+		try {
+			File myObj = new File("database.txt");
+			if (myObj.createNewFile()) {
+				System.out.println("File created: " + myObj.getName());
+			}
+			FileWriter writer = new FileWriter("database.txt");
+			BufferedWriter write = new BufferedWriter(writer);
+			for (int i = 0; i &lt; products.length; i++) {
+				if (products[i] != null) {
+					System.out.println("Saved: " + products[i].toString());
+					write.write(products[i].toString() + "\n");
+				}
+			}
+			write.close();
+
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+
+	private static void loadProduct() throws FileNotFoundException {
+		FileReader fr = new FileReader("database.txt");
+		BufferedReader br = new BufferedReader(fr);
+
+		int i;
+		try {
+			while ((i = br.read()) != -1) {
+				System.out.print((char) i);
+			}
+
+			br.close();
+			fr.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Product[] removeTheElement(Product[] arr, int index) {
+		if (arr == null || index &lt; 0 || index &gt;= arr.length) {
+			return arr;
+		}
+		Product[] anotherArray = new Product[arr.length - 1];
+		for (int i = 0, k = 0; i &lt; arr.length; i++) {
+			if (i == index) {
+				continue;
+			}
+			anotherArray[k++] = arr[i];
+		}
+		return anotherArray;
+	}
+
+	static class Product {
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match188-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		private int id;
+		private String name;
+		private double price;
+		private int quantity;
+		static int count = 0;
+
+		public Product(String name, double price, int quantity) {
+			this.name = name;
+			this.price = price;
+			this.quantity = quantity;
+			this.id = generateId();
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		private int generateId() {
+			count++;
+			return count;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public double getPrice() {
+			return price;
+		}
+
+		public void setPrice(double price) {
+</FONT>			this.price = price;
+		}
+
+		public int getQuantity() {
+			return quantity;
+		}
+
+		public void setQuantity(int quantity) {
+			this.quantity = quantity;
+		}
+
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match188-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		public String toString() {
+			return "ID: " + this.id + ", Name: " + this.name + ", Price: " + this.price + ", Quantity: "
+					+ this.quantity;
+</FONT>		}
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

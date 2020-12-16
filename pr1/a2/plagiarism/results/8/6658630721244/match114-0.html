@@ -1,0 +1,298 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040168LeThiHongNhung_106392_assignsubmission_file_LeThiHongNhung_1801040168_1C18_A2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040168LeThiHongNhung_106392_assignsubmission_file_LeThiHongNhung_1801040168_1C18_A2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040168LeThiHongNhung_106392_assignsubmission_file_LeThiHongNhung_1801040168_1C18_A2.java
+package lethihongnhung_1801040168_1c18_a2;
+
+/**
+ *
+ * @author NHUNG_1C18_1801040168
+ * @Assignment2
+ *
+ */
+import java.io.File;
+import java.util.Scanner;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class LeThiHongNhung_1801040168_1C18_A2 {
+
+    static File a2 = new File("Assignment2.txt");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match114-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList&lt;Integer&gt; ID = new ArrayList&lt;&gt;();
+    static ArrayList&lt;String&gt; Name = new ArrayList&lt;&gt;();
+    static ArrayList&lt;Double&gt; Price = new ArrayList&lt;&gt;();
+    static ArrayList&lt;Integer&gt; Quantity = new ArrayList&lt;&gt;();
+
+    public static void main(String[] args) throws Exception {
+        int option = 0;
+        while (option != 9) {
+            try {
+                System.out.println("[1] Add products");
+                System.out.println("[2] Display produts");
+                System.out.println("[3] Delete a product");
+</FONT>                System.out.println("[4] Edit a product");
+                System.out.println("[5] Search for products by name");
+                System.out.println("[6] Sort products by price");
+                System.out.println("[7] Save products to text file");
+                System.out.println("[8] Load products from the saved file");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match114-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("[9] Exit");
+                System.out.print("Choose a feature: ");
+                option = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("You must input number, not character!");
+                sc.nextLine();
+            }
+            switch (option) {
+                case 1:
+                    feature1();
+                    break;
+                case 2:
+                    feature2();
+                    break;
+                case 3:
+</FONT>                    feature3();
+                    break;
+                case 4:
+                    feature4();
+                    break;
+                case 5:
+                    feature5();
+                    break;
+                case 6:
+                    feature6();
+                    break;
+                case 7:
+                    feature7();
+                    break;
+                case 8:
+                    feature8();
+                    break;
+                case 9:
+                    System.out.println("");
+                    break;
+                default:
+                    System.out.println("Your number shoud be from 1 to 9");
+
+            }
+        }
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match114-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void feature1() throws FileNotFoundException {
+        //Add products
+        Scanner sc1 = new Scanner(System.in);
+        String repeat = null;       //Create a variable for repeat
+        do {
+            System.out.println("Enter the Product Information:");
+            ID.add(ID.size());
+            System.out.print("Product Name: ");
+            Name.add(sc1.nextLine());
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match114-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.print("Product Price: ");
+            Price.add(sc1.nextDouble());
+            System.out.print("Quantity: ");
+            Quantity.add(sc1.nextInt());
+            sc1.nextLine();
+            System.out.println("Do you want to enter another product? yes/no");
+            repeat = sc1.nextLine();
+        } while (repeat.equalsIgnoreCase("yes") == true);
+    }
+
+    public static void feature3() {
+        // delete product by ID
+        System.out.print("Enter the product ID you want to delete: ");
+        int searchID_product = sc.nextInt();
+        for (int i = 0; i &lt; ID.size(); i++) {
+            if (ID.get(i) == searchID_product) {
+                ID.remove(i);
+                Name.remove(i);
+                Price.remove(i);
+                Quantity.remove(i);
+                System.out.println("It has been completely deleted");
+            }
+        }
+    }
+
+    public static void feature5() {
+        // search product by name
+        System.out.println("Enter the product's name you want to search:");
+</FONT>        String searchName_product = sc.next();
+        System.out.format("%-5s|   %20s|  %15s|   %10s|%n", "ID", "Name", "Price", "Quantity");
+        for (int i = 0; i &lt; Name.size(); i++) {
+            if (Name.get(i).contains(searchName_product)) {
+                System.out.format("%-5d|   %20s|  %15.2f|   %10d|%n", ID.get(i), Name.get(i), Price.get(i), Quantity.get(i));
+            }
+
+        }
+    }
+
+    public static void feature2() {
+        // display product
+        System.out.format("%-5s|   %20s|  %15s|   %10s|%n", "ID", "Name", "Price", "Quantity");
+        for (int i = 0; i &lt; Name.size(); i++) {
+            System.out.format("%-5d|   %20s|  %15.2f|   %10d|%n", ID.get(i), Name.get(i), Price.get(i), Quantity.get(i));
+        }
+
+    }
+
+    public static void feature7() throws Exception {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match114-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        PrintWriter pw2 = new PrintWriter(a2);
+        if (a2.exists()) {
+            pw2.printf("%-5s|   %20s|  %15s|   %10s|%n", "ID", "Name", "Price", "Quantity");
+            for (int i = 0; i &lt; Name.size(); i++) {
+                pw2.printf("%-5d|   %20s|  %15.2f|   %10d|%n", ID.get(i), Name.get(i), Price.get(i), Quantity.get(i));
+            }
+            pw2.close();
+            System.out.println("The products have been saved to the text file");
+        } else {
+            try {
+                a2.createNewFile();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            pw2.printf("%-5s|   %20s|  %15s|   %10s|%n", "ID", "Name", "Price", "Quantity");
+            for (int i = 0; i &lt; Name.size(); i++) {
+                pw2.printf("%-5d|   %20s|  %10.2f|   %10d|%n", ID.get(i), Name.get(i), Price.get(i), Quantity.get(i));
+                pw2.close();
+            }
+            System.out.println("The products have been saved to the text file");
+        }
+    }
+
+    public static void feature8() throws FileNotFoundException {
+        FileInputStream pr1 = new FileInputStream(a2);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match114-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner scan = new Scanner(pr1);
+        while (scan.hasNext()) {
+            System.out.println(scan.nextLine());
+        }
+        System.out.println("The file has been read!");
+</FONT>    }
+
+    public static void feature4() {
+        System.out.println("Enter the ID of the product you want to edit: ");
+        int ID_product = new Scanner(System.in).nextInt();
+        String new_edit = "0";
+        boolean test = true;
+        while (test == true) {
+            System.out.println("Choose feature you want to update:");
+
+            System.out.println("1. Name\n2. "
+                    + "Price\n3. "
+                    + "Quantity\n4. "
+                    + "Finish\n"
+                    + "Your option: ");
+
+            new_edit = new Scanner(System.in).nextLine();
+            // choose one of functions to edit
+            switch (new_edit) {
+                // edit new name
+                case "1":
+                    System.out.println("Enter a new name: ");
+                    String new_name = new Scanner(System.in).nextLine();
+                    Name.set(ID_product - 1, new_name);
+                    test = true;
+                    break;
+                // edit new price 
+                case "2":
+                    System.out.println("Enter new price: ");
+                    double new_price = new Scanner(System.in).nextInt();
+                    Price.set(ID_product - 1, new_price);
+                    test = true;
+                    break;
+                // edit new quantity
+                case "3":
+                    System.out.println("Enter new quantity: ");
+                    int new_quantity = new Scanner(System.in).nextInt();
+                    Quantity.set(ID_product - 1, new_quantity);
+                    test = true;
+                    break;
+                // update new version
+                case "4":
+                    System.out.println("After updating: ");
+                    feature2();
+                    test = false;
+                    break;
+                default:
+                    System.err.println("Choose the number from 1 to 4!");
+                    test = true;
+                    break;
+            }
+        }
+    }
+
+    public static void feature6() {
+        Integer[] id_product = ID.toArray(new Integer[ID.size()]);
+        for (int i = 0; i &lt; ID.size(); i++) {
+            id_product[i] = ID.get(i);
+        }
+        String[] name_product = Name.toArray(new String[Name.size()]);
+        for (int i = 0; i &lt; Name.size(); i++) {
+            name_product[i] = Name.get(i);
+        }
+        Double[] price_product = Price.toArray(new Double[Price.size()]);
+        for (int i = 0; i &lt; Price.size(); i++) {
+            price_product[i] = Price.get(i);
+        }
+        Integer[] quantity = Quantity.toArray(new Integer[Quantity.size()]);
+        for (int i = 0; i &lt; Quantity.size(); i++) {
+            quantity[i] = Quantity.get(i);
+        }
+
+        for (int i = 0; i &lt; id_product.length - 1; i++) {
+            for (int j = i + 1; j &lt; id_product.length; j++) {
+                if (price_product[i] &gt; price_product[j]) {
+                    int ID = id_product[j];
+                    id_product[j] = id_product[i];
+                    id_product[i] = ID;
+
+                    String name1 = name_product[j];
+                    name_product[j] = name_product[i];
+                    name_product[i] = name1;
+
+                    Double price1 = price_product[j];
+                    price_product[j] = price_product[i];
+                    price_product[i] = price1;
+                    Integer quantity1 = quantity[j];
+                    quantity[j] = quantity[i];
+                    quantity[i] = quantity1;
+                }
+            }
+        }
+        ID.clear();
+        Name.clear();
+        Price.clear();
+        Quantity.clear();
+        for (int i = 0; i &lt; id_product.length; i++) {
+            ID.add(id_product[i]);
+            Name.add(name_product[i]);
+            Price.add(price_product[i]);
+            Quantity.add(quantity[i]);
+        }
+        System.out.println("List of products with increasing order!");
+        feature2();
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,182 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040230NguyenQuangTrung_106300_assignsubmission_file_nguyenquangtrung_1801040230/nguyenquangtrung_1801040230/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/BuiHuyenTrang_106422_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: BuiHuyenTrang_106422_assignsubmission_file_Assignment2.java
+
+package javaapplication28;
+
+import java.util.ArrayList; 
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class ASSIGNMENT2 {
+
+public static Scanner sc = new Scanner(System.in);
+public static ArrayList&lt;String&gt; Name = new ArrayList&lt;&gt;();
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match100-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public static ArrayList&lt;Double&gt; Price = new ArrayList&lt;&gt;();
+public static ArrayList&lt;Integer&gt; Quantity = new ArrayList&lt;&gt;();
+public static File file = new File("Assignment2.txt");
+</FONT>public static void main(String[] args) throws Exception {
+     boolean exit = false;
+ do{  
+    System.out.println("Feature 0: Exit program ");
+    System.out.println("Feature 1: Add products ");
+    System.out.println("Feature 2: Display products");
+    System.out.println("Feature 3: Delete a product");
+    System.out.println("Feature 5: Search for products by name");
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match100-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    System.out.println("Feature 7: Save products to text/binary file ");
+    System.out.println("Feature 8: Load products from the saved file ");
+    System.out.println("Choose the feature's number: ");
+    int choose = sc.nextInt();
+    System.out.println("");
+</FONT>    if (choose==1){
+       feature1_addproducts();
+    }
+    else if(choose==2){
+       feature2_displayproducts();
+    }
+    else if(choose==3){
+       feature3_deleteaproduct();
+    }
+    else if(choose==5){
+       feature5_searchproducts();
+    }
+    else if(choose==7){
+        feature7_saveproducts();
+    }
+    else if(choose==8){
+       feature8_loadproducts();
+    }else if(choose==0){
+        System.out.println("Thank you!");
+        exit=true;
+    }else 
+         System.out.println("invalid input! Please try again: ");
+        }while (!exit);
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match100-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public static void feature1_addproducts() {
+   System.out.println("--------------Add products-------------");
+        System.out.println("");
+        System.out.println("Please enter the number of products you want to add: ");
+        int a = sc.nextInt();
+</FONT>        System.out.println("Let's Start!");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match100-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for(int i= 0 ; i &lt; a; i++){
+            sc.nextLine();
+            System.out.println("Enter the product'name: ");
+            String productname = sc.nextLine();
+            Name.add(productname);
+            sc.nextLine();
+</FONT>            System.out.println("Enter the product'price: ");
+            double price = sc.nextDouble();
+            Price.add(price);
+            System.out.println("Enter the product'quantity: ");
+            int quantity = sc.nextInt();
+            Quantity.add(quantity);
+}
+}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match100-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public static void feature2_displayproducts(){
+    System.out.println("---------------Display products--------------");
+    System.out.println(" __________________________________");
+    System.out.println("|_ps___Name_______Price___Quantity_|");
+    for(int i = 0; i &lt; Price.size(); i++){
+    System.out.printf("| %d | %7S | %8.2f |   %6d  | %n", i ,Name.get(i), Price.get(i),Quantity.get(i));
+}
+}
+public static void feature3_deleteaproduct(){
+    System.out.println("---------------Delete a product--------------");
+    System.out.println("Enter the product's position you want to remove: ");
+    int position = sc.nextInt();
+    Name.remove(position);
+    Price.remove(position);
+</FONT>    Quantity.remove(position);
+    System.out.println(" __________________________________");
+    System.out.println("|_ps___Name_______Price___Quantity_|");
+    for(int i = 0; i &lt; Price.size(); i++){    
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match100-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.printf("| %d | %7S | %8.2f | %6d | %n", i ,Name.get(i), Price.get(i),Quantity.get(i));
+    }   
+}
+
+public static void feature5_searchproducts(){
+    
+    System.out.println("---------------Search products--------------");
+    System.out.println("");
+   while(true){
+    sc.nextLine();
+    System.out.println("If you want to stop, please, input quit");
+    System.out.println("Enter product's name you want to find: ");
+    String productname = sc.nextLine(); 
+    if (productname.equalsIgnoreCase("quit")){
+        System.out.println("Thank you!");
+        break;
+    }
+    System.out.println(" __________________________________");
+    System.out.println("|_ps___Name_______Price___Quantity_|");
+       for(int i = 0 ; i &lt; Name.size();i++){
+        if(productname.equalsIgnoreCase(Name.get(i))){
+           System.out.printf("| %d | %7S | %8.2f | %6d | %n", i ,Name.get(i), Price.get(i),Quantity.get(i));          
+</FONT>}       
+}
+    }
+   }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match100-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public static void feature7_saveproducts() throws Exception {
+    System.out.println("-------------Save products---------------");
+    String m = null;
+     for(int i = 0 ; i &lt; Name.size();i++){
+       m = String.format("| %d | %7S | %8.2f | %6d | %n", i ,Name.get(i), Price.get(i),Quantity.get(i));   
+       }
+    FileOutputStream fos = new FileOutputStream(file);
+    ObjectOutputStream oos = new ObjectOutputStream(fos);
+    oos.writeObject(m);
+    oos.close();
+    System.out.println("Saved successfully! ");
+    System.out.println(file.getAbsolutePath());
+}
+
+public static void feature8_loadproducts() throws Exception{
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match100-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    System.out.println("--------------Load products--------------");
+     String m = null;
+    System.out.println(" __________________________________");
+    System.out.println("|_ps___Name_______Price___Quantity_|");
+     for(int i = 0 ; i &lt; Name.size();i++){
+       m = String.format("| %d | %7S | %8.2f | %6d | %n", i ,Name.get(i), Price.get(i),Quantity.get(i));
+          System.out.println(m);
+       }
+     FileInputStream fis = new FileInputStream(file);
+     ObjectInputStream ois = new ObjectInputStream(fis);
+     m = (String) ois.readObject();
+     ois.close();    
+</FONT>}
+}
+    
+   
+    
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

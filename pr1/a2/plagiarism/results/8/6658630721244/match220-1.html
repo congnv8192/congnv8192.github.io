@@ -1,0 +1,289 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LeMinhuc_106467_assignsubmission_file_Assignmern2_LeMinhDuc_1901040060_B03.java.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/angTienAnh_106424_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: angTienAnh_106424_assignsubmission_file_Assignment2.java
+
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match220-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Assignment2 {
+   
+       public Integer id;
+       public String name;
+       public Double price;
+       public Integer quantity;
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match220-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+       public Assignment2 (Integer id, String name, Double price, Integer quantity ) {
+           this.id=id;
+           this.name=name;
+           this.price=price;
+           this.quantity=quantity;
+</FONT>       }
+       public Assignment2(){
+    }
+    public Integer getId(){
+        return id;
+    }
+    public void setId(Integer id){
+        this.id=id;
+    }
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public Double getPrice(){
+        return price;
+    }
+    public void setPrice(Double price){
+        this.price=price;
+    }
+    public Integer getQuantity(){
+        return quantity;
+    }
+    public void setQuantity(Integer quantity){
+        this.quantity=quantity;
+    }
+
+    @Override
+    
+    public String toString(){
+        return "Assignment2{"+"id= "+id+", name= "+name+", price= "+price+", quantity= "+quantity+'}'; 
+    }
+    public static Comparator&lt;Assignment2&gt; priceComparator = new Comparator&lt;Assignment2&gt;() {
+    @Override
+    public int compare(Assignment2 s1, Assignment2 s2) 
+    {
+    double Product1 = s1.getPrice();
+    double Product2 = s2.getPrice();
+
+    return (int)(Product2-Product1);
+    }
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match220-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    };
+    static ArrayList&lt;Assignment2&gt; a=new ArrayList&lt;&gt;();
+    
+    //Case1:Add products
+    public static void Addproduct(){
+    
+    Scanner sc=new Scanner(System.in);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match220-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    System.out.println("Product id: ");
+    Integer id=sc.nextInt();
+    sc.nextLine();
+    
+    System.out.println("Name: ");
+    String name=sc.nextLine();
+    sc.nextLine();
+</FONT>    
+    System.out.println("Price: ");
+    Double price=sc.nextDouble();
+    sc.nextLine();
+    
+    System.out.println("Quantity: ");
+    Integer quantity=sc.nextInt();
+    sc.nextLine();
+    
+    Assignment2 products=new Assignment2(id, name, price, quantity);
+    a.add(products);
+    }
+    //Case2 Display products
+    public static void Displayproduct(){
+    
+    if (a.isEmpty()) {
+    System.out.println("There is no product to display");
+    } 
+    else{
+    System.out.println("ID \tName \tPrice \tQuantity");
+    for (Assignment2 p : a) 
+    {   
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match220-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    System.out.println(p.toString());
+    }
+    }
+    }
+    //Case3 Delete products
+    public static void Deleteproduct(){
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the ID you want to delete: ");
+    int dele=sc.nextInt();
+</FONT>    boolean isProductFound = false;
+                    
+    for (Assignment2 p : a)
+    {
+    if (p.getId() == dele) 
+    {   
+    a.remove(p);                        
+    isProductFound = true;
+    System.out.println("Product Deleted from the list");
+    break;
+    }
+    }
+    if (!isProductFound) 
+    {
+    System.out.println("There is no such product");
+    }
+    }
+    //Case 4 Edit products
+    public static void Editproduct(){
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the ID you want to edit: ");
+    int e=sc.nextInt();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match220-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    for (int i=0; i&lt;a.size(); i++){
+    if(e==a.get(i).getId()){
+    System.out.println("Enter new name");
+    String name1=sc.next();
+</FONT>    System.out.println("Enter new price");
+    Double price1=sc.nextDouble();
+    System.out.println("Enter new quantity");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match220-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    Integer quantity1=sc.nextInt();
+    a.get(i).setName(name1);
+    a.get(i).setPrice(price1);
+    a.get(i).setQuantity(quantity1);
+</FONT>    }
+    else if(e!=a.get(i).getId()){
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match220-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    System.out.println("The ID you entered is not available");   
+    }
+    }
+    }
+    //Case 5 Search products
+    public static void Searchproduct(){
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the name you want to search: ");
+</FONT>    String n=sc.next();
+    for(Assignment2 search:a){
+    if (search.getName().equals(n)){
+        System.out.println("Id     : " + search.getId() + ""+ "\nName     : " + search.getName() + ""+ "\nPrice    : $" + search.getPrice() + ""+ "\nquantity : " + search.getQuantity());
+    }
+    else{
+    System.out.println("Cannot find your product's name");
+    }
+    }
+    }
+    //Case 6 Sort products by price
+    public static void Sortproduct(){
+        if (a.isEmpty()) 
+                {
+                    System.out.println("There is no product to display");
+                } 
+                else 
+                {
+
+
+                    //copy to another arraylist for sorting
+                    ArrayList&lt;Assignment2&gt; prod = a;
+                    
+                    //sort
+                    Collections.sort(prod, Assignment2.priceComparator);
+                    
+                    //print
+                    for (Assignment2 p : prod) 
+                    {
+                        System.out.println(p.toString());
+                    }
+                }
+    }
+    //Case 7 Save products to text/binary file
+    public static void Saveproduct() throws FileNotFoundException, IOException{
+    
+    FileWriter file = new FileWriter("product.txt");
+    
+    for (Assignment2 p : a){
+    file.append(System.lineSeparator() + p.toString());
+    }
+    }
+    
+    //Case8 Load products
+    public static void Loadproduct() throws FileNotFoundException, IOException{
+    FileReader file = new FileReader("product.txt");
+
+    Scanner scan = new Scanner(file);
+
+    while (scan.hasNext()) 
+    {
+    String line = scan.nextLine();
+                    
+    if (line.length() &gt; 0) 
+    {
+    String word[] = line.split("\t");
+    a.add(new Assignment2(Integer.parseInt(word[0].trim()), word[1], Double.parseDouble(word[2].substring(1)), Integer.parseInt(word[3].trim())));
+    }
+    }
+    } 
+
+    public static void main(String[]args) throws IOException {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match220-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    Scanner sc=new Scanner(System.in);
+    System.out.println("1.Add products\n"+"2.Display products\n"+"3.Delete products\n"+"4.Edit products\n"+"5.Search products\n"+"6.Sort products\n"+"7.Save products\n"+"8.Load products");
+    
+    do{
+    System.out.println("Pick up an option");
+    int choose=sc.nextInt();
+    switch(choose){
+    case 1:
+    Addproduct();
+    break;
+    case 2:
+    Displayproduct();
+    break;
+</FONT>    case 3:
+    Deleteproduct();
+    break;
+    case 4:
+    Editproduct();
+    break;
+    case 5:
+    Searchproduct();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match220-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    case 7:
+    Saveproduct();
+    break;
+    case 8:
+    Loadproduct();
+    break;
+    
+    default:
+    break;
+    }
+    System.out.println("Do you want continue?");
+    System.out.println("1.Yes    2.No");
+    
+    int p=sc.nextInt();
+    if (p==2){
+    System.out.println("Exit now");
+    break;
+    }
+    }
+    while (true);
+</FONT>}
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

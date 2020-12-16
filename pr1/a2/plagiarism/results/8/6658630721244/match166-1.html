@@ -1,0 +1,319 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenKimCuc_106373_assignsubmission_file_NguyenKimCuc_2TD19_1901060006.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenMinhNgoc_106273_assignsubmission_file_a2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenMinhNgoc_106273_assignsubmission_file_a2.java
+package NguyenMinhNgoc;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match166-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+/**
+ * Nguyen Minh Ngoc. Class: 3C19. Id student: 1901040148.
+ *
+ */
+public class a2 implements Comparator&lt;a2&gt; {
+
+    int productID;
+    String productName;
+    float productPrice;
+    int quantity;
+
+    public a2() {
+    }
+
+    public a2(int productID, String productName, float productPrice, int quantity) {
+        this.productID = productID;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.quantity = quantity;
+</FONT>    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public float getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(float productPrice) {
+        this.productPrice = productPrice;
+    }
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match166-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "a2{" + "productID=" + productID + ", productName=" + productName + ", productPrice=" + productPrice + ", quantity=" + quantity + '}';
+</FONT>    }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match166-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static public ArrayList&lt;a2&gt; list = new ArrayList&lt;&gt;();
+    public Scanner sc = new Scanner(System.in);
+
+    public void getInput() {
+        System.out.println("Input number product:");
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i &lt; n; i++) {
+            productID++;
+            System.out.print("Input name product " + (i + 1) + ": ");
+</FONT>            productName = sc.nextLine();
+            System.out.print("Input price:");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match166-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            productPrice = sc.nextFloat();
+            System.out.print("Input quantity:");
+            quantity = sc.nextInt();
+            sc.nextLine();
+            a2 product = new a2(productID, productName, productPrice, quantity);
+            list.add(product);
+        }
+
+    }
+
+    public void display() {
+</FONT>        System.out.println("\t=================== THE LIST PRODUCT ===================");
+        System.out.printf("\n%-20s %-20s %-20s %-5s", "Id", "Product name", "Price", "Quantity");
+        for (a2 product : list) {
+
+            System.out.printf("\n%-20s %-20s %-20s %-5s", product.getProductID(), product.getProductName(), product.getProductPrice(), product.getQuantity());
+
+        }
+        System.out.println("\n\t=======================================================");
+    }
+
+    public void delete() {
+        int z = 0;
+        System.out.print("Input product id you want to delete: ");
+        int id = sc.nextInt();
+        for (int i = 0; i &lt; list.size(); i++) {
+            if (id == list.get(i).getProductID()) {
+                list.remove(list.get(i));
+                z++;
+                break;
+            } else {
+            }
+
+            if (z == 0) {
+                System.out.println("invalid");
+            }
+        }
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match166-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void edit() {
+        System.out.println("Input the product id you want to edit :");
+        int a = sc.nextInt();
+        int b = a - 1;
+        sc.nextLine();
+      
+        System.out.println("Edit name:");
+        productName = sc.nextLine();
+        System.out.println("Edit price:");
+        productPrice = sc.nextFloat();
+        System.out.println("Edit quantity:");
+        quantity = sc.nextInt();
+        sc.nextLine();
+        a2 product = new a2(productID, productName, productPrice, quantity);
+        list.set(b, product);
+    }
+
+    public void searchName() {
+        System.out.print("Input the name to search:");
+</FONT>        String search = sc.nextLine();
+        System.out.println("\t=================== THE LIST PRODUCT ===================");
+        System.out.printf("\n%-20s %-20s %-20s %-5s", "Id", "Product name", "Price", "Quantity");
+        boolean check = false;
+        for (a2 A2 : list) {
+            if (A2.getProductName().contains(search)) {
+                check = true;
+                System.out.printf("\n%-20s %-20s %-20s %-5s", A2.getProductID(), A2.getProductName(), A2.getProductPrice(), A2.getQuantity());
+            }
+        }
+        if (!check) {
+
+            System.out.println("Invalid");
+        }
+    }
+
+    public void sortPrice() {
+        Collections.sort(list, new a2());
+
+        System.out.println("\t=================== THE LIST PRODUCT ===================");
+        System.out.printf("\n%-20s %-20s %-20s %-5s", "Id", "Product name", "Price", "Quantity");
+        for (a2 A2 : list) {
+
+            System.out.printf("\n%-20s %-20s %-20s %-5s", A2.getProductID(), A2.getProductName(), A2.getProductPrice(), A2.getQuantity());
+
+        }
+        System.out.println("\n\t=======================================================");
+    }
+
+    public void save() {
+        try {
+            FileOutputStream file = new FileOutputStream("dataconsole.txt");
+            try (ObjectOutputStream objectOut = new ObjectOutputStream(file)) {
+                objectOut.writeObject(list);
+                objectOut.flush();
+            }
+            System.out.println("Save succesfully !");
+        } catch (IOException e) {
+
+        }
+    }
+
+    public void load() {
+        try {
+            FileInputStream file = new FileInputStream("dataconsole.txt");
+            try (ObjectInputStream objectIn = new ObjectInputStream(file)) {
+                list = (ArrayList&lt;a2&gt;) objectIn.readObject();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+
+        }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match166-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; list.size(); i++) {
+            System.out.println(list.get(i).toString());
+        }
+    }
+
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        a2 main = new a2();
+</FONT>        while (true) {
+            System.out.println("\t*** M E N U ***");
+            System.out.println("=====================================");
+            System.out.println("1: Add products.");
+            System.out.println("2: Display products.");
+            System.out.println("3: Delete a product.");
+            System.out.println("4: Edit a product.");
+            System.out.println("5: Search for products by name.");
+            System.out.println("6: Sort products by price.");
+            System.out.println("7: Save products to text/binary file.");
+            System.out.println("8: Load products from the saved file.");
+            System.out.println("9: Exit.");
+            System.out.println("=====================================");
+            System.out.print("Enter option: ");
+            int n = sc.nextInt();
+            boolean exit = false;
+
+            switch (n) {
+                case 1:
+                    main.getInput();
+                    break;
+                case 2:
+                    main.display();
+                    break;
+                case 3:
+                    main.delete();
+                    System.out.println("\t=============== THE LIST PRODUCT AFTER DELETE ===============");
+                    System.out.printf("\n%-20s %-20s %-20s %-5s", "Id", "Product name", "Price", "Quantity");
+                    for (a2 product : list) {
+
+                        System.out.printf("\n%-20s %-20s %-20s %-5s", product.getProductID(), product.getProductName(), product.getProductPrice(), product.getQuantity());
+
+                    }
+                    System.out.println("\n\t=======================================================");
+                    break;
+                case 4:
+                    main.edit();
+                    System.out.println("\t=================== THE LIST PRODUCT ===================");
+                    System.out.printf("\n%-20s %-20s %-20s %-5s", "Id", "Product name", "Price", "Quantity");
+                    for (a2 b : list) {
+
+                        System.out.printf("\n%-20s %-20s %-20s %-5s", b.getProductID(), b.getProductName(), b.getProductPrice(), b.getQuantity());
+
+                    }
+                    System.out.println("\n\t=======================================================");
+                    break;
+                case 5:
+                    main.searchName();
+                    break;
+                case 6:
+                    main.sortPrice();
+                    break;
+                case 7:
+                    main.save();
+                    break;
+                case 8:
+                    main.load();
+                    break;
+
+                default:
+                    System.out.println("Invalid number");
+
+            }
+            System.out.println("\nDo you want to continue (y/n)? ");
+            String s = sc.next();
+            if (s.equalsIgnoreCase("n")) {
+                exit = true;
+            }
+            if (exit) {
+                break;
+            }
+        }
+
+        System.out.println(
+                "Thanks for use my program !");
+
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match166-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    @Override
+    public int compare(a2 o1, a2 o2) {
+        float a21 = o1.getProductPrice();
+        float a22 = o2.getProductPrice();
+        if (a21 &gt; a22) {
+            return 1;
+        } else if (a21 == a22) {
+            return 0;
+        } else {
+            return -1;
+</FONT>        }
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

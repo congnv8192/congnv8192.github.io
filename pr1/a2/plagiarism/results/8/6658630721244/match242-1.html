@@ -1,0 +1,319 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/PhamThiKimNgoc_106380_assignsubmission_file_Assignment2_PhamKimNgoc_1TD19_1901060037.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/VuNgocLuong_106571_assignsubmission_file_Assignment2_A01_1901060029_1TD19.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: VuNgocLuong_106571_assignsubmission_file_Assignment2_A01_1901060029_1TD19.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vungocluong_1TD19;
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+/**
+ *
+ * @author hp
+ */
+public class Assignment2 {
+    static List &lt;Product&gt; products = new ArrayList&lt;Product&gt;();
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        int choice;
+        boolean wronginput = false;
+        while (!wronginput) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-----------------MENU------------------");
+        System.out.println("1. Add products");
+        System.out.println("2. Display products");
+        System.out.println("3. Delete a product");
+        System.out.println("4. Edit a product");
+        System.out.println("5. Search for products by name");
+        System.out.println("6. Sort products by price");
+        System.out.println("7. Save products to text/binary file");
+        System.out.println("8. Load products from the saved file");
+        System.out.println("----------------------------------------");
+        System.out.print("Enter your choice: ");
+        choice = sc.nextInt(); 
+        switch (choice) {
+            case 1: 
+                Addproduct();
+                break;
+            case 2:
+                Display(products);
+                break;
+            case 3: 
+                Deleteproduct();
+                break;
+            case 4:
+                Editproduct();
+                break;
+            case 5: 
+                Search();
+                break;
+            case 6:
+                Sort();
+                break;
+            case 7:
+                Save();
+                break;
+            case 8: 
+                Load();
+                break;
+            default: 
+                System.out.println("Incorrect input!!! Please re-enter choice from menu");
+        }
+        }
+    }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match242-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+  static void Display(List&lt;Product&gt; result) {
+        System.out.format(String.format("\n%45s\n", " ").replace(" ", "-"));
+        System.out.format("|%-9s|%9s|%-9s|%9s|\n", "ID", "Name", "Price", "Quantity");
+        for (int i=0; i &lt; result.size();i++){
+</FONT>            String m = String.format("%45s\n", " ".replace(" ","-"));
+            System.out.println(m);
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match242-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.format("\"|%-9s|%9s|%-10.1f|%-5d|\n", result.get(i).ID, result.get(i).name, result.get(i).price,result.get(i).quantity);
+</FONT>        }
+    }
+
+    static void Addproduct() {
+        try{
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Product name: ");
+        String name = scan.nextLine();
+        System.out.println("Product ID: ");
+        int ID = scan.nextInt();
+        System.out.println("Product price: ");
+        Float price = scan.nextFloat();
+        System.out.println("Product quantity: ");
+        int quantity = scan.nextInt();
+         }catch (Exception e){
+             System.out.println("Invalid input. Enter again!");
+         }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match242-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        products.add(new Product());
+        if (products.size()==1) {
+            products.get(products.size() - 1).ID = products.size();
+        } else {
+            products.get(products.size() - 1).ID = products.get(products.size() - 2).ID +1;        }
+</FONT>    }
+
+    
+    private static void Deleteproduct()  {
+Display(products);
+Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Product ID you want to delete: ");
+        int ID = sc.nextInt();
+for (int i = 0; i&lt; products.size(); i++) {
+    if (products.get(i).getProduct_id() == ID) {
+        products.remove(i);
+        System.out.println("The file has been deleted!");
+        return;
+    }
+}
+    System.out.println("No ID found!");
+}
+
+    
+    private static void Editproduct() {
+        Scanner scan2 = new Scanner(System.in);
+        System.out.println("Enter the product ID you want to edit: ");
+        int ID = scan2.nextInt();
+        while (true) {
+        for (Product temp: products) {
+        if (temp.getProduct_id() == ID)
+             {
+                System.out.print("Enter a new product name: ");
+                String product_name = scan2.nextLine();
+                products.get(ID).setProduct_name(product_name);
+                System.out.println("Enter a new price for the product: ");
+                float product_price = scan2.nextFloat();
+                products.get(ID).setProduct_price(product_price);
+                System.out.println("Enter new quantity: ");
+                int product_quantity = scan2.nextInt();
+                products.get(ID).setProduct_quantity(product_quantity);
+            }
+    } 
+            System.out.println("No invalid ID!");
+        scan2.close();
+        }
+}
+
+    private static void Search() {
+        Scanner scan3 = new Scanner(System.in);
+        List&lt;Product&gt; result = new ArrayList&lt;&gt;();
+        System.out.println("Input the product you want to search here: ");
+        String search = scan3.nextLine();
+        for (int i=0; i&lt; products.size(); i++) {
+            if (products.get(i).name.contains(search)){
+                result.add(products.get(i));
+        }
+        }
+            if (result.size()&lt;0 && result.size()&gt;0) {
+            Display(result);
+        } else { 
+            System.out.println("No Result Found!");
+        }
+    }
+    
+
+    private static void Sort() {
+        boolean sorted = false;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i&lt; products.size()-1; i++) {
+                for (int j = i+1; j&lt; products.size(); j++) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match242-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                Product temp = new Product();
+                a(temp, products.get(i));
+                a(products.get(i), products.get(j));
+                a(products.get(j), temp);
+                }
+            }
+        } System.out.println("File has been sorted!");
+</FONT>    }
+
+    private static void Save() throws FileNotFoundException, IOException {
+       File f = new File ("Assignment2.txt");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match242-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+       try {
+           f.createNewFile();
+        PrintWriter pw = new PrintWriter(f.getAbsoluteFile());
+        for (int i = 0; i&lt; products.size(); i++) {
+            pw.printf("%d\n", products.get(i).ID);
+            pw.printf("%s \n", products.get(i).name);
+            pw.printf("%.8f \n",products.get(i).price);
+            pw.printf("%d \n", products.get(i).quantity);
+        } pw.close();
+           System.out.println("Saved!");
+       } catch (IOException ex) {
+           System.out.println("Error.");
+</FONT>    }
+        }
+
+
+    private static void Load() throws IOException {
+        try {
+            File f = new File ("Assignment2.txt");
+       Scanner Reader = new Scanner(f);
+       while (Reader.hasNextLine()){
+       String content = Reader.nextLine();
+       System.out.println(content);
+    } Reader.close();
+       
+       } catch (IOException e) {
+            System.out.println("Error.");
+               e.printStackTrace();
+               }
+        } 
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match242-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void a(Product temp, Product get) {
+       temp.ID = get.ID;
+       temp.name = get.name;
+       temp.price = get.price;
+       temp.quantity = get.quantity;
+    }
+
+    private static int readInt() {
+</FONT>Scanner scan1 = new Scanner(System.in);
+String eMessage = null;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match242-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+while (!scan1.hasNextInt()) {
+			System.out.printf(eMessage);
+			scan1.next(); 
+		}
+		int a = scan1.nextInt();
+		scan1.nextLine();
+		return a;
+</FONT>	}
+}
+class Product {
+    int ID;
+    String name;
+    float price;
+    int quantity;
+
+    public Product(int product_id, String product_name, float product_price, int product_quantity) {
+        this.ID = product_id;
+        this.name = product_name;
+        this.price = product_price;
+        this.quantity = product_quantity;
+    }
+
+    Product() {
+    }
+
+    Product(int nextInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getProduct_id() {
+        return ID;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.ID = ID;
+    }
+
+    public String getProduct_name() {
+        return name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.name = name;
+    }
+
+    public float getProduct_price() {
+        return price;
+    }
+
+    public void setProduct_price(float product_price) {
+        this.price = price;
+    }
+
+    public int getProduct_quantity() {
+        return quantity;
+    }
+
+    public void setProduct_quantity(int product_quantity) {
+        this.quantity = quantity;
+    }
+    
+  public int compareTo(Product o) {
+      if (this.price &lt; o.price) {
+          return -1;
+      } else if (this.price &gt; o.price) {
+          return 1;
+      } else {
+          return 0;
+      }
+  }
+}
+
+
+
+
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,268 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LeucNang_106278_assignsubmission_file_LeDucNang_1901040142_3c19.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LeucNang_106278_assignsubmission_file_LeDucNang_1901040142_3c19.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LeucNang_106278_assignsubmission_file_LeDucNang_1901040142_3c19.java
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Product implements Serializable {
+
+    //Initialize attribute of Product
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match184-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static int gen_id = 0; // static variable 0
+    public int id;
+    public String name;
+    public double price;
+    public int quantity;
+
+    public Product(String name, double price, int quantity) {
+        gen_id++; // automatic increase when initialize object Product
+        id = gen_id; // assign id equal gen_id to get value
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+</FONT>    }
+
+    public void display() {
+        System.out.format("%25s | %25s | %10s | %10s | %n", this.id, this.name, this.price, this.quantity);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id= '" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
+}
+
+public class LeDucNang_1901040142_3c19 {
+
+    public static void show() {
+        System.out.format("%25s | %25s | %10s | %10s | %n", "PRODUCTS ID", "NAMES", "PRICES($)", "QUANTITY");
+        for (int i = 0; i &lt; 81; i++) {
+            if (i == 26 || i == 54 || i == 67 || i == 80) {
+                System.out.print("+");
+            } else {
+                System.out.print("-");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList&lt;Product&gt; List_Product = new ArrayList&lt;&gt;();
+        while (true) {
+            System.out.println("******************************MENU******************************");
+            System.out.println("1: Add products");
+            System.out.println("2: Display products");
+            System.out.println("3: Delete a product");
+            System.out.println("4 (optional): Edit a product");
+            System.out.println("5: Search for products by name");
+            System.out.println("6 (optional): Sort products by price");
+            System.out.println("7: Save products to text/binary file");
+            System.out.println("8: Load products from the saved file");
+            System.out.println("9: Exit program.");
+            System.out.print("Please input selection: ");
+            boolean check_fm = true;
+            boolean chech_exit = false;
+            int choose = 0;
+            try {
+                choose = sc.nextInt();
+            } catch (Exception e) {
+                check_fm = false;
+                System.out.println("&gt;&gt;Error: " + e + ". Please input again^^");
+            }
+            if (check_fm) {
+                switch (choose) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match184-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    case 1:
+                        System.out.println("Input number of products: ");
+                        int n = sc.nextInt();
+                        for (int i = 0; i &lt; n; i++) {
+                            sc.nextLine();
+                            System.out.println("Product " + (i + 1));
+</FONT>                            System.out.println("Input name of product: ");
+                            String name = sc.nextLine();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match184-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println("Input price of product: ");
+                            double price = sc.nextDouble();
+                            System.out.println("Input quantity of product: ");
+                            int quantity = sc.nextInt();
+                            Product p = new Product(name, price, quantity);
+                            List_Product.add(p);
+                        }
+                        System.out.println("&lt;&lt;Added Successfully^^");
+</FONT>                        break;
+                    case 2:
+                        //Print List Product
+                        show();
+                        for (int i = 0; i &lt; List_Product.size(); i++) {
+                            List_Product.get(i).display();
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Input id which you want to remove: ");
+                        // I can use filter to fill the id which i am finding
+                        int id_choose_remove = sc.nextInt();
+                        boolean check_id_remove = true;
+                        //Search Object product according to id O(n)
+                        for (int i = 0; i &lt; List_Product.size(); i++) {
+                            if (List_Product.get(i).id == id_choose_remove) {
+                                List_Product.remove(i);
+                                check_id_remove = false;
+                                break;
+                            }
+                        }
+                        if (check_id_remove) {
+                            System.out.println("&gt;&gt;Not found id^^");
+                        } else {
+                            System.out.println("&gt;&gt;Deleted successfully");
+                        }
+                        break;
+                    case 4:
+
+                        System.out.println("Input id which you want to edit: ");
+                        int id_choose_edit = sc.nextInt();
+                        boolean check_id_edit = true;
+                        //Search Object product according to id O(n)
+                        for (int i = 0; i &lt; List_Product.size(); i++) {
+                            //if search object with id
+                            if (List_Product.get(i).id == id_choose_edit) {
+                                System.out.println("&gt;&gt;Editing product : " + List_Product.get(i).name + "&lt;&lt;&lt;");
+                                sc.nextLine();
+                                check_id_edit = false;
+                                System.out.println("Input new name of product: ");
+                                String name = sc.nextLine();
+                                System.out.println("Input new price of product($): ");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match184-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                double price = sc.nextDouble();
+                                System.out.println("Input new quantity of product: ");
+                                int quantity = sc.nextInt();
+                                List_Product.get(i).name = name;
+                                List_Product.get(i).price = price;
+                                List_Product.get(i).quantity = quantity;
+</FONT>                                break;
+                            }
+                        }
+                        if (check_id_edit) {
+                            System.out.println("&gt;&gt;Not found id^^");
+                        }
+                        break;
+                    case 5:
+                        System.out.println("Input Keyword: ");
+                        String keyword = sc.next();
+                        System.out.println("Search result: ");
+                        boolean check_contain = false;
+                        show();
+                        for (int i = 0; i &lt; List_Product.size(); i++) {
+                            if (List_Product.get(i).name.contains(keyword)) { //find name of product contain keyword
+                                List_Product.get(i).display();
+                                check_contain = true;
+                            }
+                        }
+                        if (!check_contain) {
+                            System.out.println("&gt;&gt;No result!");
+                        }
+                        break;
+                    case 6:
+                        // I can also use Collections.sort
+                        // I use Bubble sort algorithm to sort all ArrayList Product with O(n*n) algorithm
+                        //Bruteforce compare between product in index i and index j
+                        for (int i = 0; i &lt; List_Product.size() - 1; i++) {
+                            for (int j = i + 1; j &lt; List_Product.size(); j++) {
+                                if (List_Product.get(i).price &gt; List_Product.get(j).price) { // sort increasing order
+                                    //Swap id
+                                    int id = List_Product.get(i).id;
+                                    List_Product.get(i).id = List_Product.get(j).id;
+                                    List_Product.get(j).id = id;
+                                    //Swap name
+                                    String temp_name = List_Product.get(i).name; // save name of product in index i
+                                    List_Product.get(i).name = List_Product.get(j).name; // assign name of product in index i equal name of product in index j
+                                    List_Product.get(j).name = temp_name; // assign name of product in index i equal temp_name which saved name of product of i before that
+                                    //Swap price
+                                    double temp_price = List_Product.get(i).price;
+                                    List_Product.get(i).price = List_Product.get(j).price;
+                                    List_Product.get(j).price = temp_price;
+                                    //Swap quantity
+                                    int temp_quantity = List_Product.get(i).quantity;
+                                    List_Product.get(i).quantity = List_Product.get(j).quantity;
+                                    List_Product.get(j).quantity = temp_quantity;
+                                }
+                            }
+                        }
+                        System.out.println("&gt;&gt;Sorted Successfully^^");
+                        break;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match184-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    case 7:
+                        sc.nextLine();
+                        System.out.println("Enter file's name: ");
+                        String file_name_write = sc.nextLine();
+                        File file = new File(file_name_write + ".txt");
+                        FileOutputStream fileOutputStream = new FileOutputStream(file);
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                        objectOutputStream.writeObject(List_Product);
+                        System.out.println("&gt;&gt;File Saved Successfully&gt;&gt;");
+                        break;
+                    case 8:
+                        sc.nextLine();
+                        System.out.println("Enter file's name: ");
+                        String file_name_load = sc.nextLine();
+                        File file1 = new File(file_name_load + ".txt");
+                        if (!file1.exists()) {
+                            System.out.println("Not found file^^"); // if file not exist
+                        } else {
+                            FileInputStream fileInputStream = new FileInputStream(file1);
+                            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                            ArrayList&lt;Product&gt; List_Product1 = new ArrayList&lt;&gt;();
+                            List_Product1 = (ArrayList&lt;Product&gt;) objectInputStream.readObject();
+                            for (int i = 0; i &lt; List_Product1.size(); i++) {
+                                boolean check = true;
+                                for (int j = 0; j &lt; List_Product.size(); j++) {
+                                    if (List_Product.get(j).id == List_Product1.get(i).id) {
+                                        check = false;
+                                        break;
+                                    }
+                                }
+                                if (check) {
+                                    List_Product.add(List_Product1.get(i));
+                                }
+                            }
+                            System.out.println("&gt;&gt;Loaded successfully ^^");
+</FONT>                        }
+                        break;
+                    case 9:
+                        chech_exit = true;
+                        break;
+                    default:
+                        System.out.println("&gt;&gt;Invalid input ^^");
+                        break;
+                }
+            }
+            if (chech_exit) {
+                System.out.println("Exit Program ^^");
+                break;
+            }
+        }
+        System.out.println("Good day!!");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

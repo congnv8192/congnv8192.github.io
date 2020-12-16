@@ -1,0 +1,277 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenThiDuyen_106315_assignsubmission_file_assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TranThiThuPhuong_106337_assignsubmission_file_Menu2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TranThiThuPhuong_106337_assignsubmission_file_Menu2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment2;
+
+/**
+ *
+ * @tran thi thu phuong
+ * 
+ */import java.util.Scanner;
+   import java.util.ArrayList;
+   import java.io.BufferedReader;
+    import java.io.FileReader;
+    import java.io.BufferedWriter;
+    import java.io.File;
+import static java.io.FileDescriptor.in;
+    import java.io.FileNotFoundException;
+    import java.io.IOException;
+    import java.io.FileWriter;
+import java.io.PrintStream;
+import java.sql.Connection;
+import java.util.Arrays;
+public class  Menu2 {
+    public static void main(String[] args) {
+        int choice;
+
+        System.out.println("M E N U");
+        System.out.println("=============");
+        System.out.println("Feature1:Add products ");
+        System.out.println("Feature2:Display products ");
+        System.out.println("Feature3:Delete a product");
+        System.out.println("Feature4:Edit a product");
+        System.out.println("Feature5:Search for products by name");
+        System.out.println("Feature6:Sort products by price ");
+        System.out.println("Feature7:Save product to text/binary file");
+        System.out.println("Feature8:load products from the saved file");
+        System.out.println("Exit");
+        System.out.println("=============");
+        System.out.println("Enter choice: ");
+        
+        Scanner in = new Scanner(System.in);
+         choice = in.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Add products");
+                break;
+            case 2:
+                System.out.println("Display products");
+                break;
+            case 3:
+                System.out.println("Delete a product");
+                break;
+            case 4:
+                System.out.println("Edit a product");
+                break;
+            case 5:
+                System.out.println("Search for products by name");
+                break;
+            case 6:
+                System.out.println("Sort products by price");
+                break;
+            case 7:
+                System.out.println("Save product to text/binary file");
+                break;
+            case 8:
+                System.out.println("Load products from the saved file");
+                break;
+            case 9:
+                System.out.println("Goodbye, see you again");
+                
+                
+               // Display menu
+        System.out.println("M E N U");
+        System.out.println("=============");
+        System.out.println("Feature1:Add products ");
+        System.out.println("Feature2:Display products ");
+        System.out.println("Feature3:Delete a product");
+        System.out.println("Feature4:Edit a product");
+        System.out.println("Feature5:Search for products by name");
+        System.out.println("Feature6:Sort products by price ");
+        System.out.println("Feature7:Save product to text/binary file");
+        System.out.println("Feature8:load products from the saved file");
+        System.out.println("Exit");   
+        System.out.println("============="); 
+        System.out.println("Enter choice: ");
+               choice = in.nextInt();
+               
+        }
+        System.out.println("Goodbye, see you again");
+                
+       
+    }
+    static String[] ProName = new String[30];
+    static float[] ProPrice = new float[30];
+    static int[] ProQuantity = new int[30];
+    static int count = 0;
+    static boolean isLoadedProduct = false;
+    
+    
+        private Integer id;
+    private String name;
+    private Double price;
+    private Integer quantity;    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+           
+    
+    
+    public static void displayproducts(int opts[]) {
+        System.out.println("Display Products");
+        System.out.println("==================");
+        for (int i = 0; i &lt; opts.length; i++); {
+            int i;
+         System.out.printf("%d. %s\n", ProName[i], ProQuantity[i], ProPrice[i]);
+    }
+        System.out.println("==================");
+        
+    }
+        public static void deleteProduct() {
+        System.out.println("---------------Delete Product---------------");
+        System.out.println("Delete id of the product: ");
+        try {
+            
+            int selectedID;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match104-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            selectedID = in.nextInt();
+        
+            if (ProName != null) {
+                ProName [selectedID] = null;
+                ProPrice [selectedID] = 0;
+                ProQuantity [selectedID] = 0;
+                count --;
+            }
+            
+            for (int i = selectedID; i &lt; 30; i++) { 
+                if(ProName[i] == null) {
+                    ProName[i] = ProName[i+1];
+                    ProName[i+1] = null;
+                    ProPrice[i] = ProPrice[i+1];
+                    ProPrice[i+1]= 0;
+                    ProQuantity[i] = ProQuantity[i+1];
+                    ProQuantity[i+1] = 0;
+</FONT>                }
+                Scanner input = new Scanner(System.in);
+            }      
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match104-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_25.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+            }
+    }
+     public static void editProduct() {
+        Scanner input = new Scanner(System.in);
+        int c = input.nextInt();
+        System.out.print("New Name of product: ");
+        input.nextLine();
+        ProName[c - 1] = input.nextLine();
+        System.out.print("New Price of product: ");
+        ProPrice[c - 1] = input.nextFloat();
+        System.out.print("New Quantity of product: ");
+        ProQuantity[c - 1] = input.nextInt(); 
+    }
+    
+    public static void searchProduct(){
+        System.out.println("----------------Search Product---------------");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the name of the product: ");
+        String name = sc.nextLine();
+        
+        for(int i=0; i &lt; count; i++) {
+            if (name.equals(ProName[i])) {
+            System.out.printf("|No.%-5d|%30s|%10.2f|%10d|%n",i+1,ProName[i], ProPrice[i], ProQuantity[i]);
+            }
+        }
+        
+    }
+    
+    public static void sortProduct() {
+        System.out.println("---------------Sort Product---------------");
+        Scanner input = new Scanner(System.in);
+        
+        float temp;
+        String name;
+        int quantity;
+        for(int i = 1; i &lt; count; i++) {
+            for (int j = 0; j &lt; count - 1; j++) {
+                if (ProPrice[j] &gt; ProPrice[j+1]){
+                    temp = ProPrice[j];
+                    name = ProName[j];
+                    quantity = ProQuantity[j];
+                    ProPrice[j] = ProPrice[j+1];
+                    ProPrice[j+1] = temp;
+                    ProName[j] = ProName[j+1];
+                    ProName[j+1] = name;
+                    ProQuantity[j] = ProQuantity[j+1];
+                    ProQuantity[j+1] = quantity;
+</FONT>                    
+                }
+            }
+            String result1 = Arrays.toString(ProPrice);
+            String result2 = Arrays.toString(ProName);
+            String result3 = Arrays.toString(ProQuantity);
+            System.out.println(result1);
+            System.out.println(result2);
+            System.out.println(result3);
+        }
+    }
+    
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match104-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void saveProduct() throws IOException  { 
+        FileWriter fw;
+        if(isLoadedProduct)
+        {
+            fw =new FileWriter("output.txt");
+        }else{
+            fw= new FileWriter("output.txt",true);
+        }
+        try(BufferedWriter writer = new BufferedWriter(fw)) {
+            String printContent = "";
+        for (int i = 0; i &lt; count; i++) {
+            printContent = printContent + ProName[i]+"#"+ProPrice[i]+"#"+ProQuantity[i]+"|";
+        }
+        writer.write(printContent);
+        } catch (IOException e) {
+</FONT>        }
+    }
+    
+
+        
+       </PRE>
+</PRE>
+</BODY>
+</HTML>

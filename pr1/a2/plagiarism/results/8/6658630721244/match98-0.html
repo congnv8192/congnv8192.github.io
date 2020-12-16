@@ -1,0 +1,309 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenBaTrungKien_106536_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenBaTrungKien_106536_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenBaTrungKien_106536_assignsubmission_file_Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment2;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+ public class Assignment2 
+{
+    public static void main(String[] args) throws IOException
+   {
+     Basic productslist = new Basic();
+     int features;
+     Scanner sc = new Scanner (System.in);
+     do 
+     {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match98-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        displayMenu();
+         System.out.print("Enter feature: ");
+        features = Integer.parseInt(sc.nextLine());
+        switch (features) 
+                {
+                    case 1:   
+                        int n;
+                        System.out.print("Enter number of products you want: ");
+                        n = Integer.parseInt(sc.nextLine());
+                        
+                       
+                        for (int i=1;i&lt;=n;i++)
+</FONT>                        {
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match98-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println("Product "+i);
+                            System.out.print("Enter name: ");
+                            String name = sc.nextLine();
+                            System.out.print("Enter price: ");
+                            double price = Double.parseDouble(sc.nextLine());
+</FONT>                            System.out.print("Enter quantity: ");
+                            int quantity = Integer.parseInt(sc.nextLine());
+                            Products prod = new Products(name, price, quantity); 
+                            productslist.add(prod);
+                        }
+                        break;
+                    case 2:
+                        for (int i=0;i&lt;productslist.size();i++)
+                        {                          
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match98-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println(productslist.get(i).toString());
+                        }
+                        break;                        
+                    case 3:
+                   
+                        System.out.print("Enter id you want to delete: ");
+                        int m = Integer.parseInt(sc.nextLine());
+                        for (int i=0;i&lt;productslist.size();i++)
+                        {
+                            if(productslist.get(i).getProductsID()== m) 
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match98-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                productslist.delete(productslist.get(i));
+                        }
+                        System.out.println("Delete successfully!");
+                        break;
+                    case 4:
+                        System.out.print("Enter id you want to edit: ");
+                        int a = Integer.parseInt(sc.nextLine());
+                        System.out.print("Enter new name: ");
+                        String new_name = sc.nextLine();
+                        System.out.print("Enter new price: ");
+                        double new_price = Double.parseDouble(sc.nextLine());
+                        System.out.println("Enter new quatity: ");
+                        int new_quantity = Integer.parseInt(sc.nextLine());
+                        for (int i=0;i&lt;productslist.size();i++)
+                        {
+                            if(productslist.get(i).getProductsID()== a)
+                            {
+                               productslist.get(i).setProductsName(new_name);
+                               productslist.get(i).setProductsPrice(new_price);
+                               productslist.get(i).setProductsQuantity(new_quantity);
+                            }
+                        }
+                        System.out.println("Edit successfully!");
+</FONT>                        break;
+                    case 5:
+                        System.out.print("Enter a keyword which name contains: ");
+                        String keyword = sc.nextLine();
+                        String[] name;
+                        for (int i=0;i&lt;productslist.size();i++)
+                        {
+                            name = productslist.get(i).getProductsName().split(" ");
+                            for(int j=0;j&lt;name.length;j++)
+                            {
+                                if(keyword.equalsIgnoreCase(name[j]))
+                                {
+                                    System.out.println(productslist.get(i).toString());
+                                }
+                            }
+                        }                
+                        break;
+                    case 6:
+                        Products tmp;
+                        
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match98-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        for (int i=0;i&lt;productslist.size()-1;i++)
+                        {
+                            if(productslist.get(i).getProductsPrice()&gt;productslist.get(i+1).getProductsPrice())
+                            {
+                                tmp = productslist.get(i);
+                                productslist.set(i,productslist.get(i+1));
+                                productslist.set(i+1,tmp);    
+</FONT>                            }
+                        }
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match98-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        break;
+                    case 7:
+                         
+                         FileOutputStream out = null;
+                         ObjectOutputStream oos = null;
+                         try{
+                             File f = new File("Menu.obj");
+                             out = new FileOutputStream(f);
+                             oos = new ObjectOutputStream(out);
+                             oos.writeObject(productslist);
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match98-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                         }
+                         catch(Exception e){
+                             System.out.println("File not found");
+                         }
+                         finally{
+                             if (out!=null)
+                             {
+                                 out.close();
+                             }
+                             if (oos!=null)
+                             {
+                                 oos.close();
+                             }
+                         }
+                        break;
+                    case 8:
+                        FileInputStream in = null;
+                        ObjectInputStream ois = null;
+                        try {
+                            File f = new File("Menu.obj");
+                           in = new FileInputStream(f);
+                           ois = new ObjectInputStream(in);
+                           productslist = (Basic) ois.readObject();
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match98-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        }
+                        catch (Exception e) {
+                            System.out.println("File not found");
+                        }
+                        finally {
+                            if (in != null)
+                            {
+                                in.close();
+                            }
+                            if (ois != null)
+                            {
+                                ois.close();
+                            }
+                        }
+                        System.out.println("display: ");
+                        for (int i=0;i&lt;productslist.size();i++)
+                        {                          
+                            System.out.println(productslist.get(i).toString());
+</FONT><A NAME="8"></A><FONT color = #00FFFF><A HREF="match98-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        }
+                        break;
+                    
+                    case 9:
+                        System.out.println("Goodbye!");
+                        break;
+                    default:
+                        System.err.println("Wrong!");
+                        break;                   
+                }
+     }
+     while (features !=9);
+</FONT>   }
+      static void displayMenu() 
+   {
+        System.out.println("Here are 9 features of the program: ");
+        System.out.println("1. Add products ");
+        System.out.println("2. Display products ");
+        System.out.println("3. Delete a product");
+        System.out.println("4. Edit a product");
+        System.out.println("5. Search for products by name");
+        System.out.println("6. Sort products by price");
+        System.out.println("7. Save products");
+        System.out.println("8. Load products from saved file");
+        System.out.println("9. Exit program");
+   }
+    
+}
+class Products implements Serializable {
+    private  int id;
+    private static int temp = 0;
+    private String name;
+    private double price;
+    private int quantity;
+
+    public Products( String name, double price, int quantity) {
+        this.temp = this.temp +1;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match98-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.id = this.temp;
+        
+    }  
+
+    public int getProductsID() {
+        return id;
+    }
+    public String getProductsName() {
+        return name;
+    }
+
+    public void setProductsName(String name) {
+        this.name = name;
+    }
+
+    public double getProductsPrice() {
+        return price;
+    }
+
+    public void setProductsPrice(double price) {
+</FONT>        this.price = price;
+    }
+
+    public int getProductsQuantity() {
+        return quantity;
+    }
+
+    public void setProductsQuantity(int quantity) {
+        this.quantity = quantity;
+    }  
+    public String toString(){
+        return this.id+" "+ this.name+" "+ this.price+" "+this.quantity;
+    }
+}
+class Basic implements Serializable{
+    
+     private ArrayList&lt;Products&gt; product;
+     
+     public Basic(){
+         product = new ArrayList&lt;&gt;();
+     }
+     
+     public void add(Products pro){
+         product.add(pro);
+     }
+     public void delete(Products pro){
+         product.remove(pro);
+     }
+     public ArrayList get(){
+        return product;
+     }
+     public int size(){
+         return product.size();
+     }
+     public Products get(int i){
+         return product.get(i);
+     }
+     public void set(int index, Products e){
+         product.set(index,e);
+}
+}
+
+ 
+
+
+  
+    
+    
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

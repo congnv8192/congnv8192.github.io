@@ -1,0 +1,324 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTungLam_106423_assignsubmission_file_Assaignment2(PR1).Java/Assaignment2(PR1)/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenTungLam_106423_assignsubmission_file_Assaignment2(PR1).Java/Assaignment2(PR1)/<p><PRE>
+&gt;&gt;&gt;&gt; file: Product.java
+package lam.entity;
+
+public class Product {
+    private int id;
+    private String name;
+    private float price;
+
+    public Product(int id, String name, float price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    
+    
+}
+&gt;&gt;&gt;&gt; file: ProductConsole.java
+package lam.ui;
+
+import lam.controller.ProductManager;
+import lam.entity.Product;
+import lam.io.ProductIO;
+import java.util.Scanner;
+
+public class ProductConsole {
+
+    private ProductManager pm;
+    private ProductIO io;
+    private Scanner sc;
+
+    public ProductConsole() {
+        this.sc = new Scanner(System.in);
+        this.io = new ProductIO();
+        this.pm = new ProductManager(io.load());
+    }
+
+    private int menu() {
+        System.out.println("---PRODUCT MENU---");
+        System.out.println("1. Add product");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match199-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("2. Show all product");
+        System.out.println("3. Remove product");
+        System.out.println("0. Exit");
+        int choice = readInt(0, 3);
+        return choice;
+    }
+
+    public void start() {
+        while (true) {
+            int choice = menu();
+            switch (choice) {
+                case 0:
+                    System.exit(0);
+                    break;
+                case 1:
+                    addProduct();
+                    break;
+                case 2: 
+                    showAll();
+                    break;
+                case 3:
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match199-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    removeProduct();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+    }
+
+    private int readInt(int min, int max) {
+        int choice;
+        while (true) {
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice &gt;= min && choice &lt;= max) {
+                    break;
+                }
+            } catch (Exception e) {
+</FONT>                e.printStackTrace();
+            }
+        }
+        return choice;
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match199-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private float readFloat(int min, float max) {
+        float price;
+        while (true) {
+            try {
+                price = Float.parseFloat(sc.nextLine());
+                if (price &gt;= min && price &lt;= max) {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid value. Try to enter a float value");
+            }
+        }
+        return price;
+    }
+
+    private void addProduct() {
+        System.out.println("Enter product ID: ");
+        int id = readInt(0, Integer.MAX_VALUE);
+        System.out.println("Enter product name:");
+        String name = sc.nextLine();
+        System.out.println("Enter product price");
+        float price = readFloat(0, Float.MAX_VALUE);
+        Product p = new Product(id, name, price);
+        this.pm.addProduct(p);
+</FONT>        this.io.save(pm.getListOfProduct());
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match199-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private void showAll() {
+        System.out.println("--All product--");
+        System.out.println("ID\tName\tPrice");
+        for (int i = 0; i &lt; this.pm.count(); i++) {
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match199-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Product p = this.pm.getProduct(i);
+            System.out.println(p.getId()+"\t"+p.getName()+"\t"+p.getPrice());
+</FONT>        }
+    }
+
+    private void removeProduct() {
+        System.out.println("Enter ID of product");
+        int id = readInt(0, Integer.MAX_VALUE);
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match199-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        boolean result = this.pm.removeProduct(id);
+        if(result){
+            System.out.println("Product was removed");
+        }else{
+            System.out.println("Product not found");
+</FONT>        }
+    }
+}
+&gt;&gt;&gt;&gt; file: ProductIO.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lam.io;
+
+import lam.entity.Product;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match199-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+</FONT>
+
+public class ProductIO {
+
+    public boolean save(List&lt;Product&gt; list) {
+        PrintStream ps = null;
+        try {
+            ps = new PrintStream(new FileOutputStream("dic.dat"));
+            for (int i = 0, n = list.size(); i &lt; n; i++) {
+                Product p = list.get(i);
+                ps.println(p.getId() + "," + p.getName() + "," + p.getPrice());
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ProductIO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ps.close();
+        }
+        return false;
+    }
+
+    public List&lt;Product&gt; load() {
+        List&lt;Product&gt; list = new ArrayList&lt;&gt;();
+        File file = new File("dic.dat");
+        if (file.exists()) {
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] attributes = line.split(",");
+                    int id = Integer.parseInt(attributes[0]);
+                    float price = Float.parseFloat(attributes[2]);
+                    Product p = new Product(id, attributes[1], price);
+                    list.add(p);
+                }
+                reader.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ProductIO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ProductIO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+}
+&gt;&gt;&gt;&gt; file: ProductManagement.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package productmanagement;
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match199-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import lam.ui.ProductConsole;
+
+
+public class ProductManagement {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ProductConsole pc = new ProductConsole();
+        pc.start();
+</FONT>    }
+    
+}
+&gt;&gt;&gt;&gt; file: ProductManager.java
+package lam.controller;
+
+import lam.entity.Product;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class ProductManager {
+    private List&lt;Product&gt; listOfProduct;
+
+    public ProductManager() {
+        this.listOfProduct = new ArrayList&lt;&gt;();
+    }
+
+    public ProductManager(List&lt;Product&gt; listOfProduct) {
+        this.listOfProduct = listOfProduct;
+    }
+
+    public List&lt;Product&gt; getListOfProduct() {
+        return listOfProduct;
+    }
+    
+    
+    public int addProduct(Product p){
+        this.listOfProduct.add(p);
+        return count();
+    }
+    
+    public int count(){
+        return this.listOfProduct.size();
+    }
+    
+    public Product getProduct(int index){
+        if(index &lt; 0 || index &gt;= count()){
+            return null;
+        }
+        return this.listOfProduct.get(index);
+    }
+    
+    public boolean removeProduct(int id){
+        int index = -1;
+        for (int i = 0, n = count(); i&lt; n; i++) {
+            if(this.listOfProduct.get(i).getId() == id){
+                index = i;
+                break;
+            }
+        }
+        if(index != -1){
+            this.listOfProduct.remove(index);
+            return true;
+        }
+        return false;
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

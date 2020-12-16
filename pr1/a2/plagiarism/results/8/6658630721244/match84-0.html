@@ -1,0 +1,166 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoangVuTungLam_106491_assignsubmission_file_HoangVuTungLam2_1C19_1901040116.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/HoangVuTungLam_106491_assignsubmission_file_HoangVuTungLam2_1C19_1901040116.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: HoangVuTungLam_106491_assignsubmission_file_HoangVuTungLam2_1C19_1901040116.java
+package homework;
+
+import java.io.*;
+import java.util.ArrayList;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match84-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Scanner;
+
+public class HoangVuTungLam2_1C19_1901040116 {
+    static ArrayList&lt;Integer&gt; id = new ArrayList&lt;&gt;();
+    static ArrayList&lt;String&gt; name = new ArrayList&lt;&gt;();
+</FONT>    static ArrayList&lt;String&gt; price = new ArrayList&lt;&gt;();
+    static ArrayList&lt;String&gt; quantity = new ArrayList&lt;&gt;();
+    static String Name = "";
+    static String Price = "";
+    static String Quantity = "";
+    static String yn1 = "";
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int feature = 0;
+        do {
+            try {
+                System.out.println();
+                System.out.println("1. Add products\n" +
+                        "2. Display products\n" +
+                        "3. Delete a product\n" +
+                        "4. Edit a product\n" +
+                        "5. Search for products by name\n" +
+                        "6. Sort products by price\n" +
+                        "7. Save products to text file\n" +
+                        "8. Load products from the saved file\n" +
+                        "9. Exit program");
+                System.out.println();
+                System.out.print("Enter your choice: ");
+                feature = sc.nextInt();
+
+            } catch (Exception e) {
+                System.err.println("Invalid input!"); // warn users about invalid input
+            }
+            switch (feature) {
+                case 1:
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match84-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_54.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int autoid = 1;
+                    do {
+                        System.out.println("Product ID:\n" + autoid);
+                        id.add(autoid);
+                        autoid++; // automatically print id of products
+                        System.out.println("Enter a product's name: ");
+                        Name = sc.next();
+                        sc.nextLine();
+                        name.add(Name); //add a string to string array
+                        System.out.println("Enter that product's price: ");
+                        Price = sc.next();
+                        price.add(Price);
+                        System.out.println("Enter its quantity: ");
+                        Quantity = sc.next();
+                        quantity.add(Quantity);
+                        System.out.println("Do you want to add another product?\n" + "Y/N (Y to continue and press any key to stop)");
+                        yn1 = sc.next();
+
+                    } while (yn1.equalsIgnoreCase("Y"));
+                    System.out.println("Product added!");
+                    break;
+                case 2:
+                    System.out.println("-----------------------------------------------------------------");
+                    System.out.format("|%10s| %20s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+                    System.out.println();
+                    for (int a = 0; a &lt; id.size(); a++) {
+                        System.out.format("|%10d| %20s| %15s| %10s|%n", id.get(a), name.get(a), price.get(a), quantity.get(a)); // format the printed columns
+                    }
+                    System.out.println("-----------------------------------------------------------------");
+                    break;
+                case 3:
+                    String yn3;
+                    do {
+                        System.out.println("Enter the product's ID:");
+                        int delete = sc.nextInt();
+                        id.set(delete - 1, null);
+                        name.set(delete - 1, null);
+                        price.set(delete - 1, null);
+                        quantity.set(delete - 1, null);
+                        System.out.println("Do you want to delete another product?\n" + "Y/N (Y to continue and press any key to stop)");
+                        yn3 = sc.next();
+                    } while (yn3.equalsIgnoreCase("Y"));
+                    break;
+                case 4:
+                    System.out.println("Enter the ID of the product you wish to edit:");
+                    int edit = sc.nextInt();
+                    System.out.println("Enter your product's new name:");
+                    String namenew = sc.nextLine();
+                    System.out.println("Enter its new price:");
+                    String pricenew = sc.nextLine();
+                    System.out.println("Enter its new quantity:");
+                    String quantitynew = sc.nextLine();
+                    for (int hi = 0; hi &lt; id.size(); hi++) {
+                        if (edit == hi + 1) {
+                            name.set(hi, namenew); // replace each string with another input value
+                            price.set(hi, pricenew);
+                            quantity.set(hi, quantitynew);
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Search: ");
+                    String productname = sc.next();
+                    if (name.contains(productname)) { // search whether the array has a string the user wish to search
+                        System.out.println("Product found!");
+                    } else {
+                        System.out.println("Couldn't find product!");
+                    }
+                    break;
+                case 6:
+                    Collections.sort(price);
+                    System.out.println("Here are products' prices in ascending order: "+ price);
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match84-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    break;
+                case 7:
+                    File f = new File("products.txt");
+                    PrintWriter pw = new PrintWriter(f);
+                    for (int file = 0; file &lt; id.size(); file++) {
+                        pw.write("ID: " + id + "\n"); // print in different rows
+</FONT>                        pw.write("Name: " + name + "\n");
+                        pw.write("Price: " + price + "\n");
+                        pw.write("Quantity: " + quantity + "\n");
+                    }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match84-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    pw.close();
+                    break;
+                case 8:
+                    File load = new File("products.txt");
+                    FileInputStream fis = new FileInputStream(load);
+                    InputStreamReader isr = new InputStreamReader(fis);
+                    BufferedReader br = new BufferedReader(isr);
+                    String line;
+                    System.out.println("Products loaded!");
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line + "    ");
+                    }
+                    br.close();
+</FONT>                    break;
+            }
+        } while (feature != 9);
+        System.out.println("Exiting program....");
+        System.out.println("Goodbye!");
+    }
+}
+
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

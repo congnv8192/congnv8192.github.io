@@ -1,0 +1,265 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1601040183NguyenNhuQuynh_106306_assignsubmission_file_Assigment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1601040183NguyenNhuQuynh_106306_assignsubmission_file_Assigment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1601040183NguyenNhuQuynh_106306_assignsubmission_file_Assigment2.java
+
+package Assignment2;
+
+import static Assignment2.Assigment2.prPrice;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Assigment2{
+ static ArrayList&lt;Integer&gt; prID = new ArrayList&lt;&gt;(30);
+ static ArrayList&lt;String&gt; prName = new ArrayList&lt;&gt;(30);
+ static ArrayList&lt;Double&gt; prPrice= new ArrayList&lt;&gt;(30);
+ static ArrayList&lt;Double&gt; prQuantity = new ArrayList&lt;&gt;(30);
+ static int id;
+    public static void add() {
+       File file = new File("assignment2.txt");
+       boolean check = true;
+        while(check)    {
+        System.out.println("Input the name: ");
+        String name = new Scanner(System.in).nextLine();
+        prName.add(name);
+        id ++;
+        prID.add(id);
+        System.out.println("Input the price: ");
+        double price = new Scanner(System.in).nextDouble();
+        prPrice.add(price);
+        System.out.println("The quantity: ");
+        double quantity = new Scanner(System.in).nextDouble();
+        prQuantity.add(quantity);
+           System.out.println("Do you want to add more products?(Yes/No)");
+           String input = new Scanner(System.in).nextLine();
+           if(input.equalsIgnoreCase("yes"))    {
+               check = true;
+           }else if(input.equalsIgnoreCase("no")){
+               System.out.println("Thank you!");
+               check =false;
+           } 
+        }           
+    }
+    public static void display() {
+        System.out.println("--------------------------------------------------");
+        for(int i=0; i&lt;prID.size(); i++)  {
+            System.out.format(" %05d | %-10s | %15.2f | %8.2f | %n", prID.get(i), prName.get(i), prPrice.get(i), prQuantity.get(i));
+        }
+        System.out.println("--------------------------------------------------");
+    }
+    public static void delete() {
+        System.out.println("Input the ID's product you want to delete: ");
+        int ID = new Scanner(System.in).nextInt();
+            for(int i =0; i&lt;prID.size(); i++){
+                if(ID == prID.get(i))    {
+                    prID.remove(i);
+                    prName.remove(i);
+                    prPrice.remove(i);
+                    prQuantity.remove(i);
+                    System.out.println("After delete: ");
+                    display();
+        }else{
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match78-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Wrong ID");
+                }
+    }                    
+            }        
+    public static void edit() {
+        System.out.println("Input the ID of the product you want to edit: ");
+        int ID = new Scanner(System.in).nextInt();
+        String edit = "0";
+        boolean check = true;
+        while(check == true){
+            System.out.println("What feature you want to update?");
+       
+            System.out.println("1. Name\n2. Price\n3. Quantity\n4. Finish\nYour option: ");
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match78-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            edit = new Scanner(System.in).nextLine();
+        switch(edit)    {
+            case "1":
+                System.out.println("Enter a new name: ");
+                String name = new Scanner(System.in).nextLine();
+                prName.set(ID - 1, name);
+                check = true;
+                break;
+            case "2":
+                System.out.println("Enter new price: ");
+                double price = new Scanner(System.in).nextInt();
+                prPrice.set(ID - 1,price); 
+                check = true;
+                break;
+            case "3":
+                System.out.println("Enter new quantity: ");
+                double quantity1 = new Scanner(System.in).nextDouble();
+                prQuantity.set(ID -1, quantity1); 
+                check = true;
+                break;
+            case "4":
+                System.out.println("After update: ");
+                display();
+                check = false;
+                break;
+            default:
+                System.err.println("Choose the number from 1 to 4!");
+                check = true;
+                break;
+        }
+        }
+    }   
+</FONT>    public static void search() {
+        System.out.println("Enter the name of product: ");
+        String name = new Scanner(System.in).nextLine();
+        int count = 0;
+        for(int i =0; i&lt; prID.size(); i++) {
+            if(prName.get(i).contains(name)){
+                count ++;
+                System.out.println("The product you want: ");
+            System.out.format(" %05d \t\t %-5s \t %10.2f \t %10.2f \t %n", prID.get(i), prName.get(i), prPrice.get(i), prQuantity.get(i));
+    }
+        }
+            if(count == 0)  {
+                System.err.println("Not find the product!");
+            }
+    }
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match78-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_27.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void sort()   {
+        Integer [] id = prID.toArray(new Integer[prID.size()]);
+        for(int i=0; i&lt; prID.size(); i++){
+            id[i] = prID.get(i);}
+        String [] name = prName.toArray(new String[prName.size()]);
+        for(int i=0; i&lt; prName.size(); i++){
+            name[i] = prName.get(i);}
+        Double[] price = prPrice.toArray(new Double[prPrice.size()]);
+        for(int i=0; i&lt; prPrice.size(); i++){
+            price[i] = prPrice.get(i);}
+        Double[] quantity = prQuantity.toArray(new Double[prQuantity.size()]);
+        for(int i=0; i&lt; prQuantity.size(); i++){
+            quantity[i] = prQuantity.get(i);}
+
+        for (int i=0; i&lt;id.length - 1; i++){
+            for(int j=i+1; j&lt;id.length; j++){
+                if(price[i] &gt; price[j]) {
+                    int ID = id[j];
+                    id[j]= id[i];
+                    id[i]=ID;
+
+                    String name2  = name[j];
+                    name[j]= name[i];
+                    name[i]=name2;
+
+                    Double price2  = price[j];
+                    price[j]= price[i];
+                    price[i]=price2;
+                    Double quantity2  = quantity[j];
+                    quantity[j]= quantity[i];
+                    quantity[i]= quantity2;
+                }
+            }
+        }
+        prID.clear();
+        prName.clear();
+        prPrice.clear();
+        prQuantity.clear();
+        for (int i = 0; i &lt; id.length ; i++) {
+            prID.add(id[i]);
+            prName.add(name[i]);
+            prPrice.add(price[i]);
+            prQuantity.add(quantity[i]);
+        }
+        System.out.println("List of products with increasing order: ");
+</FONT>        display();
+    }   
+    public static void save() {
+        
+        try {
+            FileOutputStream fileos = new FileOutputStream("assignment2.txt");
+            ObjectOutputStream objectos = new ObjectOutputStream(fileos);
+            objectos.writeObject(prID);
+            objectos.writeObject(prName);
+            objectos.writeObject(prPrice);
+            objectos.writeObject(prQuantity);           
+            objectos.close();
+            fileos.close();            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }        
+    }
+    public static void load()  {
+        try {
+            FileInputStream fileis = new FileInputStream("assignment2.txt");
+            ObjectInputStream objectis = new ObjectInputStream(fileis);
+            prID = (ArrayList&lt;Integer&gt;) objectis.readObject();
+            prName = (ArrayList&lt;String&gt;) objectis.readObject();
+            prPrice = (ArrayList&lt;Double&gt;) objectis.readObject();
+            prQuantity = (ArrayList&lt;Double&gt;) objectis.readObject();
+            objectis.close();
+            fileis.close();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }      
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        String option = "0";
+        while(true){
+            System.out.println("1. Add products\n2. Display products");
+            System.out.println("3. Delete products\n4. Edit products\n5. Search products\n6. Sort products");
+            System.out.println("7. Save products\n8. Load products\n9. Quit");
+            System.out.println("Your choice: ");
+            option = sc.nextLine();
+        switch(option)   {
+            case "1":
+                System.out.println("Add products!");
+                add();
+                break;
+            case "2":
+                System.out.println("List of products: ");
+                display();
+                break;
+            case "3":
+                delete();
+                break;
+            case "4": 
+                edit();
+                break;
+            case "5":
+                search();
+                break;
+            case "6": 
+                sort();
+                break;
+            case "7": 
+                save();
+                break;
+            case "8":
+                load();
+                break;
+            case "9": 
+                System.out.println("Goodbye!");
+                System.exit(0);
+            default:
+                System.err.println("Input the number from 1 to 9: ");
+                break;
+        }
+        }
+    }
+}
+
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

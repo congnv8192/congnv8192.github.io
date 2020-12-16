@@ -1,0 +1,270 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenHoangAnh_106279_assignsubmission_file_NguyenHoangAnh1TD19.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamKhueTu_106579_assignsubmission_file_PhamKhueTu_1TD19_1901060043.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamKhueTu_106579_assignsubmission_file_PhamKhueTu_1TD19_1901060043.java
+/*
+*
+*
+*
+* Pham Khue Tu - 1TD19 - 1901060043
+
+ */
+package javaapplication5;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+/**
+ *
+ */
+    public class PhamKhueTu_1TD19_1901060043 {
+    final private double proPrice;
+    final private int proQuantity;
+    final private String proName;
+    final private int proID;
+    
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match44-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    PhamKhueTu_1TD19_1901060043(BufferedReader pr) throws IOException {
+        System.out.print("Product ID: ");
+        this.proID = Integer.parseInt(pr.readLine());
+        System.out.print("Product name: ");
+        this.proName = pr.readLine();
+        System.out.print("Product price: ");
+        this.proPrice = Double.parseDouble(pr.readLine());
+        System.out.print("Product quantity: ");
+        this.proQuantity = Integer.parseInt(pr.readLine());
+    }
+
+    PhamKhueTu_1TD19_1901060043(String p) {
+</FONT>        String[] string = p.split(" ; ");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match44-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.proName = string[1];
+        this.proID = Integer.parseInt(string[0]);
+        this.proPrice = Double.parseDouble(string[2]);
+</FONT>        this.proQuantity = Integer.parseInt(string[3]);
+    }
+
+    public String getproname() {
+        return proName;
+    }
+
+    public int getproid() {
+        return proID;
+    }
+
+    public double getproprice() {
+        return proPrice;
+    }
+
+    public int getproquantity() {
+        return proQuantity;
+    }
+
+    public void show() {
+        System.out.printf("\n%-10s %-10s %-10s %-10s", proID, proName, proPrice, proQuantity);
+    }
+         private static void Display(PhamKhueTu_1TD19_1901060043[] pr, int add) {
+        for (int z = 0; z &lt; add; z++) {
+            pr[z].show();
+        }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match44-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println();
+    }
+  private static int ip(PhamKhueTu_1TD19_1901060043[] pr, BufferedReader ip, int add) throws IOException {
+        int newi;
+        System.out.print("The number of the products are: ");
+        newi = Integer.parseInt(ip.readLine());
+        for (int z = add; z &lt; add + newi; ++z) {
+            pr[z] = new PhamKhueTu_1TD19_1901060043(ip);
+        }
+        add += newi;
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match44-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return add;
+    }
+      private static int remove(PhamKhueTu_1TD19_1901060043[] pr, BufferedReader ip, int add) throws IOException {
+        System.out.print("Product ID: ");
+        int proID;
+        boolean found = false;
+        proID = Integer.parseInt(ip.readLine());
+        for (int z = 0; z &lt; add; ++z) {
+            if (pr[z].getproid() == proID) {
+                --add;
+                found = true;
+                if (add - z &gt;= 0) {
+                    System.arraycopy(pr, z + 1, pr, z, add - z);
+                }
+                System.out.println("The product has been removed");
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Product is unable to be found");
+        }
+        System.out.println();
+        return add;
+      }
+      
+    public static int rf(PhamKhueTu_1TD19_1901060043[] prArr, int add) {
+</FONT>        try {
+            File f = new File("Product.txt");
+            if (f.exists()) {
+                Scanner fscan;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match44-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                fscan = new Scanner(f);
+                int z = 0;
+                while (fscan.hasNextLine()) {
+                    prArr[z++] = new PhamKhueTu_1TD19_1901060043(fscan.nextLine());
+                }
+                add = z;
+                System.out.println("Success");
+                System.out.println();
+                fscan.close();
+            } else {
+                System.out.println("The file does not exist");
+            }
+        } catch (FileNotFoundException e) {
+</FONT>        }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match44-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return add;
+    }
+
+    private static void wrf(PhamKhueTu_1TD19_1901060043[] prArr, int add) {
+        try {
+            BufferedWriter wrf = new BufferedWriter(new FileWriter("Product.txt"));
+            for (int z = 0; z &lt; add; ++z) {
+                wrf.write(prArr[z].getproid() + ", " + prArr[z].getproname() + ", " + prArr[z].getproprice() + ", " + prArr[z].getproquantity() + "\n");
+            }
+            wrf.close();
+            System.out.println("Sucsess");
+            System.out.println();
+            wrf.close();
+        } catch (IOException e) {
+            System.out.println("Error. Try again");
+             
+            
+        }
+    }
+
+ 
+    
+    private static void search(PhamKhueTu_1TD19_1901060043[] pr, BufferedReader ip, int addproduct) throws IOException {
+</FONT><A NAME="8"></A><FONT color = #00FFFF><A HREF="match44-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+ 
+        System.out.print("Product name keyword: ");
+        boolean sch = false;
+        String proName = ip.readLine();
+        for (int z = 0; z &lt; addproduct; z++) {
+</FONT>            if (pr[z].getproname().equals(proName)) {
+                
+                pr[z].show();
+                break;
+            }
+            if (!sch) {
+                System.out.println("Can't find the product");
+            }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match44-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println();
+        }
+    }
+
+        
+
+   
+
+    private static void fix(PhamKhueTu_1TD19_1901060043[] pr, BufferedReader ip, int add) throws IOException {
+        System.out.println("Product ID: ");
+        int proID = Integer.parseInt(ip.readLine());
+        for (int z = 0; z &lt; add; ++z) {
+            if (pr[z].getproid() == proID) {
+                pr[z] = new PhamKhueTu_1TD19_1901060043(ip);
+                System.out.println("The product has been edited!");
+                break;
+</FONT>            }
+        }
+    }
+
+    @SuppressWarnings("empty-statement")
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match44-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) throws IOException {
+        PhamKhueTu_1TD19_1901060043[] prArr = new PhamKhueTu_1TD19_1901060043[30];
+        BufferedReader ip = new BufferedReader(new InputStreamReader(System.in));
+        int i = 0;
+        int add = 0;
+
+        do {
+            System.out.println("[1] Add products");
+</FONT>            System.out.println("[2] Display products");
+            System.out.println("[3] Delete a product");
+            System.out.println("[4] Edit for products by ID");
+            System.out.println("[5] Search for products by name");
+            System.out.println("[6] Save products to text/binary file");
+            System.out.println("[7] Load products from the saved file");       
+            System.out.print("Make a choice: ");   
+
+            try {  
+                i = Integer.parseInt(ip.readLine());
+                System.out.println();
+                switch (i) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match44-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    case 1:
+                        add = ip(prArr, ip, add);
+                        break;
+                    case 2:
+                        Display(prArr, add);
+                        break;
+                    case 3:
+                        add = remove(prArr, ip, add);
+                        break;
+                    case 4:
+                        fix(prArr, ip, add);
+                        break;
+                    case 5:
+                        search(prArr, ip, add);
+                        break;
+                    case 6:
+                        wrf(prArr, add);
+                        break;
+                    case 7:
+                        add = rf(prArr, add);
+                        break;
+                    default:
+                        System.out.println("Invalid");
+</FONT>                        System.out.println("Please try again");
+                        break;
+                }
+            } catch (InputMismatchException | NumberFormatException | IOException ex) {
+                System.out.println("Invalid");
+            }
+        } while (i != 7);
+        ip.close();
+    }
+}
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

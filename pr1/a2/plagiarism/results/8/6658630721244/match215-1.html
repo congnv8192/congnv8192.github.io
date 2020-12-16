@@ -1,0 +1,334 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoaDucLam_106504_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TruongucDuy_106498_assignsubmission_file_TruongDucDuy_1TD19_1901060011.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TruongucDuy_106498_assignsubmission_file_TruongDucDuy_1TD19_1901060011.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package truongducduy_1td19_1901060011;
+
+/**
+ *
+ * @author DaiPhongPC
+ */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class TruongDucDuy_1TD19_1901060011 {
+    private String productID;
+    final private String name;
+    final private double price;
+    final private int quantity;
+    private static int id = 0; // count number of user-inputted products
+
+    /**
+     * Set object's productID
+     * Determined by 2 first characters of name and id
+     */
+    private void setProductID() {
+        id++;
+        this.productID = name.substring(0, 2).toUpperCase() + (id &lt; 10 ? "0" + id : id);
+    }
+
+    public TruongDucDuy_1TD19_1901060011(Scanner in) {
+        System.out.print("Enter product name: ");
+        this.name = in.nextLine();
+        System.out.print("Enter price: ");
+        this.price = in.nextDouble();
+        in.nextLine();
+        System.out.print("Enter quantity: ");
+        this.quantity = in.nextInt();
+        in.nextLine();
+        setProductID();
+
+
+    }
+
+    /**
+     * Set object's attributes from a string of information
+     * Often called when read information from text file
+     *
+     * @param line a string of product's information
+     */
+    public TruongDucDuy_1TD19_1901060011(String line) {
+        String[] split = line.split(" ");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match215-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.productID = split[0];
+        this.name = split[1];
+        this.price = Double.parseDouble(split[2]);
+        this.quantity = Integer.parseInt(split[3]);
+</FONT>        id++;
+    }
+
+    final public void displayProduct() {
+        System.out.printf("%-10s%-20s%-10.2f%d\n", this.productID, this.name, this.price, this.quantity);
+    }
+
+    final public String getProductID() {
+        return this.productID;
+    }
+
+    final public String getName() {
+        return this.name;
+    }
+
+    final public double getPrice() {
+        return this.price;
+    }
+
+    final public int getQuantity() {
+        return this.quantity;
+    }
+
+    public static void main(String[] args) {
+        TruongDucDuy_1TD19_1901060011[] products = new TruongDucDuy_1TD19_1901060011[30];
+        Scanner input = new Scanner(System.in);
+        int totalProducts = 0;
+        int menu = 0;
+        do {
+            System.out.print("PRODUCT MANAGEMENT SYSTEM\n1. Add Products\n2. Display Products\n3. Delete a product\n"
+                    + "4. Modify a product\n5. Search product by name\n6. Sort products by price\n"
+                    + "7. Save product to text file\n8. Load product from text file\n9. Exit\n" + "Your option: ");
+            try {
+                menu = Integer.parseInt(input.nextLine());
+                System.out.println();
+                switch (menu) {
+                    case 1:
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match215-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        totalProducts = addProducts(products, input);
+                        break;
+                    case 2:
+                        displayAllProducts(products, totalProducts);
+                        break;
+                    case 3:
+                        totalProducts = deleteProduct(products, input, totalProducts);
+                        break;
+                    case 4:
+                        modifyProduct(products, input, totalProducts);
+                        break;
+                    case 5:
+                        searchProductByName(products, input, totalProducts);
+                        break;
+                    case 6:
+                        sortProductsByPrice(products, totalProducts);
+                        break;
+</FONT>                    case 7:
+                        // Create new file and write to file
+                        // Throws exception when an error occurred
+                        try {
+                            File outputFile = new File("productsOut.txt");
+                            if (outputFile.createNewFile()) {
+                                System.out.println("File created: " + outputFile.getName());
+                            } else {
+                                System.out.println("File already exists.");
+                            }
+                            FileWriter writeFile = new FileWriter(outputFile, true);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match215-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            for (int i = 0; i &lt; totalProducts; ++i) {
+                                writeFile.write(products[i].getProductID() + " " + products[i].getName() + " "
+                                        + products[i].getPrice() + " " + products[i].getQuantity() + "\n");
+                            }
+                            writeFile.close();
+                            System.out.println("Successfully wrote to the file.");
+                            System.out.println();
+</FONT>                        } catch (IOException e) {
+                            System.out.println("An error occurred.");
+                            e.printStackTrace();
+                        }
+                        break;
+                    case 8:
+                        // Open txt file and read every line into products using Product(String)
+                        // Throws FileNotFoundException
+                        try {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match215-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            File inputFile = new File("productsOut.txt");
+                            if (inputFile.exists()) {
+                                Scanner inputFromFile = new Scanner(inputFile);
+                                int i = 0;
+                                while (inputFromFile.hasNextLine()) {
+                                    products[i++] = new TruongDucDuy_1TD19_1901060011(inputFromFile.nextLine());
+                                }
+                                totalProducts = i;
+                                System.out.println("Read file successfully");
+                                System.out.println("Data imported");
+</FONT>                                System.out.println();
+                                inputFromFile.close();
+                            } else
+                                System.out.println("File does not exist");
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+            } catch (InputMismatchException | NumberFormatException ex) {
+                System.out.println("Invalid input. Try again.\n");
+            }
+        } while (menu != 9);
+        input.close();
+    }
+
+    /**
+     * Sort array of products by its price
+     * Using bubble sort with price as key
+     *
+     * @param products      array of products to sort
+     * @param totalProducts total number of products
+     */
+    private static void sortProductsByPrice(TruongDucDuy_1TD19_1901060011[] products, int totalProducts) {
+        for (int i = 0; i &lt; totalProducts; ++i) {
+            for (int j = 0; j &lt; totalProducts - i - 1; j++) {
+                if (products[j].getPrice() &gt; products[j + 1].getPrice()) {
+                    TruongDucDuy_1TD19_1901060011 temp = products[j];
+                    products[j] = products[j + 1];
+                    products[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    /**
+     * Search for a product by its name
+     * Traverse the array and compare String name with searchName
+     * Break the loop when found = 1
+     * Inform not found when found = 0
+     *
+     * @param products      array of products
+     * @param input         input stream
+     * @param totalProducts total number of products
+     */
+    private static void searchProductByName(TruongDucDuy_1TD19_1901060011[] products, Scanner input, int totalProducts) {
+        System.out.print("Enter product name to search: ");
+        String searchName;
+        int found = 0;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match215-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        searchName = input.nextLine();
+        for (int i = 0; i &lt; totalProducts; ++i)
+            if (products[i].getName().equals(searchName)) {
+</FONT>                found = 1;
+                System.out.println("Product found");
+                products[i].displayProduct();
+                break;
+            }
+        if (found == 0)
+            System.out.println("Product not found");
+        System.out.println();
+    }
+
+    /**
+     * Search for a product by productID then edit its attributes
+     * Traverse the array and compare String productID with modifyID
+     * Then call new Product() to overwrite this existing product
+     * Inform not found when found = 0
+     *
+     * @param products      array of products
+     * @param input         input stream
+     * @param totalProducts total number of products
+     */
+    private static void modifyProduct(TruongDucDuy_1TD19_1901060011[] products, Scanner input, int totalProducts) {
+        System.out.print("Enter product id to modify: ");
+        String modifyID;
+        int found = 0;
+        modifyID = input.nextLine();
+        for (int i = 0; i &lt; totalProducts; ++i) {
+            if (products[i].getProductID().equals(modifyID)) {
+                found = 1;
+                products[i] = new TruongDucDuy_1TD19_1901060011(input);
+                System.out.println("Product is modified successfully");
+                break;
+            }
+        }
+        if (found == 0)
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match215-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Product not found");
+        System.out.println();
+    }
+
+    /**
+     * Search for a product by productID then delete it
+     * Traverse the array and compare String productID with modifyID
+     * Then shift array left to overwrite this product
+     * Inform not found when found = 0
+     *
+     * @param products      array of products
+     * @param input         input stream
+     * @param totalProducts total number of products
+     * @return total number of products after deletion
+     */
+    private static int deleteProduct(TruongDucDuy_1TD19_1901060011[] products, Scanner input, int totalProducts) {
+        System.out.print("Enter product id to delete: ");
+</FONT>        String deleteID;
+        int found = 0;
+        deleteID = input.nextLine();
+        for (int i = 0; i &lt; totalProducts; ++i) {
+            if (products[i].getProductID().equals(deleteID)) {
+                --totalProducts;
+                found = 1;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match215-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                if (totalProducts - i &gt;= 0)
+                    System.arraycopy(products, i + 1, products, i, totalProducts - i);
+                System.out.println("Product is deleted successfully");
+                break;
+</FONT>            }
+        }
+        if (found == 0)
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match215-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Product not found");
+        System.out.println();
+        return totalProducts;
+    }
+
+    /**
+     * Display all products in array by calling displayProduct() for each element
+     *
+     * @param products      array of products
+     * @param totalProducts total number of products
+     */
+    private static void displayAllProducts(TruongDucDuy_1TD19_1901060011[] products, int totalProducts) {
+</FONT>        System.out.println("Current product list:");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match215-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; totalProducts; ++i)
+            products[i].displayProduct();
+        System.out.println();
+    }
+
+    /**
+     * Add products by user-inputted information
+     *
+     * @param products array of products
+     * @param input    input stream
+     * @return total number of products after adding
+     */
+    private static int addProducts(TruongDucDuy_1TD19_1901060011[] products, Scanner input) {
+</FONT>        int totalProducts;
+        System.out.print("Enter total number of products: ");
+        totalProducts = input.nextInt();
+        input.nextLine();
+        for (int i = 0; i &lt; totalProducts; ++i) {
+            products[i] = new TruongDucDuy_1TD19_1901060011(input);
+        }
+        return totalProducts;
+    }
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,287 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/TranManhTrinh_106511_assignsubmission_file_Assignmenthai.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/VuAnKhanh_106560_assignsubmission_file_VuAnKhanh_1901040113.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: VuAnKhanh_106560_assignsubmission_file_VuAnKhanh_1901040113.java
+import java.util.*;
+import java.io.*;
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match77-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+class Products implements Serializable {
+    static Scanner sc = new Scanner(System.in);
+    private int ProductsID;
+    private String ProductsName;
+    private double ProductsPrice;
+    private int Quantity;
+    private static ArrayList&lt;Products&gt; ProductsList = new ArrayList&lt;&gt;();
+
+    public Products (int ProductsID, String ProductsName, double ProductsPrice, int Quantity) {
+        this.ProductsID = ProductsID;
+        this.ProductsName = ProductsName;
+</FONT>        this.ProductsPrice = ProductsPrice;
+        this.Quantity = Quantity;
+    }
+
+    public int getProductsID() {
+        return ProductsID;
+    }
+
+    public void setProductsID(int ProductsID) {
+        this.ProductsID = ProductsID;
+    }
+
+    public String getProductsName() {
+        return ProductsName;
+    }
+
+    public void setProductsName(String ProductsName) {
+        this.ProductsName = ProductsName;
+    }
+
+    public double getProductsPrice(){
+        return ProductsPrice;
+    }
+
+    public void setProductsPrice(double ProductsPrice){
+        this.ProductsPrice = ProductsPrice;
+    }
+
+    public int getQuantity(){
+        return Quantity;
+    }
+
+    public void setQuantity(int Quantity){
+        this.Quantity = Quantity;
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match77-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static int randomID() {
+        int Min = 1, Max = 1000;
+        int ProductsID;
+        ProductsID = (int) (Math.random() * (Max - Min + 1) + Min);
+        return ProductsID;
+    }
+
+    public static void AddProducts() {
+        System.out.print("How much products do you want to add: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i=1; i&lt;=n; i++) {
+            System.out.println("Product " + i + ":");
+
+            System.out.print("Enter Name: ");
+            String ProductsName = sc.nextLine();
+
+            System.out.print("Enter Price: ");
+            double ProductsPrice = Double.parseDouble(sc.nextLine());
+
+            System.out.print("Enter Quantity: ");
+            int Quantity = Integer.parseInt(sc.nextLine());
+
+            Products products = new Products(randomID(), ProductsName, ProductsPrice, Quantity);
+            ProductsList.add(products);
+        }
+    }
+
+    public static void DisplayProducts() {
+        System.out.printf("%-3s | %-30s | %-20s | %-15s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+
+        for (Products products : ProductsList) {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match77-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-3d | %-30s | %-20.2f | %-15d", products.getProductsID(), products.getProductsName(), products.getProductsPrice(), products.getQuantity());
+            System.out.println();
+        }
+    }
+
+    public static void Delete() {
+        System.out.print("Enter product ID: ");
+        int ID = sc.nextInt();
+        for (Products products : ProductsList) {
+            if (products.getProductsID() == ID) {
+                ProductsList.remove(products);
+                break;
+            }
+        }
+    }
+
+    public static void Edit() {
+        System.out.print("Enter product ID: ");
+        int ID = sc.nextInt();
+        sc.nextLine();
+
+        for (Products products : ProductsList) {
+            if (products.getProductsID() == ID) {
+                System.out.print("Enter new name: ");
+                String newName = sc.nextLine();
+</FONT>
+                System.out.print("Enter new price: ");
+                double newPrice = sc.nextDouble();
+                sc.nextLine();
+
+                System.out.print("Enter new quantity: ");
+                int newQuantity = sc.nextInt();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match77-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                sc.nextLine();
+
+                products.setProductsName(newName);
+                products.setProductsPrice(newPrice);
+                products.setQuantity(newQuantity);
+                break;
+            }
+        }
+    }
+
+    public static void Search() {
+        System.out.print("Enter products name: ");
+        String Name = sc.nextLine();
+
+        ArrayList&lt;Products&gt; Search = new ArrayList&lt;&gt;();
+        for (Products products : ProductsList) {
+            if (products.getProductsName().contains(Name)) {
+                Search.add(products);
+            }
+        }
+
+        System.out.printf("%-3s | %-30s | %-20s | %-15s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+</FONT>        for (Products products : Search) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match77-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-3d | %-30s | %-20.2f | %-15d", products.getProductsID(), products.getProductsName(),
+                    products.getProductsPrice(), products.getQuantity());
+            System.out.println();
+        }
+    }
+
+    public static void SortByPrice() {
+        ArrayList&lt;Products&gt; sorList = new ArrayList&lt;&gt;(ProductsList);
+
+        Products sort;
+        for (int i = 0; i &lt; sorList.size() - 1; i++) {
+            for (int j = i + 1; j &lt; sorList.size(); j++) {
+</FONT>                if (sorList.get(i).getProductsPrice() &gt; sorList.get(j).getProductsPrice()) {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match77-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    sort = sorList.get(i);
+                    sorList.set(i, sorList.get(j));
+                    sorList.set(j, sort);
+                }
+            }
+        }
+
+        System.out.printf("%-3s | %-30s | %-20s | %-15s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Products products : sorList) {
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match77-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-3d | %-30s | %-20.2f | %-15d", products.getProductsID(), products.getProductsName(),
+                    products.getProductsPrice(), products.getQuantity());
+            System.out.println();
+        }
+    }
+
+    public static void Save() throws Exception {
+        File f = new File("products.txt");
+        FileOutputStream fos = new FileOutputStream(f);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(ProductsList);
+        oos.close();
+    }
+
+    public static void Load() throws Exception {
+</FONT>        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("products.txt"));
+        ArrayList&lt;Products&gt; ProductsList;
+
+        ProductsList = (ArrayList&lt;Products&gt;) ois.readObject();
+
+        System.out.printf("%-3s | %-30s | %-20s | %-15s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Products products : ProductsList) {
+            System.out.printf("%-3d | %-30s | %-20.2f | %-15d", products.getProductsID(), products.getProductsName(),
+                    products.getProductsPrice(), products.getQuantity());
+            System.out.println();
+        }
+    }
+}
+public class VuAnKhanh_1901040113 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int Choice = 2;
+
+        while (Choice &lt; 9 && Choice &gt;= 1){
+            try {
+                System.out.println("[1] Add Products");
+                System.out.println("[2] Display Products");
+                System.out.println("[3] Delete A Products");
+                System.out.println("[4] Edit A Products");
+                System.out.println("[5] Search For Products By Name");
+                System.out.println("[6] Sort Products By Price");
+                System.out.println("[7] Save Products To Text/Binary File");
+                System.out.println("[8] Load Products From The Saved File");
+                System.out.println("[9] Quit");
+                System.out.print("Chose an option: ");
+                Choice = sc.nextInt();
+                sc.nextLine();
+
+                while (Choice &gt; 9 || Choice &lt; 1) {
+                    System.out.print("Error, please select an option from 1 to 9: ");
+                    Choice = sc.nextInt();
+                }
+
+                switch (Choice) {
+                    case 1:
+                        Products.AddProducts();
+                        break;
+
+                    case 2:
+                        Products.DisplayProducts();
+                        break;
+
+                    case 3:
+                        Products.Delete();
+                        break;
+
+                    case 4:
+                        Products.Edit();
+                        break;
+
+                    case 5:
+                        Products.Search();
+                        break;
+
+                    case 6:
+                        Products.SortByPrice();
+                        break;
+
+                    case 7:
+                        Products.Save();
+                        break;
+
+                    case 8:
+                        Products.Load();
+                        break;
+
+                    default:
+                        System.out.print("Goodbye!");
+                }
+            } catch (Exception e) {
+                System.out.println("You must enter an interger");
+                System.out.println("Please try again");
+                sc.nextLine();
+            }
+        }
+    }
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

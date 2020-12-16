@@ -1,0 +1,280 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040091VuThuHoai_106305_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040091VuThuHoai_106305_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040091VuThuHoai_106305_assignsubmission_file_Assignment2.java
+package Assignment2;
+
+import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.util.Arrays;
+
+
+public class Assignment2 {
+
+	static float[] ProID = new float[30];
+	static String[] ProName = new String[30];
+	static double[] ProPrice = new double[30];
+	static int[] ProQuantity = new int[30];
+	static int count = 0;
+	static boolean LoadProduct = false;
+
+	public static void addProduct() {
+		System.out.println("===============ADD PRODUCT==========-==");
+		if (count &lt;= 29) {
+			Scanner input = new Scanner(System.in);
+			try {
+
+				System.out.print("Please enter your product's name: ");
+				String proName = input.nextLine();
+				System.out.print("Please enter your product's price: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match97-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				double proPrice = input.nextDouble();
+				System.out.print("Please enter your product's quantity: ");
+				int proQuantity = input.nextInt();
+
+				ProName[count] = proName;
+				ProQuantity[count] = proQuantity;
+				ProPrice[count] = proPrice;
+				count++;
+
+			} catch (Exception e) {
+				System.err.println(" e.getMessage()");
+</FONT>			}
+		} else {
+			System.out.println(" The maximum of product array is 30");
+
+		}
+	}
+
+	public static void displayProduct() {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match97-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("==========DISPLAY PRODUCT==========");
+		for (int i = 0; i &lt; count; i++) {
+			System.out.printf("|%-2d|%20s|%10.3f|%10d|%n", i + 1, ProName[i], ProPrice[i], ProQuantity[i]);
+
+		}
+	}
+
+	public static void deleteProduct() {
+
+		System.out.println(
+				"Please enter your id of product you want to delete( You must count number of product from 0 to select ID):  ");
+</FONT>		try {
+			Scanner input = new Scanner(System.in);
+			int IDproduct = input.nextInt();
+
+			if (ProName[IDproduct] != null) {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match97-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				ProName[IDproduct] = null;
+				ProPrice[IDproduct] = 0;
+				ProQuantity[IDproduct] = 0;
+				count--;
+			}
+			for (int i = IDproduct - 1; i &lt; 30; i++) {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match97-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				if (ProName[i] == null) {
+					ProName[i] = ProName[i + 1];
+					ProName[i + 1] = null;
+					ProPrice[i] = ProPrice[i + 1];
+					ProPrice[i + 1] = 0;
+					ProQuantity[i] = ProQuantity[i + 1];
+					ProQuantity[i + 1] = 0;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static void editProduct() {
+		Scanner input = new Scanner(System.in);
+</FONT>		System.out.println("Please enter the ID of product you want to edit: ");
+
+		int ID = input.nextInt();
+		input.nextLine();
+
+		if (count &lt;= 29) {
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match97-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println("==========EDIT PRODUCT===========");
+			try {
+				System.out.print("Input your Product name: ");
+				String proName = input.nextLine();
+				System.out.print("Input Product price: ");
+</FONT>				float proPrice = input.nextFloat();
+				System.out.print("Input Product Quantity: ");
+				int proQuantity = input.nextInt();
+
+				ProName[ID] = proName;
+				ProPrice[ID] = proPrice;
+				ProQuantity[ID] = proQuantity;
+
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+		} else {
+			System.out.println("Maximum of product array is 30!");
+		}
+
+	}
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match97-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static void searchProduct() {
+		System.out.println("===========SEARCH PRODUCT===========");
+		Scanner input = new Scanner(System.in);
+		System.out.println("please input the name of product to search: ");
+		String name = input.nextLine();
+		for (int i = 0; i &lt; count; i++) {
+			if (name.equals(ProName[i])) {
+				System.out.printf("|%-2d|%20s|%10.2f|%10d|%n", i + 1, ProName[i], ProPrice[i], ProQuantity[i]);
+
+			}
+		}
+
+	}
+
+	public static void sortProduct() {
+		System.out.println("===========SORT PRODUCT==============");
+		Scanner input = new Scanner(System.in);
+</FONT>
+		double temp;
+
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match97-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		for (int i = 1; i &lt;= count; i++) {
+			for (int j = 0; j &lt; count - 1; j++) {
+				if (ProPrice[j] &gt; ProPrice[j + 1]) {
+					temp = ProPrice[j];
+					ProPrice[j] = ProPrice[j + 1];
+</FONT>					ProPrice[j + 1] = temp;
+
+				}
+			}
+		}
+		String result = Arrays.toString(ProPrice);
+		System.out.println(result);
+
+	}
+
+	public static void saveProduct() throws IOException {
+		System.out.println("=================SAVE PRODUCT==============");
+
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\output.txt", true))) {
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match97-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			String content = "";
+			for (int i = 0; i &lt; count; i++) {
+				content = content + ProName[i] + ":" + ProPrice[i] + ":" + ProQuantity[i] + "||";
+			}
+			writer.write(content);
+</FONT>			writer.close();
+
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	public static void loadProduct() {
+		System.out.println("===============LOAD PRODUCTS=============");
+		count = 0;
+		try {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match97-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			BufferedReader rd = new BufferedReader(new FileReader("C:\\output.txt"));
+			String line = rd.readLine();
+
+			String Prolist[] = line.split("\\|");
+			for (int i = 0; i &lt; Prolist.length; i++) {
+				String proProperties[] = Prolist[i].split(":");
+
+				ProName[count] = proProperties[0];
+				ProPrice[count] = Float.parseFloat(proProperties[1]);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match97-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				ProQuantity[count] = Integer.parseInt(proProperties[2]);
+				count++;
+			}
+			LoadProduct = true;
+		} catch (FileNotFoundException ex) {
+			System.err.println(ex.getMessage());
+		} catch (IOException ex) {
+			System.err.println(ex.getMessage());
+</FONT>		}
+
+	}
+
+	public static void main(String[] args) throws IOException {
+		for (;;) {
+
+			Scanner input = new Scanner(System.in);
+			System.out.println("==============ASSIGNMENT 2=============");
+			System.out.println("Feature 1: Add products");
+			System.out.println("Feature 2: Display products");
+			System.out.println("Feature 3: Delete a product");
+			System.out.println("Feature 4: Edit a product");
+			System.out.println("Feature 5: Search for products by name");
+			System.out.println("Feature 6: Sort producuts by price");
+			System.out.println("Feature 7: Save product to text/binary file");
+			System.out.println("Feature 8: Load product from saved  file");
+			System.out.println("Click 0 to exit");
+			System.out.println("Your selection is");
+			int selection = input.nextInt();
+			input.nextLine();
+			switch (selection) {
+			case 1:
+				addProduct();
+				break;
+			case 2:
+				displayProduct();
+				break;
+			case 3:
+				deleteProduct();
+				break;
+			case 4:
+				editProduct();
+				break;
+			case 5:
+				searchProduct();
+				break;
+			case 6:
+				sortProduct();
+				break;
+			case 7:
+				saveProduct();
+				break;
+			case 8:
+				loadProduct();
+				break;
+			case 0:
+				System.exit(0);
+				break;
+
+			}
+
+			System.out.println(count);
+
+		}
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

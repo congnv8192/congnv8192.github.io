@@ -1,0 +1,429 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LeVanSon_106590_assignsubmission_file_Levanson_1901040175.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LeVanSon_106590_assignsubmission_file_Levanson_1901040175.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LeVanSon_106590_assignsubmission_file_Levanson_1901040175.java
+import java.io.*;
+import java.util.*;
+
+public class Assignment2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List&lt;Product&gt; products = new ArrayList&lt;&gt;();
+        int option = 0;
+        boolean keep = false;
+        while (true) {
+            System.out.println("Enter your choice: \n"
+                    + "1. Add Product\n"
+                    + "2. Display Products\n"
+                    + "3. Delete Product\n"
+                    + "4. Edit Product\n"
+                    + "5. Search Product By Name\n"
+                    + "6. Sort Products by price\n"
+                    + "7. Save Products\n"
+                    + "8. Load Products");
+            try {
+                System.out.print("Your Option is:");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match37-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                option = sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Unrecognized option, Please enter again!");
+            }
+            switch (option) {
+                case 1:
+                addProducts(products, sc);
+                    keep = true;
+                    break;
+                case 2:
+                    displayProducts(products);
+                    keep = true;
+                    break;
+                case 3:
+                    deleteFromList(products, sc);
+                    keep = true;
+                    break;
+                case 4:
+                    editaProduct(products, sc);
+                    keep = true;
+                    break;
+                case 5:
+                    searchforProductByName(products, sc);
+                    keep = true;
+                    break;
+                case 6:
+                    sortProductsByPrice(products);
+                    keep = true;
+                    break;
+                case 7:
+                    saveProductsToFile(products);
+</FONT>                    keep = true;
+                    break;
+                case 8:
+                    if (loadProductsfromthesavedFile().isEmpty()) {
+                        System.err.println("file is Empty!");
+                    } else {
+                        products = loadProductsfromthesavedFile();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match37-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Load Succsessfully!");
+                    }
+
+                    keep = true;
+                    break;
+                default:
+                    System.out.println("You need to enter value in range 1 - 8!");
+                    keep = false;
+
+
+            }
+            if (keep) {
+                System.out.print("Do you want to keep on?\nEnter Y to keep on\nEnter N to stop\n");
+                String wish = sc.nextLine();
+                if (wish.equalsIgnoreCase("Y")) {
+                    option = 0;
+</FONT>                } else if(wish.equalsIgnoreCase("N")) {
+                    break;
+                }
+
+
+            }
+        }
+    }
+private static int findMaxId(List&lt;Product&gt; list) {
+    return !list.isEmpty() ? list.get(list.size() - 1).getProductId() : 0;
+
+}
+    public static void addProducts(List&lt;Product&gt; products, Scanner sc) {
+        System.out.println("ADD NEW PRODUCT APP");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match37-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int idofProduct= findMaxId(products);
+        String nameofProduct  = "";
+        double priceofProduct = 0;
+        int quantityOfProduct = -1;
+        while (nameofProduct.isEmpty()) {
+            System.out.print("Enter product name: ");
+            nameofProduct = sc.nextLine();
+</FONT>        }
+    if(!isProductExisted(products, nameofProduct))  {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match37-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        while (priceofProduct &lt;= 0) {
+            System.out.print("Input product's price:");
+            try {
+                priceofProduct = sc.nextDouble();
+                sc.nextLine();
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Input Error! Please try again!");
+            }
+        }
+        while (quantityOfProduct &lt; 0) {
+            System.out.print("Input quantity of product: ");
+            try {
+                quantityOfProduct = sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                sc.nextLine();
+                System.out.println("Invalid Input! Please try again!");
+            }
+        }
+        idofProduct++;
+        products.add(new Product(idofProduct, nameofProduct ,priceofProduct, quantityOfProduct));
+</FONT>    } else {
+        System.out.println("Item is already existed!");
+    }
+
+
+
+    }
+
+<A NAME="13"></A><FONT color = #00FFFF><A HREF="match37-1.html#13" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        public static boolean isProductExisted(List&lt;Product&gt; list, String name) {
+            for (Product product : list) {
+                if (product.getProductName().equalsIgnoreCase(name)) return true;
+            }
+        return false;
+</FONT>        }
+    public static void displayProducts(List&lt;Product&gt; products) {
+        System.out.println("DISPLAY PRODUCT APP");
+        System.out.println("|\t" +"ID"+ "\t|\t" +"Name" + "\t|\t"  +"Price"+ "\t|\t" +"Quantity" +"\t\t|\n");
+        if (products.isEmpty()) {
+            System.out.println("the product of the store is empty!");
+        } else {
+            for (Product product : products) {
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match37-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("|\t" + product.getProductId() + "\t|\t" + product.getProductName() + "\t|\t" + product.getProductPrice() + "\t|\t" + product.getProductQuantity() + "\t\t|\n");
+            }
+
+        }
+
+    }
+
+    public static void editaProduct(List&lt;Product&gt; products, Scanner sc) {
+</FONT>        System.out.println("EDIT PRODUCT APP");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match37-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int productID = 0;
+        String productName = "";
+        double productPrice = 0;
+        int productQuantity = -1;
+        while (productID &lt;= 0) {
+            System.out.println("Enter ID of the products to edit");
+            try {
+                productID = sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                sc.nextLine();
+</FONT>                System.out.println("Input error! Try again!");
+            }
+            int k = findProductByID(products, productID);
+            if (k!= -1) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match37-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                while (productName.isEmpty()) {
+                    System.out.println("Enter new product's name:");
+                    productName = sc.nextLine();
+                }
+                while (productPrice &lt;= 0) {
+                    System.out.println("Enter price of product:");
+                    try {
+                       productPrice = sc.nextDouble();
+                        sc.nextLine();
+                    } catch (Exception e) {
+                        sc.nextLine();
+                        System.out.println("Invalid Input! Try again!");
+                    }
+                }
+
+                    while (productQuantity &lt; 0) {
+                        System.out.println("Enter quantity of product: ");
+                        try {
+                           productQuantity = sc.nextInt();
+                            sc.nextLine();
+                        } catch (Exception e) {
+                            sc.nextLine();
+                            System.out.println(" Input error! Please try again!");
+                        }
+                    }
+                    Product newProduct = new Product(productID, productName, productPrice,productQuantity);
+                products.remove(k);
+                products.add(k, newProduct);
+                System.out.println("Edited!");
+</FONT>            } else {
+                System.err.println(" Not Existed!");
+            }
+        }
+    }
+
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match37-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static int findProductByID(List&lt;Product&gt; products, int id) {
+       for(int a = 0; a &lt; products.size(); a++) {
+           if(products.get(a).getProductId() == id) {
+               return a;
+           }
+       }
+       return -1;
+</FONT>    }
+
+
+    public static void searchforProductByName(List&lt;Product&gt; products, Scanner sc) {
+        System.out.println("SEARCH PRODUCT APP");
+<A NAME="11"></A><FONT color = #00FF00><A HREF="match37-1.html#11" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Product item = null;
+        String name = "";
+        while (name.isEmpty()) {
+            System.out.print("Input the name of product:");
+            name = sc.nextLine();
+</FONT>        }
+        for (Product product : products) {
+            if (name.equalsIgnoreCase(product.getProductName())) {
+                item = product;
+            }
+        }
+        if (item == null) {
+            System.err.println("Product Not Found!");
+        } else {
+<A NAME="14"></A><FONT color = #FF00FF><A HREF="match37-1.html#14" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Product ID: " + item.getProductId() + ", Name: " + item.getProductName() + ", Price: " + item.getProductPrice() + ", Quantity: " + item.getProductQuantity());
+</FONT>        }
+    }
+
+    public static void sortProductsByPrice(List&lt;Product&gt; products) {
+        List&lt;Product&gt; copy = new ArrayList&lt;Product&gt;( products);
+
+        copy.sort(Comparator.comparing(Product::getProductPrice));
+        System.out.println("\nList of products after sorting price ascending");
+        System.out.println("|\t" +"ID"+ "\t|\t" +"Name" + "\t|\t"  +"Price"+ "\t|\t" +"Quantity" +"\t\t|\n");
+        System.out.println("_____________________________________________");
+        for (Product item : copy) {
+            System.out.println("Product ID: " + item.getProductId() + ", Name: " + item.getProductName() + ", Price: " + item.getProductPrice() + ", Quantity: " + item.getProductQuantity());
+            System.out.println("_____________________________________________");
+        }
+
+    }
+
+    public static void saveProductsToFile(List&lt;Product&gt; products) {
+        try {
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match37-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            ObjectOutputStream ooStream = new ObjectOutputStream(new FileOutputStream(new File("D:\\LeVanSon_1901040175_2C19_Assignment2.txt")));
+            ooStream.writeObject(products);
+            ooStream.flush();
+            ooStream.close();
+            System.out.println("Saved!");
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    public static List&lt;Product&gt; loadProductsfromthesavedFile() {
+        List&lt;Product&gt; products = null;
+</FONT>        try {
+            File file = new File("D:\\LeVanSon_1901040175_2C19_Assignment2.txt");
+            FileInputStream fiStream = new FileInputStream(file);
+            ObjectInputStream oiStream = new ObjectInputStream(fiStream);
+            products = (List&lt;Product&gt;) oiStream.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return products;
+    }
+
+    public static void deleteFromList(List&lt;Product&gt; list, Scanner sc) {
+        int productid = 0;
+        System.out.println("REMOVE PRODUCT FROM LIST APP");
+        System.out.print("Enter ID(&gt;0):");
+        try {
+            productid = sc.nextInt();
+            sc.nextLine();
+<A NAME="10"></A><FONT color = #FF0000><A HREF="match37-1.html#10" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        } catch (Exception e) {
+            sc.nextLine();
+            System.out.println("Invalid Input! Please try again!");
+        }
+
+        int j = isIdExisted(list, productid);
+        if (j == -1) {
+            System.out.println("Product's ID Not Found!");
+</FONT>        } else {
+            list.remove(j);
+            System.out.println("Deleted!");
+        }
+
+    }
+
+    public static int isIdExisted(List&lt;Product&gt; list, int id) {
+        int i = 0;
+        while (i &lt; list.size()) {
+            if (list.get(i).getProductId() == id) {
+               return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
+
+}
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match37-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+class Product implements Comparable&lt;Product&gt;, Serializable {
+private int productId;
+private String productName;
+private double productPrice;
+private int productQuantity;
+
+    public Product(int productId, String productName, double productPrice, int productQuantity) {
+        this.productId = productId;
+        this.productName = productName;
+</FONT>        this.productPrice = productPrice;
+        this.productQuantity = productQuantity;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+<A NAME="12"></A><FONT color = #0000FF><A HREF="match37-1.html#12" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.productPrice = productPrice;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    @Override
+    public int compareTo(Product p) {
+</FONT>        if (!(this.productPrice &gt; p.getProductPrice())) {
+            if(this.productPrice  &lt; p.getProductPrice()) {
+                return -1;
+            } else {
+                return 0;
+            }
+        } else {
+            return 1;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

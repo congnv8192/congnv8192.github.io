@@ -1,0 +1,235 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040084NguyenTrungHieu_106266_assignsubmission_file_NguyenTrungHieu_1C18_1801040084_A2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TrinhVanVuong1701040187_106459_assignsubmission_file_TrinhVanVuong_4c17_1701040187_A2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TrinhVanVuong1701040187_106459_assignsubmission_file_TrinhVanVuong_4c17_1701040187_A2.java
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match246-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author trinh_van_vuong
+ */
+public class Assignment2 {
+
+    static ArrayList&lt;Integer&gt; productID = new ArrayList&lt;Integer&gt;();
+    static ArrayList&lt;String&gt; productName = new ArrayList&lt;String&gt;();
+    static ArrayList&lt;Double&gt; productPrice = new ArrayList&lt;Double&gt;();
+    static ArrayList&lt;Integer&gt; productQuantity = new ArrayList&lt;Integer&gt;();
+    static int i = 1;
+</FONT>
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match246-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        int choose = 0;
+        while (choose != 8) {
+</FONT>            System.out.println("Please choose your option: ");
+            System.out.println("[1] Add products");
+            System.out.println("[2] Display products");
+            System.out.println("[3] Delete a product");
+            System.out.println("[4] Edit a product");
+            System.out.println("[5] Search for products by name");
+            System.out.println("[6] Sort for products by price");
+            System.out.println("[7] Save product to text file");
+            System.out.println("[8] Load product from the saved file");
+            System.out.println("[9] Exit the program");
+            choose = scanner.nextInt();
+
+            while (choose &lt; 0 || choose &gt; 8) {
+                System.err.println("Not allowed! Please choose again: ");
+                choose = scanner.nextInt();
+            }
+
+            switch (choose) {
+                case 1:
+                    addProduct(i);
+                    i++;
+                    break;
+                case 2:
+                    displayProduct();
+                    break;
+                case 3:
+                    deleteProduct(i);
+                    break;
+                case 4:
+                    editProduct(i);
+                    break;
+                case 5:
+                    searchProduct(i);
+                    break;
+                case 6:
+                    sortProductByPrice();
+                    break;
+                case 7:
+                    saveToTXT();
+                    break;
+                case 8:
+                    loadSavedTXT();
+                    break;
+                case 9:
+                    System.out.println("Goodbye!");
+                    System.exit(0);
+            }
+        }
+    }
+
+    public static void addProduct(int i) throws Exception {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match246-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter product: ");
+        System.out.println("Product ID: " + i);
+        productID.add(i);
+        System.out.print("Product name: ");
+        productName.add(scanner.nextLine());
+        System.out.print("Product price: ");
+        productPrice.add(scanner.nextDouble());
+        System.out.print("Product quantity: ");
+        productQuantity.add(scanner.nextInt());
+        System.out.println();
+    }
+
+    public static void displayProduct() throws Exception {
+</FONT>        for (int i = 0; i &lt; productName.size(); i++) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match246-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.format("%02d | %-35s | %-10.1f | %5d | %n", productID.get(i), productName.get(i), productPrice.get(i), productQuantity.get(i));
+        }
+        System.out.println();
+    }
+
+    public static void deleteProduct(int i) throws Exception {
+</FONT>        Scanner nhap = new Scanner(System.in);
+        System.out.println("Enter the product ID you want to delete: ");
+        int deleteID = nhap.nextInt();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match246-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (i = 0; i &lt; productID.size(); i++) {
+            if (productID.get(i) == deleteID) {
+                productID.remove(i);
+                productName.remove(i);
+                productPrice.remove(i);
+                productQuantity.remove(i);
+            }
+        }
+        System.out.println("Item has been deleted!");
+</FONT>        System.out.println();
+    }
+
+    public static void editProduct(int i) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter ID number of the product you want to edit: ");
+        i = scanner.nextInt();
+        while (i &lt; 0 || i &gt; productID.size()) {
+            System.err.println("Not allowed! Please enter again: ");
+            i = scanner.nextInt();
+        }
+        System.out.println("Enter new product: ");
+        System.out.println("Enter new product's name: ");
+        scanner = new Scanner(System.in);
+        productName.set(i, scanner.nextLine());
+        System.out.println("Enter new product's price: ");
+        scanner = new Scanner(System.in);
+        productPrice.set(i, scanner.nextDouble());
+        System.out.println("Enter new product's quantity: ");
+        scanner = new Scanner(System.in);
+        productQuantity.set(i, scanner.nextInt());
+        System.out.println("Your changes have been saved!");
+        System.out.println();
+    }
+
+    public static void searchProduct(int i) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the name: ");
+        String nameToFind = scanner.nextLine();
+        for (i = 0; i &lt; productName.size(); i++) {
+            if (productName.get(i).contains(nameToFind)) {
+                System.out.println("Product ID: " + productID.get(i));
+                System.out.println("Product name: " + productName.get(i));
+                System.out.println("Product price: " + productPrice.get(i));
+                System.out.println("Product quantity: " + productQuantity.get(i));
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match246-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println();
+            }
+        }
+    }
+
+    public static void saveToTXT() throws Exception {
+        File f = new File("products.txt");
+        FileOutputStream fos = new FileOutputStream(f);
+        try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(productID);
+            oos.writeObject(productName);
+            oos.writeObject(productPrice);
+            oos.writeObject(productQuantity);
+        }
+        System.out.println("Your data has been saved!");
+        System.out.println();
+    }
+
+    public static void loadSavedTXT() throws Exception {
+        File f = new File("products.txt");
+        FileInputStream fis = new FileInputStream(f);
+</FONT>        try (ObjectInputStream ois = new ObjectInputStream(fis)) {
+            productID = (ArrayList&lt;Integer&gt;) ois.readObject();
+            productName = (ArrayList&lt;String&gt;) ois.readObject();
+            productPrice = (ArrayList&lt;Double&gt;) ois.readObject();
+            productQuantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+        }
+        System.out.println(productID);
+        System.out.println(productName);
+        System.out.println(productPrice);
+        System.out.println(productQuantity);
+        System.out.println();
+    }
+
+    public static void sortProductByPrice() throws Exception {
+
+        boolean sorted = false;
+        Double temp;
+
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i &lt; productPrice.size() - 1; i++) {
+                if (productPrice.get(i).compareTo(productPrice.get(i + 1)) &gt; 0) {
+                    temp = productPrice.get(i);
+                    int tempId = productID.get(i);
+                    String tempName = productName.get(i);
+                    int tempQuantity = productQuantity.get(i);
+                    productPrice.set(i, productPrice.get(i + 1));
+                    productPrice.set(i + 1, temp);
+
+                    productID.set(i, productID.get(i+1));
+                    productID.set(i+1, tempId);
+
+                    productName.set(i, productName.get(i+1));
+                    productName.set(i+1, tempName);
+
+                    productQuantity.set(i, productQuantity.get(i+1));
+                    productQuantity.set(i+1, tempQuantity);
+                    sorted = false;
+                }
+            }
+        }
+        displayProduct();
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,453 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/TraninhNguyen_106578_assignsubmission_file_Main.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/oTuyenHoang_106512_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: oTuyenHoang_106512_assignsubmission_file_Assignment2.java
+package main;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Assignment2 {
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match196-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static final int CASE_EXIT = 0;
+    public static final int CASE_ADD_PRODUCT = 1;
+    private static final int CASE_DISPLAY_PRODUCT = 2;
+    private static final int CASE_DELETE_PRODUCT = 3;
+    private static final int CASE_EDIT_PRODUCT = 4;
+    private static final int CASE_SEARCH_PRODUCT = 5;
+    private static final int CASE_SORT_PRODUCT = 6;
+    private static final int CASE_SAVE_PRODUCT = 7;
+    private static final int CASE_LOAD_PRODUCT = 8;
+</FONT>
+    private static Scanner sc;
+    private static ArrayList&lt;ProductModel&gt; listPro;
+    private static String fileStorePath;
+
+    public static void main(String[] args) {
+         File file = new File("src/data");//done
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        listPro = new ArrayList&lt;ProductModel&gt;();
+        fileStorePath = file.getPath() + "/"+"products.txt";
+        sc = new Scanner(System.in);
+        funct_loadProduct();
+        showMenu();
+        sc.close();
+    }
+
+    private static void showMenu() {
+        try {
+            System.out.println("[0]-Exit\n"
+                    + "[1]-Add products\n"
+                    + "[2]-Display products\n"
+                    + "[3]-Delete a product\n"
+                    + "[4]-Edit a product\n"
+                    + "[5]-Search for products by name\n" 
+                    + "[6]-Sort products by price\n"
+                    + "[7]-Save products to text/binary file\n" 
+                    + "[8]-Load products from the saved file");
+
+            int option = sc.nextInt();
+            skipThisInt(); // for case: enter
+            switch (option) {
+                case 0:
+                    System.out.println("Exit");
+                    funct_exit();
+                    break;
+                case 1:
+                    System.out.println("addProduct");
+                    funct_addProduct();
+                    break;
+                case 2:
+                    System.out.println("displayProduct");
+                    funct_displayProduct();
+                    break;
+                case 3:
+                    System.out.println("deleteProduct");
+                    funct_deleteProduct();
+                    break;
+                case 4:
+                    System.out.println("editProduct");
+                    funct_editProduct();
+                    break;
+                case 5:
+                    System.out.println("searchProduct");
+                    funct_searchProduct();
+                    break;
+                case 6:
+                    System.out.println("sortProduct");
+                    funct_sortProduct();
+                    break;
+                case 7:
+                    System.out.println("saveProducts");
+                    funct_saveProducts();
+                    break;
+                case 8:
+                    System.out.println("loadProduct");
+                    funct_loadProduct();
+                    break;
+                default: {
+                    System.out.println("Invalid input");
+                    showMenu();
+                    return;
+                }
+            }
+            
+            System.out.println("Do u want to continue? Y to continue ,any other key to stop");
+            boolean continuee = sc.nextLine().equalsIgnoreCase("Y");
+            System.out.println(continuee);
+            if (continuee) {
+                showMenu();
+                return;
+            }
+            funct_exit();
+
+        } catch (Exception e) {
+            error();
+            showMenu();
+        }
+
+    }
+
+    private static void funct_sortProduct() {
+        ArrayList&lt;ProductModel&gt; listProTmp = new ArrayList&lt;ProductModel&gt;(listPro);
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match196-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int k = 0; k &lt; listProTmp.size(); k++) {
+            for (int i = k; i &lt; listProTmp.size(); i++) {
+                if (listProTmp.get(k).getPrice() &gt; listProTmp.get(i).getPrice()) {
+                    ProductModel productTmp = listProTmp.get(k);
+                    listProTmp.set(k, listProTmp.get(i));
+                    listProTmp.set(i, productTmp);
+                }
+            }
+        }
+        showListProduct(listProTmp);
+</FONT>    }
+
+    private static void error() {
+        System.out.println("Invalid value, please try again!");
+        skipThisInt();
+
+    }
+
+    private static void funct_exit() {
+        sc.close();
+        System.out.println("App stops...");
+        System.exit(0);
+    }
+
+    private static void funct_loadProduct() {
+        if (!new File(fileStorePath).exists()) {
+            return;
+        }
+        Object dataProduct = readObjectF(fileStorePath);
+        if (dataProduct == null) {
+            listPro = new ArrayList&lt;ProductModel&gt;();
+            return;
+        }
+        listPro = (ArrayList&lt;ProductModel&gt;) dataProduct;
+
+        if (listPro == null) {
+            listPro = new ArrayList&lt;ProductModel&gt;();
+        }
+    }
+
+    private static void notifyDataChanged() {
+        funct_saveProducts();
+    }
+
+    private static void funct_saveProducts() {
+        saveObjectF(fileStorePath, listPro);
+        System.out.println("Save successfully");
+    }
+
+    // by name
+    private static void funct_searchProduct() {
+        System.out.print("Enter the product name to search: ");
+        String pName = sc.nextLine();
+        ArrayList&lt;ProductModel&gt; listRs = findByName(pName);
+        showListProduct(listRs);
+
+    }
+
+    private static ArrayList&lt;ProductModel&gt; findByName(String name) {
+        ArrayList&lt;ProductModel&gt; listRs = new ArrayList&lt;ProductModel&gt;();
+        for (ProductModel product : listPro) {
+            if (containsIgnoreCase(product.getPName(), name)) {
+                listRs.add(product);
+            }
+        }
+        return listRs;
+    }
+
+    private static boolean containsIgnoreCase(String parent, String child) {
+        return parent.toLowerCase().contains(child.toLowerCase());
+    }
+
+    private static void funct_editProduct() {
+        try {
+            System.out.print("Enter the product id needed to edit: ");
+            int pid = sc.nextInt();
+            skipThisInt();
+            Object[] pro = findProductById(pid);
+            if (pro == null) {
+                funct_editProduct();
+                System.out.println("Product does not exist");
+                return;
+            }
+            int pindex = (int) pro[0];
+            System.out.print("Enter new name:");
+            String pName = sc.nextLine();
+            System.out.print("Enter new price:");
+            int pPrice = sc.nextInt();
+            skipThisInt();
+            System.out.print("Enter new quantity:");
+            int pQuant = sc.nextInt();
+            skipThisInt();
+            listPro.set(pindex, new ProductModel(pid, pName, pPrice, pQuant));
+            notifyDataChanged();
+        } catch (Exception e) {
+            error();
+            funct_editProduct();
+        }
+    }
+
+    private static void funct_deleteProduct() {
+        try {
+            System.out.println("Enter the product id to delete: ");
+            int id = sc.nextInt();
+            skipThisInt();
+            Object data[] = findProductById(id);
+            if (data == null) {
+                System.out.println("Product not existed!");
+                funct_deleteProduct();
+                return;
+            }
+            listPro.remove((int) data[0]);
+            notifyDataChanged();
+            System.out.println("Delete product successfully");
+        } catch (Exception e) {
+            error();
+            funct_deleteProduct();
+        }
+
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match196-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static Object[] findProductById(int id) {
+        for (int i = 0; i &lt; listPro.size(); i++) {
+            ProductModel product = listPro.get(i);
+            if (product.getPId() == id) {
+                return new Object[]{i, product};
+            }
+        }
+        return null;
+    }
+
+    private static void funct_displayProduct() {
+</FONT>        showListProduct(listPro);
+
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match196-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void showListProduct(ArrayList&lt;ProductModel&gt; list) {
+        String customFormat = "|%1$-18s|%2$-18s|%3$-18s|%4$-18s|\n";
+        System.out.println("Products: ");
+        for (int i = 0; i &lt; 77; i++) {// first line
+            System.out.print("_");
+        }
+        System.out.println();
+        printRow(customFormat, "Id", "Name", "Price", "Quantity");
+</FONT>        for (ProductModel currentProduct : list) {
+            printRow(customFormat, currentProduct.getPId(), currentProduct.getPName(), currentProduct.getPrice(), currentProduct.getPQuantity());
+        }
+
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match196-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void printRow(String format, Object... string) {
+        if (string.length != 4) {
+            return;
+        }
+        for (int i = 0; i &lt; string.length; i++) {
+            if (string[i].toString().length() &gt;= 20) {
+                string[i] = string[i].toString().substring(0, 16) + "...";
+            }
+        }
+        System.out.format(format, string[0], string[1], string[2], string[3]);
+</FONT>        System.out.format(format, "____________________", "____________________", "____________________",
+                "____________________");
+    }
+
+    private static void funct_addProduct() {
+        try {
+
+            System.out.print("Name of Product: ");
+            String nameProduct = sc.nextLine();
+            if (listPro.contains(new ProductModel(0, nameProduct, 0, 0))) {
+                System.out.println("Product is existed, again");
+                funct_addProduct();
+                return;
+            }
+            System.out.print("Price of Product: ");
+            int priceProduct = sc.nextInt();
+            skipThisInt();
+            System.out.print("Quantity of Product:");
+            int quantityProduct = sc.nextInt();
+            skipThisInt();
+            System.out.print("\n");
+            int id = generatId();
+
+            ProductModel newProduct = new ProductModel(id, nameProduct, priceProduct, quantityProduct);
+            listPro.add(newProduct);
+            notifyDataChanged();
+
+        } catch (Exception e) {
+            System.out.println("Invalid value, please try again!");
+            skipThisInt();
+            funct_addProduct();
+        }
+
+    }
+
+    private static void skipThisInt() {
+        sc.nextLine();
+
+    }
+
+    private static int generatId() {
+            return listPro.size() == 0 ? 0 : listPro.get(listPro.size() - 1).getPId() + 1;
+    }
+
+    
+
+    public static void saveObjectF(String fpath, Object fdata) {
+        try {
+            File fileData = new File(fpath);
+            if (!fileData.exists()) {
+                fileData.createNewFile();
+            }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match196-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FileOutputStream fileOut = new FileOutputStream(fileData);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(fdata);
+            out.close();
+            System.out.println("File saved successfully");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+</FONT>        }
+    }
+
+    public static Object readObjectF(String path) {
+        try {
+            File file = new File(path);
+            FileInputStream fIN = new FileInputStream(file);
+            ObjectInputStream oIN = new ObjectInputStream(fIN);
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match196-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Object data = oIN.readObject();
+            oIN.close();
+            fIN.close();
+            System.out.println("Read successfully");
+            return data;
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+</FONT>            return null;
+        }
+    }
+}
+
+class ProductModel implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private int idPro;
+    private String namePro;
+    private int pricePro, quantityPro;
+
+    public ProductModel(int idPro, String namePro, int pricePro, int quantity) {
+        this.idPro = idPro;
+        this.namePro = namePro;
+        this.pricePro = pricePro;
+        this.quantityPro = quantity;
+    }
+
+    public int getPId() {
+        return idPro;
+    }
+
+    public void setPId(int id) {
+        this.idPro = id;
+    }
+
+    public String getPName() {
+        return namePro;
+    }
+
+    public void setPName(String name) {
+        this.namePro = name;
+    }
+
+    public int getPrice() {
+        return pricePro;
+    }
+
+    public int getPQuantity() {
+        return quantityPro;
+    }
+
+    public void setPQuantity(int quant) {
+        this.quantityPro = quant;
+    }
+
+    public void setPrice(int price) {
+        this.pricePro = price;
+    }
+    public boolean equals(Object obj) {
+        if (obj instanceof ProductModel) {
+            ProductModel that = (ProductModel) obj;
+            return that.getPName().equals(namePro);
+        }
+        return false;
+    }
+    public String toString() {
+        return "Product{" + "id=" + idPro + ", name=" + namePro + ", price='" + pricePro + ", quantity=" + quantityPro + '\'' + '}';
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,279 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/BuiNgocPhuc_106255_assignsubmission_file_Emthuathayemnopbai/Assignment2/src/assignment2/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenangNam_106271_assignsubmission_file_assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenangNam_106271_assignsubmission_file_assignment2.java
+package Tutorials12;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class ProducT implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match102-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static Scanner input = new Scanner(System.in);
+    private int IDProduct;
+    private String NamE;
+    private double PricE;
+    private int NumbeR;
+    private static ArrayList&lt;ProducT&gt; ListOfProducts = new ArrayList&lt;&gt;();
+    private static ObjectOutputStream objectOutputStream;
+</FONT>
+    public ProducT (int IDProduct, String NamE, double PricE, int NumbeR) {
+        this.IDProduct = IDProduct;
+        this.NamE = NamE;
+        this.PricE = PricE;
+        this.NumbeR = NumbeR;
+    }
+
+    public int getID() {
+        return IDProduct;
+    }
+
+    public String getNamE() {
+        return NamE;
+    }
+
+    public double getPricE() {
+        return PricE;
+    }
+
+    public int getNumbeR() {
+        return NumbeR;
+    }
+
+    public void setID(int IDProduct) {
+        this.IDProduct = IDProduct;
+    }
+
+    public void setPricE(double PricE) {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match102-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.PricE = PricE;
+    }
+
+    public void setNumbeR(int NumbeR) {
+        this.NumbeR = NumbeR;
+    }
+
+    public void setNamE(String NamE) {
+        this.NamE = NamE;
+    }
+
+    public static void MenuDisplaY () {
+</FONT>        System.out.println("Choose one feature listed below: \n" +
+                "1. Add products \n" +
+                "2. Display products \n" +
+                "3. Delete a product \n" +
+                "4. Edit a product \n" +
+                "5. Search for products by name \n" +
+                "6. Sort products by price \n" +
+                "7. Save products to text file \n" +
+                "8. Load products from the saved file \n" +
+                "9. Exit program. \n");
+    }
+
+    public static int randomID () {
+        int min = 100, max = 999;
+        int IDProduct;
+        IDProduct = (int) (Math.random()*(max - min + 1) + min);
+        return IDProduct;
+    }
+
+    public static void AdDsp () {
+        System.out.print("Enter the number of products you would like to add: ");
+        int num = input.nextInt();
+        input.nextLine();
+
+        for (int i=1; i&lt;=num; i++) {
+            System.out.println("ProducT " + i + ":");
+
+            System.out.print("Enter product name:  ");
+            String NamE = input.nextLine();
+
+            System.out.print("Enter product price:  ");
+            double PricE = Double.parseDouble(input.nextLine());
+
+            System.out.print("Enter product quantity:  ");
+            int NumbeR = Integer.parseInt(input.nextLine());
+
+            ProducT Sp = new ProducT(randomID(), NamE, PricE, NumbeR);
+            ListOfProducts.add(Sp);
+        }
+    }
+
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match102-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void DisplaYsp () {
+
+        System.out.printf("%-4s | %-39s | %-9s | %-99s", "IDProduct", "NamE", "PricE", "Quantity");
+        System.out.println();
+        for (ProducT Sp : ListOfProducts) {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match102-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-4d | %-39s | %-9.2f | %-9d", Sp.getID(), Sp.getNamE(), Sp.getPricE(), Sp.getNumbeR());
+            System.out.println();
+        }
+
+    }
+
+    public static void DeletEsp () {
+        System.out.print("Enter product ID: ");
+        int inputID = input.nextInt();
+        for (ProducT Sp : ListOfProducts) {
+            if (Sp.getID() == inputID) {
+                ListOfProducts.remove(Sp);
+                break;
+            }
+        }
+    }
+
+    public static void EdiTsp () {
+        System.out.print("Enter product ID: ");
+        int inputID = input.nextInt();
+        input.nextLine();
+
+        for (ProducT Sp : ListOfProducts) {
+            if (Sp.getID() == inputID) {
+                System.out.print("Enter new product name: ");
+                String NewNamE = input.nextLine();
+</FONT>
+                System.out.print("Enter new product price: ");
+                double NewPricE = input.nextDouble();
+
+                System.out.print("Enter new product quantity: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match102-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                int NewNumbeR = input.nextInt();
+
+                Sp.setNamE(NewNamE);
+                Sp.setPricE(NewPricE);
+                Sp.setNumbeR(NewNumbeR);
+                break;
+            }
+        }
+    }
+
+    public static void SearcHsp () {
+        System.out.print("Enter Key Name: ");
+        String keyNamE = input.nextLine();
+
+        ArrayList&lt;ProducT&gt; SearcHList = new ArrayList&lt;&gt;();
+        for (ProducT Sp : ListOfProducts) {
+            if (Sp.getNamE().contains(keyNamE)) {
+                SearcHList.add(Sp);
+            }
+        }
+
+        System.out.printf("%-4s | %-39s | %-9s | %-9s", "IDProduct", "NamE", "PricE", "Quantity");
+        System.out.println();
+</FONT>        for (ProducT Sp : SearcHList) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match102-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-4d | %-39s | %-9.2f | %-9d", Sp.getID(), Sp.getNamE(), Sp.getPricE(), Sp.getNumbeR());
+            System.out.println();
+        }
+    }
+
+    public static void SortByPricEsp () {
+
+        ArrayList&lt;ProducT&gt; SortedList = new ArrayList&lt;&gt;(ListOfProducts);
+
+        ProducT temp;
+        for (int i=0; i&lt; SortedList.size() - 1; i++) {
+            for (int j=i+1; j&lt; SortedList.size(); j++) {
+</FONT>                if (SortedList.get(i).getPricE() &gt; SortedList.get(j).getPricE()) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match102-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    temp = SortedList.get(i);
+                    SortedList.set(i, SortedList.get(j));
+                    SortedList.set(j, temp);
+                }
+            }
+        }
+
+        System.out.printf("%-4s | %-39s | %-9s | %-9s", "IDProduct", "NamE", "PricE", "Quantity");
+        System.out.println();
+        for (ProducT Sp : SortedList) {
+</FONT><A NAME="7"></A><FONT color = #0000FF><A HREF="match102-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-4d | %-39s | %-9.2f | %-9d", Sp.getID(), Sp.getNamE(), Sp.getPricE(), Sp.getNumbeR());
+            System.out.println();
+        }
+    }
+
+    public static void SaveTheProducTsp () throws Exception {
+        File f = new File("src/Tutorials12/products.txt");
+        FileOutputStream fos = new FileOutputStream(f);
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match102-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        objectOutputStream = new ObjectOutputStream(fos);
+        objectOutputStream.writeObject(ListOfProducts);
+    }
+
+    public static void LoadTheProducTsp () throws Exception{
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/Tutorials12/products.txt"));
+        ArrayList&lt;ProducT&gt; LisT;
+
+        LisT = (ArrayList&lt;ProducT&gt;) ois.readObject();
+
+
+        System.out.printf("%-4s | %-39s | %-9s | %-9s", "IDProduct", "NamE", "PricE", "Quantity");
+        System.out.println();
+        for (ProducT Sp : LisT) {
+</FONT>            System.out.printf("%-44d | %-39s | %-9.2f | %-9d", Sp.getID(), Sp.getNamE(), Sp.getPricE(), Sp.getNumbeR());
+            System.out.println();
+        }
+    }
+}
+
+public class assignment2 {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match102-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static Scanner input = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+        int choice = 0;
+        do {
+            ProducT.MenuDisplaY();
+            System.out.print("Enter choice: ");
+            choice = input.nextInt();
+            input.nextLine();
+</FONT>            switch (choice) {
+                case 1 -&gt; ProducT.AdDsp();
+
+                case 2 -&gt; ProducT.DisplaYsp();
+
+                case 3 -&gt; ProducT.DeletEsp();
+
+                case 4 -&gt; ProducT.EdiTsp();
+
+                case 5 -&gt; ProducT.SearcHsp();
+
+                case 6 -&gt; ProducT.SortByPricEsp();
+
+                case 7 -&gt; ProducT.SaveTheProducTsp();
+
+                case 8-&gt; ProducT.LoadTheProducTsp();
+
+                case 9 -&gt; System.out.println("See you again !!");
+                default -&gt; System.out.println("Error !!");
+
+
+            }
+        }
+        while (choice !=9);
+        System.exit(0);
+    }
+}
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

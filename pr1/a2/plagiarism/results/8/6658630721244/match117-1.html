@@ -1,0 +1,301 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenHongHanh_106531_assignsubmission_file_assignment02/assignment02/src/assignment02/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenVanThuong_106521_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenVanThuong_106521_assignsubmission_file_Assignment2.java
+package thuong;
+
+ 
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Assignment1 implements Serializable{
+
+
+    private int id;
+    private String name;
+    private float price;
+    private int quatity;
+    private static ArrayList&lt;Assignment1&gt; listproduct = new ArrayList&lt;&gt;();
+    public Assignment1(){
+    }
+    public Assignment1(int id, String name, float price, int quatity){
+        super();
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quatity = quatity;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public float getPrice(){
+        return price;
+    }
+    public void setPrice(float price){
+        this.price = price;
+    }
+    public int getQuatity(){
+        return quatity;
+    }
+    public void setQuatity(int quatity){
+        this.quatity = quatity;
+    }
+    public void setMenu (){
+
+    }
+    static Scanner sc = new Scanner(System.in);
+    public static class Main{
+
+        static void Enterinformation(Assignment1 prt){
+            System.out.println("enter id product:");
+            prt.setId(sc.nextInt());
+            sc.nextLine();
+            System.out.println("enter name of product:");
+            prt.setName(sc.nextLine());
+            sc.nextLine();
+        }
+    }
+    public static void main (String[] args) throws Exception{
+
+        int choose,n;
+        boolean flag = true;
+        do{
+            System.out.println("1.add product");
+            System.out.println("2.display product");
+            System.out.println("3.delete a product");
+            System.out.println("4.edit a product");
+            System.out.println("5.search a product by name");
+            System.out.println("6.sort products by price");
+            System.out.println("7.save products to txt file");
+            System.out.println("8.load products from the saved file");
+            System.out.println("9.exit program");
+            System.out.println("enter your request on the menu:");
+
+
+            choose = Integer.parseInt(sc.nextLine());
+            switch(choose){
+                case 1:
+                    System.out.println("add success");
+                    addproduct();
+                    break;
+                case 2:
+                    System.out.println("display success");
+                    Display();
+                    break;
+                case 3:
+                    System.out.println("delete success");
+                    Delete();
+                    break;
+                case 4:
+                    System.out.println("edit success");
+                    edit();
+                    break;
+                case 5:
+                    System.out.println("search success");
+                    Search();
+                    break;
+                case 6:
+                    System.out.println("sort success");
+                    sortproductbyprice();
+                    break;
+                case 7:
+                    System.out.println("save success");
+                    saveFile();
+                    break;
+                case 8:
+                    System.out.println("load success");
+                    loadproduct();
+                    break;
+<A NAME="11"></A><FONT color = #00FF00><A HREF="match117-0.html#11" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                case 9:
+                    System.out.println("exit success");
+                    break;
+                default:
+                    System.out.println("error enter. please try enter");
+
+            }
+
+        }while(choose !=0);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match117-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    } public static int ADDid(){
+
+        int min = 0, max = 30;
+        int id;
+        id = (int) (Math.random()*(max - min +1) + min);
+        return id;
+</FONT>    }
+    public static void addproduct(){
+        int n;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the number of products:");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match117-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        n = sc.nextInt();
+        sc.nextLine();
+        for(int i = 1; i &lt;= n; i++){
+            System.out.println("Product" + i + ":");
+            System.out.println("enter name of products:");
+            String name = sc.nextLine();
+
+            System.out.println("enter price of product:");
+</FONT>            float price = Float.parseFloat(sc.nextLine());
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match117-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("enter quantity of product:");
+            int quatity = Integer.parseInt(sc.nextLine());
+            Assignment1 prt = new  Assignment1(ADDid(), name, price, quatity);
+            listproduct.add(prt);
+
+        }
+
+    }
+    public static void Display(){
+        System.out.printf("%-5s | %-30s | %-20s | %-20s", "id", "name", "price", "quatity");
+        System.out.println();
+        for(Assignment1 prt : listproduct){
+</FONT>            System.out.printf("%-5d | %-30s | %-20.2f | %-20d", prt.getId(), prt.getName(), prt.getPrice(), prt.getQuatity());
+            System.out.println();
+        }
+    }
+
+    public static void Delete(){
+
+        Scanner sc = new Scanner(System.in);
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match117-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("enter id of product:");
+        int Id = sc.nextInt();
+        for( Assignment1 prt : listproduct){
+            if(prt.getId() == Id){
+                listproduct.remove(prt);
+                break;
+            }
+        }
+    }
+
+    public static void edit(){
+</FONT>        int Id;
+        Scanner sc = new Scanner(System.in);
+        Id = sc.nextInt();
+        System.out.println("enter id of product:");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match117-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        sc.nextLine();
+        for( Assignment1 prt : listproduct){
+            if(prt.getId() == Id){
+                System.out.println("enter new name of product:");
+                String newName = sc.nextLine();
+</FONT>                System.out.println("enter new price of product");
+                float newPrice = sc.nextFloat();
+                System.out.println("enter the new quatity:");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match117-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                int newQuatity = sc.nextInt();
+                prt.setName(newName);
+                prt.setPrice(newPrice);
+                prt.setQuatity(newQuatity);
+                break;
+            }
+        }
+
+    }
+    public static void Search(){
+</FONT>        Scanner sc = new Scanner(System.in);
+        String Name = sc.nextLine();
+        System.out.println("enter the name of products:");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match117-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        ArrayList&lt;Assignment1&gt; listSearch = new ArrayList&lt;&gt;();
+        for(Assignment1 prt : listproduct){
+            if(prt.getName().contains(Name)){
+                listSearch.add(prt);
+            }
+        }
+        System.out.printf("%-5s | %-30s | %-20s | %-20s", "id", "name", "price", "quatity");
+        System.out.println();
+</FONT>        for(Assignment1 prt : listSearch){
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match117-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-5d | %-30s | %-30.2f | %-20d", prt.getId(), prt.getName(), prt.getPrice(), prt.getQuatity());
+            System.out.println();
+        }
+    }
+    public static void sortproductbyprice(){
+        ArrayList&lt;Assignment1&gt; listArrangement = new ArrayList(listproduct);
+</FONT><A NAME="10"></A><FONT color = #FF0000><A HREF="match117-0.html#10" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Assignment1 temp;
+        for(int i = 0; i &lt; listArrangement.size() - 1; i++){
+            for(int j = i + 1; j &lt; listArrangement.size(); j++){
+</FONT>                if (listArrangement.get(i).getPrice() &gt; listArrangement.get(j).getPrice()){
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match117-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    temp = listArrangement.get(i);
+                    listArrangement.set(i, listArrangement.get(j));
+                    listArrangement.set(j,temp);
+                }
+            }
+        }
+        System.out.printf("%-5s | %-30s | %-20s | %-20s", "id", "name", "price", "quatity");
+        System.out.println();
+        for(Assignment1 prt : listArrangement){
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match117-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-5d | %-30s | %-20.2f | %-20d", prt.getId(), prt.getName(), prt.getPrice(), prt.getQuatity());
+            System.out.println();
+        }
+    }
+
+
+    public static void saveFile()throws Exception{
+        File input1 = new File("src/tut05/products.txt");
+        FileOutputStream fos = new FileOutputStream(input1);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(listproduct);
+    }
+
+    public static void loadproduct() throws Exception{
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/tut05/products.txt"));
+        ArrayList&lt;Assignment1&gt; List;
+        List = (ArrayList&lt;Assignment1&gt;) ois.readObject();
+        System.out.printf("%-5s | %-30s | %-20s | %-20s", "id", "name", "price", "quatity");
+        System.out.println();
+        for(Assignment1 prt : List){
+</FONT>            System.out.printf("%-5d | %-30s | %-20.2f | %-20d", prt.getId(), prt.getName(), prt.getPrice(), prt.getQuatity());
+            System.out.println();
+        }
+    }
+}
+
+
+
+    </PRE>
+</PRE>
+</BODY>
+</HTML>

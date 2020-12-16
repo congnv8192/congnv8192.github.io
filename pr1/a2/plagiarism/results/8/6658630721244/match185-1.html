@@ -1,0 +1,247 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTuanThanh_106261_assignsubmission_file_PR1_Assigment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/VoManhDung_106508_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: VoManhDung_106508_assignsubmission_file_Assignment2.java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author VoManhDung1901040044 
+ */
+public class Assignment2 {
+    static Scanner sc = new Scanner(System.in);
+
+    public static ArrayList&lt;String&gt; Name = new ArrayList&lt;&gt;();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match185-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static ArrayList&lt;Double&gt; Price = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Integer&gt; Quantity = new ArrayList&lt;&gt;();
+    public static File file = new File("Assignment2");
+    public static String[] listProduct;
+    public static String outPut;
+</FONT>
+
+
+    public static void feature1(){
+        System.out.println("-----Add products-----");
+        System.out.println("Enter the number of product you want to add: ");
+        int number = sc.nextInt();
+        for(int i = 1; i &lt; number + 1; i++){
+            sc.nextLine();
+
+            System.out.println("Name of product: ");
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match185-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            String name = sc.nextLine();
+            Name.add(name);
+            System.out.println("Price of product: ");
+            Double price = sc.nextDouble();
+            Price.add(price);
+</FONT>            System.out.println("Quantity: ");
+            int quantity = sc.nextInt();
+            Quantity.add(quantity);
+        }
+
+
+
+
+
+    }
+    public static void feature2(){
+        System.out.println("-----Display products-----");
+        System.out.println("LIST OF PRODUCT:");
+        System.out.println("ID" + "\t" + "Name" + "\t" + "Price" + "\t" + "Quantity");
+        for(int i = 1; i &lt; Name.size() + 1; i++){
+            System.out.println(i + "\t" + Name.get(i-1) + "\t" + Price.get(i-1) + "\t" + Quantity.get(i-1));
+        }
+    }
+    public static void feature3(){
+        System.out.println("-----Delete a product-----");
+        System.out.println("Enter ID of product you want to delete: ");
+        int delete = sc.nextInt();
+
+        Name.remove(delete - 1);
+        Price.remove(delete - 1);
+        Quantity.remove(delete - 1);
+        System.out.println("List of product after delete: ");
+        System.out.println("ID" + "\t" + "Name" + "\t" + "Price" + "\t" + "Quantity");
+        for(int i = 1; i &lt; Name.size() + 1; i++){
+            System.out.println(i + "\t" + Name.get(i-1) + "\t" + Price.get(i-1) + "\t" + Quantity.get(i-1));
+        }
+    }
+    public static void feature4(){
+        System.out.println("-----Edit a product-----");
+        System.out.println("Enter ID of product you want to edit: ");
+        int edit = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Name of new product: ");
+        String newName = sc.nextLine();
+        Name.set(edit - 1 , newName);
+        System.out.println("Price of new product: ");
+        Double newPrice = sc.nextDouble();
+        Price.set(edit - 1, newPrice);
+        System.out.println("Quantity of new product: ");
+        int newQuantity = sc.nextInt();
+        Quantity.set(edit - 1, newQuantity);
+        System.out.println("List of product after edit: ");
+        System.out.println("ID" + "\t" + "Name" + "\t" + "Price" + "\t" + "Quantity");
+        for(int i = 1; i &lt; Name.size() + 1; i++){
+            System.out.println(i + "\t" + Name.get(i-1) + "\t" + Price.get(i-1) + "\t" + Quantity.get(i-1));
+        }
+    }
+    public static void feature5(){
+        System.out.println("-----Search product-----");
+        System.out.println("Enter name of product you want to find: ");
+        String search = sc.nextLine();
+        for(int i = 0; i &lt; Name.size(); i++){
+            if(search.equalsIgnoreCase(Name.get(i))){
+                System.out.println("The result:");
+                System.out.println("ID" + "\t" + "Name" + "\t" + "Price" + "\t" + "Quantity");
+                System.out.println(i + 1 + "\t" + Name.get(i) + "\t" + Price.get(i) + "\t" + Quantity.get(i));
+            }
+        }
+    }
+    public static void feature6(){
+        System.out.println("-----Sort product by price-----");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match185-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 1; i &lt;= Price.size(); i++) {
+            for (int j = i+1;j &lt;= Price.size(); j++) {
+                if (Price.get(i-1) &gt; Price.get(j-1)) {
+                    String tempName = Name.get(i-1);
+                    double tempPrice = Price.get(i-1);
+                    int tempQuantity = Quantity.get(i-1);
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match185-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    Name.set(i-1, Name.get(j-1));
+                    Price.set(i-1, Price.get(j-1));
+                    Quantity.set(i-1, Quantity.get(j-1));
+                    Name.set(j-1, tempName);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match185-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    Price.set(j-1, tempPrice);
+                    Quantity.set(j-1, tempQuantity);
+                }
+            }
+        }
+        System.out.println("List of product after sort: ");
+        System.out.println("ID" + "\t" + "Name" + "\t" + "Price" + "\t" + "Quantity");
+</FONT>        for(int i = 1; i &lt;= Price.size(); i++){
+            System.out.println(i + "\t" + Name.get(i) + "\t" + Price.get(i) + "\t" + Quantity.get(i));
+
+        }
+    }
+    public static void feature7()throws Exception {
+        System.out.println("-----Save products-----");
+        String[] listProduct = new String[Price.size()];
+        outPut = "ID" + "\t" + "Name" + "\t" + "Price" + "\t" + "Quantity";
+        for (int i = 1 ; i &lt;= Price.size(); i ++) {
+            listProduct[i] = i + "\t" + Name.get(i) + "\t" + Price.get(i) + "\t" + Quantity.get(i);
+        }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match185-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(outPut);
+        oos.writeObject(listProduct);
+        oos.close();
+        System.out.println("Save Successfull!");
+        System.out.printf("The file have been Saved in %s.text",file.getName());
+        System.out.println();
+    }
+    public static void feature8() throws Exception{
+        SaveData();
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match185-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println();
+        System.out.printf("Display the File: %s !",file.getName());
+        System.out.println();
+        FileInputStream fis = new FileInputStream(file);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        outPut= (String) ois.readObject();
+        listProduct = (String[]) ois.readObject();
+        ois.close();
+        System.out.println();
+        System.out.println(outPut);
+        for(int i  = 0 ; i &lt; Price.size(); i ++) {
+            System.out.println(listProduct[i]);
+</FONT>        }
+    }
+
+    private static void SaveData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public static void main(String[] args) throws Exception {
+        menu();
+    }
+    public static void menu() throws Exception{
+     try {
+         System.out.println("=================MENU===============");
+         System.out.println(" Feature 1: Add products " +
+                 "\n Feature 2: Display products " +
+                 "\n Feature 3: Delete a product " +
+                 "\n Feature 4: Edit a product " +
+                 "\n Feature 5: Search for products by name " +
+                 "\n Feature 6: Sort products by price " +
+                 "\n Feature 7: Save products to text/binary file " +
+                 "\n Feature 8: Load products from the saved file  " +
+                 "\n Feature 9: Exit");
+         System.out.println("Choose a feature: ");
+         int choice = sc.nextInt();
+         switch (choice) {
+             case 1:
+                 feature1();
+                 break;
+             case 2:
+                 feature2();
+                 break;
+             case 3:
+                 feature3();
+                 break;
+             case 4:
+                 feature4();
+                 break;
+             case 5:
+                 feature5();
+                 break;
+             case 6:
+                 feature6();
+                 break;
+             case 7:
+                 feature7();
+                 break;
+             case 8:
+                 feature8();
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match185-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                 break;
+             case 9:
+                 System.out.println("Goodbye!");
+                 System.exit(0);
+             default:
+                 System.out.println("Invalid value");
+</FONT>         }
+         menu();
+     } catch (InputMismatchException e){
+         System.out.println("Invalid value");
+         sc.next();
+         menu();
+     }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

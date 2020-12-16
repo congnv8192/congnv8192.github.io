@@ -1,0 +1,275 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/PhamMinhuc_106332_assignsubmission_file_Products.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TranManhTrinh_106511_assignsubmission_file_Assignmenthai.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TranManhTrinh_106511_assignsubmission_file_Assignmenthai.java
+package assignment2;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Assignmenthai implements Serializable {
+	static Scanner nhapso = new Scanner(System.in);
+	private int ID;
+	private String tensanpham;
+	private double giaca;
+	private int soluongsp;
+	private static ArrayList&lt;Assignmenthai&gt; listsp = new ArrayList&lt;&gt;();
+
+	public Assignmenthai(int ID, String tensp, double giasp, int soluongsp) {
+		this.ID = ID;
+		this.tensanpham = tensp;
+		this.giaca = giasp;
+		this.soluongsp = soluongsp;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public String getTen() {
+		return tensanpham;
+	}
+
+	public double getGiasp() {
+		return giaca;
+	}
+
+	public int getsoluongsp() {
+		return soluongsp;
+	}
+
+	public void setIDsp(int ID) {
+		this.ID = ID;
+	}
+
+	public void setgiasp(double gia) {
+		this.giaca = gia;
+	}
+
+	public void setsoluongsp(int soLuong) {
+		this.soluongsp = soLuong;
+	}
+
+	public void settensp(String ten) {
+		this.tensanpham = ten;
+	}
+
+	public static void menu() {
+		System.out.println(
+				"Please choose one of the feature below &lt;3: \n" + "1. Add products! \n" + "2. Display products! \n"
+						+ "3. Delete a product!\n" + "4. Edit a product!\n" + "5. Search for products by name!\n"
+						+ "6. Sort products by price!\n" + "7. Save products to text file !\n"
+						+ "8. Load products from the saved file! \n" + "9. Exit program. \n");
+	}
+
+	public static int randomID() {
+		int min = 100, max = 1000;
+		int ID;
+		ID = (int) (Math.random() * (max - min + 1) + min);
+		return ID;
+	}
+
+	public static void them() {
+		System.out.print("Please enter the number you want to add: ");
+		int num = nhapso.nextInt();
+		nhapso.nextLine();
+
+		for (int i = 1; i &lt;= num; i++) {
+			System.out.println("Product " + i + ":");
+
+			System.out.print("Enter Name:  ");
+			String ten = nhapso.nextLine();
+
+			System.out.print("Enter Price:  ");
+			double gia = Double.parseDouble(nhapso.nextLine());
+
+			System.out.print("Enter Quantity:  ");
+			int soLuong = Integer.parseInt(nhapso.nextLine());
+
+			// create new instance of Assignmenthai
+			Assignmenthai sp = new Assignmenthai(randomID(), ten, gia, soLuong);
+			listsp.add(sp);
+		}
+	}
+
+	public static void showsp() {
+
+		// enhance for loop (for each)
+		System.out.printf("%-3s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+		System.out.println();
+		for (Assignmenthai sp : listsp) {
+			System.out.printf("%-3d | %-40s | %-10.2f | %-10d", sp.getID(), sp.getTen(), sp.getGiasp(),
+					sp.getsoluongsp());
+			System.out.println();
+		}
+
+	}
+
+	public static void xoasp() {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match247-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter product ID: ");
+		int inputID = nhapso.nextInt();
+		for (Assignmenthai sp : listsp) {
+			if (sp.getID() == inputID) {
+				listsp.remove(sp);
+				break;
+			}
+		}
+	}
+
+	public static void editsp() {
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match247-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter product ID: ");
+		int inputID = nhapso.nextInt();
+		nhapso.nextLine();
+
+		for (Assignmenthai sp : listsp) {
+			if (sp.getID() == inputID) {
+				System.out.print("Enter new name: ");
+				String tennew = nhapso.nextLine();
+</FONT>
+				System.out.print("Enter new price: ");
+				double gianew = nhapso.nextDouble();
+
+				System.out.print("Enter new quantity: ");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match247-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				int soLuongnew = nhapso.nextInt();
+
+				sp.settensp(tennew);
+				sp.setgiasp(gianew);
+				sp.setsoluongsp(soLuongnew);
+				break;
+			}
+		}
+	}
+
+	public static void Timkiemsp() {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match247-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.print("Enter key name: ");
+		String keyName = nhapso.nextLine();
+
+		ArrayList&lt;Assignmenthai&gt; dsTimKiemsp = new ArrayList&lt;&gt;();
+		for (Assignmenthai sp : listsp) {
+			if (sp.getTen().contains(keyName)) {
+				dsTimKiemsp.add(sp);
+			}
+		}
+
+		System.out.printf("%-3s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+</FONT>		System.out.println();
+		for (Assignmenthai sp : dsTimKiemsp) {
+			System.out.printf("%-3d | %-40s | %-10.2f | %-10d", sp.getID(), sp.getTen(), sp.getGiasp(),
+					sp.getsoluongsp());
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match247-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println();
+		}
+	}
+
+	public static void sapXepTheoGiasp() {
+
+		ArrayList&lt;Assignmenthai&gt; dsSapxepsp = new ArrayList&lt;&gt;(listsp);
+
+		Assignmenthai temp;
+		for (int i = 0; i &lt; dsSapxepsp.size() - 1; i++) {
+			for (int j = i + 1; j &lt; dsSapxepsp.size(); j++) {
+</FONT>				if (dsSapxepsp.get(i).getGiasp() &gt; dsSapxepsp.get(j).getGiasp()) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match247-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					temp = dsSapxepsp.get(i);
+					dsSapxepsp.set(i, dsSapxepsp.get(j));
+					dsSapxepsp.set(j, temp);
+				}
+			}
+		}
+
+		System.out.printf("%-3s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+</FONT>		System.out.println();
+		for (Assignmenthai sp : dsSapxepsp) {
+			System.out.printf("%-3d | %-40s | %-10.2f | %-10d", sp.getID(), sp.getTen(), sp.getGiasp(),
+					sp.getsoluongsp());
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match247-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println();
+		}
+	}
+
+	public static void luuSanPhamsp() throws Exception {
+		File f = new File("src/assignment2/products.txt");
+		FileOutputStream fos = new FileOutputStream(f);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match247-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		oos.writeObject(listsp);
+		oos.close();
+	}
+
+	public static void loadSanPham() throws IOException, ClassNotFoundException {
+		FileInputStream pis = new FileInputStream("src/assignment2/Products.txt");
+		ObjectInputStream ois = new ObjectInputStream(pis);
+		ArrayList&lt;Assignmenthai&gt; list = (ArrayList&lt;Assignmenthai&gt;) ois.readObject();
+		ois.close();
+
+		System.out.printf("| %5s | %-40s | %-15s | %-5s | \n", "ID", "Name", "Price", "Quantity");
+		for (Assignmenthai pro : listsp) {
+</FONT>			System.out.printf("| %7d | %-250s | %-12.2f | %-11d | \n", pro.getID(), pro.getTen(), pro.getGiasp(),
+					pro.getsoluongsp());
+		}
+	}
+
+	static Scanner input = new Scanner(System.in);
+
+	public static void main(String[] args) throws Exception {
+		int inp = 0;
+		do {
+			Assignmenthai.menu();
+			System.out.print("Enter choice: ");
+			inp = nhapso.nextInt();
+			nhapso.nextLine();
+			switch (inp) {
+			case 1 -&gt; Assignmenthai.them();
+
+			case 2 -&gt; Assignmenthai.showsp();
+
+			case 3 -&gt; Assignmenthai.xoasp();
+
+			case 4 -&gt; Assignmenthai.editsp();
+
+			case 5 -&gt; Assignmenthai.Timkiemsp();
+
+			case 6 -&gt; Assignmenthai.sapXepTheoGiasp();
+
+			case 7 -&gt; Assignmenthai.luuSanPhamsp();
+
+			case 8 -&gt; Assignmenthai.loadSanPham();
+
+			case 9 -&gt; System.out.println("Good bye!! Nice to meet you");
+			default -&gt; System.out.println("Invalid choice !!");
+
+			}
+		} while (inp != 9);
+		System.exit(0);
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

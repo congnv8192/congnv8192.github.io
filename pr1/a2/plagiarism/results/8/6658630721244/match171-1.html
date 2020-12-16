@@ -1,0 +1,177 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenMinhHuyen_106515_assignsubmission_file_NguyenMinhHuyen_1TD19_1901060018.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TranQuynhTrang_106390_assignsubmission_file_Assignment02.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TranQuynhTrang_106390_assignsubmission_file_Assignment02.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pr1;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match171-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+
+
+/**
+ *
+ */
+public class Assignment02 {
+    public static void main(String[] args) throws Exception {
+        Scanner scan = new Scanner(System.in);
+        ArrayList&lt;String&gt; name = new ArrayList&lt;&gt;();
+        ArrayList&lt;Double&gt; price = new ArrayList&lt;&gt;();
+        ArrayList&lt;Integer&gt; quantity = new ArrayList&lt;&gt;();
+        boolean stop = false;
+        while (!stop) {
+            System.out.println("[1] Add product\n" + 
+                               "[2] Display products\n" + 
+                               "[3] Delete a product\n" + 
+                               "[4] Edit a product\n" + 
+                               "[5] Search for product\n" + 
+                               "[6] Save products to text/binary file\n" + 
+</FONT>                               "[7] Load products from the saved file\n" + 
+                               "[8] Quit");
+                               //feature 6 unavailable
+            System.out.print("Pick an option: "); 
+            int n = scan.nextInt();
+            
+        switch (n) {
+            case 1:
+                System.out.println("---------------------------------------\n" + "ADD");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match171-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.print("Number of products: ");
+                int number = scan.nextInt();
+                for (int i = 1; i &lt;= number; i++) {
+                    System.out.print("Product name: ");
+                    scan.nextLine();
+                    name.add(scan.nextLine());
+                    System.out.print("Price: ");
+                    price.add(scan.nextDouble());
+                    System.out.print("Quantity: ");
+</FONT>                    quantity.add(scan.nextInt());
+                }
+                System.out.println("Done!\n" + "-----------------------------------------");
+                break;
+            case 2:
+                System.out.println("----------------------------------------\n" + "DISPLAY");
+                System.out.println();
+                try {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match171-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.format("|%4s|%14s|%14s|%14s|%n", "ID", "Name", "Price", "Quantity");
+                    for (int i = 0; i &lt; name.size(); i++) {
+                        System.out.println("---------------------------------------------------");
+                        System.out.format("|%4s|%14s|%14.2f|%14d|%n", i+1, name.get(i), price.get(i), quantity.get(i));                
+                    }
+                } catch (Exception e) {
+                            scan.nextLine();
+                    }
+                System.out.println();
+</FONT>                System.out.println("-----------------------------------------");
+                break;
+            case 3:
+                System.out.println("-----------------------------------------\n" + "DELETE");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match171-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                if (name.size() &lt;= 0) {
+                    System.out.println("No product to delete!");
+                } else {
+                    System.out.print("Product ID: ");
+                    int delete = scan.nextInt();
+                    name.remove(delete - 1);
+</FONT>                    price.remove(delete - 1);
+                    quantity.remove(delete - 1);
+                    System.out.println("Product deleted!");
+                    System.out.println("-----------------------------------------");
+                } break;
+            case 4:
+                System.out.println("-----------------------------------------\n" + "EDIT");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match171-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                if (name.size() &lt;= 0) {
+                    System.out.println("No product to edit!");
+                } else {
+                    Scanner scan2 = new Scanner(System.in);
+                    System.out.print("Product ID: ");
+                    int edit = scan2.nextInt();
+                    System.out.print("New name: " );
+                    scan2.nextLine();
+                    name.set(edit - 1, scan2.nextLine());
+                    System.out.print("New price: ");
+                    price.set(edit - 1, scan2.nextDouble());
+</FONT>                    System.out.print("New quantity: ");
+                    quantity.set(edit - 1, scan2.nextInt());
+                    System.out.println("Done!");
+                    System.out.println("-----------------------------------------");
+                } break;
+            case 5:
+                System.out.println("-----------------------------------------\n" + "SEARCH");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match171-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.print("Input keyword: ");
+                Scanner scan3 = new Scanner(System.in);
+                String keyword = scan3.nextLine();
+                System.out.format("|%4s|%14s|%14s|%14s|%n", "ID", "Name", "Price", "Quantity");
+                for (int i = 0; i &lt; name.size(); i++) {
+                    if ((name.get(i)).contains(keyword)) {
+                        System.out.format("|%4s|%14s|%14.2f|%14d|%n", i+1, name.get(i), price.get(i), quantity.get(i));
+                    } else {
+                        System.out.println("No product available!\n" + 
+</FONT>                                           "-----------------------------------------");
+                        break;
+                    } 
+                } break;
+            case 6: 
+                System.out.println("-----------------------------------------\n" + "SAVE");
+                File f = new File("product.bin");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(name);
+                oos.writeObject(price);
+                oos.writeObject(quantity);
+                oos.close();
+                System.out.println("Done!");
+                System.out.println("-----------------------------------------");
+                break;
+            case 7:
+                System.out.println("-----------------------------------------\n" + "LOAD"); 
+                FileInputStream fis = new FileInputStream("product.bin");
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                name = (ArrayList&lt;String&gt;) ois.readObject();
+                price = (ArrayList&lt;Double&gt;) ois.readObject();
+                quantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+                ois.close();
+                System.out.println("Done!");
+                System.out.println("-----------------------------------------");
+                break;
+            case 8:
+                stop = true; 
+                System.out.println("Goodbye!!");
+                break;
+            default:
+                System.out.println("-----------------------------------------\n" + 
+                                   "INVALID INPUT\n" + 
+                                   "-----------------------------------------");
+        }    
+        }
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

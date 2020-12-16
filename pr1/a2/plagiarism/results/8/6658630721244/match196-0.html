@@ -1,0 +1,491 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/TraninhNguyen_106578_assignsubmission_file_Main.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TraninhNguyen_106578_assignsubmission_file_Main.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TraninhNguyen_106578_assignsubmission_file_Main.java
+package com.capt.studentmgr;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * Assignment 2 Created by NguyenTD 29/11/2020
+ *
+ */
+
+public class Main {
+	public static final String TAG = Main.class.getName();
+	private static ProductMgr mManager;
+
+	public static void main(String[] args) {
+		mManager = new ProductMgr();
+		loopOptions();
+	}
+
+	private static void loopOptions() {
+		int option = ScannerUtils.getInstance().createOptions("Exit", "Add products", "Display products",
+				"Delete a product", "Edit a product", "Search for products by name", "Sort products by price",
+				"Save products to text/binary file", "Load products from the saved file");
+		switch (option) {
+		case ProductMgr.OPTION_EXIT -&gt; exit();
+		case ProductMgr.OPTION_ADD_PRODUCT -&gt; addProduct();
+		case ProductMgr.OPTION_DISPLAY_PRODUCT -&gt; displayProduct();
+		case ProductMgr.OPTION_DELETE_PRODUCT -&gt; deleteProduct();
+		case ProductMgr.OPTION_EDIT_PRODUCT -&gt; editProduct();
+		case ProductMgr.OPTION_FIND_PRODUCT -&gt; findProduct();
+		case ProductMgr.OPTION_SORT_PRODUCT -&gt; sortByPrice();
+		case ProductMgr.OPTION_SAVE -&gt; saveData();
+		case ProductMgr.OPTION_READ -&gt; readData();
+		}
+
+		boolean isContinue = ScannerUtils.getInstance().nextString("Do you want to continue?Y/N", "Y", "N", "y", "n")
+				.equalsIgnoreCase("Y");
+		if (isContinue) {
+			loopOptions();
+		} else {
+			exit();
+		}
+
+	}
+
+	private static void exit() {
+		System.out.println("Program shut down...");
+		ScannerUtils.getInstance().stopScanner();
+		System.exit(0);
+	}
+
+	private static void addProduct() {
+		String name = ScannerUtils.getInstance().nextString("Enter product name:");
+		int price = ScannerUtils.getInstance().nextInt("Enter product price:");
+		int quantity = ScannerUtils.getInstance().nextInt("Enter product quantity:");
+		mManager.m001AddProduct(name, price, quantity);
+	}
+
+	private static void displayProduct() {
+		mManager.m002DisplayProducts();
+	}
+
+	private static void deleteProduct() {
+		int id = ScannerUtils.getInstance().nextInt("Enter product id to delete: ");
+		mManager.m003DeleteProduct(id);
+	}
+
+	private static void editProduct() {
+		int id = ScannerUtils.getInstance().nextInt("Enter product id to edit: ");
+		Object[] data = mManager.fProductById(id);
+		if (data == null) {
+			System.out.println("Product does not exit");
+			return;
+		}
+		int index = (int) data[0];
+		String newName = ScannerUtils.getInstance().nextString("Enter new name: ");
+		int newPrice = ScannerUtils.getInstance().nextInt("Enter new price: ");
+		int newQuantity = ScannerUtils.getInstance().nextInt("Enter new quantity: ");
+		// scanner replace for view ui
+		ProductEntity newProduct = new ProductEntity(id, newName, newPrice, newQuantity);
+		mManager.m004EditProduct(index, newProduct);
+	}
+
+	private static void findProduct() {
+		String name = ScannerUtils.getInstance().nextString("Enter product name to find: ");
+		ArrayList&lt;ProductEntity&gt; listRs = mManager.m005FProductByName(name);
+		// get listRs for using later
+	}
+
+	private static void sortByPrice() {
+		mManager.m006SortProductByPrice();
+	}
+
+	private static void saveData() {
+		mManager.m007SaveData();
+	}
+
+	private static void readData() {
+		mManager.m008InitData();
+	}
+}
+
+/*
+ * Each time the program run, it will load the data from file and auto save when
+ * having any change
+ */
+class ProductMgr {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match196-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public static final int OPTION_EXIT = 0;
+	public static final int OPTION_ADD_PRODUCT = 1;
+	public static final int OPTION_DISPLAY_PRODUCT = 2;
+	public static final int OPTION_DELETE_PRODUCT = 3;
+	public static final int OPTION_EDIT_PRODUCT = 4;
+	public static final int OPTION_FIND_PRODUCT = 5;
+	public static final int OPTION_SORT_PRODUCT = 6;
+	public static final int OPTION_SAVE = 7;
+	public static final int OPTION_READ = 8;
+</FONT>
+	private ArrayList&lt;ProductEntity&gt; mListProduct;
+
+	public static final String PRODUCTS_PATH = FileHelper.getResourcePath("product.txt");
+
+	public ProductMgr() {
+		m008InitData();
+		if (mListProduct == null) {
+			mListProduct = new ArrayList&lt;&gt;();
+		}
+	}
+
+	public void m001AddProduct(String productName, int price, int quantity) {
+
+		int id = mListProduct.size() == 0 ? 1 : mListProduct.get(mListProduct.size() - 1).getId() + 1;
+		ProductEntity data = new ProductEntity(id, productName, price, quantity);
+		if (mListProduct.contains(data)) {
+			System.out.println("Product is existed");
+			return;
+		}
+		mListProduct.add(data);
+		m007SaveData();
+		System.out.println("Add successfully");
+	}
+
+	public void m002DisplayProducts() {
+		displayList(mListProduct);
+	}
+
+	/*
+	 * Separate method for using later (ex: use when print list after finding by
+	 * name)
+	 */
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match196-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	private void displayList(ArrayList&lt;ProductEntity&gt; listData) {
+		String format = "|%1$-20s|%2$-20s|%3$-20s|%4$-20s|\n";
+		System.out.println("Product table");
+		for (int i = 0; i &lt; 85; i++) { // first line
+			System.out.print("_");
+		}
+		System.out.println();
+		formatRow(format, "ID", "Name", "Price (VND)", "Quantity");
+</FONT>
+		for (int i = 0; i &lt; listData.size(); i++) {
+			ProductEntity product = listData.get(i);
+			String name = product.getName();
+
+			formatRow(format, product.getId(), name, product.getPrice(), product.getQuantity());
+		}
+	}
+
+	/*
+	 * this method is for the String that longer than a column length
+	 */
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match196-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	private void formatRow(String format, Object... pos) {
+		if (pos.length != 4) {
+			return;
+		}
+		for (int i = 0; i &lt; pos.length; i++) {
+			if (pos[i].toString().length() &gt;= 20) {
+				pos[i] = pos[i].toString().substring(0, 16) + "...";
+			}
+		}
+		System.out.format(format, pos[0], pos[1], pos[2], pos[3]);
+</FONT>		String line ="____________________";
+		System.out.format(format, line, line, line,line);
+	}
+
+	public void m003DeleteProduct(int id) {
+		Object[] data = fProductById(id);
+		if (data == null) {
+			System.out.println("Product does not exit");
+			return;
+		}
+		int index = (int) data[0];
+		mListProduct.remove(index);
+		m007SaveData();
+		System.out.println("Delete product successfully");
+	}
+
+	/*
+	 * Return 2 things: the index of product and product itself
+	 */
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match196-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public Object[] fProductById(int id) {
+		for (int i = 0; i &lt; mListProduct.size(); i++) {
+			ProductEntity productEntity = mListProduct.get(i);
+			if (productEntity.getId() == id) {
+				return new Object[] { i, productEntity };
+			}
+		}
+		return null;
+	}
+
+	public void m004EditProduct(int index, ProductEntity newProduct) {
+</FONT>		mListProduct.set(index, newProduct);
+		m007SaveData();
+		System.out.println("Edit successfully");
+	}
+
+	public ArrayList&lt;ProductEntity&gt; m005FProductByName(String name) {
+		ArrayList&lt;ProductEntity&gt; listRs = new ArrayList&lt;&gt;();
+		for (ProductEntity productEntity : mListProduct) {
+			if (productEntity.getName().toLowerCase().contains(name.toLowerCase())) {
+				listRs.add(productEntity);
+			}
+		}
+		if (listRs.size() == 0) {
+			System.out.println("There are no proper result with key word: " + name);
+		} else {
+			displayList(listRs);
+		}
+		return listRs;
+	}
+
+	public void m006SortProductByPrice() {
+		// Buble sort for list without changing the source list
+		ArrayList&lt;ProductEntity&gt; listProduct = new ArrayList&lt;&gt;(mListProduct); // for temp
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match196-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		for (int i = 0; i &lt; listProduct.size() - 1; i++) {
+			for (int j = i; j &lt; listProduct.size(); j++) {
+				if (listProduct.get(i).getPrice() &gt; listProduct.get(j).getPrice()) {
+					ProductEntity mTemp = listProduct.get(i);
+					listProduct.set(i, listProduct.get(j));
+					listProduct.set(j, mTemp);
+				}
+			}
+		}
+		displayList(listProduct);
+</FONT>	}
+
+	public void m007SaveData() {
+		FileHelper.saveClass(mListProduct, PRODUCTS_PATH);
+	}
+
+	public void m008InitData() {
+		if (!new File(PRODUCTS_PATH).exists()) {
+			return;
+		}
+		mListProduct = FileHelper.readClass(PRODUCTS_PATH);
+	}
+
+}
+
+class ProductEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int price, quantity, id;
+	private String name;
+
+	public ProductEntity(int id, String name, int price, int quantity) {
+		super();
+		this.price = price;
+		this.quantity = quantity;
+		this.id = id;
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof ProductEntity) {
+			ProductEntity that = (ProductEntity) obj;
+			return id == that.getId() || name.equals(that.getName());
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "Student{" + "id=" + id + ", name=" + name + ", price='" + price + ", quantity=" + quantity + '\'' + '}';
+	}
+
+}
+
+class FileHelper {
+	private static final String TAG = FileHelper.class.getName();
+	private static final String RESOURCE_PATH = "src/res";
+
+	public static String getResourcePath(String fileName) {
+		File file = new File(RESOURCE_PATH);
+		if (!file.exists()) {
+			file.mkdirs();
+		}
+		return file.getPath() + "/" + fileName;
+	}
+
+	public static &lt;T&gt; void saveClass(T data, String path) {
+		try {
+
+			File file = new File(path);
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match196-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			FileOutputStream fileOut = new FileOutputStream(path);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(data);
+			out.close();
+			System.out.println("New change applied");
+		} catch (Exception e) {
+			System.out.println(TAG + " saveClass " + e.getMessage());
+</FONT>		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public static &lt;T&gt; T readClass(String path) {
+		try {
+			
+			FileInputStream fileIn = new FileInputStream(path);
+			ObjectInputStream oInput = new ObjectInputStream(fileIn);
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match196-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			T data = (T) oInput.readObject();
+			oInput.close();
+			fileIn.close();
+			System.out.println("file read");
+			return data;
+		} catch (Exception e) {
+			System.out.println(TAG + " readClass " + e.getMessage());
+</FONT>			return null;
+		}
+	}
+
+}
+
+class ScannerUtils {
+	private static ScannerUtils instance;
+	private Scanner sc;
+
+	/**
+	 * for singleton
+	 */
+	private ScannerUtils() {
+		sc = new Scanner(System.in);
+	}
+
+	public static ScannerUtils getInstance() {
+		if (instance == null) {
+			instance = new ScannerUtils();
+		}
+		return instance;
+	}
+
+	public int createOptions(String... options) {
+		int forceValues[] = new int[options.length];
+		for (int i = 0; i &lt; options.length; i++) {
+			forceValues[i] = i;
+			System.out.println("[" + i + "] - " + options[i]);
+		}
+		
+		return nextInt("Your option: ",forceValues);
+	}
+
+	public int nextInt(String text) {
+		return nextInt(text, null); // this method is for free input
+	}
+
+	/*
+	 * if the value user input does not match with force value, it will call the
+	 * method one more time to get the expected value
+	 */
+	public int nextInt(String text, int... forceValues) {
+		System.out.println(text);
+		int value;
+		try {
+			value = sc.nextInt();
+			sc.nextLine();
+			if (forceValues == null) {
+				return value;
+			}
+			for (int forceValue : forceValues) {
+				if (forceValue == value) {
+					return value;
+				}
+			}
+			System.out.println("Invalid values, again");
+			return nextInt(text, forceValues);
+
+		} catch (Exception e) {
+			System.out.println("Wrong type input, again!");
+			sc.nextLine();
+			return nextInt(text);
+		}
+
+	}
+
+	public String nextString(String text) {
+		return nextString(text, null);
+	}
+
+	public String nextString(String text, String... forceValues) {
+		System.out.println(text);
+		String value;
+		try {
+			value = sc.nextLine();
+			if (forceValues == null) {
+				return value;
+			}
+			for (String forceValue : forceValues) {
+				if (forceValue.equals(value)) {
+					return value;
+				}
+			}
+			System.out.println("Invalid values, again");
+			return nextString(text, forceValues);
+
+		} catch (Exception e) {
+			System.out.println("Wrong type input, again!");
+			return nextString(text);
+		}
+	}
+
+	public void stopScanner() {
+		if (sc == null) {
+			return;
+		}
+		sc.close();
+	}
+
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

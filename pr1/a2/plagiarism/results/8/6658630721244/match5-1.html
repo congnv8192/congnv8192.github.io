@@ -1,0 +1,312 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LuuThiThom_106420_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenKhacHung_106437_assignsubmission_file_Asm2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenKhacHung_106437_assignsubmission_file_Asm2.java
+/*Name: Nguyen Khac Hung
+ *Class: 7c19
+ *ID student: 1901040102
+ */
+
+package asm2;
+
+import java.io.*;
+import java.util.*;
+
+public class Asm2 {
+	public static void Header() 
+	{
+		System.out.format("%5s %5s %30s %5s %25s %10s %20s", "ID", "|", "Product", "|", "Price($)", "|", "Quantity");
+		System.out.println();
+		System.out.format("%s", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println();
+	}
+	public static void main(String[] args) throws Exception {
+		int[] ID = new int[0];
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match5-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		String[] prd = new String[0];
+		double[] prc = new double[0]; 
+		double[] qtt =  new double[0];
+</FONT>		int Id = 0;
+		Scanner sc = new Scanner(System.in);
+		while( true)
+		{
+			System.out.println("~~~~~~~~~~~~Menu~~~~~~~~~~~~~~~\n"
+					+ "1: Add products\n"
+					+ "2: Display products\n"
+					+ "3: Delete a product\n"
+					+ "4: Edit a product\n"
+					+ "5: Search for products by name\n"
+					+ "6: Sort products by price\n"
+					+ "7: Save products to text file\n"
+					+ "8: Load products from the saved file\n"
+					+ "9: Quit.\n"
+					+ "Enter your choice: ");
+
+			int option = 0;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match5-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			boolean input = true;
+			while(true)
+			{
+				try
+				{
+					option = Integer.parseInt(sc.nextLine());
+					while(option &lt; 1 || option &gt; 9)
+					{
+						System.err.println("You must enter the number which belong to the range from 1 to 9!!!");
+						System.out.print("Enter your choice: ");
+						option = Integer.parseInt(sc.nextLine());
+					}
+					break;
+				}
+				catch(Exception e)
+				{
+					System.err.println("You have to enter the number!!!");
+				}
+			}
+			if(option == 1) {
+					 boolean type = true;
+				     while (type) {	 	
+				            String[] prd1 = new String[prd.length + 1];
+				            double[] prc1 = new double[prc.length +1];
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match5-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				            double[] qtt1 = new double[qtt.length +1];
+				            int[] identification1 = new int [ID.length +1];
+				            System.out.print("Plese enter product's name: ");
+				            prd1[prd.length] = sc.nextLine();
+				            if(prd.length &gt; 0){
+				            	for(int i = 0; i &lt; prd.length; i++) {
+					            	while(prd1[prd.length].equalsIgnoreCase(prd[i])) {
+					            		System.err.println("Product already exists!!!");
+					            		System.out.print("Plese enter product's name: ");
+					            		prd1[prd.length] = sc.nextLine();
+					            	}
+					            }
+				            }
+				            System.out.print("Enter price:");
+</FONT>				            prc1[prc.length] = Double.parseDouble(sc.nextLine());
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match5-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				            System.out.print("Enter quantity:");
+				            qtt1[qtt.length] = Double.parseDouble(sc.nextLine());
+				            identification1[ID.length] = Id +1;
+				            for(int i = 0 ; i &lt; ID.length; i++){
+				            	identification1[i] = ID[i];
+				            }
+				            Id++;
+				            ID = identification1;
+				            for (int i = 0; i &lt; prd.length; i++)  {
+				            	prd1[i] = prd[i];
+				            }
+				            prd = prd1;
+				            for (int i = 0; i &lt; prc.length; i++){
+				            	prc1[i] = prc[i];
+				            }
+				            prc = prc1;
+				            for (int i = 0; i &lt; qtt.length; i++) 
+				            {
+				            	qtt1[i] = qtt[i];
+				            }
+				            qtt = qtt1;
+				            Header();
+				            for(int i = 0 ; i &lt; ID.length; i++)
+				            	System.out.format("%5s %5s %30s %5s %25s %10s %20s", ID[i], "|", prd[i], "|", prc[i], "|", qtt[i] + "\n");
+</FONT><A NAME="9"></A><FONT color = #FF00FF><A HREF="match5-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				            System.out.println();
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match5-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				            System.out.print("Do you wish to continue? (Yes/No) ");
+				            String continuing = sc.nextLine();
+				            if (continuing.equalsIgnoreCase("yes"))
+				            {
+				            	
+				            }
+				            else if (continuing.equalsIgnoreCase("no")) 
+				            {
+				                break;
+				            }
+				            else
+				            {
+				            	while(true)
+				            	{
+				            		 System.out.print("Do you want to continue? (Yes/No) ");
+				            		 String nkh = sc.nextLine();
+				            		
+				            		  if (nkh.equalsIgnoreCase("yes"))
+							            {
+							            	break;
+							            }
+							            else if (nkh.equalsIgnoreCase("no")) 
+							            {
+							            	type = false;
+							                break;
+							            }
+				            	}
+				            }
+				        }
+			}
+			else if(option== 2) {
+					if(prd.length == 0)
+					{
+						System.out.println("The list is empty!");
+					}
+					else
+					{
+						Header();
+						for(int i = 0 ; i &lt; prd.length; i++)
+						{
+							System.out.println(String.format("%5s %5s %30s %5s %25s %10s %20s", ID[i], "|", prd[i], "|", prc[i], "|", qtt[i]));
+						}
+					}
+			}
+			else if (option == 3)
+			{
+					if(ID.length &lt; 1)
+					{
+						System.out.println("The list is empty!");
+					}
+					else
+					{
+						System.out.print("Please enter product's ID: ");
+						int delete = Integer.parseInt(sc.nextLine());
+						while(delete &lt; 0 || delete &gt; ID.length)
+</FONT>						{
+							System.err.println("Product's ID does not exist!!!");
+							System.out.print("Please enter product's ID: ");
+							delete = Integer.parseInt(sc.nextLine());
+						}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match5-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						String[] newName = new String[prd.length - 1];
+			            double[] newPrice = new double[prc.length -1];
+			            double[] newQtt = new double[qtt.length -1];
+			            int[] id2 = new int [ID.length -1];
+			            int h = 0 ;
+						for(int i = 0 ; i &lt; ID.length; i++)
+						{
+							if(delete != ID[i]) 
+							{
+								id2[h] = ID[i];
+								newName[h] = prd[i];
+								newPrice[h] = prc[i];
+								newQtt[h] = qtt[i];
+								h++;
+							}
+						}
+						ID = id2;
+						prd = newName;
+						prc = newPrice;
+						qtt = newQtt;
+						Header();
+						for(int i = 0 ; i &lt; prd.length; i++)
+						{
+							System.out.format("%5s %5s %30s %5s %25s %10s %20s", ID[i], "|", prd[i], "|", prc[i], "|", qtt[i]);
+</FONT><A NAME="10"></A><FONT color = #FF0000><A HREF="match5-0.html#10" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							System.out.println();
+</FONT>						}
+						
+					}
+			}
+			else if ( option == 4)
+			{
+	
+					System.out.print("Choose the product which you want to change: ");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match5-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					int rework = Integer.parseInt(sc.nextLine());
+					for( int i = 0; i &lt; ID.length; i++)
+					{
+						if( rework == ID[i])
+						{
+							System.out.print("The names of product: \n");
+							prd[rework]= sc.nextLine();
+							System.out.print("Price: ");
+							prc[rework]= Double.parseDouble(sc.nextLine());
+							System.out.print("Quantity: ");
+							qtt[rework]=  Double.parseDouble(sc.nextLine());
+</FONT>						}
+					}
+			}
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match5-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			else if( option == 5)
+			{
+					System.out.print("Enter the product whose name you want to search: ");
+					String searching = sc.nextLine();
+					boolean start = true;
+					for( int i = 0; i &lt; prd.length; i++)
+					{
+						if(searching.toLowerCase().contains(prd[i])== true)
+						{
+							start = false;
+							Header();
+							System.out.format("%5s %5s %30s %5s %25s %10s %20s", ID[i], "|", prd[i], "|", prc[i], "|", qtt[i]);
+</FONT><A NAME="11"></A><FONT color = #00FF00><A HREF="match5-0.html#11" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+							System.out.println();
+</FONT>							break;
+						}
+					}
+					if(start == true)
+					{
+						System.out.println("Not found!!!");
+					}
+			}
+			else if( option == 6)
+			{
+			}
+			else if( option == 7) {
+					try
+					{
+						ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("data.bin")));
+						oos.writeObject(ID);
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match5-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						oos.writeObject(prd);
+						oos.writeObject(prc);
+						oos.writeObject(qtt);
+						oos.close();
+						System.out.println("Saved!");
+					}
+					catch(IOException e)
+					{
+						System.out.println("Try again!!!");
+					}
+			}
+			else if( option == 8)
+</FONT>			{
+					ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("data.bin")));
+<A NAME="12"></A><FONT color = #0000FF><A HREF="match5-0.html#12" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					ID = (int[]) ois.readObject();
+					prd = (String[]) ois.readObject();
+					prc = (double[]) ois.readObject();
+</FONT>					qtt = (double[]) ois.readObject();
+					System.out.println("Loaded!");
+					ois.close();
+			}
+			else
+			{
+					System.out.println("Ending programming...\n"
+							+ "Goodbye!");
+					break;
+					
+			}
+				
+		}
+
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

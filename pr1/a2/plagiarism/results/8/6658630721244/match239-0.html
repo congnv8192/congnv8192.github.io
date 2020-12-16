@@ -1,0 +1,421 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTrongPhuoc_106317_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenTrongPhuoc_106317_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenTrongPhuoc_106317_assignsubmission_file_Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication32;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author MSI GF
+ */
+
+class Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private int id;
+    private String name;
+    private int price, quantity;
+
+    public Product(int id, String name, int price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Product) {
+            Product that = (Product) obj;
+            return that.getName().equals(name);
+        }
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match239-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", price='" + price + ", quantity=" + quantity + '\'' + '}';
+    }
+}
+
+public class Assignment2 {
+</FONT>
+    private static Scanner iScanner;
+    private static ArrayList&lt;Product&gt; saveList;
+    private static final String FILE_NAME ="products.txt";
+
+    public static void main(String[] args) {
+        iScanner = new Scanner(System.in);
+        loadF8(FILE_NAME); // load first
+        UserMenu();
+        iScanner.close();
+    }
+
+    private static void UserMenu() {
+        try {
+            System.out.println("--------------------------------");
+            System.out.println("1: Add products\n"
+                    + "2: Display products\n"
+                    + "3: Delete a product\n"
+                    + "4: Edit a product\n"
+                    + "5: Search for products by name\n"
+                    + "6: Sort products by price\n"
+                    + "7: Save products to text/binary file\n"
+                    + "8: Load products from the saved file\n"
+                    + "9: Exit\n"
+                    + "--------------------------------\n"
+                    + "Choose one function: ");
+            int feature = iScanner.nextInt();
+            skip();
+            switch (feature) {
+                case 1:
+                    addF1();
+                    break;
+                case 2:
+                    displayF2();
+                    break;
+                case 3:
+                    deleteF3();
+                    break;
+                case 4:
+                    editF4();
+                    break;
+                case 5:
+                    searchF5();
+                    break;
+                case 6:
+                    sortF6();
+                    break;
+                case 7:
+                    saveF7();
+                    break;
+                case 8:
+                    loadF8(FILE_NAME);
+                    break;
+                case 9:
+                    exit();
+                    break;
+                default:
+                    System.out.println("Invalid input");
+                    UserMenu();
+                    return;
+            }
+
+            System.out.println("Y to continue/ others -&gt; stop");
+            boolean isContinue = iScanner.nextLine().equalsIgnoreCase("Y");
+            System.out.println(isContinue);
+            if (isContinue) {
+                UserMenu();
+                return;
+            }
+            exit();
+
+        } catch (Exception e) {
+            Report();
+            UserMenu();
+        }
+
+    }
+
+    private static void addF1() {
+        try {
+            System.out.println("---------------------------------");
+            System.out.print("Product's name:");
+            String Pname = iScanner.nextLine();
+            if (saveList.contains(new Product(0, Pname, 0, 0))) {
+                System.out.println("Product is existed, again");
+                addF1();
+                return;
+            }
+            System.out.print("Product's price:");
+            int Pprice = iScanner.nextInt();
+            skip();
+            System.out.print("Product's quantity:");
+            int Pquantity = iScanner.nextInt();
+            skip();
+            System.out.print("---------------------------------");
+            int Pid = autoId();
+
+            Product product = new Product(Pid, Pname, Pprice, Pquantity);
+            saveList.add(product);
+            Notifyication();
+        } catch (Exception e) {
+            System.out.println("Invalid input, try again: ");
+            skip();
+            addF1();
+        }
+
+    }
+
+    private static void displayF2() {
+        displayFile(saveList);
+
+    }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match239-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void displayFile(ArrayList&lt;Product&gt; list) {
+        String format = "|%1$-20s|%2$-20s|%3$-20s|%4$-20s|\n";
+        System.out.println("Product List:");
+        for (int i = 0; i &lt; 85; i++) {
+            System.out.print("_");
+        }
+        System.out.println();
+        formatRow(format, "Id", "Name", "Price", "Quantity");
+</FONT>        for (Product product : list) {
+            formatRow(format, product.getId(), product.getName(), product.getPrice(), product.getQuantity());
+        }
+
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match239-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void formatRow(String format, Object... pos) {
+        if (pos.length != 4) {
+            return;
+        }
+        for (int i = 0; i &lt; pos.length; i++) {
+            if (pos[i].toString().length() &gt;= 20) {
+                pos[i] = pos[i].toString().substring(0, 16) + "...";
+            }
+        }
+        System.out.format(format, pos[0], pos[1], pos[2], pos[3]);
+</FONT>        System.out.format(format, "____________________", "____________________", "____________________",
+                "____________________");
+    }
+
+    private static void deleteF3() {
+        try {
+            System.out.print("Enter product's id to delete:");
+            int PId = iScanner.nextInt();
+            skip();
+            Object data[] = findViaId(PId);
+            if (data == null) {
+                System.out.println("Product's Id is not existed!");
+                deleteF3();
+                return;
+            }
+            saveList.remove((int) data[0]);
+            Notifyication();
+            System.out.println("Product deleted!!!");
+        } catch (Exception e) {
+            Report();
+            deleteF3();
+        }
+
+    }
+
+    private static void editF4() {
+        try {
+            System.out.println("---------------------------------");
+            System.out.print("Enter product id to edit:");
+            int PId = iScanner.nextInt();
+            skip();
+            Object[] data = findViaId(PId);
+            if (data == null) {
+                editF4();
+                System.out.println("Product does not exit");
+                return;
+            }
+            int index = (int) data[0];
+            System.out.print("Enter new name:");
+            String PName = iScanner.nextLine();
+            System.out.print("Enter new price:");
+            int PPrice = iScanner.nextInt();
+            skip();
+            System.out.print("Enter new quantity:");
+            int PQuantity = iScanner.nextInt();
+            System.out.println("---------------------------------");
+            skip();
+            saveList.set(index, new Product(PId, PName, PPrice, PQuantity));
+            Notifyication();
+        } catch (Exception e) {
+            Report();
+            editF4();
+        }
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match239-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static Object[] findViaId(int PId) {
+        for (int i = 0; i &lt; saveList.size(); i++) {
+            Product product = saveList.get(i);
+            if (product.getId() == PId) {
+                return new Object[]{i, product};
+            }
+        }
+        return null;
+    }
+
+    private static void searchF5() {
+</FONT>        System.out.print("Enter product name to search: ");
+        String productName = iScanner.nextLine();
+        ArrayList&lt;Product&gt; listRs = findProductByName(productName);
+        displayFile(listRs);
+
+    }
+
+    private static ArrayList&lt;Product&gt; findProductByName(String name) {
+        ArrayList&lt;Product&gt; listRs = new ArrayList&lt;Product&gt;();
+        for (Product product : saveList) {
+            if (containsIgnoreCase(product.getName(), name)) {
+                listRs.add(product);
+            }
+        }
+        return listRs;
+    }
+
+    private static void sortF6() {
+        ArrayList&lt;Product&gt; listP = new ArrayList&lt;Product&gt;(saveList);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match239-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; listP.size(); i++) {
+            for (int y = i; y &lt; listP.size(); y++) {
+                if (listP.get(i).getPrice() &gt; listP.get(y).getPrice()) {
+                    Product Pproduct = listP.get(i);
+                    listP.set(i, listP.get(y));
+                    listP.set(y, Pproduct);
+                }
+            }
+        }
+        displayFile(listP);
+</FONT>    }
+
+    private static void Notifyication() {
+        saveF7();
+    }
+
+    private static void saveF7() {
+        saveObject(FILE_NAME, saveList);
+        System.out.println("Save success");
+    }
+
+    public static void saveObject(String path, Object data) {
+        try {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match239-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FileOutputStream fileOut = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(data);
+            out.close();
+            System.out.println("New change applied");
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+</FONT>        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void loadF8(String fileName) {
+        Object data = readObject(fileName);
+        if (data == null) {
+            saveList = new ArrayList&lt;Product&gt;();
+            return;
+        }
+        saveList = (ArrayList&lt;Product&gt;) data;
+
+        if (saveList == null) {
+            saveList = new ArrayList&lt;Product&gt;();
+        }
+    }
+
+    public static Object readObject(String path) {
+        try {
+            FileInputStream fileIn = new FileInputStream(path);
+            ObjectInputStream oInput = new ObjectInputStream(fileIn);
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match239-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Object data = oInput.readObject();
+            oInput.close();
+            fileIn.close();
+            System.out.println("file read");
+            return data;
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+</FONT>            return null;
+        }
+    }
+
+    private static void Report() {
+        System.out.println("Invalid input, try again!!!");
+        skip();
+
+    }
+
+    private static void exit() {
+        System.out.println("See you again!!!");
+        iScanner.close();
+        System.exit(0);
+    }
+
+    private static boolean containsIgnoreCase(String parent, String child) {
+        return parent.toLowerCase().contains(child.toLowerCase());
+    }
+
+    private static void skip() {
+        iScanner.nextLine();
+
+    }
+
+    private static int autoId() {
+
+        return saveList.size() == 0 ? 0 : saveList.get(saveList.size() - 1).getId() + 1;
+    }
+
+   
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

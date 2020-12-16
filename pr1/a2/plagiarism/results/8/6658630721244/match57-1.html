@@ -1,0 +1,179 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenManhHung_106407_assignsubmission_file_NGNXA2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamAnhTuan_106510_assignsubmission_file_Main.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamAnhTuan_106510_assignsubmission_file_Main.java
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match57-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static ArrayList&lt;Integer&gt; listId = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;String&gt; listName = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Integer&gt; listPrice = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Integer&gt; listQuantity = new ArrayList&lt;&gt;();
+    public static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+</FONT>        try {
+            System.out.println("1 Add products");
+            System.out.println("2 Display the available products");
+            System.out.println("3 Edit an product");
+            System.out.println("4 Remove an product");
+            System.out.println("5 Search product by name");
+            System.out.println("6 Save to disk");
+            System.out.println("7 Load products from disk");
+            System.out.println("8 Exit");
+            System.out.println("Enter your choice ");
+            int option = sc.nextInt();
+            sc.nextLine();
+            if (option == 1) {
+                additems();
+            } else if (option == 2) {
+                showitems();
+            } else if (option == 3) {
+                edititems();
+            } else if (option == 4) {
+                removeitems();
+            } else if (option == 5) {
+                searchitems();
+            } else if (option == 6) {
+                saveitems();
+            } else if (option == 7) {
+                loaditems();
+            } else {
+                sc.close();
+                System.out.println("Bye");
+                return;
+            }
+            confirmmenu();
+        } catch (Exception e) {
+            System.out.println("something wrong, shutdown program...");
+            return;
+        }
+    }
+
+    private static void confirmmenu() throws IOException, ClassNotFoundException {
+        System.out.println("Continue? 1 for yes 2 for no");
+        int a = sc.nextInt();
+        if (a == 2) {
+        } else if (a == 1) {
+            main(null);
+        } else {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match57-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_64.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("something wrong");
+        }
+    }
+
+    public static void additems() {
+        System.out.println("Enter item name: ");
+        String name = sc.nextLine();
+        System.out.println("Enter item price: ");
+        int price = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter item quantity: ");
+        int quantity = sc.nextInt();
+        sc.nextLine();
+        listName.add(name);
+        listPrice.add(price);
+        listQuantity.add(quantity);
+        listId.add(listName.size());
+    }
+
+    public static void showitems() {
+        for (int i = 0; i &lt; listId.size(); i++) {
+            System.out.println(listId.get(i) + "       |       " + listName.get(i) + "       |       " + listPrice.get(i) + "       |       " + listQuantity.get(i));
+        }
+    }
+
+    public static void edititems() {
+        System.out.println("Enter Id want to edit: ");
+        int gainId = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Edit name: ");
+        String name = sc.nextLine();
+        System.out.println("Enter price: ");
+        int price = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter quantity: ");
+        int quantity = sc.nextInt();
+        sc.nextLine();
+        listName.set(gainId, name);
+        listPrice.set(gainId, price);
+        listQuantity.set(gainId, quantity);
+    }
+
+    public static void removeitems() {
+        System.out.println("Enter Id want to delete: ");
+        int gainId = sc.nextInt();
+        sc.nextLine();
+        listId.remove(gainId - 1);
+        listName.remove(gainId - 1);
+        listPrice.remove(gainId - 1);
+        listQuantity.remove(gainId - 1);
+    }
+
+    public static void searchitems() {
+        System.out.println("Enter name to search: ");
+        String tmp = sc.nextLine();
+        for (int i = 0; i &lt; listName.size(); i++) {
+            if (tmp.equalsIgnoreCase(listName.get(i))) {
+                System.out.println(listId.get(i) + "       |       " + listName.get(i) + "       |       " + listPrice.get(i) + "       |       " + listQuantity.get(i));
+                break;
+            }
+            System.out.println("Not found!");
+        }
+    }
+
+    public static void saveitems() throws IOException {
+        FileOutputStream fileId = new FileOutputStream("id.bin");
+        ObjectOutputStream writeId = new ObjectOutputStream(fileId);
+        writeId.writeObject(listId);
+        writeId.close();
+
+        FileOutputStream name = new FileOutputStream("name.txt");
+        ObjectOutputStream writeName = new ObjectOutputStream(name);
+        writeName.writeObject(listName);
+        writeName.close();
+
+        FileOutputStream price = new FileOutputStream("price.txt");
+        ObjectOutputStream writePrice = new ObjectOutputStream(price);
+        writePrice.writeObject(listPrice);
+        writePrice.close();
+
+        FileOutputStream quantity = new FileOutputStream("quantity.txt");
+        ObjectOutputStream writeQuantity = new ObjectOutputStream(quantity);
+        writeQuantity.writeObject(listQuantity);
+        writeQuantity.close();
+    }
+
+    public static void loaditems() throws IOException, ClassNotFoundException {
+        FileInputStream id = new FileInputStream("id.txt");
+        ObjectInputStream readId = new ObjectInputStream(id);
+        listId = (ArrayList&lt;Integer&gt;) readId.readObject();
+        readId.close();
+        FileInputStream name = new FileInputStream("name.txt");
+        ObjectInputStream readName = new ObjectInputStream(name);
+        listName = (ArrayList&lt;String&gt;) readName.readObject();
+        readName.close();
+        FileInputStream price = new FileInputStream("price.txt");
+        ObjectInputStream readPrice = new ObjectInputStream(price);
+        listPrice = (ArrayList&lt;Integer&gt;) readPrice.readObject();
+        readPrice.close();
+        FileInputStream quantity = new FileInputStream(new File("quantity.txt"));
+        ObjectInputStream readQuantity = new ObjectInputStream(quantity);
+        listQuantity = (ArrayList&lt;Integer&gt;) readQuantity.readObject();
+        readQuantity.close();
+</FONT>    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

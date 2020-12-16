@@ -1,0 +1,278 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTrungKien_106385_assignsubmission_file_Assiggment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenTuanNghia_106416_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenTuanNghia_106416_assignsubmission_file_Assignment2.java
+/* Name: Nguyen Tuan Nghia
+ * Class: 8C-19
+ * Student ID: 1901040146
+*/
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class Assignment2{
+
+    public static Scanner input = new Scanner(System.in);
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match249-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static ArrayList&lt;String&gt; name = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Double&gt; price = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Integer&gt; quantity = new ArrayList&lt;&gt;();
+</FONT>    public static File file = new File("Data.txt");
+
+    public static void main(String[] args) {
+
+        while (true) {
+            try {
+                System.out.println("&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; MENU &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;");
+                System.out.println("[1]. Add and Display the products");
+                System.out.println("[2]. Delete the products by the position");
+                System.out.println("[3]. Edit the products");
+                System.out.println("[4]. Search for products by name");
+                System.out.println("[5]. Sort products by price");
+                System.out.println("[6]. Save File");
+                System.out.println("[7]. Load File");
+                System.out.print("Choose An Option: ");
+                int number = input.nextInt();
+                System.out.println();
+                switch (number) {
+                    case 1:
+                        AddAndDisplayProduct();
+                        break;
+                    case 2:
+                        RemoveProduct();
+                        break;
+                    case 3:
+                        EditProduct();
+                        break;
+                    case 4:
+                        SearchProduct();
+                        break;
+                    case 5:
+                        SortProduct();
+                        break;
+                    case 6:
+                        SaveData();
+                        break;
+                    case 7:
+                        LoadData();
+                        break;
+                    default:
+                        System.out.println("Wrong input!!");
+
+                }
+
+            } catch (Exception ex) {
+                System.out.println("Wrong input");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match249-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                input.nextLine();
+
+            }
+        }
+    }
+
+    public static void AddAndDisplayProduct() {
+        System.out.print("Enter the number of product: ");
+        int a = input.nextInt();
+        try {
+            for (int i = 0; i &lt; a; i++) {
+                input.nextLine();
+                System.out.print("Enter the product name: ");
+                String name2 = input.nextLine();
+                name.add(name2);
+                System.out.print("Enter the product price: ");
+</FONT>                double price2 = Double.parseDouble(input.nextLine());
+                price.add(price2);
+                System.out.print("Enter the Quantity: ");
+                int quantity2 = input.nextInt();
+                quantity.add(quantity2);
+            }
+            System.out.println("MENU");
+            System.out.println("=========================");
+            System.out.println("|-ID---Name-----Price--------Quantity-|");
+            for (int i1 = 1; i1 &lt;= name.size(); i1++) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match249-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+            }
+        } catch (Exception ex) {
+            System.out.println("Invalid");
+
+        }
+    }
+
+    public static void RemoveProduct() {
+        System.out.print("Enter the product ID you want to delete: ");
+        int id = input.nextInt();
+        name.remove(id - 1);
+</FONT>        // id - 1 because we count from 0 in terms of attributes
+        price.remove(id - 1);
+        quantity.remove(id - 1);
+        System.out.println("MENU");
+        System.out.println("=========================");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match249-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("|-ID---Name-----Price--------Quantity-|");
+        for (int i1 = 1; i1 &lt;= name.size(); i1++) {
+            System.out.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+</FONT>        }
+    }
+
+    public static void EditProduct() {
+        boolean test = true;
+        while (test == true) {
+            System.out.println("Type 'Exit' to stop");
+            System.out.print("Enter the product ID you want to edit: ");
+            int id = input.nextInt();
+            while (true) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match249-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Product Attribute  ");
+                System.out.println("Product's name (Input [N])");
+                System.out.println("Product's price (Input [P])");
+                System.out.println("Product 's quantity:(Input [Q])");
+                String element = input.nextLine();
+                if (element.equals("n") || element.equals("N")) {
+</FONT>                    System.out.println("Current name: " + name.get(id - 1));
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match249-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter new name: ");
+                    String name1 = input.nextLine();
+                    name.set(id - 1, name1);
+                    // change name
+                } else if (element.equals("p") || element.equals("P")) {
+</FONT>                    System.out.println("Current price: " + price.get(id - 1));
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match249-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter new price: ");
+                    double price1 = Double.parseDouble(input.nextLine());
+                    price.set(id - 1, price1);
+                    // change price
+                } else if (element.equals("q") || element.equals("Q")) {
+</FONT>                    System.out.println("Current quantity: " + quantity.get(id - 1));
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match249-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter new quantity: ");
+                    int number = Integer.parseInt(input.nextLine());
+                    quantity.set(id - 1, number);  
+                    // change quality 
+                } else if (element.equals("Exit")) {
+</FONT>                    System.out.println("Saved");
+                    test = false;
+                    break;
+                } else {
+                    System.out.println("Not valid!!");
+                } 
+                System.out.println("MENU");
+                System.out.println("=========================");
+                System.out.println("|-ID---Name-----Price--------Quantity-|");
+                for (int i1 = 1; i1 &lt;= name.size(); i1++) {
+                    System.out.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+                }
+            }
+        }
+    }
+
+    public static void SearchProduct() {
+        while (true) {
+            try {
+                input.nextLine();
+                System.out.println("Type 'Exit' to stop");
+                System.out.println("What products are you looking for?: ");
+                String name1 = input.nextLine();
+                if (name1.equals("Exit")) {
+                    System.out.println("Thank you!");
+                    break;
+                } else {
+                    for (int i1 = 1; i1 &lt;= name.size(); i1++) {
+                        if (name1.equals(name.get(i1 - 1))) {
+                            System.out.println("This is what we found: ");
+                            System.out.println("|-ID---Name-----Price--------Quantity-|");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match249-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+                            System.out.println("Type any keys to continue searching");
+</FONT>                            break;
+                        } else if (!name1.equals(name.get(i1 - 1))) {
+                            System.out.println("Can't find that");
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println("Something's wrong !!");
+            }
+        }
+
+    }
+
+    public static void SortProduct() {
+        System.out.println("Displaying table: ");
+        for (int i = 1; i &lt;= price.size(); i++) {
+            for (int j = i + 1; j &lt;= price.size(); j++) {
+                if (price.get(i - 1) &gt; price.get(j - 1)) {
+                    String highern = name.get(i - 1);
+                    double higherp = price.get(i - 1);
+                    int higherq = quantity.get(i - 1);
+                    name.set(i - 1, name.get(j - 1));
+                    price.set(i - 1, price.get(j - 1));
+                    quantity.set(i - 1, quantity.get(j - 1));
+                    // this algorithms switch the minus value to the front
+                    name.set(j - 1, highern);
+                    price.set(j - 1, higherp);
+                    quantity.set(j - 1, higherq);
+                    // this one switch the higher value to the back
+                }
+            }
+        }
+        System.out.println("&gt;&gt;&gt;&gt;&gt; Table &lt;&lt;&lt;&lt;&lt; ");
+        System.out.println("|-ID---Name-----Price--------Quantity-|");
+        for (int i1 = 1; i1 &lt;= price.size(); i1++) {
+            System.out.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+        }
+
+    }
+
+    public static void SaveData() throws FileNotFoundException {
+
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.println("|-ID---Name-----Price--------Quantity-|");
+            for (int i1 = 1; i1 &lt;= price.size(); i1++) {
+                pw.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+            }
+
+            pw.close();
+
+        } catch (IOException e) {
+            System.out.println("Failed");
+
+        }
+        System.out.println("Saving completed");
+
+    }
+
+    public static void LoadData() throws Exception {
+        try {
+            Scanner ab = new Scanner(file);
+            for (int i1 = 1; i1 &lt;= price.size(); i1++) {
+                System.out.printf("| %d | %8S | %9.2f | %7d | %n", i1, name.get(i1 - 1), price.get(i1 - 1), quantity.get(i1 - 1));
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Thank you!");
+
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

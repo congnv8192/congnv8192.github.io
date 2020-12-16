@@ -1,0 +1,297 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenKhanhBangAn_106445_assignsubmission_file_NguyenKhanhBangAn_2TD19_1901060001.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/oucMinh_106292_assignsubmission_file_DoDucMinh_2TD19_1901060034.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: oucMinh_106292_assignsubmission_file_DoDucMinh_2TD19_1901060034.java
+package DoDucMinh_2TD19_1901060034;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * @author Do Duc Minh
+ * ID: 1901060034
+ * Class: 2TD19
+ */
+
+public class DoDucMinh_2TD19_1901060034 {
+
+    public class Product {
+
+        private int id;
+        private String name;
+        private double price;
+        private int quantity;
+
+        public Product(int id, String name, double price, int quantity) {
+            this.id = id;
+            this.name = name;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match226-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            this.price = price;
+            this.quantity = quantity;
+
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+
+        @Override
+        public String toString() {
+</FONT>            return "id = " + id + ", name product = " + name + ", price product = " + price + ", quantity product = " + quantity;
+        }
+
+    }
+    public static Scanner scanner = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
+    private List&lt;Product&gt; productList = new ArrayList&lt;&gt;();
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
+        DoDucMinh_2TD19_1901060034 pm = new DoDucMinh_2TD19_1901060034();
+        boolean cont = true;
+        //Create a menu-based program.
+        System.out.println("\nHello!");
+        System.out.println("Welcome to Product Management System.");
+        try {
+            do {
+                System.out.println("1. Add products.");
+                System.out.println("2. Display products.");
+                System.out.println("3. Delete a product.");
+                System.out.println("4. Edit a product.");
+                System.out.println("5. Search for products by name.");
+                System.out.println("6. Sort products by price.");
+                System.out.println("7. Save products to text/binary file.");
+                System.out.println("8. Load products from the saved file.");
+                System.out.println("9. Exit program.");
+                System.out.println("Enter your choice: ");
+
+                int choice = scanner.nextInt();
+                //Use switch to check USER's choice and do the task in each choice.
+                switch (choice) {
+                    case 1:
+                        pm.addProduct();//Calling function:  Add products.
+                        break;
+                    case 2:
+                        pm.displayProduct();//Calling function:  Display products.
+                        break;
+                    case 3:
+                        pm.deleteProduct();//Calling function:  Delete a product.
+                        break;
+                    case 4:
+                        pm.editProduct();//Calling function: Edit a product.
+                        break;
+                    case 5:
+                        pm.searchProduct();//Calling function:  Search for products by name.
+                        break;
+                    case 6:
+                        pm.sortPriceProduct();//Calling function: Sort products by price.
+                        break;
+                    case 7:
+                        pm.saveToFile();//Calling function:  Save products to text/binary file.
+                        break;
+                    case 8:
+                        pm.loadProduct();//Calling function:  Load products from the saved file.
+
+                        break;
+                    case 9:                       //Exit program.
+                        System.out.println("Exit program.\n");
+                        cont = false;
+                        break;
+                    default:                      //If USER choose another option, the program will show error announcement.
+                        System.out.println("Invalid choice, please re-enter to continue.");
+                        cont = true;
+                        break;
+                }
+
+                System.out.println("\n");
+            } while (cont);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    //Function add new product.
+    public void addProduct() {
+        int id = productList.size() + 1; //ID of each product. automatic
+        System.out.println("Please input name of the product");
+        String name = sc.nextLine();
+        System.out.println("Please input price of the product");
+        double price = scanner.nextDouble();
+        System.out.println("Please input quantity of the product");
+        int quantity = scanner.nextInt();
+        Product p = new Product(id, name, price, quantity); //Create new object.
+        productList.add(p); //Add object to arraylist.
+        System.out.println("Added successfully");
+
+    }
+
+    //Function display all product.
+    public void displayProduct() {
+        productList.forEach(f -&gt; System.out.println(f.toString())); // Foreach display all product use lambda
+        if (productList.size() == 0) { // If the product = 0, print no product.
+            System.out.println("No products");
+        }
+    }
+
+    //Function delete product.
+    public void deleteProduct() {
+        System.out.println("If you want to delete product, please enter product ID");
+        int id = scanner.nextInt();
+        Product product = null;
+        int size = productList.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (productList.get(i).getId() == id) { //If USER find ID, break loop.
+                product = productList.get(i);
+                System.out.println("Deleted successfully");
+                break;
+            }
+        }
+        if (product != null) {
+            productList.remove(product); //Delete product.
+        } else {
+            System.out.printf("id = %d not existed.\n", id);
+        }
+    }
+
+    //Function edit product.
+    public void editProduct() {
+        System.out.println("If you want to edit product, please enter ID of the product");
+        int id = scanner.nextInt(); //Enter ID of product for editing.
+        boolean isExisted = false;
+        int size = productList.size();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match226-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; size; i++) {
+            if (productList.get(i).getId() == id) { //If USER find ID, start edit.
+                isExisted = true;
+                System.out.println("New Name: ");
+                productList.get(i).setName(sc.nextLine());
+                System.out.println("New price: ");
+                productList.get(i).setPrice(scanner.nextDouble());
+                System.out.println("New quantity: ");
+                productList.get(i).setQuantity(scanner.nextInt());
+                System.out.println("Edited successfully");
+                break;
+            }
+        }
+        if (!isExisted) {
+            System.out.printf("id = %d not existed.\n", id);
+</FONT>        }
+    }
+
+    //Function searchProduct.
+    public void searchProduct() {
+        System.out.println("If you want to search, please enter the name of product");
+        String name = sc.nextLine();//USER enter name of product to search.
+        productList.stream().filter(f -&gt; f.name.toLowerCase().equals(name.toLowerCase())).forEach(f -&gt; System.out.println(f.toString()));// find name use stream
+
+    }
+
+    //Function sort product follow price.
+    public void sortPriceProduct() {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match226-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int size = productList.size();
+        for (int i = 0; i &lt; size - 1; i++) {
+            for (int j = i + 1; j &lt; size; j++) {
+                if (productList.get(i).getPrice() &gt; productList.get(j).getPrice()) {
+                    Product temp = productList.get(i);
+                    productList.set(i, productList.get(j));
+                    productList.set(j, temp);
+                }
+            }
+        }
+        productList.forEach(f -&gt; System.out.println(f.toString()));
+</FONT>    }
+
+    //Function save to file.
+    public void saveToFile()
+            throws IOException {
+        File fout = new File("data.txt");
+        FileOutputStream fos = new FileOutputStream(fout);
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match226-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        OutputStreamWriter osw = new OutputStreamWriter(fos);
+
+        for (int i = 0; i &lt; productList.size(); i++) {
+            osw.write(productList.get(i).getId() + ", " + productList.get(i).getName() + ", " + productList.get(i).getPrice() + ", " + productList.get(i).getQuantity() + "\n");
+</FONT>
+        }
+        System.out.println("Saved successfully");
+        osw.close();
+
+    }
+
+    //Fuction load product from file.
+    public void loadProduct() throws FileNotFoundException, IOException {
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(
+                    "data.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match226-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                List&lt;String&gt; splitProduct = Arrays.asList(line.split(", "));
+                productList.add(new Product(Integer.parseInt(splitProduct.get(0)), splitProduct.get(1), Double.parseDouble(splitProduct.get(2)), Integer.parseInt(splitProduct.get(3))));
+</FONT>                //Read the next line.
+                line = reader.readLine();
+            }
+            System.out.println("Read file successfully");
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

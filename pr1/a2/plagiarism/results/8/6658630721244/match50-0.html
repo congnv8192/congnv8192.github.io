@@ -1,0 +1,344 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenQuocHuy_106506_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenQuocHuy_106506_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenQuocHuy_106506_assignsubmission_file_Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/*
+Nguyễn Quốc Huy - 1C19 - 1901040095
+*/
+package Assignment2;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * @author HUY
+ */
+public class Assignment2 {
+
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match50-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) throws Exception {
+        int Option;
+
+        do {
+            Products.Menu();
+            Option = input.nextInt();
+            input.nextLine();
+
+            switch (Option) {
+                case 1:
+</FONT>                    Products.Feature1();
+                    break;
+                case 2:
+                    Products.Feature2();
+                    break;
+                case 3:
+                    Products.Feature3();
+                    break;
+                case 4:
+                    Products.Feature4();
+                    break;
+                case 5:
+                    Products.Feature5();
+                    break;
+                case 6:
+                    Products.Feature6();
+                    break;
+                case 7:
+                    Products.Feature7();
+                    break;
+                case 8:
+                    Products.Feature8();
+                    break;
+                default:
+                    System.out.println("There is no such option!! Try again!!");
+                case 9:
+                    System.out.println("Goodbye!!");
+                    break;
+            }
+        }
+        while (Option != 9);
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match50-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static class Product {
+
+        private String productID;
+        private String productName;
+        private double productPrice;
+        private int productQuantity;
+
+        public Product(String new_productID, String new_productName, double new_productPrice, int new_productQuantity) {
+            this.productID = new_productID;
+            this.productName = new_productName;
+            this.productPrice = new_productPrice;
+</FONT>            this.productQuantity = new_productQuantity;
+        }
+
+        public String getId() {
+            return productID;
+        }
+
+        public void ID(String new_productID) {
+            this.productID = new_productID;
+        }
+
+        public String getName() {
+            return productName;
+        }
+
+        public void Name(String new_productName) {
+            this.productName = new_productName;
+        }
+
+        public double getPrice() {
+            return productPrice;
+        }
+
+        public void Price(double new_productPrice) {
+            this.productPrice = new_productPrice;
+        }
+
+        public int getQuantity() {
+            return productQuantity;
+        }
+
+        public void Quantity(int new_productQuantity) {
+            this.productQuantity = new_productQuantity;
+        }
+    }
+
+    static class Products {
+
+        static Scanner input = new Scanner(System.in);
+        private static ArrayList&lt;Product&gt; ProductsList = new ArrayList&lt;&gt;();
+
+        public static String GenerateID() {
+            String productID = "";
+            String digits = "0123456789";
+            for (int x = 0; x &lt; 3; x++) {
+                productID += digits.charAt((int) (Math.random() * digits.length()));
+            }
+            return productID;
+        }
+
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match50-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        public static void Menu() {
+
+            System.out.println("- [1] Add products\n"
+                    + "- [2] Display products\n"
+                    + "- [3] Delete a product\n"
+                    + "- [4] Edit a product\n"
+                    + "- [5] Search for products by name\n"
+                    + "- [6] Sort products by price\n"
+                    + "- [7] Save products to text/binary file\n"
+                    + "- [8] Load products from the saved file\n"
+                    + "- [9] Exit");
+</FONT>            System.out.print("Option: ");
+            System.out.println();
+        }
+
+        public static void Feature1() {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match50-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            String Name;
+            double Price;
+            int Quantity;
+
+            System.out.println("Number of product you want to add: ");
+            int n = input.nextInt();
+            input.nextLine();
+
+            for (int x = 1; x &lt;= n; x++) {
+                System.out.println("Product [" + x + "]");
+</FONT>
+                System.out.print("Name: ");
+                Name = input.nextLine();
+
+                System.out.print("Price: ");
+                Price = input.nextDouble();
+                input.nextLine();
+
+                System.out.print("Quantity: ");
+                Quantity = input.nextInt();
+                input.nextLine();
+                System.out.println("Product added");
+                System.out.println();
+                
+                Product p = new Product(GenerateID(), Name, Price, Quantity);
+                ProductsList.add(p);
+            }
+        }
+
+        public static void Feature2() {
+            System.out.printf("%-3s | %-5s | %-30s | %-10s | %s | %n", "STT", "ID", "Name", "Price", "Quantity");
+            System.out.println("----------------------------------------------------------------------");
+
+            int x = 1;
+            for (Product P : ProductsList) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match50-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.printf("%-3s | %-5s | %-30s | %-10.2f | %-8d | %n", x, P.getId(), P.getName(), P.getPrice(), P.getQuantity());
+                x++;
+            }
+        }
+
+        public static void Feature3() {
+            System.out.print("Product ID to remove: ");
+            String removeID = input.nextLine();
+
+            boolean IDValidation = false;
+            Product productDelete = null;
+            for (Product P : ProductsList) {
+                if (P.getId().equals(removeID)) {
+                    IDValidation = true;
+                    productDelete = P;
+                    break;
+                }
+            }
+            if (IDValidation) {
+                ProductsList.remove(productDelete);
+                System.out.println("Product removed!!");
+            } else {
+                System.out.println("Invalid product ID!! Try again!!");
+            }
+        }
+
+        public static void Feature4() {
+            System.out.print("Product ID to edit: ");
+            String editID = input.nextLine();
+
+            boolean IDValidation = false;
+            Product editProduct = null;
+            for (Product P : ProductsList) {
+                if (P.getId().equals(editID)) {
+                    IDValidation = true;
+                    editProduct = P;
+                    break;
+                }
+            }
+            if (IDValidation) {
+                System.out.println("New product name: ");
+                String newName = input.nextLine();
+                System.out.println("New product price: ");
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match50-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                double newPrice = Double.parseDouble(input.nextLine());
+                System.out.println("New product quantity: ");
+                int newQuantity = Integer.parseInt(input.nextLine());
+
+                ProductsList.get(ProductsList.indexOf(editProduct)).Name(newName);
+                ProductsList.get(ProductsList.indexOf(editProduct)).Price(newPrice);
+                ProductsList.get(ProductsList.indexOf(editProduct)).Quantity(newQuantity);
+            } else {
+                System.out.println("Invalid product ID!! Try again!!");
+            }
+        }
+
+        public static void Feature5() {
+            System.out.print("Product to search: ");
+            String searchProduct = input.nextLine();
+            ArrayList&lt;Product&gt; SearchProduct = new ArrayList&lt;&gt;();
+            boolean keyword = false;
+            for (Product P : ProductsList) {
+                if (P.getName().contains(searchProduct)) {
+                    SearchProduct.add(P);
+                    keyword = true;
+                }
+            }
+            int x = 1;
+            if (keyword) {
+                System.out.print("Search result: ");
+                System.out.printf("%-3s | %-5s | %-30s | %-10s | %s | %n", "STT", "ID", "Name", "Price", "Quantity");
+</FONT>                System.out.println("----------------------------------------------------------------------");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match50-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                for (Product P : SearchProduct) {
+                    System.out.printf("%-3s | %-5s | %-30s | %-10.2f | %-8d | %n", x, P.getId(), P.getName(), P.getPrice(), P.getQuantity());
+                    x++;
+                }
+            } else {
+                System.out.println("Invalid keyword!! Try again!!");
+            }
+        }
+
+        public static void Feature6() {
+            Product sort;
+            ArrayList&lt;Product&gt; sortProduct = new ArrayList&lt;&gt;(ProductsList);
+            for (int x = 0; x &lt; sortProduct.size(); x++) {
+                for (int y = 0; y &lt; sortProduct.size(); y++) {
+</FONT>                    if (sortProduct.get(x).getPrice() &gt; sortProduct.get(y).getPrice()) {
+                        sort = sortProduct.get(x);
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match50-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        sortProduct.set(x, sortProduct.get(y));
+                        sortProduct.set(y, sort);
+                    }
+                }
+            }
+            System.out.println("Result: ");
+            System.out.printf("%-3s | %-5s | %-30s | %-10s | %s | %n", "STT", "ID", "Name", "Price", "Quantity");
+</FONT>            System.out.println("----------------------------------------------------------------------");
+            int x = 1;
+            for (Product P : sortProduct) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match50-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.printf("%-3s | %-5s | %-30s | %-10.2f | %-8d | %n", x, P.getId(), P.getName(), P.getPrice(), P.getQuantity());
+                x++;
+            }
+        }
+
+        public static void Feature7() throws Exception {
+            FileOutputStream fos = new FileOutputStream("src/Assignment2/Products.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(ProductsList);
+            System.out.println("Successfully wrote to the file");
+            oos.close();
+        }
+
+        public static void Feature8() throws Exception {
+
+            FileInputStream fis = new FileInputStream("src/Assignment2/Products.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList&lt;Product&gt; LoadProducts = (ArrayList&lt;Product&gt;) ois.readObject();
+            ois.close();
+
+            System.out.println("File loaded: ");
+            System.out.printf("%-3s | %-5s | %-30s | %-10s | %s | %n", "STT", "ID", "Name", "Price", "Quantity");
+</FONT>            System.out.printf("----------------------------------------------------------------------");
+
+            int x = 0;
+            for (Product P : LoadProducts) {
+                System.out.printf("%-3s | %-5s | %-30s | %-10.2f | %-8d | %n", x, P.getId(), P.getName(), P.getPrice(), P.getQuantity());
+                x++;
+            }
+        }
+    }
+}
+
+
+
+/*
+Nguyễn Quốc Huy - 1C19 - 1901040095
+*/</PRE>
+</PRE>
+</BODY>
+</HTML>

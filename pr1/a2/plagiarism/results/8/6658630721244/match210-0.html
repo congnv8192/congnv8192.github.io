@@ -1,0 +1,264 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040054TranMinhDuong_106272_assignsubmission_file_TranMinhDuong_1801040054_A2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040054TranMinhDuong_106272_assignsubmission_file_TranMinhDuong_1801040054_A2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040054TranMinhDuong_106272_assignsubmission_file_TranMinhDuong_1801040054_A2.java
+package Assignment02;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match210-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TranMinhDuong_1801040054_A2 {
+
+    static int ID = 1;
+    static ArrayList&lt;String&gt; listName = new ArrayList&lt;&gt;();
+    static ArrayList&lt;Double&gt; listPrice = new ArrayList&lt;&gt;();
+    static ArrayList&lt;Integer&gt; listQuantity = new ArrayList&lt;&gt;();
+
+    //ADD PRODUCTS
+    public static void feature1() {
+        Scanner sc = new Scanner(System.in);
+</FONT>        System.out.print("Please input the number of products: ");
+        int numProduct = sc.nextInt();
+
+        for (int i = 0; i &lt; numProduct; i++) {
+            System.out.println("ID: " + ID);
+            sc.nextLine();
+            System.out.print("The product name: ");
+            String name = sc.nextLine();
+            System.out.print("The product price: ");
+            double price = sc.nextDouble();
+            System.out.print("The product quantity: ");
+            int quantity = sc.nextInt();
+
+            ID++;
+            listName.add(name);
+            listPrice.add(price);
+            listQuantity.add(quantity);
+            System.out.println("");
+        }
+    }
+
+    //DISPLAY PRODUCTS
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match210-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void feature2() {
+        if (listName.isEmpty()) {
+            System.out.println("There are no products to display.");
+        } else {
+            for (int i = 0; i &lt; listName.size(); i++) {
+                System.out.format("%10d || %10s || %10f || %10d || %n", i + 1, listName.get(i), listPrice.get(i), listQuantity.get(i));
+            }
+        }
+        System.out.println("");
+    }
+
+    //DELETE A PRODUCT
+    public static void feature3() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input the product ID you want to delete: ");
+        int id = sc.nextInt();
+
+        listName.remove(id - 1);
+        listPrice.remove(id - 1);
+</FONT>        listQuantity.remove(id - 1);
+
+        System.out.println("Product deleted");
+        System.out.println("");
+    }
+
+    //EDIT A PRODUCT
+    public static void feature4() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input the product ID you want to edit: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("New name: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match210-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        String name = sc.nextLine();
+        listName.set(id - 1, name);
+
+        System.out.print("New price: ");
+        double price = sc.nextDouble();
+        listPrice.set(id - 1, price);
+
+        System.out.print("New quantity: ");
+</FONT>        int quantity = sc.nextInt();
+        listQuantity.set(id - 1, quantity);
+        System.out.println("");
+    }
+
+    //SEARCH PRODUCT BY NAME
+    public static void feature5() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input product name to find: ");
+        String name = sc.nextLine();
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match210-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; listName.size(); i++) {
+            if (listName.get(i).equalsIgnoreCase(name)) {
+                System.out.format("%10d || %10s || %10f || %10d || %n", i + 1, listName.get(i), listPrice.get(i), listQuantity.get(i));
+            }
+        }
+        System.out.println("Search finished");
+        System.out.println("");
+</FONT>    }
+
+    //SORT PRODUCT BY PRICE
+    public static void feature6() {
+        int min;
+        String name;
+        double price;
+        int quantity;
+        for (int t = 0; t &lt; listName.size(); t++) {
+            min = t;
+            for (int d = t + 1; d &lt; listName.size(); d++) {
+                if (listPrice.get(d) &lt; listPrice.get(t)) {
+                    min = d;
+                }
+            }
+            name = listName.get(t);
+            listName.set(t, listName.get(min));
+            listName.set(min, name);
+
+            price = listPrice.get(t);
+            listPrice.set(t, listPrice.get(min));
+            listPrice.set(min, price);
+
+            quantity = listQuantity.get(t);
+            listQuantity.set(t, listQuantity.get(min));
+            listQuantity.set(min, quantity);
+        }
+        System.out.println("Sort finished");
+        System.out.println("");
+    }
+
+    //SAVE PRODUCTS TO TEXT OR BINARY FILE
+    public static void feature7() {
+        try {
+            File productList = new File("A2.txt");
+            FileOutputStream output = new FileOutputStream(productList);
+            ObjectOutputStream oos = new ObjectOutputStream(output);
+
+            oos.writeObject(listName);
+            oos.writeObject(listPrice);
+            oos.writeObject(listQuantity);
+            oos.close();
+
+            System.out.println("File saved!");
+        } catch (IOException e) {
+            System.out.println("Unable to save file!");
+        }
+        System.out.println("");
+    }
+
+    //LOAD PRODUCTS FROM SAVED FILE
+    public static void feature8() throws FileNotFoundException, IOException {
+        try {
+            File productList = new File("A2.txt");
+            FileInputStream input = new FileInputStream(productList);
+            ObjectInputStream ois = new ObjectInputStream(input);
+
+            listName = (ArrayList&lt;String&gt;) ois.readObject();
+            listPrice = (ArrayList&lt;Double&gt;) ois.readObject();
+            listQuantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+
+            ois.close();
+
+            System.out.println("Loaded successfully!");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Failed to load file!");
+        }
+        System.out.println("");
+    }
+
+    //MENU
+    public static void menu() {
+        System.out.println("[1]: Add products");
+        System.out.println("[2]: Display products");
+        System.out.println("[3]: Delete a product");
+        System.out.println("[4]: Edit a product");
+        System.out.println("[5]: Search for a product by name");
+        System.out.println("[6]: Sort products by price");
+        System.out.println("[7]: Save products to text/binary file");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match210-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("[8]: Load products from the saved file");
+        System.out.println("[9]: Quit");
+        System.out.println("");
+    }
+
+    public static void Compile(int ft) throws IOException {
+</FONT>        switch (ft) {
+            case 1:
+                feature1();
+                break;
+            case 2:
+                feature2();
+                break;
+            case 3:
+                feature3();
+                break;
+            case 4:
+                feature4();
+                break;
+            case 5:
+                feature5();
+                break;
+            case 6:
+                feature6();
+                break;
+            case 7:
+                feature7();
+                break;
+            case 8:
+                feature8();
+                break;
+            case 9:
+                System.out.println("Goodbye!");
+                break;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match210-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            default:
+                System.out.println("Invalid Feature!");
+        }
+    }
+
+    //MAIN
+    public static void main(String[] args) throws Exception {
+        int ft = 0;
+        Scanner sc = new Scanner(System.in);
+        boolean input = false;
+        try {
+            input = true;
+            while (ft != 9) {
+                menu();
+                System.out.print("Enter feature: ");
+                ft = sc.nextInt();
+                Compile(ft);
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input");
+</FONT>        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

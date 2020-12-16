@@ -1,0 +1,284 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/PhamYenNhi_106493_assignsubmission_file_Main.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamYenNhi_106493_assignsubmission_file_Main.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamYenNhi_106493_assignsubmission_file_Main.java
+package btThaoNhi;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match240-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Main {
+	public static ArrayList&lt;Product&gt; listProducts = new ArrayList&lt;Product&gt;();
+
+	public static void main(String[] args) {
+</FONT>		int selection;
+		while(true) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Choose from these choices");
+		System.out.println("-------------------------\n");
+		System.out.println("1 - Add products");
+		System.out.println("2 - Display products");
+		System.out.println("3 - Delete a product");
+		System.out.println("4 - Edit a product");
+		System.out.println("5 - Search for products by name");
+		System.out.println("6 - Sort products by price");
+		System.out.println("7 - Save products to text/binary file");
+		System.out.println("8 - Load products from the saved file");
+		System.out.println("9 - Quit");
+
+		selection = input.nextInt();
+		switch (selection) {
+		case 1:
+			inputProduct();
+			break;
+		case 2:
+			showList();
+			break;
+		case 3:
+			System.out.println("Input your product id you want to delete : ");
+			removeProduct(input.nextInt());
+			break;
+		case 4:
+			System.out.println("Input your product id you want to edit : ");
+			editProduct(input.nextInt());
+			break;
+		case 5:
+			System.out.println("Input your product name u want to find : ");
+			searchProductByName(input.next());
+			break;
+		case 6:
+			sortProductList();
+			break;
+		case 7:
+			save();
+			break;
+		case 8:
+			load();
+			break;
+		case 9:
+			System.exit(0);
+			break;
+		default:
+			System.exit(0);
+		}
+		}
+
+	}
+
+	/**
+	 * Display products
+	 */
+	public static void showList() {
+		System.out.format("%2s%30s%12s%16s","Id","Name","Price","Quantity");
+		System.out.println();
+		for (Product product : listProducts) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match240-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.format("%2d%30s%12s%16d",product.getProductId(),product.getProductName(), product.getProductPrice(),
+					product.getQuantity());
+			System.out.println();
+		}
+		System.out.println();
+</FONT>	}
+
+	/**
+	 * Add products
+	 */
+	public static void inputProduct() {
+		Scanner scanner = new Scanner(System.in);
+		Product product = new Product();
+		product.setProductId(listProducts.size() + 1);
+		System.out.println("Input product name");
+		product.setProductName(scanner.nextLine());
+		System.out.println("Input product price");
+		product.setProductPrice(scanner.nextDouble());
+		System.out.println("Input product quantity");
+		product.setQuantity(scanner.nextInt());
+
+		listProducts.add(product);
+	}
+
+	/**
+	 * Edit a product
+	 */
+	public static void editProduct(int productId) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match240-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int productIndex = listProducts.indexOf(searchProductById(productId));
+		if(productIndex &gt;= 0) {
+		Product newProduct = new Product();
+		newProduct.setProductId(productId);
+		System.out.println("Input your product");
+</FONT>		Scanner scanner = new Scanner(System.in);
+		System.out.println("Input product name");
+		newProduct.setProductName(scanner.nextLine());
+		System.out.println("Input product price");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match240-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		newProduct.setProductPrice(scanner.nextDouble());
+		System.out.println("Input product quantity");
+		newProduct.setQuantity(scanner.nextInt());
+		listProducts.set(productIndex, newProduct);
+		}else {
+			System.out.println("Not found Product ID\r\r");
+			System.out.println();
+		}
+	}
+
+	/**
+	 * Delete a product
+	 */
+	public static void removeProduct(int productId) {
+</FONT>		Product product = searchProductById(productId);
+		listProducts.remove(product);
+	}
+	
+	/**
+	 * Search for products by name
+	 */
+	public static void searchProductByName(String pattern) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match240-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		boolean foundFlag = false;
+		System.out.format("%2s%30s%12s%16s","Id","Name","Price","Quantity");
+		System.out.println();
+		for (Product product : listProducts) {
+			if (product.getProductName().contains(pattern)) {
+				
+				System.out.format("%2d%30s%12s%16d\r\r",product.getProductId(),product.getProductName(), product.getProductPrice(),
+						product.getQuantity());
+				foundFlag = true;
+			}
+		}
+		if(!foundFlag) {
+		System.out.println("Not found Product \r\r");
+		System.out.println();
+		}
+	}
+	
+	/**
+	 * Load product from save file
+	 */
+	public static Product searchProductById(int id) {
+</FONT>		for (Product product : listProducts) {
+			if (product.getProductId() == id) {
+				return product;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Sort products by price
+	 */
+	public static void sortProductList() {
+		Collections.sort(listProducts, new Comparator&lt;Product&gt;() {
+			@Override
+			public int compare(Product p1, Product p2) {
+				return Double.compare(p1.getProductPrice(), p2.getProductPrice());
+			}
+		});
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match240-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("Sort successfully");
+	}
+	
+	/**
+	 * Save products to text/binary file
+	 */
+	public static void save(){
+		try (FileOutputStream fos = new FileOutputStream("thaonhi.txt");
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(listProducts);
+			System.out.println("Save successfully\r\r");
+			System.out.println();
+		} catch (Exception e) {
+			System.out.println("Fail to save\r\r");
+			System.out.println();
+			e.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Load products from the saved file
+	 */
+	public static void load()  {
+		ObjectInputStream ois;
+		try {
+			ois = new ObjectInputStream(new FileInputStream("thaonhi.txt"));
+			listProducts  = (ArrayList) ois.readObject();
+			ois.close();
+			System.out.println("Load successfully\r\r");
+		}  catch (Exception e) {
+			System.out.println("Fail to load\r\r");
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+class Product implements Serializable{
+</FONT>	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int productId;
+	private String productName;
+	private double productPrice;
+	private int quantity;
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public double getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(double productPrice) {
+		this.productPrice = productPrice;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	public Product(int productId, String productName, double productPrice, int quantity) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.quantity = quantity;
+	}
+	public Product() {
+		super();
+	}
+	
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

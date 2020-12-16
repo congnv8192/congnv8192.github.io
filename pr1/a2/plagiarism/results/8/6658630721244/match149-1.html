@@ -1,0 +1,342 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HaThiNgocLan_106533_assignsubmission_file_ProductManager.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenThiMyDuyen_106289_assignsubmission_file_ProductASSGN.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenThiMyDuyen_106289_assignsubmission_file_ProductASSGN.java
+
+// Nguyen_Thi_My_Duyen.
+// ID: 1901040049
+
+import java.util.ArrayList;
+
+import java.io.*;
+import java.nio.channels.FileLockInterruptionException;
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match149-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.List;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ProductASSGN implements Serializable {
+
+    private int Prodid;
+    private String Prodname;
+    private double Prodprice;
+    private int Prodquantity;
+</FONT>
+    public ProductASSGN(int Prodid, String Prodname, double Prodprice, int Prodquantity) {
+        // declare the value of an attribute
+        this.Prodid = Prodid;
+        this.Prodname = Prodname;
+        this.Prodprice = Prodprice;
+        this.Prodquantity = Prodquantity;
+    }
+
+    public ProductASSGN() {
+    }
+
+    // declare setter-edit object properties, getter-access object properties for
+    // attribute
+    // constructor-used to initialize the object
+    public void setProdId(int Prodid) {
+        this.Prodid = Prodid;
+    }
+
+    public int getProdId() {
+        return Prodid;
+    }
+
+    public void setProdName(String Prodname) {
+        this.Prodname = Prodname;
+    }
+
+    public String getProdName() {
+        return Prodname;
+    }
+
+    public void setProdPrice(double Prodprice) {
+        this.Prodprice = Prodprice;
+    }
+
+    public double getProdPrice() {
+        return Prodprice;
+    }
+
+    public void setProdQuantity(int Prodquantity) {
+        this.Prodquantity = Prodquantity;
+    }
+
+    public int getProdQuantity() {
+        return Prodquantity;
+    }
+
+    static ArrayList&lt;ProductASSGN&gt; arr = new ArrayList&lt;&gt;();// create to work with products
+
+    public static int RANDOM_ID() {// Creating random ID
+        int min = 10, max = 666;
+        int Proid;
+        Proid = (int) (Math.random() * (1 + max - min) + min);
+        return Proid;
+
+    }
+
+    public static void AddProductASSGN() { // feature 1: Add product
+        Scanner dyn = new Scanner(System.in);
+        System.out.println("Number of the product to add: ");
+        int number_product = dyn.nextInt();
+        dyn.nextLine();
+
+        for (int y = 1; y &lt;= number_product; y++) {
+            System.out.println("Prod " + y + ":");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Name of the product: ");
+            String Prodname = sc.nextLine();
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match149-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Enter Price of the product: ");
+            double Prodprice = sc.nextDouble();
+
+            System.out.println("Enter Quantity of the product: ");
+            int Prodquantity = sc.nextInt();
+            ProductASSGN m = new ProductASSGN(RANDOM_ID(), Prodname, Prodprice, Prodquantity); // used for
+                                                                                               // initialization
+
+            arr.add(m);
+        }
+        Display_Product();
+</FONT>    }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match149-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Display_Product() {// feature 2: display a table-like list of all products.
+        System.out.printf("%-12s | %-16s | %-14s | %s %n ", "ProdID", "ProdName", "ProdPrice", "ProdQuantity");
+        System.out.println("************************************************************* ");
+
+        for (ProductASSGN m : arr) {
+            System.out.printf("%-12s | %-16s | %-14s | %-10d | %n", m.getProdId(), m.getProdName(), m.getProdPrice(),
+                    m.getProdQuantity());
+        }
+    }
+
+    public static void DeleteProductASSGN() { // feature 3: Delete a product by its product ID.
+</FONT>
+        Scanner dyn = new Scanner(System.in);
+        System.out.println("Enter ID of the product that want to DELETE: ");
+        int Prodid = dyn.nextInt();
+
+        int p = -1;
+        boolean d = false; // used to mark whether a product has been found or not.
+        for (int k = 0; k &lt; arr.size(); k++) {
+            if (Prodid == arr.get(k).getProdId()) {
+                d = true;
+                p = k;
+                break;
+            }
+        }
+
+        if (d == false) {
+            System.out.println("No products exist!");
+        } else {
+            arr.remove(p);
+        }
+
+    }
+
+    public static void EditProductASSGN() { // feature 4: Edit product: create new name, new price and new quantity.
+        Scanner dyn = new Scanner(System.in);
+        System.out.println("Enter ID of the product to edit: ");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match149-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int Prodid = dyn.nextInt();
+
+        boolean d = false;
+        for (int k = 0; k &lt; arr.size(); k++) { // arr.size: size of the products.
+            if (Prodid == arr.get(k).getProdId()) {
+</FONT>
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match149-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Enter NAME of the product to edit: ");
+                String Prodname = dyn.nextLine();
+                arr.get(k).setProdName(Prodname);
+
+                System.out.println("Enter PRICE of the product to edit: ");
+                double Prodprice = dyn.nextDouble();
+                arr.get(k).setProdPrice(Prodprice);
+
+                System.out.println("Enter QUANTITY of the product: ");
+                int Prodquantity = dyn.nextInt();
+                arr.get(k).setProdQuantity(Prodquantity);
+</FONT>                break;
+
+            }
+        }
+
+        if (d == false) {
+            System.out.println("No exist Product! ");
+        }
+    }
+
+    public static void SearchProductASSGN() { // feature 5: Search product by name.
+        Scanner dyn = new Scanner(System.in);
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match149-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter the keyword to search: ");
+        String searchProdname = dyn.nextLine();
+        boolean Prodname = false;
+        ArrayList&lt;ProductASSGN&gt; arr2 = new ArrayList&lt;&gt;();
+        for (ProductASSGN m : arr) {
+            if (m.getProdName().contains(searchProdname)) {
+                arr2.add(m);
+                Prodname = true;
+            }
+        }
+
+        if (Prodname) {
+</FONT>
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match149-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-12s | %-16s | %-14s | %s %n ", "ProdID", "ProdName", "ProdPrice", "ProdQuantity");
+            System.out.println("************************************************************* ");
+
+            for (ProductASSGN m : arr2) {
+                System.out.printf("%-12s | %-16s | %-14s | %-10d | %n", m.getProdId(), m.getProdName(),
+                        m.getProdPrice(), m.getProdQuantity());
+            }
+        } else {
+            System.out.println("Not found!");
+        }
+    }
+
+    public static void Sort_Price() {// feature 6: Sorting product by price.
+</FONT>
+        ProductASSGN temporary;
+        ArrayList&lt;ProductASSGN&gt; arr3 = new ArrayList&lt;&gt;(arr);
+
+        for (int k = 0; k &lt; arr3.size(); k++) {
+            for (int l = k + 1; l &lt; arr3.size(); l++) {
+                if (arr3.get(k).getProdPrice() &gt; arr3.get(l).getProdPrice()) {
+
+                    // element swapping
+                    temporary = arr3.get(k);
+                    arr3.set(k, arr3.get(l));
+                    arr3.set(l, temporary);
+                }
+            }
+        }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match149-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.printf("%-12s | %-16s | %-14s | %s %n ", "ProdID", "ProdName", "ProdPrice", "ProdQuantity");
+        System.out.println("************************************************************* ");
+
+        for (ProductASSGN m : arr3) {
+            System.out.printf("%-12s | %-16s | %-14s | %-10d | %n", m.getProdId(), m.getProdName(), m.getProdPrice(),
+                    m.getProdQuantity());
+
+        }
+
+    }
+
+    public static void Save_products_to_text() throws Exception { // create the path to the file.
+</FONT>        File duyen = new File("E:\\product.txt");
+        FileOutputStream phuc = new FileOutputStream(duyen);
+        ObjectOutputStream hoang = new ObjectOutputStream(phuc);
+        hoang.writeObject(arr);
+        hoang.close();
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match149-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Load_products_from_the_saved_file() throws Exception { // from file path -&gt; read file and print
+                                                                              // to table.
+        File duyen = new File("E:\\product.txt");
+        FileInputStream learn = new FileInputStream(duyen);
+        ObjectInputStream nguyen = new ObjectInputStream(learn);
+        ArrayList&lt;ProductASSGN&gt; minh = (ArrayList&lt;ProductASSGN&gt;) nguyen.readObject();
+        nguyen.close();
+
+        System.out.printf("%-12s | %-16s | %-14s | %s %n ", "ProdID", "ProdName", "ProdPrice", "ProdQuantity");
+</FONT>        System.out.println("************************************************************* ");
+
+        for (ProductASSGN m : minh) {
+            System.out.printf("%-12s | %-16s | %-14s | %-10d | %n", m.getProdId(), m.getProdName(), m.getProdPrice(),
+                    m.getProdQuantity());
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Scanner dyn = new Scanner(System.in);
+
+        int feature = -1;
+        while (feature != 9) {
+
+            System.out.println("Feature 1 : Add_products");
+            System.out.println("Feature 2 : Display_products");
+            System.out.println("Feature 3 : Delete_product");
+            System.out.println("Feature 4 (optional): Edit_product");
+            System.out.println("Feature 5 : Search_for_products_by_name");
+            System.out.println("Feature 6 (optional): Sort_products_by_price");
+            System.out.println("Feature 7 : Save_products_to_text/binary_file");
+            System.out.println("Feature 8 : Load_products_from_the_saved_file");
+            System.out.println("Feature 9 : End");
+            System.out.println("Choose a feature: ");
+            feature = dyn.nextInt();
+
+            switch (feature) {
+
+                case 1:
+                    AddProductASSGN();
+                    System.out.println("Adding a new product...");
+                    break;
+                case 2:
+                    Display_Product();
+                    System.out.println("Displaying a product...");
+                    break;
+                case 3:
+                    DeleteProductASSGN();
+                    System.out.println("Deleting a product...");
+                    break;
+
+                case 4:
+                    EditProductASSGN();
+                    System.out.println("Editing a product...");
+                    break;
+
+                case 5:
+                    SearchProductASSGN();
+                    System.out.println("Searching product by name");
+                    break;
+
+                case 6:
+                    Sort_Price();
+                    System.out.println("Sorting product by price");
+                    break;
+
+                case 7:
+                    Save_products_to_text();
+                    System.out.println("Saving product...");
+                    break;
+
+                case 8:
+                    Load_products_from_the_saved_file();
+                    System.out.println("Loading product...");
+                    break;
+
+                case 9:
+                    System.out.println("Thanks, goodbye!");
+                    break;
+            }
+
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

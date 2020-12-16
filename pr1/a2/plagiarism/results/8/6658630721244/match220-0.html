@@ -1,0 +1,300 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LeMinhuc_106467_assignsubmission_file_Assignmern2_LeMinhDuc_1901040060_B03.java.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LeMinhuc_106467_assignsubmission_file_Assignmern2_LeMinhDuc_1901040060_B03.java.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LeMinhuc_106467_assignsubmission_file_Assignmern2_LeMinhDuc_1901040060_B03.java.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package product;
+
+import java.io.File;
+import java.util.ArrayList;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match220-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Formatter;
+import java.util.Scanner;
+
+
+/**
+ *
+ * @author lemin
+ */
+public class Product {
+    private Integer id;
+    private String name;
+    private Double price;
+    private Integer quantity;
+</FONT>    
+    public Product() {
+        this.id = null;
+    
+}
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match220-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public Product(Integer id, String name, Double price, Integer quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+</FONT>    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match220-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.quantity = quantity;
+    }
+    static  ArrayList&lt;Product&gt; pro = new ArrayList&lt;&gt;();
+     //Feature 1: Add product
+     public static void AddProduct() {
+        Scanner sc = new Scanner(System.in);
+</FONT>        int i = 1;
+        do {
+            // After complete 1 product entry, the ID number increases to 1
+            System.out.println("If you do not want to add, enter 31 in product name to quit!");
+            System.out.printf("Enter product ID %d: ", i);
+            int id = sc.nextInt();
+            if ( id == 31) {
+            break;
+        }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match220-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+           System.out.print("Enter product name: ");
+           String name = sc.nextLine();
+           sc.nextLine();//without this line, "name" can not input.
+           
+           System.out.print("Enter product price: $");
+           Double price = sc.nextDouble();
+           
+           System.out.print("Enter quantity: ");
+</FONT>           int quantity = sc.nextInt();
+           
+           
+           pro.add(new Product (id, name, price , quantity));
+           sc.nextLine();
+           i++;
+        } while (true);
+        
+    }
+     //Feature 2: Display product
+    public static void DisplayProduct() {
+        System.out.printf("%-15s%-15s%-15s%-15s\n", "Product ID", "Product name", " Product price", "Quantity");
+        for(Product display: pro){
+        System.out.printf("%-15s%-15s%-15.2f%-15d", display.getId(), display.getName(), display.getPrice(), display.getQuantity());
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match220-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println();
+    }
+    
+}
+     //Feature 3: Delete product
+    public static void DeleteProduct() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the product ID you want delete: ");
+        int delete = sc.nextInt();
+</FONT>        int del = 1;
+        boolean b = true;
+        for (int i = 0; i &lt; pro.size(); i++) {
+            if (delete == pro.get(i).getId()) {
+               pro.remove(del);
+               b = true;
+               break;
+            } else if ( b==false) {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match220-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("The product ID you entered is not available");
+            }   
+            }
+    }
+    //Feature 4: Edit product
+    public static void EditProduct() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter product ID you wants edit: ");
+</FONT>        int id = sc.nextInt();
+        boolean a = true;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match220-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; pro.size(); i++) {
+            if(id == pro.get(i).getId()) { 
+                System.out.print("Enter new name: ");
+                String newname = sc.nextLine();
+</FONT>                sc.nextLine();
+                
+                System.out.print("Enter new price: ");
+                Double newprice = sc.nextDouble();
+                
+                System.out.print("Enter new quantity: ");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match220-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                int newquantity = sc.nextInt();
+                
+                pro.get(i).setName(newname);
+                pro.get(i).setPrice(newprice);
+                pro.get(i).setQuantity(newquantity);
+</FONT>                a = true;
+                break;
+            } else if (a == false) {
+                System.out.println("The product ID you entered is not available");
+        }
+        
+            
+}
+    }
+    //Feature 5: Search product
+    public static void SearchProduct() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter product ID you wants find: ");
+        int s = sc.nextInt();
+        for (Product search: pro) {
+            if (search.getId().equals(s)) {
+                DisplayProduct();
+            
+            } else {
+                System.out.println("The product name you entered is not available");
+            }
+        } 
+    
+}
+    //Feature 6: Sort product
+    public static void SortProduct() {
+        Collections.sort(pro, (b, a) -&gt; (int) (a.getPrice() - b.getPrice())); //lambda
+        DisplayProduct();
+    }
+    // Feature 7: Save product
+    public static void SaveProduct() {
+       try {
+			Formatter FOR = new Formatter(new File("Product.txt"));
+			FOR.format("%d\n", pro.size());
+			for (Product save : pro)
+				FOR.format("%-15s%-15s%-15.2s%-15s\n", save.getId(), save.getName(), save.getPrice(), save.getQuantity());
+			FOR.close();
+		} catch (Exception e) {
+			
+		}
+        
+}
+    //Menu 
+    public static void LoadProduct() {
+        try {
+			Scanner in = new Scanner(new File("Product.txt"));
+			int n = in.nextInt();
+			for (int i = 0; i &lt; n; i++) {
+				in.nextLine();
+				int id = in.nextInt();
+				String name = in.next();
+				Double price = in.nextDouble();
+				int quantity = in.nextInt();
+				pro.add(new Product(id, name, price, quantity));
+			}
+		} catch (Exception e) {
+			
+		}
+	}
+           
+        
+        
+    
+    //Print Menu
+    public static void main (String args[]) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match220-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Add products\n" +
+                           "2. Display products\n" +
+                           "3. Delete a product\n" +
+                           "4. Edit a product\n"+
+                           "5. Search for products by name\n" +
+                           "6. Sort for products by name\n" +
+                           "7. Save products to text file\n" +
+                           "8. Load products from the saved file\n");
+                           
+                           
+        do {
+           System.out.println("Choose an option: ");
+           int choose = sc.nextInt();
+            switch (choose) {
+                case 1:
+                    AddProduct();
+                    break;
+                case 2:
+                    DisplayProduct();
+                    break;
+</FONT>                case 3:
+                    DeleteProduct();
+                    break;
+                case 4:
+                    EditProduct();
+                    break;
+                case 5:
+                    SearchProduct();
+                    break;
+                case 6: 
+                    SortProduct();
+                    break;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match220-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                case 7:
+                    SaveProduct(); 
+                    break;
+                case 8:
+                    LoadProduct();
+                    break;
+                default: 
+                    break;
+            }
+            System.out.println("Do you want continue?");
+            System.out.println("1. Yes      9. No");
+            int choice = sc.nextInt();
+            if ( choice == 9) {
+            System.out.println("Goodbye and see you again!");
+            break;
+        } 
+    } while(true);
+</FONT>        }
+
+    
+    
+    
+   
+    
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

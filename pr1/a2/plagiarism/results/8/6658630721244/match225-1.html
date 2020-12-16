@@ -1,0 +1,269 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTrungKien_106385_assignsubmission_file_Assiggment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TranDuongSon_106489_assignsubmission_file_Ass2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TranDuongSon_106489_assignsubmission_file_Ass2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ass2;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ *
+ * @author duongsonn
+ */
+public class Ass2 {
+    static Scanner input = new Scanner(System.in);
+    static ArrayList&lt;String&gt; NameOP = new ArrayList&lt;&gt;();
+    static ArrayList&lt;Double&gt; PriceOP = new ArrayList&lt;&gt;();
+    static ArrayList&lt;Integer&gt; QuantityOP = new ArrayList&lt;&gt;();
+    public static String[] tempo;
+    public static String output;
+    static File fileASS2 = new File("Assignment2");
+    
+    static void AddAndDisplayP(){
+        System.out.println("Accessing...");
+        System.out.println("Completed...");
+        System.out.println();
+        System.out.println("How many products are there in your program?");
+        System.out.println("Number: ");
+        int idToAdd = input.nextInt();
+        try{
+        System.out.println("Starting...");
+        for(int i=0 ; i &lt; idToAdd; i++){
+            input.nextLine();
+            String nameAdd; double priceAdd; int quantityAdd;
+            System.out.println("Enter the Name of Product["+(i+1)+"]: ");
+            nameAdd = input.nextLine();
+            NameOP.add(nameAdd);
+            System.out.println("Enter the Price of Product["+(i+1)+"]: ");
+            priceAdd = Double.parseDouble(input.nextLine());
+            PriceOP.add(priceAdd);
+            System.out.println("Enter the Quantity of Product["+(i+1)+"]: ");
+            quantityAdd = input.nextInt();
+            QuantityOP.add(quantityAdd);
+        }
+        System.out.println("Adding...\n"+"Completed...\n");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match225-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("|-ID---Name----Price----Quantity-|");
+        for(int i =1 ; i &lt;= NameOP.size(); i++){
+            System.out.printf("| %d | %6S | %8.2f | %6d | %n", i , NameOP.get(i-1), PriceOP.get(i-1),QuantityOP.get(i-1));
+        }
+        System.out.println("|________________________________|");
+</FONT>        } catch (Exception e) {
+        System.out.println("Something wrong...PLs try another value!");
+        }
+    }
+    
+    static void deleteP(){
+        System.out.println("Accessing...");
+        System.out.println("Completed...");
+        System.out.println();
+        System.out.println("Enter the Product ID need to be removed: ");
+        int idToDel = input.nextInt();
+        NameOP.remove(idToDel-1);
+        PriceOP.remove(idToDel-1);
+        QuantityOP.remove(idToDel-1);
+        System.out.println("Deleting...\n"+"Completed...\n");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match225-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("|-ID---Name-----Price----Quantity-|");
+        for(int i = 1; i &lt;= NameOP.size(); i++){
+            System.out.printf("| %d | %6S | %8.2f | %6d | %n", i ,NameOP.get(i-1), PriceOP.get(i-1),QuantityOP.get(i-1));
+</FONT>        
+        }
+        System.out.println("|________________________________|");
+    }
+    
+    static void editP() {
+        System.out.println("Accessing...");
+        System.out.println("Completed...");
+        System.out.println();
+        int condition;
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match225-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        condition =1;
+        while(condition==1){
+            System.out.println("Enter the Product ID need to be changed: ");
+            int idToEdit = input.nextInt();
+            while(true){    
+                System.out.println("Change:  \n" + "1. Product's name \n" +"2. Product's price \n"+"3. Product's quantity: \n"+"4. Return the main menu \n");
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match225-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Enter your option: ");
+                String option = input.nextLine();
+                if(option.equalsIgnoreCase("1")){
+                    System.out.println("New name is: ");
+                    String nameToEdit = input.nextLine();
+                    NameOP.set(idToEdit-1, nameToEdit);
+                }else if (option.equalsIgnoreCase("2")){
+                    System.out.println("New price is: ");
+                    double priceToEdit = Double.parseDouble(input.nextLine());
+                    PriceOP.set(idToEdit-1,priceToEdit);
+                }else if(option.equalsIgnoreCase("3")){
+                    System.out.println("New quantity is: ");
+                    int quantityToEdit = Integer.parseInt(input.nextLine());
+                    QuantityOP.set(idToEdit-1, quantityToEdit);   
+                }else if(option.equalsIgnoreCase("4")){
+                    System.out.println("");
+                    idToEdit=0;
+                    break;
+                }else {
+                    System.out.println("Invalid value!");
+</FONT>                }
+                System.out.println("Editing...");
+                System.out.println("Completed...");
+                System.out.println("The table have been updated...");
+                System.out.println("|-ID---Name------Price----Quantity-|");
+                for(int i = 1; i &lt;= PriceOP.size(); i++){
+                System.out.printf("| %d | %6S | %8.2f | %6d | %n", i ,NameOP.get(i-1), PriceOP.get(i-1),QuantityOP.get(i-1));
+                }
+            }
+        }
+    }
+    public static void searchP(){
+        System.out.println("Accessing...");
+        System.out.println("Completed...");
+        while(true){
+            try{
+                input.nextLine();
+                System.out.println("Enter the product' name: ");
+                String nameToSearch = input.nextLine();
+                System.out.println("Enter 'stop' to return the main menu...");
+                if(nameToSearch.equalsIgnoreCase("stop")){
+                    break;
+                }else{
+                    for(int i = 1 ; i &lt;= NameOP.size();i++){
+                        if(nameToSearch.equalsIgnoreCase(NameOP.get(i-1))){
+                            System.out.println("This is all product'information: ");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match225-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println("|-ID--Name-----Price----Quantity-|");                    
+                            System.out.printf("| %d | %6S | %8.2f | %6d | %n", i ,NameOP.get(i-1), PriceOP.get(i-1),QuantityOP.get(i-1));
+</FONT>                        break;    
+                        }
+                    }
+                }
+            }
+            catch(Exception e){
+                System.out.println();
+            }
+        }
+    }
+    
+    public static void sortP(){
+        System.out.println("Accessing...");
+        System.out.println("Completed...");
+        System.out.println("");
+            for (int i = 1; i &lt;= PriceOP.size(); i++) {
+                for (int j = i+1;j&lt;=PriceOP.size(); j++) {
+                    if (PriceOP.get(i-1) &gt; PriceOP.get(j-1)) {
+			String nameSort = NameOP.get(i-1);
+			double priceSort = PriceOP.get(i-1);
+			int quantitySort = QuantityOP.get(i-1);
+                        NameOP.set(i-1, NameOP.get(j-1));
+			PriceOP.set(i-1, PriceOP.get(j-1));
+			QuantityOP.set(i-1, QuantityOP.get(j-1));
+			NameOP.set(j-1, nameSort);
+			PriceOP.set(j-1, priceSort);
+			QuantityOP.set(j-1, quantitySort);
+                    }
+		}
+            }
+            System.out.println("Sorting...\n"+"Completed...\n");
+            System.out.println("The table have been updated...");
+            System.out.println("|-ID--Name-----Price----Quantity-|");
+            for(int i = 1; i &lt;= NameOP.size(); i++){
+                System.out.printf("| %d | %6S | %8.2f | %6d | %n", i ,NameOP.get(i-1), PriceOP.get(i-1),QuantityOP.get(i-1));
+            }
+            System.out.println("|________________________________|");
+
+    }
+    
+    public static void saveP() throws Exception {
+        System.out.println("Accessing...");
+        System.out.println("Completed...");
+        System.out.println("");
+        System.out.println("Saving...");
+        System.out.printf("The products have been saved to a %s.text",fileASS2.getName());
+        System.out.println("");
+    	tempo = new String[NameOP.size()];
+    	output = String.format("|-ID--Name-----Price----Quantity-|");
+        for (int i = 1 ; i &lt;= NameOP.size(); i ++) {
+            tempo[i] = String.format("| %d | %6S | %8.2f | %6d |", i ,NameOP.get(i-1), PriceOP.get(i-1),QuantityOP.get(i-1));
+        }
+        output = String.format("|________________________________|");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match225-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    	FileOutputStream fileSave = new FileOutputStream(fileASS2);
+        ObjectOutputStream objectOS = new ObjectOutputStream(fileSave);
+            objectOS.writeObject(output);
+            objectOS.writeObject(tempo);
+            objectOS.close();
+    }
+    
+    public static void loadP() throws Exception{
+</FONT>	System.out.printf("Display the File: %s !",fileASS2.getName());
+	System.out.println();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match225-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	FileInputStream fileIS = new FileInputStream(fileASS2);
+        ObjectInputStream objectIS = new ObjectInputStream(fileIS);
+            output= (String) objectIS.readObject();
+            tempo = (String[]) objectIS.readObject();
+            objectIS.close();
+</FONT>        System.out.println(output);
+        for(int i = 0 ; i &lt; NameOP.size(); i ++) {
+            System.out.println(tempo[i]);
+	}
+    }
+    
+    public static void main(String[] args){
+        while(true){
+            try{
+                System.out.println("------------------MENU-------------------");
+            	System.out.print("| 1. Add and Display the products        | \n| 2. Delete a product by its product ID  | \n| 3. Edit a product                      | \n| 4. Search for products by name         | \n| 5. Sort products by price              | \n| 6. Save products to binary file        | \n| 7. Load products from the saved file   | \n_________________________________________ \n" ) ;   	
+                System.out.print("The Figure: ");
+		int figure = input.nextInt();
+		System.out.println();
+                switch(figure){
+                    case 1: AddAndDisplayP(); 
+                        break;
+                    case 2: deleteP();
+                        break;
+                    case 3: editP();
+                        break;
+                    case 4: searchP(); 
+                        break;
+                    case 5: sortP();  
+                        break;
+                    case 6: saveP();    
+                        break;                      
+                    case 7: loadP();
+                        break;
+                    default: System.out.println("Invalid value! Please try again!"); 
+                }
+            }catch(Exception e){
+                System.out.println("");
+                input.nextLine();
+            }
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

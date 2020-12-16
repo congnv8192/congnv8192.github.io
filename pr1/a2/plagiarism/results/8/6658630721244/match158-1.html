@@ -1,0 +1,269 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTungAnh_106463_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamVietHuy_106362_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamVietHuy_106362_assignsubmission_file_Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment2;
+
+import java.util.*;
+import java.io.*;
+
+/**
+ *
+ * @author Phong Son
+ */
+public class Assignment2 {
+
+    /**
+     * @param args the command line arguments
+     */
+     public static Scanner s = new Scanner(System.in);
+public static ArrayList&lt;Integer&gt; A2Id = new ArrayList&lt;Integer&gt;();
+public static ArrayList&lt;String&gt; A2Name = new ArrayList&lt;String&gt;();
+public static ArrayList&lt;String&gt; A2Price = new ArrayList&lt;String&gt;();
+public static ArrayList&lt;String&gt; A2Quantity = new ArrayList&lt;String&gt;();
+static String More = "";
+static String UserName ="";
+static String ProductPrice="";
+static String ProductQuantity="";
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        System.out.println("---------------------------");
+        System.out.println("1: Add products");
+        System.out.println("2: Display products");
+        System.out.println("3: Delete products");
+        System.out.println("4: Edit products");
+        System.out.println("5: Search for products by name");
+        System.out.println("6: Sort products by price");
+        System.out.println("7: Save products to text/binary file");
+        System.out.println("8: Load products from save file");
+        System.out.println("9: Exit");
+        System.out.println("---------------------------");
+        System.out.print("Enter your choice: ");
+         int MenuInput = s.nextInt();
+        s.nextLine();
+        switch (MenuInput) {
+            case 1:
+                feature1();
+                break;
+            case 2:
+                feature2();
+                break;
+            case 3:
+                feature3();
+                break;
+            case 4:
+                feature4();
+                break;
+            case 5:
+                feature5();
+                break;
+            case 6:
+                feature6();
+                break;
+            case 7:
+                feature7();
+                break;
+            case 8:
+                feature8();
+                break;
+            case 9:
+                System.out.println("See you again!!!");
+                break;
+            default:
+                s.close();
+                return;
+        }
+rerun();
+    }
+     private static void rerun() throws IOException, ClassNotFoundException {
+             System.out.println("Do you want to continue? (Yes/No)");
+     String h = s.nextLine();
+     if (h.equalsIgnoreCase("no")){
+         System.out.println("See you again!!!");
+     }else if (h.equalsIgnoreCase("yes")){
+         main(null);
+     }else{
+         System.out.println("Error");
+     }        
+        }
+     public static void feature1(){
+         System.out.println("Add Product!");
+         int a = 1;
+         do {
+             System.out.println("Prodcut"+(a)+": ");
+             System.out.println("--------------------");
+         System.out.println("Enter product's name: ");
+         String UserName = s.next();
+         System.out.println("Enter product's price: ");
+         String ProductPrice = s.next();
+         System.out.println("Enter product's quantity: ");
+         String ProductQuantity = s.next();
+             System.out.println("--------------------");
+             System.out.println("Do you want to add more product?"
+                     + "Y/N");
+             More = s.next();
+             a++;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match158-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+             s.nextLine();
+         A2Name.add(UserName);
+         A2Price.add(ProductPrice);
+         A2Quantity.add(ProductQuantity);
+         A2Id.add(A2Name.size());
+</FONT>         }while(More.equalsIgnoreCase("y"));
+         System.out.println("Product Added!!!");
+     }
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match158-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+     public static void feature2(){
+         for (int a = 0; a &lt; A2Id.size(); a++){
+             System.out.println(A2Id.get(a) + "        |        " + A2Name.get(a) + "        |        " + A2Price.get(a) + "        |        " + A2Quantity.get(a));
+</FONT>         }
+    }
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match158-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+     public static void feature4(){
+         System.out.println("Enter product's Id you want to edit: ");
+         int EditId = s.nextInt();
+         s.nextLine();
+         System.out.println("Edit product's name here: ");
+         String EditName = s.next();
+         s.nextLine();
+         System.out.println("Edit product's price here: ");
+</FONT>         String EditPrice = s.next();
+         s.nextLine();
+         System.out.println("Enter product's quantity here: ");
+         String EditQuantity = s.next();
+         s.nextLine();
+         A2Name.set(EditId, EditName);
+         A2Price.set(EditId, EditPrice);
+         A2Quantity.set(EditId, EditQuantity);}
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match158-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void feature3 (){
+        System.out.println("Enter product's Id you want to delete: ");
+        int DeleteProduct = s.nextInt();
+        s.nextLine();
+       A2Id.remove(DeleteProduct - 1);
+       A2Name.remove(DeleteProduct - 1);
+       A2Price.remove(DeleteProduct - 1);
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match158-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+       A2Quantity.remove(DeleteProduct - 1);}
+    public static void feature5(){
+        System.out.println("Enter product's name to search: ");
+    String PSearch = s.nextLine();
+    for (int a = 0; a &lt; A2Name.size(); a ++){
+    if (PSearch.equalsIgnoreCase(A2Name.get(a))){
+        System.out.println(A2Id.get(a) + "          |        " + A2Name.get(a) + "        |        " + A2Price.get(a) + "        |       " + A2Quantity.get(a));
+</FONT>        break;
+    }
+        System.out.println("Not found!");}
+    }
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match158-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void feature7() throws FileNotFoundException, IOException {
+        ObjectOutputStream SaveId = new ObjectOutputStream(new FileOutputStream("SId.bin"));
+        SaveId.writeObject(A2Id);
+        SaveId.close();
+
+        ObjectOutputStream SaveName = new ObjectOutputStream(new FileOutputStream("SName.bin"));
+        SaveName.writeObject(A2Name);
+        SaveName.close();
+
+        ObjectOutputStream SavePrice = new ObjectOutputStream(new FileOutputStream("SPrice.bin"));
+        SavePrice.writeObject(A2Price);
+        SavePrice.close();
+
+        ObjectOutputStream SaveQuantity = new ObjectOutputStream(new FileOutputStream("SQuantity.bin"));
+        SaveQuantity.writeObject(A2Quantity);
+        SaveQuantity.close();
+    }
+    public static void feature8() throws IOException, FileNotFoundException, ClassNotFoundException {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match158-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        ObjectInputStream LoadId = new ObjectInputStream(new FileInputStream("SId.bin"));
+        A2Id = (ArrayList&lt;Integer&gt;) LoadId.readObject();
+        LoadId.close();
+        
+        ObjectInputStream LoadName = new ObjectInputStream(new FileInputStream("SName.bin"));
+        A2Name = (ArrayList&lt;String&gt;) LoadName.readObject();
+        LoadName.close();
+        
+        ObjectInputStream LoadPrice = new ObjectInputStream(new FileInputStream("SPrice.bin"));
+        A2Price = (ArrayList&lt;String&gt;) LoadPrice.readObject();
+        LoadPrice.close();
+        
+        ObjectInputStream LoadQuantity = new ObjectInputStream(new FileInputStream("SQuantity.bin"));
+       A2Quantity = (ArrayList&lt;String&gt;) LoadQuantity.readObject();
+        LoadQuantity.close();
+    }
+    public static void feature6(){
+        System.out.println("Enter your product's price to search: ");
+</FONT>        int h = s.nextInt();
+        s.nextLine();
+        
+        
+    }
+}
+class Product{
+    private int id;
+    private String name;
+    private int price, quantity;
+
+    public Product(int id, String name, int price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+
+    
+    
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

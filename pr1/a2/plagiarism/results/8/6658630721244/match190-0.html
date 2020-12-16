@@ -1,0 +1,330 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1701040080LeTrungKien_106290_assignsubmission_file_MyAssignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1701040080LeTrungKien_106290_assignsubmission_file_MyAssignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1701040080LeTrungKien_106290_assignsubmission_file_MyAssignment2.java
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match190-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package myassignment2;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class MyAssignment2 {
+</FONT>
+    public static Scanner O = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        LaptopManager laptopManager = new LaptopManager();
+        String choose;
+        boolean exit = false;
+        int laptopId;
+        String laptopName;
+        showMenu();
+
+        while (true) {
+            choose = O.nextLine();
+            switch (choose) {
+                case "1":
+                    laptopManager.add();
+                    break;
+                case "2":
+                    laptopManager.showAll();
+                    break;
+                case "3":
+                    laptopId = laptopManager.inputId();
+                    laptopManager.delete(laptopId);
+                    break;
+                case "4":
+                    laptopId = laptopManager.inputId();
+                    laptopManager.edit(laptopId);
+                    break;
+                case "5":
+                    laptopName = laptopManager.inputName();
+                    laptopManager.searchByName(laptopName);
+                    break;
+                case "6":
+                    laptopManager.sortByPrice();
+                    break;
+                case "7":
+                    laptopManager.saveToTextFile();
+                    break;
+                case "8":
+                    laptopManager.loadFromSavedFile();
+                    break;
+                case "0":
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match190-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Thank you!");
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Wrong! Please retry");
+                    break;
+            }
+            if (exit) {
+                break;
+            }
+            // show menu
+            showMenu();
+        }
+    }
+
+    /**
+     * create menu
+     */
+    public static void showMenu() {
+        System.out.println("Welcome to laptop products menu program");
+        System.out.println("Enter 1. To add products.");
+        System.out.println("Enter 2. To display products.");
+</FONT>        System.out.println("Enter 3. To delete a product.");
+        System.out.println("Enter 4. To edit a product.");
+        System.out.println("Enter 5. To search for product by name.");
+        System.out.println("Enter 6. To sort products by price.");
+        System.out.println("Enter 7. To save products to text file.");
+        System.out.println("Enter 8. To load products from the saved file.");
+        System.out.println("Enter 0. To exit.");
+        System.out.println();
+        System.out.print("Enter your choice: ");
+    }
+
+    public static class Laptop implements Serializable {
+
+        private int id;
+        private String name;
+        private int price;
+        private String quantity;
+
+        public Laptop(int id, String name, int price, String quantity) {
+            this.id = id;
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+        public Laptop() {
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public void setPrice(int price) {
+            this.price = price;
+        }
+
+        public String getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(String quantity) {
+            this.quantity = quantity;
+        }
+    }
+
+    public static class LaptopManager {
+
+        private ArrayList&lt;Laptop&gt; laptops;
+
+        public LaptopManager() {
+            laptops = new ArrayList&lt;&gt;();
+        }
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match190-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        public void add() {
+            int id = (laptops.size() &gt; 0) ? (laptops.size() + 1) : 1;
+            System.out.println("Laptop ID = " + id);
+            String name = inputName();
+</FONT>            int price = inputPrice();
+            String quantity = inputQuantity();
+
+            Laptop laptop = new Laptop(id, name, price, quantity);
+            laptops.add(laptop);
+        }
+
+        public void showAll() {
+            System.out.println("List laptop");
+            laptops.forEach((laptop) -&gt; {
+                show(laptop);
+            });
+        }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match190-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        private void show(Laptop laptop) {
+            System.out.format("%10d | ", laptop.getId());
+            System.out.format("%10s | ", laptop.getName());
+            System.out.format("%10d | ", laptop.getPrice());
+            System.out.format("%10s |", laptop.getQuantity());
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match190-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println();
+        }
+
+        public void delete(int id) {
+            Laptop laptop = null;
+            int size = laptops.size();
+            for (int i = 0; i &lt; size; i++) {
+                if (laptops.get(i).getId() == id) {
+                    laptop = laptops.get(i);
+                    break;
+                }
+            }
+            if (laptop != null) {
+                laptops.remove(laptop);
+</FONT>            } else {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match190-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.printf("id = %d not existed.\n", id);
+            }
+        }
+
+        public void edit(int id) {
+            boolean isExisted = false;
+            int size = laptops.size();
+            for (int i = 0; i &lt; size; i++) {
+                if (laptops.get(i).getId() == id) {
+                    isExisted = true;
+                    laptops.get(i).setName(inputName());
+                    laptops.get(i).setPrice(inputPrice());
+                    laptops.get(i).setQuantity(inputQuantity());
+                    break;
+                }
+            }
+            if (!isExisted) {
+                System.out.printf("id = %d not existed.\n", id);
+</FONT>            }
+        }
+
+        public void searchByName(String name) {
+
+            Laptop laptop = null;
+            int size = laptops.size();
+            for (int i = 0; i &lt; size; i++) {
+                if (laptops.get(i).getName().trim().equals(name.trim())) {
+                    laptop = laptops.get(i);
+                    break;
+                }
+            }
+            if (laptop != null) {
+                show(laptop);
+            } else {
+                System.out.printf("name = %d not existed.\n", name);
+            }
+
+        }
+
+        public void sortByPrice() {
+            Collections.sort(laptops, (Laptop laptop1, Laptop laptop2) -&gt; {
+                if (laptop1.getPrice() &gt; laptop2.getPrice()) {
+                    return 1;
+                }
+                return -1;
+            });
+        }
+
+        private static final String LAPTOP_FILE_NAME = "laptop.txt";
+
+        public void saveToTextFile() {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match190-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FileOutputStream fos = null;
+            ObjectOutputStream oos = null;
+            try {
+                fos = new FileOutputStream(new File(LAPTOP_FILE_NAME));
+                oos = new ObjectOutputStream(fos);
+                oos.writeObject(laptops);
+</FONT>
+                fos.close();
+                oos.close();
+            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
+            }
+        }
+
+        public ArrayList&lt;Laptop&gt; loadFromSavedFile() {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match190-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+                fis = new FileInputStream(new File(LAPTOP_FILE_NAME));
+                ois = new ObjectInputStream(fis);
+                laptops = (ArrayList&lt;Laptop&gt;) ois.readObject();
+</FONT>
+                fis.close();
+                ois.close();
+            } catch (FileNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
+            }
+            return laptops;
+        }
+
+        public String inputName() {
+            System.out.print("Input laptop name: ");
+            return O.nextLine();
+        }
+
+        private int inputPrice() {
+            System.out.print("Input laptop price: ");
+            while (true) {
+                try {
+                    int age = Integer.parseInt((O.nextLine()));
+                    if (age &lt; 0) {
+                        throw new NumberFormatException();
+                    }
+                    return age;
+                } catch (NumberFormatException ex) {
+                    System.out.print("Invalid! Input laptop ID again: ");
+                }
+            }
+        }
+
+        private String inputQuantity() {
+            System.out.print("Input laptop quantity: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match190-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            return O.nextLine();
+        }
+
+        public int inputId() {
+            System.out.print("Input laptop ID: ");
+            while (true) {
+                try {
+                    int id = Integer.parseInt((O.nextLine()));
+                    return id;
+                } catch (NumberFormatException ex) {
+                    System.out.print("Invalid! Input laptop ID again: ");
+</FONT>                }
+            }
+        }
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

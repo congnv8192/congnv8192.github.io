@@ -1,0 +1,228 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoangNguyenThuyDuong_106313_assignsubmission_file_HoangNguyenThuyDuong_1TD19_1901060012.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenThiThuHuong_106367_assignsubmission_file_NguyenThiThuHuong_2TD19_1901060021.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenThiThuHuong_106367_assignsubmission_file_NguyenThiThuHuong_2TD19_1901060021.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match123-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package nguyenthithuhuong_2td19_1901060021;
+
+import java.io.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+/**
+ * @author Nguyen Thi Thu Huong
+ * ID: 1901060021
+ * Class: 2TD19
+ */
+
+class NguyenThiThuHuong_2TD19_1901060021 {
+    String id;
+</FONT>    final String name;
+    final double price;
+    final int quantity;
+
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match123-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    NguyenThiThuHuong_2TD19_1901060021(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+</FONT>        setId();
+    }
+
+    /* id is a random number */
+    void setId() {
+        String numeric = "0123456789";
+        String alpha = "abcdefghijklmnopqrstuvwxyz";
+        int num = (int) (Math.random() * 6);
+        int ch = (int) (Math.random() * 20);
+        this.id = numeric.substring(num, num + 2) + alpha.substring(ch, ch + 2).toUpperCase();
+    }
+
+    void display() {
+        System.out.printf("%-10s%-15s%-10.2f%d\n", id, name, price, quantity);
+    }
+
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match123-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) {
+        NguyenThiThuHuong_2TD19_1901060021[] allProducts = new NguyenThiThuHuong_2TD19_1901060021[30];
+        String path = "data.txt";
+        Scanner input = new Scanner(System.in);
+        int total = 0, menu = 0;
+</FONT>        do {
+            System.out.print("\nManager Program Menu:\n" +
+                             "1 - Add product\n" +
+                             "2 - Display products\n" +
+                             "3 - Delete product\n" +
+                             "4 - Edit product\n" +
+                             "5 - Search product by name\n" +
+                             "6 - Sort price\n" +
+                             "7 - Save file\n" +
+                             "8 - Load from file\n" +
+                             "You choose (0 to exit program): ");
+            try {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match123-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                menu = Integer.parseInt(input.nextLine());
+                switch (menu) {
+                    case 1: {
+                        System.out.print("Total products: ");
+                        total = Integer.parseInt(input.nextLine());
+                        for (int i = 0; i &lt; total; ++i)
+</FONT>                            try {
+                                insert(allProducts, input, i);
+                            } catch (InputMismatchException | NumberFormatException ex) {
+                                System.out.println("Wrong format input");
+                                ex.printStackTrace();
+                            }
+                        break;
+                    }
+                    case 2: {
+                        for (int i = 0; i &lt; total; ++i)
+                            allProducts[i].display();
+                        System.out.println();
+                        break;
+                    }
+                    case 3: {
+                        System.out.print("Enter product ID to delete: ");
+                        String id = input.nextLine();
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match123-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        boolean found = false;
+                        for (int i = 0; i &lt; total; i++) {
+                            if (allProducts[i].id.equals(id)) {
+                                --total;
+                                found = true;
+                                if (total - i &gt;= 0)
+                                    System.arraycopy(allProducts, i + 1, allProducts, i, total - i);
+                                System.out.println("Product deleted");
+                            }
+                        }
+                        if (!found)
+                            System.out.println("Not found");
+</FONT>                        break;
+                    }
+                    case 4: {
+                        System.out.print("ID: ");
+                        String id = input.nextLine();
+                        for (int i = 0; i &lt; total; ++i) {
+                            if (allProducts[i].id.equals(id)) {
+                                insert(allProducts, input, i);
+                                System.out.println("Edited");
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    case 5: {
+                        search(allProducts, input, total);
+                        break;
+                    }
+                    case 6: {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match123-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        sort(allProducts, total);
+                        break;
+                    }
+                    case 7:
+                        writeToFile(allProducts, path, total);
+                        break;
+                    case 8:
+                        total = readFromFile(allProducts, path, total);
+                        break;
+                    default:
+                        System.out.println("You should choose in range [0, 8]\n");
+                }
+            } catch (InputMismatchException | NumberFormatException | IOException ex) {
+                System.out.println("Try again");
+                ex.printStackTrace();
+            }
+        } while (menu != 0);
+        input.close();
+</FONT>    }
+
+    static void sort(NguyenThiThuHuong_2TD19_1901060021[] allProducts, int total) {
+        for (int i = 0; i &lt; total; ++i)
+            for (int j = 0; j &lt; total - i - 1; j++)
+                if (allProducts[j].price &gt; allProducts[j + 1].price) {
+                    NguyenThiThuHuong_2TD19_1901060021 temp = allProducts[j];
+                    allProducts[j] = allProducts[j + 1];
+                    allProducts[j + 1] = temp;
+                }
+        System.out.println("Array sorted!");
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match123-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static void search(NguyenThiThuHuong_2TD19_1901060021[] allProducts, Scanner input, int total) {
+        System.out.print("Enter product name to search: ");
+        if (input.hasNextLine()) {
+            String name = input.nextLine();
+            boolean found = false;
+            for (int i = 0; i &lt; total; i++)
+                if (allProducts[i].name.equals(name)) {
+                    found = true;
+                    allProducts[i].display();
+                }
+            if (!found)
+                System.out.println("Not found!");
+        } else System.out.println("Invalid input!");
+</FONT>    }
+
+    static void insert(NguyenThiThuHuong_2TD19_1901060021[] allProducts, Scanner input, int i) {
+        System.out.print("Product name: ");
+        String name = input.nextLine();
+        System.out.print("Product price: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match123-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double price = Double.parseDouble(input.nextLine());
+        System.out.print("Product quantity: ");
+        int quantity = Integer.parseInt(input.nextLine());
+        allProducts[i] = new NguyenThiThuHuong_2TD19_1901060021(name, price, quantity);
+        System.out.println("ID: " + allProducts[i].id);
+</FONT>    }
+
+    static int readFromFile(NguyenThiThuHuong_2TD19_1901060021[] allProducts, String output, int total) throws FileNotFoundException {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match123-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        File file = new File(output);
+        if (file.exists()) {
+            Scanner fileScan = new Scanner(file);
+            int i = total;
+            while (fileScan.hasNextLine()) {
+                String[] info = fileScan.nextLine().split(";");
+                allProducts[i++] = new NguyenThiThuHuong_2TD19_1901060021(info[0], Double.parseDouble(info[1]), Integer.parseInt(info[2]));
+</FONT>            }
+            total = i;
+        }
+        return total;
+    }
+
+    static void writeToFile(NguyenThiThuHuong_2TD19_1901060021[] allProducts, String path, int total) throws IOException {
+        System.out.println(total);
+        FileWriter writer = new FileWriter(path);
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match123-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        BufferedWriter writeFile = new BufferedWriter(writer);
+        for (int i = 0; i &lt; total; i++)
+            writeFile.write(allProducts[i].name + ";" + allProducts[i].price + ";" + allProducts[i].quantity + "\n");
+</FONT>        writeFile.close();
+        System.out.println("Successfully!");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

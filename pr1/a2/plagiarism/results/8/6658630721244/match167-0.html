@@ -1,0 +1,194 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/PhamThiLoan_106549_assignsubmission_file_PhamThiLoan_2C19_1901040125.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamThiLoan_106549_assignsubmission_file_PhamThiLoan_2C19_1901040125.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamThiLoan_106549_assignsubmission_file_PhamThiLoan_2C19_1901040125.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment2;
+
+import java.io.File;
+import java.io.FileOutputStream;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match167-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * PHAM THI LOAN 2C19
+ */
+class product {
+
+    private int id;
+    private String name;
+    private double price;
+    private int quantity;
+
+    public product(int id, String name, double price, int quantity) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+</FONT>
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match167-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+}
+
+public class PhamThiLoan_2C19_1901040125 {
+
+    public static void main(String[] args) throws Exception {
+</FONT>
+        Scanner sc = new Scanner(System.in);
+        List&lt;product&gt; list = new ArrayList&lt;&gt;();
+
+        while (true) {
+
+            System.out.println(
+                    "---Menu---\n" + "- Feature 1: Add products\n"
+                    + "- Feature 2: Display products\n"
+                    + "- Feature 3: Delete a product\n"
+                    + "- Feature 4 (optional): Edit a product\n"
+                    + "- Feature 5: Search for products by name\n"
+                    + "- Feature 6 (optional): Sort products by price\n"
+                    + "- Feature 7: Save products to text/binary file\n"
+                    + "- Feature 8: Load products from the saved file");
+            System.out.print("Enter the number of function: ");
+            try {
+                int n = sc.nextInt();
+                if (n == 1) {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match167-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    Scanner sc1 = new Scanner(System.in);
+                    System.out.print("Number of products: ");
+                    int z = sc1.nextInt();
+                    for (int i = 1; i &lt; z + 1; i++) {
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match167-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("");
+                        System.out.println("Product ID: " + i);
+                        int id = i;
+                        Scanner scan = new Scanner(System.in);
+                        System.out.print("Product name: ");
+                        String name = scan.nextLine();
+                        System.out.print("Product price: ");
+                        double price = scan.nextDouble();
+                        System.out.print("Quantity: ");
+                        int quantity = scan.nextInt();
+                        list.add(new product(id, name, price, quantity));
+</FONT>                    }
+
+                } else if (n == 2) {
+
+                    for (int i = 0; i &lt; n; i++) {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println(list.get(i).getName() + "\t" + list.get(i).getPrice() + "\t" + list.get(i).getQuantity());
+                    }
+
+                } else if (n == 3) {
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match167-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Enter the id to delete: ");
+                    int select = sc.nextInt();
+                    for (int i = 0; i &lt; list.size(); i++) {
+                        int ds = list.get(i).getId();
+                        if (select == ds) {
+                            list.remove(i);
+                        } else {
+                            System.out.println("Invalid ID!");
+</FONT>                        }
+                    }
+
+                } else if (n == 5) {
+                    Scanner scam = new Scanner(System.in);
+                   
+                        System.out.println("Enter product name : ");
+                        String nn = scam.nextLine();
+
+                        for (int i = 0; i &lt; list.size(); i++) {
+                            if (list.get(i).getName().contains(nn)) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match167-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                                System.out.println("Product ID: " + list.get(i).getId());
+                                System.out.println("Product price: " + list.get(i).getPrice());;
+                                System.out.println("Product quantity: " + list.get(i).getQuantity());
+</FONT>                                break;
+                            }
+
+                        }
+
+                    
+
+                } else if (n == 7) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match167-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    File f = new File("bn.txt");
+                    String[] b = new String[list.size()];
+                    for (int i = 0; i &lt; list.size(); i++) {
+                        b[i] = String.format("\t", i, list.get(i).getName(), list.get(i).getPrice(), list.get(i).getQuantity());
+                    }
+                    FileOutputStream fos = new FileOutputStream(f);
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(b);
+                    oos.close();
+                    System.out.printf("Completed!");
+</FONT>                }
+            } catch (Exception e) {
+                System.out.println("Invalid value!");
+                sc.nextLine();
+            }
+        }
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

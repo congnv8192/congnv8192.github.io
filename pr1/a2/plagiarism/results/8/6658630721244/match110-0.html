@@ -1,0 +1,293 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenThiYen_106464_assignsubmission_file_NguyenThiYen_2TD19_1901060058.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenThiYen_106464_assignsubmission_file_NguyenThiYen_2TD19_1901060058.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenThiYen_106464_assignsubmission_file_NguyenThiYen_2TD19_1901060058.java
+package NguyenThiYen_2TD19_1901060058;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match110-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * @author Nguyen Thi Yen
+ * ID: 1901060058
+ * Class: 2TD19
+ */
+
+public class NguyenThiYen_2TD19_1901060058 {
+
+    public static class Product {
+
+        private static int idAutomatic;
+        private int id;
+        private String name;
+        private double price;
+        private int quantity;
+
+        public Product(String name, double price, int quantity) {
+
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+            this.id = ++idAutomatic;
+
+        }
+
+        public Product(int id, String name, double price, int quantity) {
+
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+            this.id = id;
+
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public void setQuantity(int quantity) {
+</FONT>            this.quantity = quantity;
+        }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match110-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        public static void input(List&lt;Product&gt; productList) {
+            System.out.println("name product");
+            String name = sc.next();
+            System.out.println("price of product");
+            double price = sc.nextDouble();
+            System.out.println("quantity of product");
+            int quantity = sc.nextInt();
+            productList.add(new Product(name, price, quantity));
+            System.out.println("ADD SUCCESSFULLY");
+</FONT>        }
+
+        public String display() {
+            return toString();
+        }
+
+        @Override
+        public String toString() {
+            return "id" + " = " + id + ", name product = " + name + ", price product = " + price + ", quantity product = " + quantity;
+        }
+
+    }
+
+    public static void menuProduct() {
+        System.out.println("+-----------------------------+");
+        System.out.println("1. Add products.");
+        System.out.println("2. Display products.");
+        System.out.println("3. Delete a product.");
+        System.out.println("4. Edit a product.");
+        System.out.println("5. Search products by name.");
+        System.out.println("6. Sort products by price.");
+        System.out.println("7. Save products to file.");
+        System.out.println("8. Load products from file.");
+        System.out.println("0. Exit program .");
+        System.out.println("+-----------------------------+");
+        System.out.println("Input your choice: ");
+    }
+
+    public static void addProduct(List&lt;Product&gt; productL) {
+        Product.input(productL);
+
+    }
+
+    public static void showProduct(List&lt;Product&gt; productL) {
+        for (Product product : productL) {
+            System.out.println(product.display());
+
+        }
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match110-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        if (productL.size() == 0) {
+            System.out.println("No products, please add new product");
+        }
+    }
+
+    public static void deleteProduct(List&lt;Product&gt; productL) {
+        System.out.println("ID of product?");
+</FONT>        int id = sc.nextInt();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match110-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        boolean bool = false;
+        for (int i = 0; i &lt; productL.size(); i++) {
+            if (productL.get(i).getId() == id) {
+                productL.remove(i);
+                bool = true;
+                System.out.println("DELETE SUCCESSFULLY");
+            }
+        }
+        if(!bool){
+            System.out.println("id not found");
+</FONT>        }
+        
+    }
+
+    public static void editProduct(List&lt;Product&gt; productL) {
+        boolean bool = false;
+        System.out.println("Enter ID to edit");
+        int id = sc.nextInt();
+        for (Product product : productL) {
+            if (product.getId() == id) {
+                System.out.println("enter new name: ");
+                product.setName(sc.next());
+                System.out.println("enter new price: ");
+                product.setPrice(sc.nextDouble());
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match110-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("enter new quantity: ");
+                product.setQuantity(sc.nextInt());
+                System.out.println("edit success");
+                System.out.println(product.display());
+</FONT>                bool = true;
+                System.out.println("EDIT SUCCESSFULLY");
+                break;
+            }
+        }
+        if (!bool) {
+            System.out.printf("id was not found");
+        }
+    }
+
+    public static void searchProduct(List&lt;Product&gt; productL) {
+        System.out.println("Enter name of product to edit");
+        String name = sc.next();
+        productL.stream().filter(f -&gt; f.name.toLowerCase().trim().equals(name.toLowerCase().trim())).forEach(f -&gt; System.out.println(f.toString()));
+
+    }
+
+    public static void sortPriceProduct(List&lt;Product&gt; productL) {
+        Comparator&lt;Product&gt; priceProduct = (a1, a2) -&gt; {
+            if (a1.getPrice() &lt; a2.getPrice()) {
+                return -1;
+            } else if (a1.getPrice() &gt; a2.getPrice()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        };
+        Collections.sort(productL, priceProduct);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match110-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        productL.forEach((a) -&gt; System.out.println(a));
+
+    }
+
+    public static void writeFile(List&lt;Product&gt; ProductL) throws FileNotFoundException, IOException {
+        FileWriter fw = new FileWriter("product.txt");
+        for (Product product : ProductL) {
+            fw.write(product.getId() + ", " + product.getName() + ", " + product.getPrice() + ", " + product.getQuantity() + "\n");
+
+        }
+        System.out.println("SAVE SUCCESSFULLY");
+        fw.close();
+    }
+
+    public static void readFile(List&lt;Product&gt; listProduct) {
+        try (FileReader fr = new FileReader("product.txt"); BufferedReader bfr = new BufferedReader(fr);) {
+            String line = null;
+</FONT>            String[] str = new String[1];
+            while ((line = bfr.readLine()) != null) {
+                str = line.split(", ");
+                listProduct.add(new Product(Integer.parseInt(str[0]), str[1], Double.parseDouble(str[2]), Integer.parseInt(str[3])));
+                
+            }
+            System.out.println("LOAD FILE SUCCESSFULLY");
+
+        } catch (Exception e) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match110-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    public static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException, FileNotFoundException {
+        List&lt;Product&gt; productL = new ArrayList&lt;&gt;();
+        int chooce;
+</FONT>        while (true) {
+            menuProduct();
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match110-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            chooce = sc.nextInt();
+
+            switch (chooce) {
+                case 1:
+                    addProduct(productL);
+                    break;
+                case 2:
+                    showProduct(productL);
+                    break;
+                case 3:
+                    deleteProduct(productL);
+                    break;
+</FONT>                case 4:
+                    editProduct(productL);
+                    break;
+                case 5:
+                    searchProduct(productL);
+                    break;
+                case 6:
+                    sortPriceProduct(productL);
+                    break;
+                case 7:
+                    writeFile(productL);
+                    break;
+                case 8:
+                    readFile(productL);
+                    break;
+                default:
+                    System.exit(0);
+                    break;
+            }
+
+        }
+    }
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

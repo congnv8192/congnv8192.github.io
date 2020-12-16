@@ -1,0 +1,273 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoangNguyenThuyDuong_106313_assignsubmission_file_HoangNguyenThuyDuong_1TD19_1901060012.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenThuHa_106582_assignsubmission_file_NguyenThuHa_1TD19_1901060014.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenThuHa_106582_assignsubmission_file_NguyenThuHa_1TD19_1901060014.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match99-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package nguyenthuha_1td19_1901060014;
+
+/**
+ *
+ 
+ */
+import java.io.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class NguyenThuHa_1TD19_1901060014 {
+
+    private String id;
+    final private String name;
+    final private double price;
+    final private int quantity;
+</FONT>    private static int counter = 0;
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match99-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    NguyenThuHa_1TD19_1901060014(String id, String name, double price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    NguyenThuHa_1TD19_1901060014(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+</FONT>        ++counter;
+        setId();
+    }
+
+    private void setId() {
+        // Id is composed of first character of name and its count
+        id = String.valueOf(name.charAt(0)).toUpperCase() + (counter &lt; 10 ? "0" + counter : counter);
+    }
+
+    final public void show() {
+        System.out.printf("%-5s%-15s%-8.3f%d\n", id, name, price, quantity);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    private static void newProduct(NguyenThuHa_1TD19_1901060014[] products, Scanner input, int i) {
+        System.out.print("Name: ");
+        String name = input.nextLine();
+        System.out.print("Price: ");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match99-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        double price = Double.parseDouble(input.nextLine());
+        System.out.print("Quantity: ");
+        int quantity = Integer.parseInt(input.nextLine());
+        products[i] = new NguyenThuHa_1TD19_1901060014(name, price, quantity);
+</FONT>    }
+
+    private static void search(NguyenThuHa_1TD19_1901060014[] products, Scanner input, int totalProducts) {
+        System.out.print("Name: ");
+        String search;
+        int found = 0;
+        search = input.nextLine();
+        for (int i = 0; i &lt; totalProducts; i++) {
+            if (products[i].getName().equals(search)) {
+                found = 1;
+                products[i].show();
+                break;
+            }
+        }
+        if (found == 0) {
+            System.out.println("Not found");
+        }
+        System.out.println();
+    }
+
+    private static void edit(NguyenThuHa_1TD19_1901060014[] products, Scanner input, int total) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match99-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Enter ID to modify values: ");
+        String id = input.nextLine();
+        int found = 0;
+        for (int i = 0; i &lt; total; i++) {
+            if (products[i].getId().equals(id)) {
+                found = 1;
+                newProduct(products, input, i);
+                System.out.println("Product modified");
+</FONT>            }
+        }
+        if (found == 0) {
+            System.out.println("Not found");
+        }
+        System.out.println();
+    }
+
+    private static int delete(NguyenThuHa_1TD19_1901060014[] products, Scanner input, int total) {
+        System.out.print("Enter ID to delete: ");
+        String id = input.nextLine();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match99-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int found = 0;
+        for (int i = 0; i &lt; total; i++) {
+            if (products[i].getId().equals(id)) {
+                --total;
+                found = 1;
+                if (total - i &gt;= 0) {
+                    System.arraycopy(products, i + 1, products, i, total - i);
+                }
+                System.out.println("Product deleted");
+</FONT>            }
+        }
+        if (found == 0) {
+            System.out.println("Not found");
+        }
+        return total;
+    }
+
+    private static void sort(NguyenThuHa_1TD19_1901060014[] products, int totalProducts) {
+        // Use swapping to rearrange the array in ascending order
+        for (int i = 0; i &lt; totalProducts; i++) {
+            for (int j = i; j &lt; totalProducts - i - 1; j++) {
+                if (products[j + 1].getPrice() &lt; products[j].getPrice()) {
+                    NguyenThuHa_1TD19_1901060014 tmp = products[j];
+                    products[j] = products[j + 1];
+                    products[j + 1] = tmp;
+                }
+            }
+        }
+        System.out.println("Sorted");
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        NguyenThuHa_1TD19_1901060014[] products = new NguyenThuHa_1TD19_1901060014[30];
+        String path = "products.txt";
+        int sum = 0;
+        int menu = 0;
+        do {
+            System.out.print("Select one\n1.Add\n2.Display\n3.Delete\n4.Edit\n5.Search\n"
+                    + "6. Sort\n7. Save to file\n8. Load from file\n9. Quit\nType here: ");
+            try {
+                menu = Integer.parseInt(input.nextLine());
+                switch (menu) {
+                    case 1:
+                        int newSum;
+                        System.out.print("Total products: ");
+                        newSum = Integer.parseInt(input.nextLine());
+                        for (int i = sum; i &lt; sum + newSum; i++) {
+                            newProduct(products, input, i);
+                        }
+                        sum += newSum;
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match99-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        break;
+                    case 2:
+                        for (int i = 0; i &lt; sum; i++) {
+                            products[i].show();
+                        }
+                        System.out.println();
+                        break;
+                    case 3:
+                        sum = delete(products, input, sum);
+                        break;
+                    case 4:
+</FONT>                        edit(products, input, sum);
+                        break;
+                    case 5:
+                        search(products, input, sum);
+                        break;
+                    case 6:
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match99-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        sort(products, sum);
+                        break;
+                    case 7:
+                        writeFile(products, path, sum);
+                        break;
+                    case 8:
+                        sum = readFile(products, path, sum);
+                        break;
+                    default:
+                        System.out.println("Out of range\n");
+                }
+            } catch (InputMismatchException | NumberFormatException ex) {
+</FONT>                System.out.println("Try again\n");
+                ex.printStackTrace();
+            }
+        } while (menu != 9);
+        input.close();
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match99-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static int readFile(NguyenThuHa_1TD19_1901060014[] products, String output, int total) {
+        try {
+            File file = new File(output);
+            if (file.exists()) {
+                Scanner fileScan = new Scanner(file);
+                int i = total;
+                while (fileScan.hasNextLine()) {
+                    String[] info = fileScan.nextLine().split(" ");
+                    products[i++] = new NguyenThuHa_1TD19_1901060014(info[0], info[1],
+                            Double.parseDouble(info[2]), Integer.parseInt(info[3]));
+                }
+                total = i;
+                System.out.println("Read successfully");
+                fileScan.close();
+</FONT>            } else {
+                System.out.println("File does not exist");
+            }
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match99-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        } catch (FileNotFoundException | NumberFormatException e) {
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    private static void writeFile(NguyenThuHa_1TD19_1901060014[] products, String output, int total) {
+</FONT>        try {
+            File file = new File(output);
+            if (!file.createNewFile()) {
+                System.out.println("File already exists.");
+            }
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match99-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            BufferedWriter writeFile = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i &lt; total; i++) {
+                writeFile.write(products[i].getId() + " " + products[i].getName() + " "
+                        + products[i].getPrice() + " " + products[i].getQuantity() + "\n");
+            }
+            writeFile.close();
+</FONT>            System.out.println("Written to file!");
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,255 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LuThanhLong_106538_assignsubmission_file_LuThanhLong_1TD19_1901060028.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LuThanhLong_106538_assignsubmission_file_LuThanhLong_1TD19_1901060028.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LuThanhLong_106538_assignsubmission_file_LuThanhLong_1TD19_1901060028.java
+package luthanhlong_1td19_1901060028;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class LuThanhLong_1TD19_1901060028 {
+
+    final private int id;
+    final private String name;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match18-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    final private double price;
+    final private int quantity;
+
+    LuThanhLong_1TD19_1901060028(BufferedReader in) throws IOException {
+        System.out.println("Product ID: ");
+        this.id = Integer.parseInt(in.readLine());//input product id
+        System.out.println("Product name: ");
+        this.name = in.readLine();//input product name
+        System.out.println("Price: ");
+        this.price = Double.parseDouble(in.readLine());//input product price
+        System.out.println("Quantity: ");
+        this.quantity = Integer.parseInt(in.readLine());//input product quantity
+    }
+
+    LuThanhLong_1TD19_1901060028(String s) {
+        String[] str = s.split(", ");
+        this.id = Integer.parseInt(str[0]);
+</FONT><A NAME="8"></A><FONT color = #00FFFF><A HREF="match18-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.name = str[1];
+        this.price = Double.parseDouble(str[2]);
+        this.quantity = Integer.parseInt(str[3]);
+</FONT>    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match18-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void view() {
+        System.out.println(id + "\t" + name + "\t\t" + price + "\t\t" + quantity);
+    }
+
+    private static int readFile(LuThanhLong_1TD19_1901060028[] productsArr, int total) {
+        try {
+            File file = new File("products.txt");
+            if (file.exists()) {
+                Scanner fileScan = new Scanner(file);
+                int i = 0;
+                while (fileScan.hasNextLine()) {
+                    productsArr[i++] = new LuThanhLong_1TD19_1901060028(fileScan.nextLine());
+                }
+                total = i;
+                System.out.println("Read successfull");
+                System.out.println();
+                fileScan.close();
+            } else {
+                System.out.println("File does not exist!");
+            }
+        } catch (FileNotFoundException e) {
+</FONT>            System.out.println("File not found");
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    private static void writeFile(LuThanhLong_1TD19_1901060028[] productsArr, int total) throws IOException {
+        try {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match18-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            BufferedWriter writeFile = new BufferedWriter(new FileWriter("products.txt"));
+            for (int i = 0; i &lt; total; ++i) {
+                writeFile.write(productsArr[i].getId() + ", " + productsArr[i].getName() + ", " + productsArr[i].getPrice() + ", " + productsArr[i].getQuantity() + "\n");
+            }
+            writeFile.close();
+            System.out.println("Write successful");
+            System.out.println();
+            writeFile.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    private static int input(LuThanhLong_1TD19_1901060028[] products, BufferedReader input, int total) {
+</FONT>        try {
+            int newAdd;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match18-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("Total: ");
+            newAdd = Integer.parseInt(input.readLine());
+            for (int i = total; i &lt; total + newAdd; ++i) {
+                products[i] = new LuThanhLong_1TD19_1901060028(input);
+            }
+            total += newAdd;
+</FONT>        } catch (InputMismatchException | NumberFormatException | IOException ex) {
+            System.out.println("Invalid input");
+            ex.printStackTrace();
+        }
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match18-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        return total;
+    }
+
+    private static void search(LuThanhLong_1TD19_1901060028[] products, BufferedReader input, int totalProdcuts) throws IOException {
+        System.out.println("Name: ");
+        boolean check = false;
+        String name = input.readLine();
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match18-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_25.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int totalProducts = 0;
+
+        for (int i = 0; i &lt; totalProducts; ++i) {
+            if (products[i].getName().equals(name)) {
+                check = true;
+                products[i].view();
+                break;
+            }
+        }
+        if (!check) {
+            System.out.println("Not found");
+        }
+        System.out.println();
+    }
+
+    private static int delete(LuThanhLong_1TD19_1901060028[] products, BufferedReader input, int total) throws IOException {
+        System.out.println("Product ID: ");
+        int id;
+        boolean found = false;
+        id = Integer.parseInt(input.readLine());
+        for (int i = 0; i &lt; total; ++i) {
+            if (products[i].getId() == id) {
+                --total;
+                found = true;
+                if (total - i &gt;= 0) {
+                    System.arraycopy(products, i + 1, products, i, total - i);
+                }
+                System.out.println("Has been deleted");
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Has not been found");
+        }
+        System.out.println();
+        return total;
+    }
+
+    private static void showAll(LuThanhLong_1TD19_1901060028[] products, int total) {
+        for (int i = 0; i &lt; total; ++i) {
+            products[i].view();
+        }
+        System.out.println();
+    }
+
+    private static void edit(LuThanhLong_1TD19_1901060028[] products, BufferedReader input, int total) throws IOException {
+        System.out.println("Product ID: ");
+        int id = Integer.parseInt(input.readLine());
+        for (int i = 0; i &lt; total; ++i) {
+            if (products[i].getId() == id) {
+                products[i] = new LuThanhLong_1TD19_1901060028(input);
+                System.out.println("Has been edited");
+                break;
+</FONT>            }
+        }
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match18-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) throws IOException {
+        LuThanhLong_1TD19_1901060028[] productsArr = new LuThanhLong_1TD19_1901060028[30];
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        int total = 0;
+        int menu = 0;
+        do {
+            System.out.println("Menu\n1: Add products\n"
+</FONT>                    + "2: Display products\n3: Delete a product\n"
+                    + "4: Edit a product\n5: Search for products by name\n"
+                    + "6: Save products to text file\n"
+                    + "7: Load prodcuts from the saved file\n"
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match18-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    + "Type 0 to exit\nYour option: ");
+            try {
+                menu = Integer.parseInt(input.readLine());
+                System.out.println();
+                switch (menu) {
+                    case 1:
+                        total = input(productsArr, input, total);
+                        break;
+                    case 2:
+                        showAll(productsArr, total);
+                        break;
+                    case 3:
+                        total = delete(productsArr, input, total);
+                        break;
+                    case 4:
+                        edit(productsArr, input, total);
+                        break;
+                    case 5:
+                        search(productsArr, input, total);
+                        break;
+                    case 6:
+                        writeFile(productsArr, total);
+                        break;
+                    case 7:
+                        total = readFile(productsArr, total);
+                        break;
+                    default:
+                        System.out.println("Invalid inpuit");
+</FONT><A NAME="9"></A><FONT color = #FF00FF><A HREF="match18-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                }
+            } catch (InputMismatchException | NumberFormatException | IOException ex) {
+                System.out.println("Invalid input.\n");
+                ex.printStackTrace();
+            }
+        } while (menu != 0);
+        input.close();
+</FONT>    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

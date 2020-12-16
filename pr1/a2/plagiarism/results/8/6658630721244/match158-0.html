@@ -1,0 +1,235 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTungAnh_106463_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenTungAnh_106463_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenTungAnh_106463_assignsubmission_file_Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Nguyen Tung Anh_2C19_1901040014_B03
+ */
+public class Assignment2 {
+
+    public static Scanner sc = new Scanner(System.in);
+
+    public static ArrayList&lt;Integer&gt; ID = new ArrayList&lt;&gt;();
+
+    public static ArrayList&lt;String&gt; Name1 = new ArrayList&lt;&gt;();
+
+    public static ArrayList&lt;Double&gt; Price1 = new ArrayList&lt;&gt;();
+
+    public static ArrayList&lt;Integer&gt; Quantity1 = new ArrayList&lt;&gt;();
+
+    /**
+     *
+     * @return
+     */
+    
+    //Method that prints out menu and gets user's option//
+    public static int MENU() {
+        int choice = 0;
+        System.out.println("1. Add products");
+        System.out.println("2. Display products");
+        System.out.println("3. Delete a product");
+        System.out.println("4. Edit a product");
+        System.out.println("5. Search for products by name");
+        System.out.println("6. Sort products by price");
+        System.out.println("7. Save products to text/binary file");
+        System.out.println("8. Load products from the saved file");
+        System.out.println("9. QUIT :&lt;");
+
+        System.out.println("CHOOSE AN OPTION: ");
+        choice = sc.nextInt();
+
+        return choice;
+    }
+    
+    public static void Feature1() {
+        System.out.println("How many products would you like to add: ");
+        int item = sc.nextInt();
+        if (item &lt; 1 || item &gt; 30) {
+            System.out.println("Invalid value !!");
+        } else {
+            for (int i = 1; i &lt; item; i++) {
+                System.out.println("Name of product: ");
+                String Name = sc.nextLine();
+                System.out.println("Price of product: ");
+                double Price = sc.nextDouble();
+                System.out.println("Quantity of product: ");
+                int Quantity = sc.nextInt();
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match158-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                sc.nextLine();
+                Name1.add(Name);
+                Price1.add(Price);
+                Quantity1.add(Quantity);
+                ID.add(Name1.size());
+</FONT>            }
+        }
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match158-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Feature2() {
+        for (int d = 0; d &lt; ID.size(); d++) {
+            System.out.println(ID.get(d) + "        |       " + Name1.get(d) + "     |       " + Price1.get(d) + "      |       " + Quantity1.get(d) + "        |       ");
+</FONT>        }
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match158-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Feature3() {
+        System.out.println("Please enter product's ID you would like to delete: ");
+        int Item1 = sc.nextInt();
+        sc.nextLine();
+        ID.remove(Item1 - 1);
+        Name1.remove(Item1 - 1);
+        Price1.remove(Item1 - 1);
+        Quantity1.remove(Item1 - 1);
+    }
+</FONT>
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match158-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Feature4() {
+        System.out.println("Please enter product's ID you would like to edit: ");
+        int NewID = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Please enter your new product's name: ");
+        String NewName = sc.nextLine();
+        sc.nextLine();
+        System.out.println("Please enter your new product's price: ");
+</FONT>        double NewPrice = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("Please enter your new product's quantity: ");
+        int NewQuant = sc.nextInt();
+        sc.nextLine();
+        Name1.set(NewID, NewName);
+        Price1.set(NewID, NewPrice);
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match158-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        Quantity1.set(NewID, NewQuant);
+    }
+
+    public static void Feature5() {
+        System.out.println("Please enter product's name you would like to search: ");
+        String Search = sc.nextLine();
+        for (int k = 0; k &lt; Name1.size(); k++) {
+            if (Search.equalsIgnoreCase(Name1.get(k))) {
+                System.out.println(ID.get(k) + "        |       " + Name1.get(k) + "     |       " + Price1.get(k) + "      |       " + Quantity1.get(k) + "        |       ");
+</FONT>            } else {
+                System.out.println("Unknown Product !!!");
+            }
+        }
+    }
+
+    public static void Feature6() {
+
+    }
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match158-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Feature7() throws FileNotFoundException, IOException {
+        ObjectOutputStream ID7 = new ObjectOutputStream(new FileOutputStream("SaveID.bin"));
+        ID7.writeObject(ID);
+        ID7.close();
+
+        ObjectOutputStream Name7 = new ObjectOutputStream(new FileOutputStream("SaveName.bin"));
+        Name7.writeObject(Name1);
+        Name7.close();
+
+        ObjectOutputStream Price7 = new ObjectOutputStream(new FileOutputStream("SavePrice.bin"));
+        Price7.writeObject(Price1);
+        Price7.close();
+
+        ObjectOutputStream Quantity7 = new ObjectOutputStream(new FileOutputStream("SaveQuantity.bin"));
+        Quantity7.writeObject(Quantity1);
+        Quantity7.close();
+    }
+
+    public static void Feature8() throws ClassNotFoundException, IOException {
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match158-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        ObjectInputStream ID8 = new ObjectInputStream(new FileInputStream("LoadID.bin"));
+        ID = (ArrayList&lt;Integer&gt;) ID8.readObject();
+        ID8.close();
+
+        ObjectInputStream Name8 = new ObjectInputStream(new FileInputStream("LoadName.bin"));
+        Name1 = (ArrayList&lt;String&gt;) Name8.readObject();
+        Name8.close();
+
+        ObjectInputStream Price8 = new ObjectInputStream(new FileInputStream("LoadPrice.bin"));
+        Price1 = (ArrayList&lt;Double&gt;) Price8.readObject();
+        Price8.close();
+
+        ObjectInputStream Quantity8 = new ObjectInputStream(new FileInputStream("LoadQuantity.bin"));
+        Quantity1 = (ArrayList&lt;Integer&gt;) Quantity8.readObject();
+        Quantity8.close();
+    }
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+</FONT>        try {
+            int option = 0;
+            do {
+                option = MENU();
+                switch (option) {
+                    case 1:
+                        Feature1();
+                        break;
+                    case 2:
+                        Feature2();
+                        break;
+                    case 3:
+                        Feature3();
+                        break;
+                    case 4:
+                        Feature4();
+                        break;
+                    case 5:
+                        Feature5();
+                        break;
+                    case 6:
+                        Feature6();
+                        break;
+                    case 7:
+                        Feature7();
+                        break;
+                    case 8:
+                        Feature8();
+                        break;
+                    case 9:
+                        System.out.println("Program is shutting down .....");
+                        break;
+                    default:
+                        System.out.println("Sorry, invalid number .....");
+                }
+            } while (option != 9);
+            System.out.println("Thank you for using our product :D");
+        } catch (IOException e) {
+        } finally {
+            sc.close();
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

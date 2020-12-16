@@ -1,0 +1,242 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/PhamYenNhi_106493_assignsubmission_file_Main.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/TranThiThuong_106328_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: TranThiThuong_106328_assignsubmission_file_Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match240-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+/**
+ *
+ * @author TGDD
+ */
+public class Assignment2 {
+
+    public static ArrayList&lt;Product&gt; listProduct = new ArrayList&lt;Product&gt;();
+
+    public static void main(String[] args) {
+</FONT>        Scanner sc = new Scanner(System.in);
+        int opt = 0;
+        while (opt != 9) {
+            System.out.println("[1] Add products \n"
+                    + "[2] Display product \n"
+                    + "[3] Delete a product \n"
+                    + "[4] Edit a product \n"
+                    + "[5] Search for product by name \n"
+                    + "[6] Sort product by price \n"
+                    + "[7] Save products to text/binary file \n"
+                    + "[8] Load products from the saved file \n"
+                    + "[9] Quit \n"
+                    + "Choose an option: ");
+            opt = sc.nextInt();
+            sc.nextLine();
+            switch (opt) {
+                case 1:
+                    addProduct();
+                    break;
+                case 2:
+                    displayProduct();
+                    break;
+                case 3:
+                    deleteProduct();
+                    break;
+                case 4:
+                    editProduct();
+                    break;
+                case 5:
+                    searchProduct();
+                    break;
+                case 6:
+                    sortProduct();
+                    break;
+                case 7:
+                    saveProduct();
+                    break;
+                case 8:
+                    loadProduct();
+                    break;
+                case 9:
+                    System.out.println("Goodbye!");
+            }
+        }
+    }
+
+    public static void addProduct() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("The number of products: ");
+        ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+        int num = sc.nextInt();
+        sc.nextLine();
+        for (int a = 0; a &lt; num; a++) {
+            System.out.println("Input product ID: ");
+            String id = sc.nextLine();
+            System.out.println("Input name product: ");
+            String name = sc.nextLine();
+            System.out.println("Ïnput product price: ");
+            String price = sc.nextLine();
+            System.out.println("Input quantity: ");
+            String quantity = sc.nextLine();
+            list.add(name);
+            list.add(price);
+            list.add(quantity);
+            System.out.println("The information of 30 products: ");
+            for (int i = 0; i &lt; list.size(); i++) {
+                System.out.println(list.get(i));
+            }
+        }
+
+    }
+
+    public static void displayProduct() {
+        System.out.println("-------------------------------");
+        System.out.format("%2s%15s%12s%16s", "id", "name", "price", "quantity");
+        for (int i = 0; i &lt; listProduct.size(); i++) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match240-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.format("%2d%15s%12s%16d", product.getProductId(), product.getProductName(),
+                    product.getProductPrice(), product.getQuantity());
+        }
+        System.out.println();
+        System.out.println("-----------------------------");
+</FONT>    }
+
+    public static void deleteProduct() {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Input product ID you want to delete: ");
+            String idP;
+            String idProduct = sc.nextLine();
+            boolean resultFlag = false;
+            for (int i = 0; i &lt; listProduct.size(); i++) {
+                if (idProduct.equals(listProduct.get(i).idP)) {
+                    listProduct.remove(i);
+                    resultFlag = true;
+                    System.out.println("Delete Successfully");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Fail to delete!");
+            sc.nextLine();
+        }
+
+    }
+
+    public static void editProduct() {
+        Scanner sc = new Scanner(System.in);
+        String productId = null;
+        System.out.println("Input product ID you want to edit: ");
+        String inProduct = sc.nextLine();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match240-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int productIndex = listProduct.indexOf(searchProductById(productId));
+        if (productIndex &gt;= 0) {
+            Product newProduct = new Product();
+            newProduct.setProductId(productId);
+            System.out.println("Input product name");
+</FONT>            newProduct.setProductName(sc.nextLine());
+            System.out.println("Input product price");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match240-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            newProduct.setProductPrice(sc.nextDouble());
+            System.out.println("Input product quantity");
+            newProduct.setQuantity(sc.nextInt());
+            listProduct.set(productIndex, newProduct);
+        } else {
+            System.out.println("Not found Product ID");
+            System.out.println();
+        }
+    }
+
+    public static void searchProduct() {
+</FONT>        Scanner sc = new Scanner(System.in);
+        System.out.println("Input the name of product: ");
+        String name = sc.nextLine();
+        String pattern = null;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match240-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        boolean foundFlag = false;
+        System.out.format("%2s%15s%12s%16s", "Id", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Product product : listProduct) {
+            if (product.getProductName().contains(pattern)) {
+
+                System.out.format("%2d%15s%12s%16d", product.getProductId(), product.getProductName(),
+                        product.getProductPrice(), product.getQuantity());
+                foundFlag = true;
+            }
+        }
+        if (!foundFlag) {
+            System.out.println("Not found Product");
+            System.out.println();
+        }
+    }
+
+    public static void sortProduct() {
+</FONT>        for (int i = 0; i &lt; listProduct.size() - 1; i++) {
+            for (int j = i + 1; j &lt; listProduct.size(); j++) {
+                if (listProduct.get(i).proPrice &gt; listProduct.get(j).proPrice) {
+                    Collections.swap(listProduct, i, j);
+                }
+            }
+        }
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match240-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Sort Product Successfully");
+
+    }
+    
+    public static void saveProduct() {
+        try (FileOutputStream fos = new FileOutputStream("thuong.txt");
+                ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(listProduct);
+            System.out.println("Save successfully!");
+	    System.out.println();
+        } catch (Exception e) {
+            System.out.println("Fail to save!");
+            System.out.println();
+            
+            e.printStackTrace();
+        }
+    }
+    
+    public static void loadProduct() {
+        ObjectInputStream ois;
+        try {
+            ois = new ObjectInputStream(new FileInputStream("thuong.txt"));
+            listProduct  = (ArrayList) ois.readObject();
+            ois.close();
+            System.out.println("Load successfully!");
+        }  catch (Exception e) {
+            System.out.println("Fail to load!");
+            
+            e.printStackTrace();
+	}
+    }
+
+    private static Object searchProductById(String productId) {
+</FONT>        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,202 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040066NguyenTienTranuc_106585_assignsubmission_file_A2_1801040066_NguyenTienTranDuc.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040066NguyenTienTranuc_106585_assignsubmission_file_A2_1801040066_NguyenTienTranDuc.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040066NguyenTienTranuc_106585_assignsubmission_file_A2_1801040066_NguyenTienTranDuc.java
+package PR1;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class A2_1801040066_NguyenTienTranDuc {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        ArrayList&lt;String&gt; Name = new ArrayList&lt;&gt;();
+        ArrayList&lt;Double&gt; Price = new ArrayList&lt;&gt;();
+        ArrayList&lt;Integer&gt; Quant = new ArrayList&lt;&gt;();
+               
+        while (true) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match86-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("1. Add product\n" + "2. Display products\n" + "3. Delete a product\n" 
+                        + "4. Edit a product\n" + "5. Search for product by name\n" + "6. Sort products by price.\n" 
+                        + "7. Save products to text/binary file\n" + "8. Load products from the saved file\n" + "9. Quit\nYour option: ");
+                int n = sc.nextInt();
+            
+            if (n == 1) {
+                System.out.println("Please enter how many products you want to input: ");
+                int product = sc.nextInt();
+                for (int i = 0; i &lt; product; i++) {
+			System.out.print("Name of product: ");
+			sc.nextLine();
+			Name.add(sc.nextLine());
+
+			System.out.print("Price of product: ");
+                        Price.add(sc.nextDouble());
+
+			System.out.print("Quantity of product: ");
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match86-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			Quant.add(sc.nextInt());
+                }
+                
+            } else if (n == 2) {
+                System.out.println("------------------------------------------------------");
+		System.out.format("|| %5s | %10s | %10s | %14s ||%n", "ID", "Product", "Price", "Quantity");
+</FONT>		for (int i = 0; i &lt; Name.size(); i++) {
+                    System.out.format("|| %5s | %10s | %10.2f | %14s ||%n", (i + 1), Name.get(i), Price.get(i), Quant.get(i));
+                }		
+                System.out.println("------------------------------------------------------");
+                
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match86-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if (n == 3) {
+                System.out.println("------------------------------------------------------");
+		System.out.format("|| %5s | %10s | %10s | %14s ||%n", "ID", "Product", "Price", "Quantity");
+</FONT>		for (int i = 0; i &lt; Name.size(); i++) {
+                    System.out.format("|| %5s | %10s | %10.2f | %14s ||%n", (i + 1), Name.get(i), Price.get(i),Quant.get(i));
+                }
+		if (Name.size() &lt;= 0) {
+                    System.out.println("There's nothing to remove!\n");
+		} else {
+                    System.out.print("Enter the ID of the product you want to delete: ");
+                    int delete = sc.nextInt();
+                    Name.remove(delete - 1);
+                    Price.remove(delete - 1);
+                    Quant.remove(delete - 1);
+                    System.out.println("Your products are updated!\n");
+		}
+                
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match86-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if (n == 4) {
+                System.out.println("------------------------------------------------------");
+		System.out.format("|| %5s | %10s | %10s | %14s ||%n", "ID", "Product", "Price", "Quantity");
+</FONT>		for (int i = 0; i &lt; Name.size(); i++) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match86-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.format("|| %5s | %10s | %10.2f | %14s ||%n", (i + 1), Name.get(i), Price.get(i), Quant.get(i));
+		}
+                    System.out.println("------------------------------------------------------");
+
+		if (Name.size() &lt;= 0) {
+                    System.out.println("There's nothing to edit!\n");
+</FONT>		} else {
+                    System.out.print("Enter the ID of product you want to edit:");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match86-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    int editID = sc.nextInt();
+                    System.out.print("New name of the product: ");
+                    sc.nextLine();
+                    String newName = sc.nextLine();
+                    if (Name.get(editID - 1).equals(newName)) {
+			continue;
+                    } else {
+                        Name.set(editID - 1, newName);
+                    }
+                    System.out.print("New price of product:");
+                    double newPrices = sc.nextDouble();
+                    if (Price.get(editID - 1) == newPrices) {
+			continue;
+                    } else {
+			Price.set(editID - 1, newPrices);
+                    }
+                    System.out.print("New quantity of product:");
+                    int newQuantity = sc.nextInt();
+                    if (Quant.get(editID - 1) == newQuantity) {
+			continue;
+                    } else {
+                        Quant.set(editID - 1, newQuantity);
+                    }
+                    System.out.println("Your products are updated!\n");
+</FONT>                }    
+                
+            } else if (n == 5) {
+                if (Name.size() &lt;= 0) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match86-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("There's nothing to search!\n");
+		} else {
+                    System.out.print("Enter the keyword of the product you want to search:  ");
+                    sc.nextLine();
+                    String keyword = sc.nextLine();
+                    System.out.println("------------------------------------------------------");
+                    System.out.format("|| %5s | %10s | %10s | %14s ||%n", "ID", "Product", "Price", "Quantity");
+                    for (int i = 0; i &lt; Name.size(); i++) {
+                        if (Name.get(i).contains(keyword)) {
+                            System.out.format("|| %5s | %10s | %10.2f | %14s ||%n", (i + 1), Name.get(i), Price.get(i), Quant.get(i));
+</FONT>                        }
+                    }
+                }
+                
+            } else if (n == 6) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match86-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                for (int i = 0; i &lt; Name.size(); i++) {
+                    for (int j = Name.size() - 1; j &gt; i; j--) {
+			if (Price.get(i) &gt; Price.get(j)) { 
+                            double s = Price.get(i);		
+                            Price.set(i, Price.get(j));
+                            Price.set(j, s);
+
+                            String s1 = Name.get(i); 	
+                            Name.set(i, Name.get(j));
+                            Name.set(j, s1);
+</FONT>
+                            int s2 = Quant.get(i);
+                            Quant.set(i, Quant.get(j));
+                            Quant.set(j, s2);
+			}
+
+                    }
+		}
+		System.out.println("Sort success!\n");
+                                
+   
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match86-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if (n == 7) {
+                File f = new File("product_data.txt");
+                FileOutputStream fos = new FileOutputStream(f);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(Name);
+</FONT>                oos.writeObject(Price);
+                oos.writeObject(Quant);
+                System.out.println("Save successfully!\n");
+                
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match86-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            } else if (n == 8) {
+                File f = new File("product_data.txt");
+                FileInputStream fis = new FileInputStream(f);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                Name = (ArrayList&lt;String&gt;) ois.readObject();
+</FONT>                Price = (ArrayList&lt;Double&gt;) ois.readObject();
+                Quant = (ArrayList&lt;Integer&gt;) ois.readObject();
+                System.out.println("Load successfully!\n");
+                
+            } else if (n == 9) {
+                System.out.println("Thank you and good bye!");
+                break;
+                
+            } else {
+                System.out.println("Invalid option!\n");
+            }
+        }
+
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

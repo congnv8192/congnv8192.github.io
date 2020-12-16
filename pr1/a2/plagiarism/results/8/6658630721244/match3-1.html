@@ -1,0 +1,314 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LyHoaiThu_106588_assignsubmission_file_LyHoaiThu_1C19_1901040213_A03_Assignment02.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenThiNgocYen_106265_assignsubmission_file_NguyenThiNgocYen_1C19_1901040250_A03.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenThiNgocYen_106265_assignsubmission_file_NguyenThiNgocYen_1C19_1901040250_A03.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tutorials;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match3-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+public class NguyenThiNgocYen_1C19_1901040250_A03 {
+    static ArrayList&lt;Integer&gt; P_ID = new ArrayList&lt;Integer&gt;();
+    static ArrayList&lt;String&gt; PName = new ArrayList&lt;String&gt;();
+    static ArrayList&lt;String&gt; PPrice = new ArrayList&lt;String&gt;();
+    static ArrayList&lt;String&gt; PQuantity = new ArrayList&lt;String&gt;();
+    static String Name, Price, Quantity, option1;
+</FONT>
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match3-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int Option = 0;
+        while (Option != 9) {
+            try {
+                System.out.print("Feature 1: Add products\n"
+                        + "Feature 2: Display products\n"
+                        + "Feature 3: Delete a product\n"
+                        + "Feature 4: Edit a product\n"
+                        + "Feature 5: Search for products by name\n"
+                        + "Feature 6: Sort products by price\n"
+                        + "Feature 7: Save products to text/binary file\n"
+                        + "Feature 8: Load products from the saved file\n"
+                        + "Feature 9: Quit\n"
+</FONT><A NAME="10"></A><FONT color = #FF0000><A HREF="match3-0.html#10" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        + "Choose an option: ");
+                Option = sc.nextInt();
+            } catch (Exception e) {
+                System.err.println("Invalid input! Please try again. ");
+                sc.next();
+            }
+            switch (Option) {
+                case 1:
+                    System.out.println("Add products");
+                    int a = 1;
+                    do {
+                        System.out.println("PRODUCT #" + (a) + ": \n" + "Product ID: " + a);
+</FONT><A NAME="11"></A><FONT color = #00FF00><A HREF="match3-0.html#11" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Product name: ");
+                        sc.nextLine();
+                        Name = sc.nextLine();
+                        System.out.print("Product price: ");
+                        Price = sc.next();
+                        System.out.print("Quantity: ");
+</FONT>                        Quantity = sc.next();
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match3-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("\n" + "Do you want to add another product?\n" + "Y/N");
+                        option1 = sc.next();
+                        a++;
+                        PName.add(Name);
+                        PPrice.add(Price);
+                        PQuantity.add(Quantity);
+                        P_ID.add(PName.size());
+                    } while (option1.equalsIgnoreCase("Y"));
+                    System.out.println("Product added.");
+                    break;
+
+                case 2:
+</FONT>                    String option2 = "";
+                    while (!option2.equalsIgnoreCase("M")) {
+                        System.out.println("---------------------------------------------------------------");
+                        System.out.printf("|%10s| %20s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+                        System.out.println("");
+                        for (int b = 0; b &lt; P_ID.size(); b++) {
+                            System.out.println("---------------------------------------------------------------");
+<A NAME="15"></A><FONT color = #FF0000><A HREF="match3-0.html#15" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.printf("|%10d| %20s| %15s| %10s|%n", P_ID.get(b), PName.get(b), PPrice.get(b), PQuantity.get(b));
+                        }
+                        System.out.println("---------------------------------------------------------------");
+                        System.out.println("Press M to get back to menu: ");
+</FONT>                        option2 = sc.next();
+                    }
+                    break;
+
+                case 3:
+                    String option3;
+                    do {
+<A NAME="14"></A><FONT color = #FF00FF><A HREF="match3-0.html#14" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.print("Please enter the product ID: ");
+                        int dlt = sc.nextInt();
+                        while (dlt &lt; 0 || dlt &gt; P_ID.size()) {
+                            System.out.print("Product not found! Please enter again: ");
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match3-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            dlt = sc.nextInt();
+                        } for (int c = P_ID.size() - 1; c &gt;= 0; c--) {
+                            if (dlt == P_ID.get(c)) {
+                                P_ID.remove(c);
+                                PName.remove(c);
+                                PPrice.remove(c);
+                                PQuantity.remove(c);
+                                break;
+                            }
+                        }System.out.println("--------------------------------------------------------------");
+                        System.out.format("|%10s| %20s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+</FONT>                        System.out.println("");
+                        for (int c = 0; c &lt; P_ID.size(); c++) {
+                            System.out.println("--------------------------------------------------------------");
+                            System.out.printf("|%10d| %20s| %15s| %10s|%n", P_ID.get(c), PName.get(c), PPrice.get(c), PQuantity.get(c));
+<A NAME="12"></A><FONT color = #0000FF><A HREF="match3-0.html#12" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        }System.out.println("--------------------------------------------------------------");
+                        System.out.println("Do you want to delete another product?");
+                        System.out.println("Y/N");
+                        option3 = sc.next();
+                    } while (option3.equalsIgnoreCase("Y"));
+                    break;
+
+                case 4:
+                    String option4;
+</FONT><A NAME="16"></A><FONT color = #00FF00><A HREF="match3-0.html#16" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    do {
+                        System.out.print("Please enter the product ID: ");
+                        int d = sc.nextInt();
+                        if (!P_ID.contains(d)) {
+                            System.out.println("Product not found! Please check the products list: ");
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match3-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        }
+                        for (int e = 0; e &lt; P_ID.size(); e++) {
+                            if (d == P_ID.get(e)) {
+                                System.out.print("New name: ");
+                                sc.nextLine();
+                                String name1 = sc.nextLine();
+                                System.out.print("New price: ");
+                                String price1 = sc.next();
+                                System.out.print("New quantity: ");
+                                String quantity1 = sc.next();
+                                for (int f = 0; f &lt; P_ID.size(); f++) {
+                                    if (P_ID.get(f).equals(d)) {
+                                        PName.set(f, name1);
+                                        PPrice.set(f, price1);
+                                        PQuantity.set(f, quantity1);
+                                    }
+                                }
+                            }
+                        }
+                        System.out.println("--------------------------------------------------------------");
+                        System.out.format("|%10s| %20s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+                        System.out.println("");
+</FONT>                        for (int g = 0; g &lt; P_ID.size(); g++) {
+                            System.out.println("--------------------------------------------------------------");
+                            System.out.format("|%10s| %20s| %15s| %10s|%n", P_ID.get(g), PName.get(g), PPrice.get(g), PQuantity.get(g));
+<A NAME="13"></A><FONT color = #00FFFF><A HREF="match3-0.html#13" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        }System.out.println("--------------------------------------------------------------");
+                        System.out.println("Do you want to edit another product?");
+                        System.out.println("Y/N");
+                        option4 = sc.next();
+                    } while (option4.equalsIgnoreCase("Y"));
+                break;
+
+                case 5:
+</FONT>                    try {
+                        String option5;
+                        do {
+                            System.out.print("Please enter the keyword: ");
+                            String keyword = sc.next();
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.printf("|%10s| %20s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+                            System.out.println("");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match3-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            int rsCount = 0;
+                            for (int h = 0; h &lt; PName.size(); h++) {
+                                if (PName.get(h).toLowerCase().contains((keyword).toLowerCase())) {
+                                    rsCount++;
+                                    System.out.println("---------------------------------------------------------------");
+                                    System.out.format("|%10s| %20s| %15s| %10s|%n", P_ID.get(h), PName.get(h), PPrice.get(h), PQuantity.get(h));
+                                }
+                            }if (rsCount == 0) {
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.printf("|%61s|%n", "Product not found.");
+</FONT>                            }System.out.println("---------------------------------------------------------------");
+                            System.out.print("Do you want to do another search? \n" + "Y/N");
+                            System.out.println("");
+                            option5 = sc.next();
+                        } while (option5.equalsIgnoreCase("Y"));
+                    } catch (NullPointerException ex) {
+                        System.out.println("\nException in feature 5: " + ex + "\n");
+                    }
+                    break;
+
+                case 6:
+                    String option6 = "";
+                    while (!option6.equalsIgnoreCase("M")) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match3-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        ArrayList&lt;Double&gt; PriceDouble = new ArrayList&lt;Double&gt;();
+                        for (int i = 0; i &lt; PPrice.size(); i++) {
+                            PriceDouble.add(Double.parseDouble(PPrice.get(i)));
+                        }
+                        Collections.sort(PriceDouble);
+                        ArrayList&lt;Double&gt; PriceDouble2 = new ArrayList&lt;Double&gt;();
+                        for (int j = 0; j &lt; PPrice.size(); j++) {
+                            PriceDouble2.add(Double.parseDouble(PPrice.get(j)));
+                        }
+                        System.out.println("--------------------------------------------------------------");
+                        System.out.format("|%12s| %18s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+                        System.out.println("");
+</FONT>                        for (int k = 0; k &lt; PPrice.size(); k++) {
+                            System.out.println("--------------------------------------------------------------");
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match3-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.format("|%10d| %20s| %15s| %10s|%n", 
+                                              P_ID.get(PriceDouble2.indexOf(PriceDouble.get(k))), 
+                                              PName.get(PriceDouble2.indexOf(PriceDouble.get(k))), 
+                                              PPrice.get(PriceDouble2.indexOf(PriceDouble.get(k))), 
+                                              PQuantity.get(PriceDouble2.indexOf(PriceDouble.get(k))));
+                        }System.out.println("--------------------------------------------------------------");
+</FONT>                        System.out.println("Press M to get back to menu: ");
+                        option6 = sc.next();
+                    }
+                break;
+
+                case 7:
+                    String option7 = "";
+                    while (!option7.equalsIgnoreCase("M")) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match3-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        FileOutputStream i1 = new FileOutputStream("ID.txt");
+                        ObjectOutputStream Saveid = new ObjectOutputStream(i1);
+                        Saveid.writeObject(P_ID);
+                        FileOutputStream n1 = new FileOutputStream("Name.txt");
+                        ObjectOutputStream Savename = new ObjectOutputStream(n1);
+                        Savename.writeObject(PName);
+                        FileOutputStream p1 = new FileOutputStream("Price.txt");
+                        ObjectOutputStream Saveprice = new ObjectOutputStream(p1);
+                        Saveprice.writeObject(PPrice);
+                        FileOutputStream q1 = new FileOutputStream("Quantity.txt");
+                        ObjectOutputStream Savequantity = new ObjectOutputStream(q1);
+                        Savequantity.writeObject(PQuantity);
+                        System.out.println("Status: Products saved.\n");
+</FONT>                        System.out.println("Press M to get back to menu: ");
+                        option7 = sc.next();
+                    }
+                    break;
+
+                case 8:
+                    String option8 = "";
+                    while (!option8.equalsIgnoreCase("M")) {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match3-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        FileInputStream i2 = new FileInputStream("ID.txt");
+                        ObjectInputStream loadid = new ObjectInputStream(i2);
+                        P_ID = (ArrayList&lt;Integer&gt;) loadid.readObject();
+                        FileInputStream n2 = new FileInputStream("Name.txt");
+                        ObjectInputStream loadname = new ObjectInputStream(n2);
+                        PName = (ArrayList&lt;String&gt;) loadname.readObject();
+                        FileInputStream p2 = new FileInputStream("Price.txt");
+                        ObjectInputStream loadprice = new ObjectInputStream(p2);
+                        PPrice = (ArrayList&lt;String&gt;) loadprice.readObject();
+                        FileInputStream q2 = new FileInputStream("Quantity.txt");
+                        ObjectInputStream loadquantity = new ObjectInputStream(q2);
+                        PQuantity = (ArrayList&lt;String&gt;) loadquantity.readObject();
+                        System.out.println("---------------------------------------------------------------");
+                        System.out.printf("|%10s| %20s| %15s| %10s|", "Product ID", "Name", "Price", "Quantity");
+</FONT>                        System.out.println("");
+                        for (int g = 0; g &lt; P_ID.size(); g++) {
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.printf("|%10d| %20s| %15s| %10s|%n", P_ID.get(g), PName.get(g), PPrice.get(g), PQuantity.get(g));
+                        }
+                        System.out.println("---------------------------------------------------------------");
+                        System.out.println("Press M to get back to menu: ");
+                        option8 = sc.next();
+                    }
+                    break;
+            }
+        }
+        if (Option == 9) {
+            System.out.println("Goodbye!");
+        }
+        sc.close();
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,233 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/BuiCongoan_106376_assignsubmission_file_buidoanass2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/BuiCongoan_106376_assignsubmission_file_buidoanass2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: BuiCongoan_106376_assignsubmission_file_buidoanass2.java
+package buidoanass2;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+class product implements Serializable {
+	private int ID;
+	private String name;
+	private double price;
+	private int quantity;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match161-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	private static ArrayList&lt;product&gt; list = new ArrayList&lt;&gt;();
+	public product(int ID,String name,double price,int quantity) {
+	this.ID=ID;
+	this.name=name;
+	this.price=price;
+	this.quantity=quantity;
+ }
+	public int getID() {
+    return ID;
+}
+
+	public String getName() {
+    return name;
+}
+
+	public double getPrice() {
+    return price;
+}
+
+public int getquantity() {
+    return quantity;
+}
+
+public void setID(int ID) {
+    this.ID = ID;
+}
+
+public void setprice(double price) {
+    this.price = price;
+}
+
+public void setquantity(int quantity) {
+    this.quantity = quantity;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+ public static int randomID () {
+</FONT><A NAME="3"></A><FONT color = #00FFFF><A HREF="match161-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int min = 100, max = 1000;
+        int ID;
+        ID = (int) (Math.random()*(max - min + 1) + min);
+        return ID;
+    }
+  public static void add (){
+		System.out.println("how many products do you want to add ? ");
+</FONT>		 
+		Scanner sc= new Scanner (System.in);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match161-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int a=sc.nextInt();
+		sc.nextLine();
+	
+		 for (int i=1; i&lt;=a; i++) {
+	            System.out.println("Product " + i + ":");
+
+	            System.out.print("Enter Name:  ");
+	            String name = sc.nextLine();
+
+	            System.out.print("Enter Price:  ");
+	            double price = Double.parseDouble(sc.nextLine());
+
+	            System.out.print("Enter Quantity:  ");
+	            int quantity = Integer.parseInt(sc.nextLine());
+
+	            
+	            product pro = new product(randomID(), name, price, quantity);
+	            list.add(pro);
+	        } 
+  }
+  public static void display () {
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match161-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	  System.out.println( "                     INFORMATION TABLE OF PRODUCTS                               " );
+	  System.out.printf("%-4s | %-40s | %-10s | %-6s", "ID", "Name", "Price", "Quantity");
+       System.out.println();
+        for (product pro : list) {
+</FONT>        	String m = String.format("%-4d | %-40s | %-10.2f | %-6d", pro.getID(), pro.getName(), pro.getPrice(), pro.getquantity());
+            System.out.println(m);
+        }
+
+    }
+  public static void delete () {
+        System.out.print("Enter name of product which you want to delete: ");
+        Scanner sc1= new Scanner(System.in);
+        String scname = sc1.next();
+        for (product pro : list) {
+            if (pro.getName() == scname) {
+                list.remove(pro);
+                
+                break;
+            }
+        }
+    }
+  public static void Search () {
+	  System.out.println("Enter the name of product : ");
+	  Scanner sc2= new Scanner(System.in);
+	  String scname1 = sc2.next();
+	  System.out.println("Searching...");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match161-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	  ArrayList&lt;product&gt; result = new ArrayList&lt;&gt;();
+	  for (product pro : list) {
+		  if (pro.getName().contains(scname1)) {
+			  result.add(pro);
+		  }
+		  else {
+			  System.out.println(scname1+"does not exist!!!");
+		  }
+		  }
+			  System.out.println("Your result searching!!");
+			  System.out.printf("%-4s | %-40s | %-10s | %-6s", "ID", "Name", "    Price    ", "Quantity");
+			  System.out.println();
+			 
+			  for (product pro : result) {
+</FONT>			  String m = String.format("%-4d | %-40s | %-10.2f | %-6d", pro.getID(), pro.getName(), pro.getPrice(), pro.getquantity());
+	            System.out.println(m);
+			  }
+			  
+		  
+	  } 
+  public static void edition () {
+      System.out.print("Enter product name : ");
+      Scanner sc=new Scanner(System.in);
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match161-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+      String inname = sc.nextLine();
+      sc.nextLine();
+
+      for (product pro : list) {
+          if (pro.getName() == inname) {
+              System.out.print("Enter new name: ");
+              String newName = sc.nextLine();
+</FONT>
+              System.out.print("Enter new price: ");
+              double newPr = sc.nextDouble();
+
+              System.out.print("Enter new quantity: ");
+              int newQu = sc.nextInt();
+
+              pro.setName(newName);
+              pro.setprice(newPr);
+              pro.setquantity(newQu);
+              break;
+          }
+      }
+  }
+   
+     public static void Save () throws Exception {
+        File f = new File("src/buidoanass2/products.txt");
+        FileOutputStream fos = new FileOutputStream(f);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(list);
+        
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match161-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Load () throws Exception{
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/buidoanass2/products.txt"));
+        ArrayList&lt;product&gt; list;
+
+        list = (ArrayList&lt;product&gt;) ois.readObject();
+        
+}
+  }
+  
+public class buidoanass2 {
+</FONT>	public static void main(String[]args) throws Exception {
+		Scanner option=new Scanner(System.in);
+		while(true) {
+			System.out.println("1.Add products");
+			System.out.println("2.Display products");
+			System.out.println("3.Delete a product");
+			System.out.println("4.Search for product by name");
+			System.out.println("5.Edit");
+			System.out.println("6.Save products to the text file");
+			System.out.println("7.Load products from the saved file");
+			System.out.println("8.Quit");
+			System.out.println("Your choice :");
+			int n=option.nextInt();
+			if(n==1) { product.add();}
+			else if(n==2) { product.display();}
+			else if(n==3) { product.delete(); }
+			else if(n==4) {product.Search();}
+			else if(n==5) {product.edition();}
+			else if(n==6) {product.Save();}
+			else if(n==7) {product.Load();}
+			else if (n==8) { System.out.println("GOOD BYE!!!!");}
+			else {System.out.println("WRONG !! YOU MUST ENTER A NUMBER FROM 1 TO 8");}
+			
+		}
+		
+	
+}
+	
+}
+	
+
+							
+	
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

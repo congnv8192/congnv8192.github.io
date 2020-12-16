@@ -1,0 +1,324 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HaThiNgocLan_106533_assignsubmission_file_ProductManager.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/HaThiNgocLan_106533_assignsubmission_file_ProductManager.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: HaThiNgocLan_106533_assignsubmission_file_ProductManager.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+//Name: Hà Thị Ngọc Lan
+//Student ID: 1901040115
+//Class: 1C
+
+import java.io.*;
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match149-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class ProductManager implements Serializable {
+
+    private int proID;
+    private String proName;
+    private double proPrice;
+    private int proQuantity;
+</FONT>
+    public ProductManager(String name, int identity, double price, int quantity) {
+        this.proID = identity;
+        this.proPrice = price;
+        this.proName = name;
+        this.proQuantity = quantity;
+    }
+
+    public ProductManager() {//create a class constructor
+    }
+
+    //create methods to set or edit the attributes for objects
+    public void setName(String name) {
+        this.proName = name;
+    }
+    public void setPrice(double price) {
+        this.proPrice = price;
+    }
+    public void setQuantity(int quantity) {
+        this.proQuantity = quantity;
+    }
+    
+    //methods to retrieve the attributes of objects
+    public int getID() {
+        return proID;
+    }
+    public String getName() {
+        return proName;
+    }
+    public double getPrice() {
+        return proPrice;
+    }
+    public int getQuantity() {
+        return proQuantity;
+    }
+
+    //create a arraylist to save and edit data, use static so we can add data from a static method
+    static ArrayList&lt;ProductManager&gt; list = new ArrayList&lt;&gt;();
+
+    //Feature 1: method to add product, receive data from user, set attribute of object through constructors, then add the object to arraylist
+    //use the while loop to ask if user want to add more product
+    public static void addProduct() throws Exception {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("--------------------------------------------------");
+        System.out.println("Enter the number of product you want to add: ");
+        int number = scan.nextInt();
+
+        for (int i = 1; i &lt;= number; i++) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Product " + i + ":");
+            System.out.print("Enter product name: ");
+            String name = sc.nextLine();
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match149-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.print("Enter product price: ");
+            double price = sc.nextDouble();
+            System.out.print("Enter product quantity: ");
+            int quant = sc.nextInt();
+            ProductManager product = new ProductManager(name, createRandomID(), price, quant);
+            list.add(product);
+        }
+        System.out.println("Add successfully!");
+</FONT>        displayProduct();//let user see the result
+        System.out.println("--------------------------------------------------");
+    }
+
+    //create product ID automatic 
+    public static int createRandomID() {
+        int max = 650;
+        int min = 15;
+        int id = (int) (Math.random() * (max - min + 1));
+        return id;
+    }
+
+    //Feature 2: display products by loading them from array list, printing them under a table-like customed format
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match149-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void displayProduct() {
+        System.out.printf("%-10s | %-5s | %-5s | %s  %n", "Product", "ID", "Price", "Quantity");
+        System.out.println("--------------------------------------------------");
+        for (ProductManager p : list) {
+            System.out.printf("%-10s | %-5s | %-5s | %s  %n", p.getName(), p.getID(), p.getPrice(), p.getQuantity());
+        }
+    }
+
+    //Feature 3: delete a product by its ID, the moethod has the same manner as the Edit feature
+    public static void deleteProduct() {
+</FONT>        System.out.println("Enter ID of the product which you want to remove: ");
+        Scanner sc = new Scanner(System.in);
+        int id = sc.nextInt();
+        boolean found = false;
+        int location = -1;
+        //now scan for this ID in the arraylist then delete
+        for (int i = 0; i &lt; list.size(); i++) {
+            if (id == list.get(i).getID()) {
+                location = i; //save the index of the product need to remove
+                found = true;
+                break;
+            }
+        }
+        if (found == false) {
+            System.out.println("Product not found!");
+        } else {
+            list.remove(location);
+            System.out.println("Remove successfully!");
+            System.out.println("--------------------------------------------------");
+            displayProduct();
+        }
+    }
+
+    //Feature 4: let user enter id, scan the arraylist for this id then let user re-enter the value of attributes
+    public static void editProduct() throws Exception {
+        System.out.println("Enter ID of the product need edititng: ");
+        Scanner sc = new Scanner(System.in);
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match149-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int id = sc.nextInt();
+        boolean found = false;
+//scan the list to find the product that has the same ID, then let user edit the value of attribute, display the result
+        for (int i = 0; i &lt; list.size(); i++) {
+            if (id == list.get(i).getID()) {
+</FONT>                Scanner scan = new Scanner(System.in);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match149-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Enter product name: ");
+                String name = scan.nextLine();
+                list.get(i).setName(name);
+                System.out.println("Enter product price: ");
+                double price = scan.nextDouble();
+                list.get(i).setPrice(price);
+                System.out.println("Enter product quantity: ");
+                int quant = scan.nextInt();
+                list.get(i).setQuantity(quant);
+</FONT>                found = true;
+                System.out.println("--------------------------------------------------");
+                System.out.println("Editing completed!");
+                break;
+            }
+        }
+        if (found == true) {
+            displayProduct();
+        } //incase there is no product has the same ID
+        else {
+            System.out.println("Product not found!");
+        }
+    }
+
+    //Feature 5: search product by keyword, scan the array list to find the name that contains keyword
+    //create a new array list to save the searched products then print it
+    public static void searchProduct() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("--------------------------------------------------");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match149-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter the keyword: ");
+        String key = sc.nextLine();
+        boolean find = false;
+        ArrayList&lt;ProductManager&gt; result = new ArrayList&lt;&gt;();
+        //scan for keyword in the name field, if found one, add this product to another array to print afterthat
+        for (ProductManager p : list) {
+            if (p.getName().contains(key)) {
+                result.add(p);
+                find = true;
+            }
+        }
+        if (find == true) {
+</FONT>            System.out.println("Searched result: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match149-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.printf("%-10s | %-5s | %-5s | %s  %n", "Product", "ID", "Price", "Quantity");
+            System.out.println("--------------------------------------------------");
+            for (ProductManager a : result) {
+                System.out.printf("%-10s | %-5s | %-5s | %s %n", a.getName(), a.getID(), a.getPrice(), a.getQuantity());
+            }
+        } else {
+            System.out.println("Product not found!");
+        }
+    }
+
+    //Feature 6: sort products increasingly by price, using available method for arraylist
+    public static void sortProduct() {
+</FONT>        list.sort(Comparator.comparing(ProductManager::getPrice));
+        System.out.println("\n" + "--------------------------------------------------");
+        System.out.println("Sorting completed!");
+        displayProduct();
+    }
+
+    //Feature 7: save products into file using ObjectOutputStream, save the whole arraylist
+    public static void saveProduct() throws FileNotFoundException, IOException {
+        File f = new File("E:\\Product.txt");//create path to file
+        FileOutputStream temp = new FileOutputStream(f);
+        ObjectOutputStream savedata = new ObjectOutputStream(temp);
+        savedata.writeObject(list);
+        savedata.close();
+        System.out.println("--------------------------------------------------");
+        System.out.println("Saving completed!");
+    }
+
+    //Feature 8: load product information from file
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match149-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void loadProduct() throws Exception {
+        File f = new File("E:\\Product.txt");
+        FileInputStream temp = new FileInputStream(f);
+        ObjectInputStream loaddata = new ObjectInputStream(temp);
+        //create new array list to load data from file then print under customed format
+        ArrayList&lt;ProductManager&gt; loadProduct = (ArrayList&lt;ProductManager&gt;) loaddata.readObject();
+        loaddata.close();
+        System.out.println("--------------------------------------------------");
+</FONT>        System.out.println("Loading completed!");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match149-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.printf("%-10s | %-5s | %-5s | %s  %n", "Product", "ID", "Price", "Quantity");
+        System.out.println("--------------------------------------------------");
+        //create instance to scan the array list that contains loaded result
+        for (ProductManager a : loadProduct) {
+            System.out.printf("%-10s | %-5s | %-5s | %s %n", a.getName(), a.getID(), a.getPrice(), a.getQuantity());
+        }
+    }
+
+    public static void Menu() {
+</FONT>        System.out.println("Feature 1: Add products");
+        System.out.println("Feature 2: Display products");
+        System.out.println("Feature 3: Delete a product");
+        System.out.println("Feature 4: Edit a product");
+        System.out.println("Feature 5: Search for products by name");
+        System.out.println("Feature 6: Sort products by price");
+        System.out.println("Feature 7: Save products to text/binary file");
+        System.out.println("Feature 8: Load products from the saved file");
+        System.out.println();
+    }
+
+    public static void main(String[] args) throws Exception {
+        File f = new File("E:\\product.txt");
+        f.createNewFile();
+        Scanner sc = new Scanner(System.in);
+        boolean isContinue = false;
+        System.out.println("----------------------------------------------");
+        System.out.println("This is product manager system.");
+
+        do {
+            Menu();
+            System.out.println("Choose the number of feature you want to continue: ");
+            int feature = sc.nextInt();
+
+            switch (feature) {
+                case 1:
+                    addProduct();
+                    break;
+                case 2:
+                    displayProduct();
+                    break;
+                case 3:
+                    deleteProduct();
+                    break;
+                case 4:
+                    editProduct();
+                    break;
+                case 5:
+                    searchProduct();
+                    break;
+                case 6:
+                    sortProduct();
+                    break;
+                case 7:
+                    saveProduct();
+                    break;
+                case 8:
+                    loadProduct();
+                    break;
+                default:
+                    System.out.println("Feature not exist");
+            }
+            //ask user if they want to continue using aother feature
+            System.out.println("Do you want to continue with another feature? (Y or N)");
+            Scanner scan = new Scanner(System.in);
+            String choose = scan.nextLine();
+            if ("y".equals(choose) || "Y".equals(choose)) {
+                isContinue = true;
+            } else {
+                isContinue = false;
+            }
+        } while (isContinue == true);
+        if (isContinue == false) {
+            System.out.println("Goodbye!");
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

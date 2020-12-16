@@ -1,0 +1,297 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/BuiCongoan_106376_assignsubmission_file_buidoanass2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/oPhucai_106386_assignsubmission_file_Assignment_2_DoPhucDai.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: oPhucai_106386_assignsubmission_file_Assignment_2_DoPhucDai.java
+package Assignment2;
+import java.io.Serializable;//converts the state of an object into bytes and vice versa
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Productinfor implements Serializable {
+    static Scanner input = new Scanner(System.in);
+    private int ID;
+    private String Name;
+    private double Price;
+    private int Quantity; // define properties of product
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match161-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static final ArrayList&lt;Productinfor&gt; Productlist = new ArrayList&lt;&gt;();// create list of product
+
+    public Productinfor (int ID, String Name, double Price, int Quantity) {
+        this.ID = ID;
+        this.Name = Name;
+        this.Price = Price;
+        this.Quantity = Quantity;
+    }//eliminate the confusion between class attributes and parameters
+
+    public int getID() { return ID; }
+
+    public String getName() {
+        return Name;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public int getQuantity() {
+        return Quantity;
+    }
+
+    public void setID(int ID) { this.ID = ID; }
+
+    public void setPrice(double Price) {
+        this.Price = Price;
+    }
+
+    public void setQuantity(int Quantity) {
+        this.Quantity = Quantity;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public static void ShowMenu() {
+</FONT>        System.out.println("""
+                Choose one feature listed below:\s
+                [1] Add products.\s
+                [2] Display products.\s
+                [3] Delete a product.\s
+                [4] Edit a product.\s
+                [5] Search for products by name.
+                [6] Sort products by price.\s
+                [7] Save products to text file.\s
+                [8] Load products from the saved file.\s
+                [9] Exit program.\s
+                """);
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match161-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static int randomID () {
+        int min = 100, max = 10000;
+        int ID;
+        ID = (int) (Math.random()*(max - min + 1) + min);
+        return ID;
+    }//create random id for different products
+
+    public static void Add() {
+        System.out.print("Enter the number of product you want to add: ");
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match161-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int addnumber = input.nextInt();
+        input.nextLine();
+
+        for (int a=1; a&lt;=addnumber; a++) {
+            System.out.println("Product "+ a +":");
+            System.out.print("Enter Name:  ");
+            String name = input.nextLine();
+            System.out.print("Enter Price:  ");
+            double price =Double.parseDouble(input.nextLine());
+            System.out.print("Enter Quantity:  ");
+            int quantity =Integer.parseInt(input.nextLine());
+            Productinfor product = new Productinfor(randomID(), name, price, quantity);
+            Productlist.add(product);// add new product to product list
+            System.out.println("Product "+a+" added");
+</FONT>        }
+    }
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match161-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void Show() {
+
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.printf("%-4s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Productinfor product : Productlist) {
+</FONT>            System.out.printf("%-4d | %-40s | %-10.2f | %-10d", product.getID(), product.getName(), product.getPrice(), product.getQuantity());
+            System.out.println();
+        }
+        System.out.println("-----------------------------------------------------------------------");
+
+    }
+
+    public static void Delete() {
+        System.out.print("Enter product ID [numbers]: ");
+        int inputID = input.nextInt();
+        for (Productinfor product : Productlist) {
+            if (product.getID() == inputID) {
+                Productlist.remove(product);// delete product from product list
+                System.out.println("Product [ID:"+inputID+ "] removed !!!");
+                break;
+            }else {
+                System.out.println("Can't found this ID!!!");
+                break;
+            }
+
+        }
+    }
+
+    public static void edit () {
+        System.out.print("Enter product ID: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match161-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int inputID = input.nextInt();
+        input.nextLine();
+
+        for (Productinfor product : Productlist) {
+            if (product.getID() == inputID) {
+                System.out.print("Enter new name: ");
+                String Newname = input.nextLine();
+</FONT>
+                System.out.print("Enter new price: ");
+                double Newprice =Double.parseDouble(input.nextLine()) ;
+
+                System.out.print("Enter new quantity: ");
+                int Newquantity = Integer.parseInt(input.nextLine());
+
+                product.setName(Newname);// Change old information to new information
+                product.setPrice(Newprice);
+                product.setQuantity(Newquantity);
+                System.out.println("The product [ID:"+inputID+"] now have new name: "+Newname+" new price: "+Newprice+" new quantity: "+Newquantity);
+                break;
+            }
+            else {
+                System.out.println("Can't found this ID!!!");
+                break;
+            }
+        }
+    }
+
+    public static void Search() {
+        System.out.print("Enter key name: ");
+        String keyName = input.nextLine();
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match161-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        ArrayList&lt;Productinfor&gt; Searchlist = new ArrayList&lt;&gt;();// create new list add product contain key word to that list and show
+        for (Productinfor sp : Productlist) {
+            if (sp.getName().contains(keyName)) {
+                Searchlist.add(sp);
+            } else {
+                System.out.println("Can't found this key name!!!");
+                break;
+            }
+        }
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.printf("%-4s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Productinfor sp : Searchlist) {
+</FONT>            System.out.printf("%-4d | %-40s | %-10.2f | %-10d", sp.getID(), sp.getName(), sp.getPrice(), sp.getQuantity());
+            System.out.println();
+        }
+        System.out.println("-----------------------------------------------------------------------");
+    }
+
+    public static void Sort() {
+
+        ArrayList&lt;Productinfor&gt; SortList = new ArrayList&lt;&gt;(Productlist);
+
+        Productinfor order;
+        for (int a=0; a&lt; SortList.size() - 1; a++) {
+            for (int b=a+1; b&lt; SortList.size(); b++) {
+                if (SortList.get(a).getPrice() &gt; SortList.get(b).getPrice()) {// compare price and sort
+                    order = SortList.get(a);
+                    SortList.set(a, SortList.get(b));
+                    SortList.set(b, order);
+                }
+            }
+        }
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.printf("%-4s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Productinfor product : SortList) {
+            System.out.printf("%-4d | %-40s | %-10.2f | %-10d", product.getID(), product.getName(), product.getPrice(), product.getQuantity());
+            System.out.println();
+        }
+        System.out.println("-----------------------------------------------------------------------");
+    }
+
+    public static void saveproduct() throws Exception {
+        File f = new File("src/data.txt");
+        FileOutputStream fos = new FileOutputStream(f);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(Productlist);
+        System.out.println("Product saved!!!");
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match161-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void loadproduct() throws Exception{
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/data.txt"));
+        ArrayList&lt;Productinfor&gt; List;
+
+        List = (ArrayList&lt;Productinfor&gt;) ois.readObject();
+
+        System.out.println("----------------------------------------------------------------------");
+</FONT>        System.out.printf("%-4s | %-40s | %-10s | %-10s", "ID", "Name", "Price", "Quantity");
+        System.out.println();
+        for (Productinfor sp : List) {
+            System.out.printf("%-4d | %-40s | %-10.2f | %-10d", sp.getID(), sp.getName(), sp.getPrice(), sp.getQuantity());
+            System.out.println();
+        }
+        System.out.println("----------------------------------------------------------------------");
+    }
+}
+
+public class Assignment_2_DoPhucDai{
+    static Scanner input = new Scanner(System.in);
+    public static boolean aContinue;
+
+    public static void Askcontinue() {
+        System.out.println("Do you want to continue with another feature \n"+
+                "[Y]  Yes\n"+
+                "[N]  No\n"+
+                "Choose an option: ");
+        String yesno=input.nextLine();
+        if(yesno.toUpperCase().equals("N")){
+             aContinue = false;
+            System.out.print("program end!!!");
+        }else {aContinue=true;}
+    }//end the program when asked
+
+
+    public static void main(String[] args) throws Exception {
+        int choice = 0;
+        do {
+            Productinfor.ShowMenu();
+            System.out.print("Enter choice: ");
+            choice = input.nextInt();
+            input.nextLine();
+            switch (choice) {
+                case 1 -&gt;{ Productinfor.Add();Askcontinue();}
+
+                case 2 -&gt;{ Productinfor.Show();Askcontinue();}
+
+                case 3 -&gt; {Productinfor.Delete();Askcontinue();}
+
+                case 4 -&gt;{ Productinfor.edit();Askcontinue();}
+
+                case 5 -&gt;{ Productinfor.Search();Askcontinue();}
+
+                case 6 -&gt;{ Productinfor.Sort();Askcontinue();}
+
+                case 7 -&gt; {Productinfor.saveproduct();Askcontinue();}
+
+                case 8-&gt; {Productinfor.loadproduct();Askcontinue();}
+
+                case 9 -&gt; System.out.println("Good bye!!");
+                default -&gt; System.out.println("Invalid choice !!");
+
+
+            }
+        }
+        while (choice !=9&&  aContinue==true);
+        System.exit(0);
+    }
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

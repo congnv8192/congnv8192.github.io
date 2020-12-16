@@ -1,0 +1,221 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenNgocTram_106316_assignsubmission_file_NguyenNgocTram_1TD19.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenNgocTram_106316_assignsubmission_file_NguyenNgocTram_1TD19.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenNgocTram_106316_assignsubmission_file_NguyenNgocTram_1TD19.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment2;
+
+/**
+ * Nguyen Ngoc Tram 
+ * 1901060055
+ * 1TD19
+ * @author tramxinh
+ */
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class NguyenNgocTram_1TD19 {
+    public static void main (String[] args) throws Exception { 
+        // set up ArrayList
+        ArrayList&lt;String&gt; pr_name = new ArrayList&lt;&gt;(); 
+        ArrayList&lt;Double&gt; pr_price = new ArrayList&lt;&gt;();
+        ArrayList&lt;Integer&gt; pr_quantity = new ArrayList&lt;&gt;();
+        // set up Scanner
+        Scanner sc = new Scanner(System.in);
+        boolean dieukien = true;
+        boolean stop = false; 
+        do {
+            try {
+            System.out.println("Choose from 1-9:");
+            System.out.println("1. Add products");
+            System.out.println("2. Display products");
+            System.out.println("3. Delete a product");
+            System.out.println("4. Edit a product");
+            System.out.println("5. Search for products by name");
+            System.out.println("6. Sort products by price");
+            System.out.println("7. Save products to text/binary file");
+            System.out.println("8. Load products from the saved file");
+            System.out.println("9. Exit");
+            int opts = sc.nextInt();
+        switch (opts){ 
+            case 1: // Add products
+                boolean dieukien1 = true;
+                        do {
+                            try {
+                                System.out.print("Enter Product Name: ");
+                                String name = sc.nextLine();
+                                System.out.print("Enter Product Price: ");
+                                double price = sc.nextDouble();
+                                System.out.print("Enter Product Quantity: ");
+                                int quantity = sc.nextInt();
+                                if (price &gt; 0 && quantity &gt; 0) {
+                                    pr_name.add(name);
+                                    pr_price.add(price);
+                                    pr_quantity.add(quantity);
+                                } else {
+                                    System.out.println("Failed");
+                                }
+                                System.out.println("Do you want to add some more products? (Yes/No)");
+                                sc.nextLine();
+                                String opt1 = sc.nextLine();
+                                if (opt1.equals("yes") || opt1.equals("YES")) {
+                                    continue;
+                                }
+                                if (opt1.equals("no") || opt1.equals("NO")) {
+                                    dieukien1 = false;
+                                    System.out.println("Goodbye!");
+                                } else {
+                                    System.out.println("Error");
+                                    dieukien1 = false;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Failed");
+                                sc.nextLine();
+                            }
+                        } while (dieukien1);
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match141-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_13.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        break;
+                  
+
+            
+                
+            case 2: // Display products
+                try {
+                    System.out.format("| %5s | %14s | %14s | %14s | %n", "ID", "Name", "Price ($)", "Quantity");
+                    for (int i = 0; i &lt; pr_name.size(); i++) { 
+                        System.out.println("=============");
+                        System.out.format("| %5s | %14s | %14.1f | %14d | %n", (i + 1), pr_name.get(i), pr_price.get(i),
+                    pr_quantity.get(i));   
+                    } 
+                } catch (Exception e) { 
+                    sc.nextLine();
+                } 
+                System.out.println();
+                break; 
+                
+                
+            case 3: // Delete a product
+                if (pr_name.size()&lt;=0) { 
+                    System.out.println("Error");
+                } else { 
+                    System.out.println("Enter the product ID that you want to delete:");
+                    int delete = sc.nextInt(); 
+                    pr_name.remove(delete-1); 
+</FONT>                    pr_price.remove(delete-1); 
+                    pr_quantity.remove(delete-1); 
+                }
+                System.out.println("Delete successfully");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match141-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.println("Please check your list again in function 2");
+                break; 
+                
+                
+                
+            case 4: // Edit a product
+                if (pr_name.size()&lt;=0){
+                    System.out.println("Error");
+                } else { 
+                    Scanner sc1 = new Scanner(System.in); 
+                    System.out.println("Enter a product that you want to edit:");
+                    int edit = sc.nextInt(); 
+                    System.out.println("Enter product's new name:");
+                    System.out.println("Enter product's new price:");
+</FONT>                    System.out.println("Enter product's new quantity");
+                    pr_name.set(edit-1,sc1.nextLine()); 
+                    pr_price.set(edit-1,sc1.nextDouble());
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match141-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_28.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    pr_quantity.set(edit-1,sc.nextInt());
+                } 
+                System.out.println("Complete");
+                break; 
+            
+                
+                
+            case 5: // Search for product by name
+                System.out.print("Enter the keyword:");
+                Scanner sc2 = new Scanner(System.in); 
+                String keyword = sc2.nextLine(); 
+                System.out.format("| %5s | %14s | %14s | %14s | %n", "ID", "Name", "Price ($)", "Quantity");
+                for (int i = 1; i&lt; pr_name.size();i++) { 
+                    if ((pr_name.get(i)).contains(keyword)) { 
+                        System.out.format("| %5s | %14s | %14.1f | %14d | %n", (i + 1), pr_name.get(i),
+                           pr_price.get(i), pr_quantity.get(i));
+                    } else { 
+                    System.out.println("Error");
+                    break; 
+                    } 
+                }   System.out.println();
+                    break; 
+                    
+                    
+            case 6: // Sort product by price
+                System.out.println("The menu will be updated soon");
+                break; 
+                
+                
+            case 7: // Save products to text/binary file
+                File f = new File("Product.bin");
+                FileOutputStream fos = new FileOutputStream(f); 
+                ObjectOutputStream oos = new ObjectOutputStream(fos); 
+                oos.writeObject(pr_name); 
+                oos.writeObject(pr_price); 
+                oos.writeObject(pr_quantity); 
+                oos.close();
+                System.out.println("Complete");
+                break; 
+            
+                
+            case 8: // Load products from the saved file
+                FileInputStream fis = new FileInputStream("product.bin"); 
+                ObjectInputStream ois = new ObjectInputStream(fis); 
+                pr_name = (ArrayList&lt;String&gt;) ois.readObject(); 
+                pr_price = (ArrayList&lt;Double&gt;) ois.readObject(); 
+                pr_quantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+                ois.close(); 
+                System.out.println("Complete");
+                break; 
+                
+                
+            case 9: // Exit 
+</FONT>                 System.out.println("Goodbye, have a nice day!");
+                        dieukien = false;
+                        break;
+
+  }} catch (Exception e) {
+                System.out.println("Error");
+                sc.nextLine();
+            }
+                }
+                while (dieukien);                   
+                    }                   
+                }                        
+
+   
+        
+                     
+                     
+                
+        
+        
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

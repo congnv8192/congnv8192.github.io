@@ -1,0 +1,324 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/BaoAnhNguyenLe_106441_assignsubmission_file_assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NgoAnhTuyet_106468_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NgoAnhTuyet_106468_assignsubmission_file_Assignment2.java
+package Assignment02;
+
+/**
+ *
+ * @author Ngô Ánh Tuyết_8C19_1901040196_A2
+ */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Assignment2 {
+
+    static ArrayList&lt;String&gt; list_name = new ArrayList&lt;&gt;(); // Creating an ArrayList of strings to save name of products
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match30-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static ArrayList&lt;Double&gt; list_price = new ArrayList&lt;&gt;(); // Creating an ArrayList of double to save price of products
+    static ArrayList&lt;Integer&gt; list_quantity = new ArrayList&lt;&gt;(); // Creating an ArrayList of integer to save quantity of products
+
+    public static void add_Products() {
+        try {
+            Scanner scan = new Scanner(System.in);
+
+            System.out.print("Please input to add the product number: ");
+            int n = scan.nextInt();
+            scan.nextLine();
+
+            for (int t = 0; t &lt; n; t++) {
+                int ID_Product = list_name.size() + 1; // Create ID automatically
+
+                System.out.println("ID: " + ID_Product);
+                System.out.print("Please input the name product: ");
+                String name_Product = scan.nextLine();
+                System.out.print("Please input the price product: ");
+                double price_Product = scan.nextDouble();
+                scan.nextLine();
+                System.out.print("Please input the quantity product: ");
+                int quantity_Product = scan.nextInt();
+                scan.nextLine();
+
+                list_name.add(name_Product); // Adding name_Product to list_name
+                list_price.add(price_Product); // Adding price_Product to list_price
+                list_quantity.add(quantity_Product); //Adding quantity_Product to list_quantity
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match30-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+
+            }
+        } catch (Exception e) {
+            System.out.println("Enter valid input!");
+        }
+    }
+
+    public static void display_Products() {
+        boolean exist = list_name.isEmpty();
+        if (exist == true) {
+            System.out.println("There is no product information to display");
+        } else { // creating a table 
+            System.out.println("________________________________________________________");
+            System.out.format(" %14s || ", "ID");
+</FONT>            System.out.format(" %16s || ", "Name");
+            System.out.format(" %14s || ", "Price");
+            System.out.format(" %16s || ", "Quantity");
+            System.out.format(" %n ");
+
+            for (int t = 0; t &lt; list_name.size(); t++) {
+                System.out.format(" No%9d || ", t + 1);
+                System.out.format(" %16s || ", list_name.get(t));
+                System.out.format(" %14f || ", list_price.get(t));
+                System.out.format(" %14d || ", list_quantity.get(t));
+                System.out.format(" %n ");
+
+            }
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match30-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_16.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("________________________________________________________");
+        }
+    }
+
+    public static void delete_Product() {
+        try {
+            Scanner scan = new Scanner(System.in);
+
+            System.out.print("Input ID product: ");
+            int ID_Product = scan.nextInt();
+
+            list_name.remove(ID_Product - 1); // delete elements in arraylist
+            list_price.remove(ID_Product - 1);
+            list_quantity.remove(ID_Product - 1);
+            System.out.println("Delete completed");
+
+        } catch (Exception e) {
+            System.out.println("Incorrect ID!");
+        }
+        display_Products(); // show results after deleting
+    }
+
+    public static void edit_Product() {
+        try {
+            Scanner scan = new Scanner(System.in);
+
+            System.out.print("Please input ID product: ");
+            int ID_product = scan.nextInt();
+            scan.nextLine();
+
+            System.out.print("Please input new name: ");
+            String nName = scan.nextLine(); // get user input
+            list_name.set(ID_product - 1, nName); // change data in an array list 
+
+            System.out.print("Please input new price: ");
+            double nPrice = scan.nextDouble();
+            list_price.set(ID_product - 1, nPrice);
+
+            System.out.print("Please input new quantity: ");
+            int nQuantity = scan.nextInt();
+            list_quantity.set(ID_product - 1, nQuantity);
+
+        } catch (Exception e) {
+            System.out.println("Incorrect ID!");
+        }
+        display_Products(); // display results after editing
+    }
+
+    public static void search_Product() {
+        try {
+            boolean exist = false;
+            Scanner scan = new Scanner(System.in);
+            System.out.print("Input the name product: ");
+            String name_Product = scan.nextLine();
+
+            for (int t = 0; t &lt; list_name.size(); t++) {
+</FONT>                if (list_name.get(t).contains(name_Product)) {
+                    System.out.format(" %14s || ", "ID");
+                    System.out.format(" %16s || ", "Name");
+                    System.out.format(" %14s || ", "Price");
+                    System.out.format(" %14s || ", "Quantity");
+                    System.out.format(" %n ");
+
+                    System.out.format(" No%9d || ", t + 1);
+                    System.out.format(" %16s || ", list_name.get(t));
+                    System.out.format(" %14f || ", list_price.get(t));
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match30-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.format(" %14d || ", list_quantity.get(t));
+                    System.out.format(" %n ");
+                    exist = true;
+                }
+            }
+            if (exist == false) {
+                System.out.println("This product not exist!");
+            }
+        } catch (Exception e) {
+            System.out.println("Enter valid product name");
+        }
+    }
+
+    public static void sort_Products() {
+        int min_Position;
+        String n; // n is the name product
+        double p; // p is the price product
+        int q; // q is the quantity product
+        for (int t = 0; t &lt; list_name.size(); t++) {
+            min_Position = t;
+            for (int k = t + 1; k &lt; list_name.size(); k++) { // finds the position of the smallest value in the array list
+                if (list_price.get(k) &lt; list_price.get(t)) { //Compare values in the array list
+                    min_Position = k;
+                }
+            }
+            n = list_name.get(t); // it is the product's name from the position of the smallest value of the price
+            list_name.set(t, list_name.get(min_Position));
+            list_name.set(min_Position, n);
+</FONT>
+            p = list_price.get(t);
+            list_price.set(t, list_price.get(min_Position));
+            list_price.set(min_Position, p);
+
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match30-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            q = list_quantity.get(t);
+            list_quantity.set(t, list_quantity.get(min_Position));
+            list_quantity.set(min_Position, q);
+        }
+        display_Products(); // display results after sorting
+    }
+
+    public static void save_Products() {
+</FONT>        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            File f = new File("products.txt");
+            fos = new FileOutputStream(f);
+            oos = new ObjectOutputStream(fos);
+
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match30-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            oos.writeObject(list_name);
+            oos.writeObject(list_price);
+            oos.writeObject(list_quantity);
+
+            oos.close();
+
+            System.out.println("The file is saved");
+        } catch (IOException e) {
+            System.out.println("Faulty save!");
+        }
+    }
+
+    public static void load_Products() throws FileNotFoundException, IOException {
+</FONT>        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            File f = new File("products.txt");
+
+            fis = new FileInputStream(f);
+            ois = new ObjectInputStream(fis);
+
+            list_name = (ArrayList&lt;String&gt;) ois.readObject();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match30-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            list_price = (ArrayList&lt;Double&gt;) ois.readObject();
+            list_quantity = (ArrayList&lt;Integer&gt;) ois.readObject();
+
+            ois.close();
+
+            System.out.println("Load completed!");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Load failed!");
+        }
+    }
+
+    public static void exit_Program() {
+        System.out.println("Goodbye!");
+    }
+
+    public static void menuDriven() { //display a menu driven program
+        System.out.println("___________________________________________________");
+        System.out.println(" Welcome to Menu driven program ");
+        System.out.println("---------------------------------------------------");
+        System.out.println("[1]: Add products");
+</FONT>        System.out.println("[2]: Display products");
+        System.out.println("[3]: Delete a product");
+        System.out.println("[4]: Edit a product");
+        System.out.println("[5]: Search for products by name");
+        System.out.println("[6]: Sort products by price");
+        System.out.println("[7]: Save products to text/binary file");
+        System.out.println("[8]: Load products from the saved file");
+        System.out.println("[9]: Exit the program");
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match30-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("---------------------------------------------------");
+    }
+
+    public static void run_Program(int choice) throws IOException {
+        switch (choice) {
+            case 1:
+                add_Products();
+                break;
+            case 2:
+                display_Products();
+                break;
+            case 3:
+                delete_Product();
+                break;
+            case 4:
+</FONT>                edit_Product();
+                break;
+            case 5:
+                search_Product();
+                break;
+            case 6:
+                sort_Products();
+                break;
+            case 7:
+                save_Products();
+                break;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match30-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            case 8:
+                load_Products();
+                break;
+            case 9:
+                exit_Program();
+                break;
+            default:
+                System.out.println("Please, enter valid choice!");
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        int choice = 0;
+        boolean exist = false;
+        while (exist == false) {
+            try {
+                while (choice != 9) {
+                    menuDriven();
+                    Scanner scan = new Scanner(System.in);
+                    System.out.print("Enter your choice: ");
+                    choice = scan.nextInt();
+                    run_Program(choice);
+                }
+                exist = true;
+            } catch (Exception e) {
+                System.out.println("Incorrect input!!! Please re-enter choice from menu");
+</FONT>            }
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,235 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040095NguyenucHoang_106559_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040095NguyenucHoang_106559_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040095NguyenucHoang_106559_assignsubmission_file_Assignment2.java
+package assignment2;
+
+import java.io.*;
+import java.util.*;
+
+class Products implements Serializable {
+
+    private int ID;
+    private String names;
+    private float prices;
+    private int quantities;
+
+    public void addinformation() {
+        Scanner sc = new Scanner(System.in);
+        Random rd = new Random();
+        ID = rd.nextInt(90000);
+        names = sc.nextLine();
+        prices = sc.nextFloat();
+        quantities = sc.nextInt();
+        System.out.print("Enter name: ");
+        System.out.print("Enter price");
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match170-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.print("Enter quantities of product:");
+    }
+
+    public void display() {
+        System.out.format("%15d | %15s | %10f | %15d | %n ", ID, names, prices, quantities);
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public void setNames(String names) {
+</FONT>        this.names = names;
+    }
+
+    public float getPrices() {
+        return prices;
+    }
+
+    public void setPrices(float prices) {
+        this.prices = prices;
+    }
+
+    public int getQuantities() {
+        return quantities;
+    }
+
+    public void setQuantities(int quantities) {
+        this.quantities = quantities;
+    }
+}
+
+public class Assignment2 {
+
+    Scanner in = new Scanner(System.in);
+    ArrayList&lt;Products&gt; array = new ArrayList&lt;&gt;();
+
+    /*Add product*/
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match170-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    void inputData(int num) {
+        for (int i = 1; i &lt;= num; i++) {
+            System.out.print("Product " + i);
+            Products PDA2 = new Products();
+            PDA2.addinformation();
+            array.add(PDA2);
+        }
+    }
+
+    /*Display products*/
+    public void displayproduct() {
+        System.out.format("%15s | %15s | %10s | %15s | %n ", "Product ID", "Names", "Price($)", "Quantities");
+        for (int i = 0; i &lt; array.size(); i++) {
+</FONT>            array.get(i).display();
+        }
+    }
+
+    /*Find location to manage*/
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match170-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    int findlocate(int locate) {
+        int i;
+        boolean found = false;
+        for (i = 0; i &lt; array.size(); i++) {
+            if (array.get(i).getID() == locate) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return -1;
+        }
+        return i;
+    }
+
+    /*Search for products by names*/
+    public void search() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Choose Name: ");
+        String name = input.nextLine();
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match170-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (int i = 0; i &lt; array.size(); i++) {
+            if (array.get(i).getNames().equals(name)) {
+                System.out.println("RESULT: ");
+</FONT>                System.out.format("|%15s | %15s | %15s | %10s | %n", "ID ", "Names  ", "Prices  ", "Quantities ");
+                array.get(i).display();
+            } else {
+                System.out.println("Invalid Input!");
+            }
+        }
+    }
+
+    /*Save product */
+    public void save() {
+        System.out.print("Enter product's name(.txt): ");
+        String s = in.nextLine();
+        try {
+            File FA2;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match170-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FA2 = new File(s + ".txt");
+            FileOutputStream fos = new FileOutputStream(FA2);
+            try (ObjectOutputStream OutputST = new ObjectOutputStream(fos)) {
+                OutputST.writeObject(array);
+                OutputST.close();
+            }
+            System.out.println("Product saved");
+        } catch (IOException e) {
+            System.out.println("ERROR: " + e);
+        }
+    }
+
+    /*Load product from saved file*/
+    public void load() throws ClassNotFoundException {
+</FONT>        System.out.print("Enter file's name you want to load: ");
+        String s = in.nextLine();
+        try {
+            File fileA2 = new File(s + ".txt");
+            FileInputStream FileIP2;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match170-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FileIP2 = new FileInputStream(fileA2);
+            try (ObjectInputStream OIPST = new ObjectInputStream(FileIP2)) {
+                array = (ArrayList&lt;Products&gt;) OIPST.readObject();
+                System.out.println("FILE LOADED");
+                displayproduct();
+                OIPST.close();
+            }
+        } catch (IOException e) {
+            System.out.println("ERROR: " + e);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+</FONT>
+        Assignment2 test = new Assignment2();
+        Scanner sc = new Scanner(System.in);
+
+        int loop = 1;
+        do {
+            System.out.println("Menu List");
+            System.out.println(" 1 : Add products");
+            System.out.println(" 2 : Display products");
+            System.out.println(" 3 : Delete products");
+            System.out.println(" 5 : Search for products by names");
+            System.out.println(" 7 : Save products to text/binary file");
+            System.out.println(" 8 : Load products from the saved file");
+            System.out.println(" 9 : END");
+            int a = sc.nextInt();
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match170-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            switch (a) {
+                case 1:
+                    System.out.print("Enter numbers of products you want to add: ");
+                    int n = sc.nextInt();
+                    test.inputData(n);
+                    System.out.println("Successful");
+                    break;
+                case 2:
+                    test.displayproduct();
+                    break;
+                case 3:
+                    System.out.print("Enter product ID: ");
+                    int del = sc.nextInt();
+                    int m = test.findlocate(del);
+                    if (a == -1) {
+                        System.out.println("Product not found");
+                    } else {
+                        test.array.remove(test.array.get(a));
+                        System.out.println("Deleted");
+</FONT>                        test.displayproduct();
+                    }
+                    break;
+                case 5:
+                    test.search();
+                case 7:
+                    test.save();
+                case 8:
+                    test.load();
+                case 9:
+                    loop = 0;
+                    System.out.println("Goodbye");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+        } while (loop == 1);
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,183 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenTungLam_106423_assignsubmission_file_Assaignment2(PR1).Java/Assaignment2(PR1)/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NganThiPhuc_106348_assignsubmission_file_Assignment2_NganThiPhuc_4C19.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NganThiPhuc_106348_assignsubmission_file_Assignment2_NganThiPhuc_4C19.java
+package assignment2_nganthiphuc_4c19;
+
+import assignment2.newpackage.Product;
+import assignment2.newpackage2.ProductManager;
+import assignment2.newpackage3.ProductConsole;
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match199-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+</FONT>import static jdk.nashorn.internal.runtime.Debug.id;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match199-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import static jdk.nashorn.internal.runtime.ScriptingFunctions.readLine;
+
+/**
+ *Full name: Ngan Thi Phuc
+ *Class: 4C19
+ *ID: 1901040157
+ */
+
+public class Assignment2_NganThiPhuc_4C19 {
+
+    public static void main(String[] args) {
+        ProductConsole pc = new ProductConsole();
+        pc.start();
+</FONT>    }
+    
+    private final ProductManager pm;
+    private final Scanner sc;
+    
+    public Assignment2_NganThiPhuc_4C19() {
+        this.sc = new Scanner(System.in);  
+        this.pm = new ProductManager();
+    }
+
+    
+    private int menu() {
+        System.out.println("MENU");
+        System.out.println("-----------");
+        System.out.println("1. Add products");
+        System.out.println("2. Display products");
+        System.out.println("3. Delete a product");
+        System.out.println("4. Edit a product");
+        System.out.println("5. Search for products by name");
+        System.out.println("6. Sort products by price");
+        System.out.println("7. Save products to text/binary file");
+        System.out.println("8. Load products from the saved file");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match199-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("0. Exit");
+        System.out.println("-----------");
+        System.out.print("Enter your choice: ");
+        int choice = readInt(0, 8);
+        return choice;
+    }
+    
+    public void start(){
+        while(true){
+            int choice = menu();
+            switch (choice) {
+                case 0:
+                    System.exit(0);
+                    break;
+                case 1:
+                    addProduct();
+                    break;
+                case 2:
+                    displayProduct();
+                    break;
+                case 3:
+</FONT>                    deleteAProduct();
+                    break;
+                case 4:
+                    System.out.println("Edit a product");
+                    break;
+                case 5:
+                    System.out.println("Search for products by name");
+                    break;
+                case 6:
+                    System.out.println("Sort products by price");
+                    break;
+                case 7:
+                    System.out.println("Save products to text/binary file");
+                    break;
+                case 8:
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match199-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Load products from the saved file");
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+    }
+
+    
+    private int readInt(int min, int max) {
+        int choice;
+        while (true) {
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+                if (choice &gt;= min && choice &lt;= max) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+</FONT>            }
+        }
+        return choice;
+    }
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match199-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_17.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private float readFloat(int min, float max) {
+        float price;
+        while(true) {
+            try {
+                price = Float.parseFloat(sc.nextLine());
+                if(price &gt;= min && price &lt;= max){
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid value. Try to enter a float value");
+            }
+        }
+        return price;
+    }
+    
+    private void addProduct() {
+        System.out.print("Enter product ID: ");
+        int id = readInt(0, Integer.MAX_VALUE);
+        System.out.print("Enter product name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter product price: ");
+        float price = readFloat(0, Float.MAX_VALUE);
+        Product p = new Product(id, name, price);
+        this.pm.addProduct(p);
+</FONT>    }
+
+    @SuppressWarnings("empty-statement")
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match199-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private void displayProduct() {
+        System.out.println("Display product");
+        System.out.print("ID\tName\tPrice");
+        for (int i = 0; i &lt; this.pm.count(); i++);
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match199-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Product p = this.pm.getProduct(i);
+            System.out.println(p.getId()+"\t"+p.getName()+"\t"+p.getPrice()+"\t"+p.getQuantity());
+</FONT>    }
+
+    private void deleteAProduct() {
+        System.out.print("Enter ID of product: ");
+        try {
+        int id = (int) readLine(0, Integer.MAX_VALUE);
+        } catch (IOException ex) {
+            Logger.getLogger(ProductConsole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match199-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        boolean result = this.pm.deleteAProduct(id);
+        if(result) {
+            System.out.println("Product was deleted.");
+        } else {
+            System.out.println("Product not found.");
+</FONT>        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

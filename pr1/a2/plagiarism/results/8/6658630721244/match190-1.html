@@ -1,0 +1,351 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1701040080LeTrungKien_106290_assignsubmission_file_MyAssignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenHoangNgan_106379_assignsubmission_file_Assignment_2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenHoangNgan_106379_assignsubmission_file_Assignment_2.java
+/*
+Student Name: Nguyễn Hoàng Ngân
+Student ID: 1901040145
+Class: 5C19
+*/
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match190-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+</FONT>import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.List;
+
+    class Product implements Serializable {
+    private int id;
+    private String name;
+    private float price;
+    private int quantity;
+   
+    public Product(int id, String name, float price, int quantity) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+    public int getId() {
+        return id;
+    }
+ 
+    public void setId(int id) {
+        this.id = id;
+    }
+ 
+    public String getname() {
+        return name;
+    }
+ 
+    public void setname(String name) {
+        this.name = name;
+    }
+ 
+    public float getprice() {
+        return price;
+    }
+ 
+    public void setprice(float price) {
+        this.price = price;
+    }
+ 
+    public int getquantity() {
+        return quantity;
+    }
+ 
+    public void setquantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+public static class Assignment_2 {
+	public static void main(String[] args) throws Exception {
+    	Scanner sc = new Scanner (System.in);
+        int option ;
+        boolean exit = false;
+        ProductManager productmanager = new ProductManager();
+        int productId;
+        float productprice;
+ 
+        showMenu();
+        while (true) {
+            option = sc.nextInt();
+            switch (option) {
+            case 1: productmanager.add();
+                    break;
+            case 2: productmanager.show();
+                    break;
+            case 3: productId = productmanager.inputId();
+                    productmanager.delete(productId);
+                    break;
+            case 4: productId = productmanager.inputId();
+                    productmanager.edit(productId);
+                    break;
+            case 5: productId = productmanager.inputId();
+                    productmanager.searchByID(productId);
+                    break;
+            case 6: productprice = productmanager.inputPrice();
+                    productmanager.searchByPrice(productprice);
+                    break;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match190-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            case 0: System.out.println("exited!");
+                    exit = true;
+                    break;
+            default: System.out.println("invalid! please choose action in below menu:");
+                     break;
+            } if (exit) {
+                break;
+            } // show menu
+            showMenu();
+        }
+    }
+}
+ 
+    public static void showMenu() {
+        System.out.println("\n-----------menu------------");
+        System.out.println("1. Add product.");
+        System.out.println("2. Show product.");
+</FONT>        System.out.println("3. Delete product by id.");
+        System.out.println("4. Edit product by id.");
+        System.out.println("5. Search product by id.");
+        System.out.println("6. Search student///////////// by price.");
+        System.out.println("0. exit.");
+        System.out.println("---------------------------");
+        System.out.print("Please choose: ");
+    }
+    public static class ProductFile {
+    private static final String PRODUCT_FILE_NAME = "product.txt";
+   
+    public void write(List&lt;Product&gt; productList) {
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match190-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_1.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(new File(PRODUCT_FILE_NAME));
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(productList);
+</FONT>        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            closeStream(fos);
+            closeStream(oos);
+        }
+    }
+ 
+    public List&lt;Product&gt; read() {
+        List&lt;Product&gt; productList = new ArrayList&lt;&gt;();
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match190-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(new File(PRODUCT_FILE_NAME));
+            ois = new ObjectInputStream(fis);
+            productList = (List&lt;Product&gt;) ois.readObject();
+</FONT>        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            closeStream(fis);
+            closeStream(ois);
+        }
+        return productList;
+    }
+ 
+    private void closeStream(InputStream is) {
+        if (is != null) {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+ 
+    private void closeStream(OutputStream os) {
+        if (os != null) {
+            try {
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+ 
+    public static class ProductManager implements Serializable{
+    private List&lt;Product&gt; productList;
+    private ProductFile productfile;
+    Scanner sc = new Scanner (System.in);
+       
+    public ProductManager() {
+        productfile = new ProductFile();
+        productList = productfile.read();
+    }
+ 
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match190-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void add() {
+        int id = (productList.size() &gt; 0) ? (productList.size() + 1) : 1;
+        System.out.println("Product id = " + id);
+        String name = inputName();
+</FONT>        float price = inputPrice();
+        int quantity = inputQuantity();
+        Product product = new Product(id, name, price, quantity);
+        productList.add(product);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match190-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        productfile.write(productList);
+    }
+ 
+    public void edit(int id) {
+        boolean isExisted = false;
+        int size = productList.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (productList.get(i).getId() == id) {
+                isExisted = true;
+                productList.get(i).setname(inputName());
+                productList.get(i).setprice(inputPrice());
+                productList.get(i).setquantity(inputQuantity());
+                break;
+            }
+        }
+        if (!isExisted) {
+            System.out.printf("id = %d not existed.\n", id);
+</FONT>        } else {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match190-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            productfile.write(productList);
+        }
+    }
+ 
+    public void delete(int id) {
+        Product product = null;
+        int size = productList.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (productList.get(i).getId() == id) {
+                product = productList.get(i);
+                break;
+            }
+        }
+        if (product != null) {
+            productList.remove(product);
+</FONT>            productfile.write(productList);
+        } else {
+            System.out.printf("id = %d not existed.\n", id);
+        }
+    }
+ 
+    public void searchByID(int id) {
+    	boolean isExisted = false;
+        int size = productList.size();
+	        for (int i = 0; i &lt; size; i++) {
+	            if (productList.get(i).getId() == id) {
+	                	isExisted = true;  
+	                	System.out.format("\n%3d | ", productList.get(i).getId());
+	                	System.out.format("%10s | ", productList.get(i).getname());
+	                	System.out.format("%9.1f | ", productList.get(i).getprice());
+	                 	System.out.format("%6d ", productList.get(i).getquantity());
+	                }
+	            }
+            if (!isExisted) {
+                System.out.printf("id = %d not existed.\n", id);
+            }
+    }
+
+    public void searchByPrice(float price) {
+    	boolean isExisted = false;
+        int size = productList.size();
+	        for (int i = 0; i &lt; size; i++) {
+	            if (productList.get(i).getprice() == price) {
+	                	isExisted = true;  
+	                	System.out.format("\n%3d | ", productList.get(i).getId());
+	                	System.out.format("%10s | ", productList.get(i).getname());
+	                	System.out.format("%9.1f | ", productList.get(i).getprice());
+	                 	System.out.format("%6d ", productList.get(i).getquantity());
+	                }
+	            }
+            if (!isExisted) {
+                System.out.printf("price = %f not existed.\n", price);
+            }
+    }
+    
+    public void show() {
+    	System.out.format("\n%3s | ", "Id");
+        System.out.format("%10s | ", "name");
+        System.out.format("%9s | ", "price");
+        System.out.format("%6s ", "quantity");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match190-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        for (Product product : productList) {
+            System.out.format("\n%3d | ", product.getId());
+            System.out.format("%10s | ", product.getname());
+            System.out.format("%9.1f | ", product.getprice());
+            System.out.format("%6d ", product.getquantity());
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match190-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        }
+    }
+ 
+    public int inputId() {
+        System.out.print("Input product id: ");
+        while (true) {
+            try {
+                int id = Integer.parseInt((sc.nextLine()));
+                return id;
+            } catch (NumberFormatException exeption) {
+                System.out.print("invalid! Input student id again: ");
+</FONT>            }
+        }
+    }
+     
+    private String inputName() {
+        System.out.print("Input product name: ");
+        return sc.nextLine();
+    }
+ 
+    public float inputPrice() {
+        System.out.print("Input product price: ");
+        return sc.nextFloat();
+    }
+ 
+    private int inputQuantity() {
+        System.out.print("Input product quantity: ");
+        return sc.nextInt();
+    }
+ 
+    public List&lt;Product&gt; getProductList() {
+        return productList;
+    }
+ 
+    public void setProductList(List&lt;Product&gt; productList) {
+        this.productList = productList;
+    }
+}
+    }
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

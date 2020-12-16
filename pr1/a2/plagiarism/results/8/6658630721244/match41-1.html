@@ -1,0 +1,307 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LaiHanhVan_106254_assignsubmission_file_LaiHanhVan1901060057.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenHuyenDieu_106263_assignsubmission_file_NguyenHuyenDieu1901060009Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenHuyenDieu_106263_assignsubmission_file_NguyenHuyenDieu1901060009Assignment2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment.pkg2;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match41-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.Collections;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+public class NguyenHuyenDieu1901060009Assignment2 {
+    // put the pvsm first
+
+    public static void main(String[] args) {
+        ManageProducts manageProducts = new ManageProducts();
+        Scanner sc = new Scanner(System.in);
+        int chon;
+        int count = 0;
+
+        while (true) {
+            manageProducts.menu();
+            chon = sc.nextInt();
+            switch (chon) {
+                case 1:
+                    sc.nextLine();
+                    while (true) {
+                        if (count &gt; 30) {
+                            System.out.println("full list size");
+                            break;
+                        }
+                        System.out.println("Enter id:");
+                        String id = sc.nextLine();
+                        System.out.println("Enter name :");
+                        String name = sc.nextLine();
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match41-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.println("Enter price: ");
+                        double price = sc.nextDouble();
+                        System.out.println("Enter quantity:");
+                        int quantity = sc.nextInt();
+
+                        Product product = new Product(id, name, price, quantity);
+                        manageProducts.addProducts(product);
+                        count++;
+                        String select;
+                        System.out.println("You select ? (y/n)");
+                        sc.nextLine();
+                        select = sc.nextLine();
+                        if (select.equalsIgnoreCase("n")) {
+                            break;
+                        }
+                    }
+
+                case 2:
+                    manageProducts.showProducts();
+                    break;
+
+                case 3:
+                    sc.nextLine();
+                    System.out.println("Enter id delete:");
+                    String idDel = sc.nextLine();
+                    manageProducts.deleteProduct(idDel);
+                    break;
+
+                case 4:
+                    sc.nextLine();
+                    System.out.println("Enter edit name:");
+                    String idEdit = sc.nextLine();
+                    manageProducts.editProduct(idEdit);
+</FONT>                    break;
+
+                case 5:
+                    sc.nextLine();
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match41-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.println("Enter search name:");
+                    String nName = sc.nextLine();
+                    manageProducts.searchProduct(nName);
+                    break;
+
+                case 6:
+                    manageProducts.sortPrice();
+                    break;
+
+                case 7:
+                    manageProducts.saveFile();
+                    break;
+
+                case 8:
+                    manageProducts.showFile();
+</FONT>                    break;
+
+                case 0:
+                    System.out.println("BAIIIIII");
+                    return;
+
+                default:
+                    System.out.println("Ban da chon sai");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match41-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    continue;
+            }
+        }
+    }
+}
+
+class Product implements Serializable {
+
+    private String id;
+    private String name;
+    private double price;
+    private int quantity;
+
+    public Product(String id, String name, double price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+</FONT>    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match41-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + '}';
+    }
+}
+
+class ManageProducts {
+
+    ArrayList&lt;Product&gt; listproducts = new ArrayList&lt;&gt;();
+    Scanner sc = new Scanner(System.in);
+
+    public void menu() {
+        System.out.println("======================================MENU======================================");
+        System.out.println("Enter 1: Add products");
+        System.out.println("Enter 2: Display products");
+        System.out.println("Enter 3: Delete a product");
+</FONT>        System.out.println("Enter 4: Edit a product");
+        System.out.println("Enter 5: Search for products by name");
+        System.out.println("Enter 6: Sort products by price");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match41-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter 7: Save products to text/binary file");
+        System.out.println("Enter 8: Load products from the saved file Feature 1");
+        System.out.println("Enter 0: Exit");
+        System.out.println("You select : ");
+    }
+
+    public void addProducts(Product product) {
+        this.listproducts.add(product);
+    }
+
+    public void showProducts() {
+        for (Product tmp : listproducts) {
+            System.out.println(tmp.toString());
+</FONT>        }
+    }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match41-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void deleteProduct(String idDel) {
+        for (Product tmp : listproducts) {
+            {
+                if (idDel.equalsIgnoreCase(tmp.getId())) {
+                    listproducts.remove(tmp);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void editProduct(String idEdit) {
+        String setname;
+        double setprice;
+        int setquantity;
+        for (int i = 0; i &lt; listproducts.size(); i++) {
+            if (idEdit.equals(listproducts.get(i).getId())) {
+</FONT>                System.out.println("Enter new name :");
+                setname = sc.nextLine();
+                System.out.println("Enter new price :");
+                setprice = sc.nextDouble();
+                System.out.println("Enter new quantity :");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match41-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                setquantity = sc.nextInt();
+
+                listproducts.get(i).setId(idEdit);
+                listproducts.get(i).setName(setname);
+                listproducts.get(i).setPrice(setprice);
+                listproducts.get(i).setQuantity(setquantity);
+                return;
+            }
+        }
+        System.out.println("not found");
+</FONT>    }
+
+    public void searchProduct(String nName) {
+        for (Product tmp : listproducts) {
+            if (nName.equalsIgnoreCase(tmp.getName())) {
+                System.out.println(tmp);
+                return;
+            }
+        }
+        System.out.println("not found");
+    }
+
+<A NAME="10"></A><FONT color = #FF0000><A HREF="match41-0.html#10" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void sortPrice() {
+        Collections.sort(listproducts, (o1, o2) -&gt; Double.compare(o1.getPrice(), o2.getPrice()));
+        System.out.println("Sort the products in increasing price order :");
+        for (Product tmp : listproducts) {
+</FONT><A NAME="7"></A><FONT color = #0000FF><A HREF="match41-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println(tmp);
+        }
+    }
+
+    public void saveFile() {
+        try {
+            FileOutputStream fos = new FileOutputStream("Product.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(listproducts);
+            System.out.println("you have saved it to a file");
+            oos.close();
+            fos.close();
+
+        } catch (Exception e) {
+</FONT>        }
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match41-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void showFile() {
+        try {
+            FileInputStream fis = new FileInputStream("Produc.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList&lt;Product&gt; listProductsFromFile = (ArrayList&lt;Product&gt;) ois.readObject();
+
+            for (Product tmp : listProductsFromFile) {
+                System.out.println(tmp.toString());
+            }
+            ois.close();
+            fis.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+</FONT>        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

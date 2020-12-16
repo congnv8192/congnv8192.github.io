@@ -1,0 +1,260 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040055TranThiThuyDuong_106500_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040055TranThiThuyDuong_106500_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040055TranThiThuyDuong_106500_assignsubmission_file_Assignment2.java
+package Ass2;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+import java.util.Collection;
+import java.io.File;
+import java.io.FileNotFoundException;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match191-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.PrintWriter;
+
+public class Assignment2{
+    public static Scanner sc = new Scanner(System.in);
+    public static ArrayList&lt;Integer&gt; ProductId = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;String&gt; ProductName = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Double&gt; ProductPrice = new ArrayList&lt;&gt;();
+</FONT>    public static ArrayList&lt;Integer&gt; ProductQuantity = new ArrayList&lt;&gt;();
+ 
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match191-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static String outPut;
+    public static void main(String[] args){
+        while(true){
+            
+            try{
+                
+        System.out.println("---------------Features---------------");
+        System.out.println("Feature 1: Add product.");
+        System.out.println("Feature 2: Display product.");
+</FONT>        System.out.println("Feature 3: Delete a product.");
+        System.out.println("Feature 4: Edit a product.");
+        System.out.println("Feature 5: Search for products by name.");
+        System.out.println("Feature 6: Sort products by price.");
+        System.out.println("Feature 7: Save products to text/binary file.");
+        System.out.println("Feature 8: Load products from the saved file.");
+        System.out.println("Please choose a feature: ");    
+        int feature = sc.nextInt();
+       
+        
+        switch (feature) {
+            case 1:
+                addProduct();
+                break;
+            case 2:
+                displayProduct();
+                break;
+            case 3:
+                deleteProduct();
+                break;
+            case 4:
+                editProduct();
+                break;
+            case 5:
+                searchProduct();
+                break;
+            case 6:
+                sortProduct();
+                break;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match191-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            case 7:
+                saveProduct();
+                break;
+            case 8:
+                loadProduct();
+                break;              
+            default:
+            	System.out.println("Invalid vlue!"); 
+                            
+ }
+		  
+		        
+    }catch(Exception e){
+    	System.out.println(" ");
+        sc.nextLine();
+            
+    }
+    }
+        }
+    public static void addProduct(){
+      System.out.println("Add Products : ");
+      System.out.println("Enter number of products : ");
+</FONT>        int n = sc.nextInt();
+        try {
+        for(int i = 1 ; i &lt; n+1; i++){
+            sc.nextLine();
+            System.out.println("Enter the Name of product " + i + ": ");
+            String name = sc.nextLine();
+            ProductName.add(name);
+            System.out.println("Enter the Price of product " + i + ": ");
+            double price = Double.parseDouble(sc.nextLine());
+            ProductPrice.add(price);
+            System.out.println("Enter the Quantity of product " + i + ": ");
+            int quantity = sc.nextInt();
+            ProductQuantity.add(quantity);
+        }
+        } catch( Exception e) {
+             System.err.println(e.getMessage());
+        	
+        }
+    }
+    public static void displayProduct(){
+        System.out.println("Lists of products : ");
+        System.out.println("|_ID___Name_____Price____Quantity_|");
+        for(int i = 1; i &lt;= ProductPrice.size(); i++){
+            System.out.printf("| %d | %7S | %7.2f | %7d | %n", i ,
+                    ProductName.get(i-1), ProductPrice.get(i-1),ProductQuantity.get(i-1));
+        }
+        
+   }
+    public static void deleteProduct(){
+    	System.out.println("Delete Products :  ");
+        System.out.println("Enter the Product ID need to be delete : ");
+        int ID = sc.nextInt();
+        ProductName.remove(ID-1);
+        ProductPrice.remove(ID-1);
+        ProductQuantity.remove(ID-1);
+        displayProduct();
+    }
+    public static void editProduct(){
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match191-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    	System.out.println("Edit products:  ");
+        int test =1;
+        while(test==1){
+        System.out.println("Enter the product ID you want to change: ");
+        int position = sc.nextInt();
+</FONT>        sc.nextLine();
+        while(true){
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match191-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("The element you want to change:  ");
+            System.out.println("Product's name : enter n");
+            System.out.println("Product's price : enter p");
+            System.out.println("Product's quantity: enter q");
+            String line = sc.nextLine();
+            if(line.equalsIgnoreCase("n")){
+            System.out.println("New name: ");
+            String name = sc.nextLine();
+            ProductName.set(position-1, name);
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match191-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                }else if (line.equalsIgnoreCase("p")){
+                    System.out.println("New Price: ");
+                    double price = Double.parseDouble(sc.nextLine());
+                    ProductPrice.set(position-1,price);
+</FONT>                   
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match191-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                }else if(line.equalsIgnoreCase("q")){
+                    System.out.println("New quanlity: ");
+                    int number = Integer.parseInt(sc.nextLine());
+                    ProductQuantity.set(position-1, number);    
+</FONT>                test=0;
+                    break;
+                }
+        else {
+            System.out.println("Invalid value!");
+            }
+            
+         displayProduct();
+        }
+        }
+    }
+    public static void searchProduct(){      
+       while(true){
+            
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match191-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            try{
+                sc.nextLine();
+                System.out.println("If you want to stop, please, write Stop !");
+                System.out.println("The name of product you want to find: ");
+            String name = sc.nextLine();
+            if(name.equalsIgnoreCase("stop")){
+                System.out.println("Thank you!");
+                break;
+            }else{
+                for(int i = 1 ; i &lt;= ProductName.size();i++){
+                if(name.equalsIgnoreCase(ProductName.get(i-1))){
+                    System.out.println("The results: ");
+</FONT>                    System.out.printf("| %d | %7S | %8.2f | %6d | %n", i ,
+                            ProductName.get(i-1), ProductPrice.get(i-1),ProductQuantity.get(i-1));
+                    break;    
+                    }
+                }
+            }for(int i = 1 ; i &lt;= ProductName.size();i++) {
+            if (name.equalsIgnoreCase(ProductName.get(i-1))&&i==ProductName.size()){
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match191-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            	System.out.println("_____________Repeat!___________");
+            }
+            }
+            
+        }
+            catch(Exception e ){
+                System.out.println("Invalid value!");
+            }
+        }
+    }
+    public static void sortProduct(){
+    	System.out.println(": ");
+		System.out.println();
+</FONT>		
+		for (int i = 1; i &lt;= ProductPrice.size(); i++) {
+			for (int j = i+1;j&lt;=ProductPrice.size(); j++) {
+				if (    ProductPrice.get(i-1) &gt; ProductPrice.get(j-1)) {
+					String tempName = ProductName.get(i-1);
+					double temp = ProductPrice.get(i-1);
+					int tempQuantity = ProductQuantity.get(i-1);
+					ProductName.set(i-1, ProductName.get(j-1));
+					ProductPrice.set(i-1, ProductPrice.get(j-1));
+					ProductQuantity.set(i-1, ProductQuantity.get(j-1));
+					ProductName.set(j-1, tempName);
+					ProductPrice.set(j-1, temp);
+					ProductQuantity.set(j-1, tempQuantity);
+				}
+			}
+		}		
+            displayProduct();
+    }
+    public static void saveProduct() throws FileNotFoundException{
+      
+     String temp ="";
+    	outPut = String.format("|_ID___Name______Price___Quantity_|");
+		for (int i = 1 ; i &lt;= ProductPrice.size(); i ++) {
+			 temp =temp+(String.format("| %d | %7S | %8.2f | %6d |%n",
+                                 i ,ProductName.get(i-1), ProductPrice.get(i-1),ProductQuantity.get(i-1)));
+                           
+                }
+        try (PrintWriter out = new PrintWriter("outPut.txt")) {
+            out.println(outPut);
+            out.println(temp);
+        }
+        System.out.println("");
+    }
+    public static void loadProduct() throws FileNotFoundException{
+        Scanner et=new Scanner(new File("outPut.txt"));
+        while(et.hasNextLine()){
+            System.out.println(et.nextLine());
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

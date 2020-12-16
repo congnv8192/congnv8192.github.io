@@ -1,0 +1,304 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenBaVinh_106543_assignsubmission_file_assignment2NguyenBaVinh7c19/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenBaVinh_106543_assignsubmission_file_assignment2NguyenBaVinh7c19/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1.java
+
+
+public class Product implements Comparable&lt;Product&gt; {
+
+	private String idnumber;
+	private String tensanpham;
+	private double giatien;
+	private int soluong;
+
+
+	public Product() {
+	}
+
+	public Product(String idnumber, String tensanpham, double giatien, int soluong) {
+		this.tensanpham = tensanpham;
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match162-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		this.idnumber = idnumber;
+		this.giatien = giatien;
+		this.soluong = soluong;
+	}
+
+	public String getName() {
+		return tensanpham;
+	}
+
+	public void setName(String tensanpham) {
+		this.tensanpham = tensanpham;
+</FONT>	}
+
+	public String getId() {
+		return idnumber;
+	}
+
+	public void setId(String idnumber) {
+		this.idnumber = idnumber;
+	}
+
+	public double getPrice() {
+		return giatien;
+	}
+
+	public void setPrice(double giatien) {
+		this.giatien = giatien;
+	}
+	
+	public int getQuantity() {
+		return soluong;
+	}
+	
+	public void setQuantity(int soluong) {
+		this.soluong = soluong;
+	}
+
+	@Override
+	public int compareTo(Product o) {
+		if (this.giatien &lt; o.giatien) {
+			return -1;
+		} else if (this.giatien &gt; o.giatien) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}    
+}&gt;&gt;&gt;&gt; file: 2.java
+
+
+import java.util.*;
+import java.io.*;
+
+public class ProductManagement {
+
+	List&lt;Product&gt; infoProductList = new ArrayList&lt;&gt;();
+
+	public void addProduct(Product product) {
+		if (infoProductList.size() &lt; 40)
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match162-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			infoProductList.add(product);
+		else
+			System.out.println("Can't add product, the list is full");
+	}
+
+	public boolean checkProductID(String idnumber) {
+		for (int i = 0; i &lt; infoProductList.size(); i++) {
+			if (infoProductList.get(i).getId().equals(idnumber)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public String generateProductID() {
+		String idnumber;
+		String s = "QWERTYUIOPLKJHGFDSAZXCVBNM0987654321";
+		do {
+			Random r = new Random();
+			idnumber = "";
+			for (int i = 0; i &lt; 3; i++) {
+				int k = r.nextInt(s.length());
+				idnumber += s.charAt(k);
+			}
+			if (checkProductID(idnumber)) {
+				return idnumber;
+			}
+		} while (true);
+	}
+	
+	public void print() {
+    	System.out.printf("%-15s%-15s%-15s%-15s\n", "Product ID", "Name", "Price", "Quantity");
+</FONT>    	for (Product temp : infoProductList)
+            System.out.printf("%-15s%-15s%-15.2f%-15d\n", temp.getId(), temp.getName(), temp.getPrice(), temp.getQuantity());
+    	System.out.println();
+    }
+	
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match162-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	public void deleteProduct(String idnumber) {
+		for (int i = 0; i &lt; infoProductList.size(); i++)
+			if (infoProductList.get(i).getId().equals(idnumber)) {
+				infoProductList.remove(i);
+</FONT>				return;
+			}
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match162-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("The id number is invalid!");	
+	}
+	
+	public void editProduct(String idnumber, Scanner in) {
+		for (Product temp : infoProductList)
+			if (temp.getId().equals(idnumber)) {
+				System.out.println("Do u want to change the name? y/n");
+				String s = in.next();
+				if (s.equals("y")) {
+					System.out.println("Enter the name: ");
+					s = in.nextLine();
+					temp.setName(s);
+				} else if (!s.equals("n")) {
+					System.out.println("Wrong input!");
+					return;
+				}
+				System.out.println("Do u want to change the price? y/n");
+				s = in.next();
+				if (s.equals("y")) {
+					System.out.println("Enter the price: ");
+					double price = in.nextDouble();
+					temp.setPrice(price);;
+</FONT><A NAME="2"></A><FONT color = #0000FF><A HREF="match162-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				} else if (!s.equals("n")) {
+					System.out.println("Wrong input!");
+					return;
+				}
+				System.out.println("Do u want to change the quantity? y/n");
+				s = in.next();
+				if (s.equals("y")) {
+					System.out.println("Enter the quantity: ");
+					int quantity = in.nextInt();
+					temp.setQuantity(quantity);
+				} else if (!s.equals("n")) {
+</FONT>					System.out.println("Wrong input!");
+				}
+				return;
+			}
+		System.out.println("The id is invalid!");
+	}
+	
+	public void find(String s) {
+		ProductManagement data = new ProductManagement();
+		for (Product temp : infoProductList)
+			if (temp.getName().indexOf(s) &gt; -1)
+				data.addProduct(temp);
+		data.print();
+	}
+	
+	public void sortByPrice() {
+        // TODO
+    	Collections.sort(infoProductList, new Comparator&lt;Product&gt;() {
+			@Override
+			public int compare(Product o1, Product o2) {
+				// TODO Auto-generated method stub
+				return o1.compareTo(o2);
+			}		
+		});
+    }
+	
+	public void saveToFile() {
+		try {
+			Formatter out = new Formatter(new File("D:/productText.txt"));
+			out.format("%d\n", infoProductList.size());
+			for (Product temp : infoProductList)
+				out.format("%-15s%-15s%-15.2f%-15d\n", temp.getId(), temp.getName(), temp.getPrice(), temp.getQuantity());
+			out.close();
+		} catch (Exception e) {
+			System.out.println("Can't save!\n" + e.getMessage());
+		}
+	}
+	
+	public void readFromFile() {
+		try {
+			Scanner in = new Scanner(new File("D:/productText.txt"));
+			int n = in.nextInt();
+			for (int i = 0; i &lt; n; i++) {
+				in.nextLine();
+				String idnumber = in.next();
+				String name = in.next();
+				double price = in.nextDouble();
+				int quantity = in.nextInt();
+				infoProductList.add(new Product(idnumber, name, price, quantity));
+			}
+		} catch (Exception e) {
+			System.out.println("Can't read!\n" + e.getMessage());
+		}
+	}
+}&gt;&gt;&gt;&gt; file: 3.java
+
+
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		ProductManagement data = new ProductManagement();
+		Scanner sc = new Scanner(System.in);
+		do {
+			System.out.println("1. Add products");
+			System.out.println("2. Display products");
+			System.out.println("3. Delete a product");
+			System.out.println("4. Edit a product");
+			System.out.println("5. Search for products by name");
+			System.out.println("6. Sort products by price");
+			System.out.println("7. Save products to text/binary file");
+			System.out.println("8. Load products from the saved file");
+			System.out.println("9. Exit");
+			System.out.print("Select your choice: ");
+			int choice = sc.nextInt();
+			String con;
+			switch (choice) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match162-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 1: do {
+				sc.nextLine();
+				System.out.print("Enter name: ");
+				String name = sc.nextLine();
+				System.out.print("Enter price: ");
+</FONT>				double price = sc.nextDouble();
+				System.out.print("Enter quantity: ");
+				int quantity = sc.nextInt();
+				data.addProduct(new Product(data.generateProductID(), name, price, quantity));
+				System.out.println("Do u want to continue? y/n");
+				con = sc.next();
+			} while (con.equals("y"));
+				break;
+			case 2:
+				data.print();
+				break;
+			case 3:
+				data.print();
+				System.out.println("Enter product ID: ");
+				con = sc.next();
+				data.deleteProduct(con);
+				break;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match162-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 4:
+				data.print();
+				System.out.println("Enter product ID: ");
+				con = sc.next();
+				data.editProduct(con, sc);
+</FONT>				break;
+			case 5:
+				System.out.print("Enter the keyword: ");
+				con = sc.nextLine();
+				data.find(con);
+				break;
+			case 6:
+				data.sortByPrice();
+				data.print();
+				break;
+			case 7:
+				data.saveToFile();
+				break;
+			case 8:
+				data.readFromFile();
+				break;
+			case 9:
+				sc.close();
+				return;
+			}
+		} while (true);
+	}
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

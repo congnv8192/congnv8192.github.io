@@ -1,0 +1,367 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LaiKhanhLinh_106561_assignsubmission_file_Assignment_2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LaiKhanhLinh_106561_assignsubmission_file_Assignment_2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LaiKhanhLinh_106561_assignsubmission_file_Assignment_2.java
+package assignment_2;
+import java.io.Serializable;
+import java.util.*;
+/**
+ *
+ * @author Khanh Linh 3c19 1901040123
+ */
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match1-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+public class Assignment_2 implements Serializable {
+    private int id = 0;
+    private String name;
+    private double price;
+    private int quantity;
+
+    public  Assignment_2() {
+    }
+
+    public Product(int id, String name, double price, int quantity) {
+        this.id = id;
+</FONT>        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match1-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantily) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Products{" + "id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + '}';
+    }
+    
+    public void Input(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter product ID: ");
+        this.id = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter product name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter product price: ");
+        this.price = sc.nextDouble();
+        System.out.print("Enter product quantity: ");
+        this.quantity = sc.nextInt();
+    }
+}
+import java.util.Scanner;
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match1-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_38.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.*;
+
+/**
+ *
+ * @author Taudio
+ */
+public class DataController {
+    Scanner sc = new Scanner(System.in);
+    List&lt;Product&gt; listPro = new ArrayList&lt;&gt;();
+    FileController fileController = new FileController();
+    
+    public List&lt;Product&gt; Input(int n){
+        for(int i = 0; i &lt; n; i++){
+            Product temp = new Product();
+            temp.Input();
+            listPro.add(temp);
+        }
+        return listPro;
+    }
+    
+    public void Display(List&lt;Product&gt; list){
+        list.forEach((i) -&gt; {
+            System.out.println(i);
+        });
+    }
+    
+    public void DeleteAProduct(List&lt;Products&gt; list){
+        System.out.print("Enter the ID of product to delete: ");
+        int id = sc.nextInt();
+        boolean check = false;
+        for(int i = 0; i &lt; list.size(); i++){
+            if(list.get(i).getId() == id){
+                list.remove(i);
+                check = true;
+                break;
+            }
+        }
+        if(!check){
+            System.out.println("This product is not contain");
+        }
+    }
+    
+    public void Edit(List&lt;Product&gt; list){
+        System.out.print("Enter the ID of product to edit: ");
+        int id = sc.nextInt();
+        boolean check = false;
+        for(int i = 0; i &lt; list.size(); i++){
+            if(list.get(i).getId() == id){
+                System.out.println("1. Edit new name");
+                System.out.println("2. Edit new price");
+                System.out.println("3. Edit new quantity");
+                System.out.print("Enter your choice: ");
+                int choice = sc.nextInt();
+                sc.nextLine();
+                switch(choice){
+                    case 1:
+                        System.out.print("Enter new name: ");
+                        list.get(i).setName(sc.nextLine());
+                        break;
+                    case 2:
+                        System.out.print("Enter new price: ");
+                        list.get(i).setPrice(sc.nextDouble());
+                        break;
+                    case 3:
+                        System.out.print("Enter new quantily: ");
+                        list.get(i).setQuantity(sc.nextInt());
+                        break;
+                    default:
+                        System.out.println("your choice is not available");
+                }
+                check = true;
+                break;
+            }
+        }
+        if(!check){
+            System.out.println("This product is not contain");
+        }
+    }
+    
+    public void SearchProductByName(List&lt;Products&gt; list){
+        System.out.print("Enter name to find: ");
+        String name = sc.nextLine();
+        boolean check = false;
+        
+        for(Products i : list){
+            if(i.getName().compareTo(name) == 0){
+                check = true;
+                break;
+            }
+        }
+        
+        if(check){
+            list.forEach((i) -&gt; {
+                if(i.getName().compareTo(name) == 0)
+                    System.out.println(i);
+            });
+        }else {
+            System.out.println("Non-exsist product");
+        }
+    }
+    
+    public void SortProductsByPrice(List&lt;Products&gt; list){
+        list.sort((o1, o2) -&gt; {
+            if(o1.getPrice() &lt; o2.getPrice())
+                return -1;
+            else if(o1.getPrice() &gt; o2.getPrice())
+                return 1;
+            else 
+                return 0;
+        });
+    }
+    
+    public void WriteProductsToFile(List&lt;Products&gt; list, String fileName){
+        fileController.WriteProductsToFile(list, fileName);
+    }
+    
+    public void ReadProductsFromFile(String fileName){
+        List&lt;Products&gt; list = fileController.ReadProductsFromFile(fileName);
+        list.forEach((i) -&gt; {
+            System.out.println(i);
+        });
+</FONT>    }
+
+    List&lt;Products&gt; Input(int n) {
+        throw new UnsupportedOperationException("Not yet supported."); 
+    }
+
+    void DeleteAProduct(List&lt;Product&gt; listPro) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    void SearchProductByName(List&lt;Product&gt; listPro) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    void SortProductsByPrice(List&lt;Product&gt; listPro) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    void WriteProductsToFile(List&lt;Product&gt; listPro, String producTtxt) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match1-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+}
+import java.io.*;
+import java.nio.file.Paths;
+import java.util.*;
+
+public class FileController {
+    FileWriter fileWriter;
+    BufferedWriter bufferedWriter;
+    PrintWriter printWriter;
+    Scanner scanner;
+    
+    public void OpenFileToWrite(String fileName){
+        try {
+            fileWriter = new FileWriter(fileName);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            printWriter = new PrintWriter(bufferedWriter);
+        } catch (IOException ex) {
+        }
+    }
+    
+    public void CloseFileAfterWrite(){
+</FONT>        try {
+            printWriter.close();
+            bufferedWriter.close();
+            fileWriter.close();
+        }catch(IOException ex){
+        }
+    }
+    
+    public void OpenFileToRead(String fileName){
+        try {
+            scanner = new Scanner(Paths.get(fileName));
+        } catch (IOException ex) {
+        }
+    }
+    
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match1-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void CloseFileAfterRead(){
+        scanner.close();
+    }
+    
+    public void WriteProductsToFile(List&lt;Products&gt; list, String fileName){
+        OpenFileToWrite(fileName);
+        list.forEach((i) -&gt; {
+            printWriter.println(i.getId() + "|" + i.getName() + "|" + i.getPrice() + "|" + i.getQuantity());
+        });
+        CloseFileAfterWrite();
+    }
+    
+    public Products CreateProductFromData(String data){
+        String[] a = data.split("\\|");
+        Products tmp = new Products(Integer.parseInt(a[0]), a[1], Double.parseDouble(a[2]), Integer.parseInt(a[3]));
+        return tmp;
+    }
+    
+    public List&lt;Products&gt; ReadProductsFromFile(String fileName){
+        List&lt;Products&gt; list = new ArrayList&lt;&gt;();
+        OpenFileToRead(fileName);
+        while(scanner.hasNext()){
+            list.add(CreateProductFromData(scanner.nextLine()));
+        }
+        return list;
+    }
+}
+import java.util.*;
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match1-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+
+public class Run {
+    
+    static List&lt;Product&gt; listPro = new ArrayList&lt;&gt;();
+    static Scanner sc = new Scanner(System.in);
+    static DataController dataController = new DataController();
+    
+    public static void main(String[] args) {
+        do {
+            System.out.println("---------------------MENU-------------------");
+            System.out.println("1. Add products");
+            System.out.println("2. Display products");
+</FONT>            System.out.println("3. Delete a product");
+            System.out.println("4. Edit a product");
+            System.out.println("5. Search for products by name");
+            System.out.println("6. Sort product by price");
+            System.out.println("7. Save products to text/binary file");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match1-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("8. Load products from the saved file");
+            System.out.println("0. Exit");
+            System.out.println("=============================================");
+            int choice = 0;
+            System.out.print("Enter your choice(1 to 8): ");
+            try {
+                choice = sc.nextInt();
+            }catch(Exception e){
+                System.out.println("Choice is not a number");
+            }
+
+            switch(choice){
+                case 1:
+                    System.out.print("Enter the number n = ");
+                    int n = sc.nextInt();
+                    listPro = dataController.Input(n);
+                    break;
+                case 2:
+                    dataController.Display(listPro);
+                    break;
+                case 3:
+                    dataController.DeleteAProduct(listPro);
+                    break;
+                case 4:
+                    dataController.Edit(listPro);
+                    break;
+                case 5:
+                    dataController.SearchProductByName(listPro);
+                    break;
+                case 6:
+                    dataController.SortProductsByPrice(listPro);
+                    break;
+                case 7:
+                    dataController.WriteProductsToFile(listPro, "PRODUCT.txt");
+                    break;
+                case 8:
+                    dataController.ReadProductsFromFile("PRODUCT.txt");
+                    break;
+                case 0:    
+                    System.exit(0);
+            }
+        }while(true);
+</FONT>    }
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

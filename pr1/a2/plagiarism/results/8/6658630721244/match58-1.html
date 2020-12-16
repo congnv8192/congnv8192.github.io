@@ -1,0 +1,171 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/HoangTienQuyet_106342_assignsubmission_file_HoangTienQuyet_7C19_1901040170.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenManhHung_106407_assignsubmission_file_NGNXA2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenManhHung_106407_assignsubmission_file_NGNXA2.java
+// Created by Nguyen Manh Hung, class 1C19, ID: 1901040103
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match58-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_11.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+        
+public class NGNXA2 {
+    public static ArrayList&lt;Integer&gt; id = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;String&gt; arrTensp = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Integer&gt; arrGiaca = new ArrayList&lt;&gt;();
+    public static ArrayList&lt;Integer&gt; arrSoluong = new ArrayList&lt;&gt;();
+    public static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+</FONT>        System.out.println("1 - Them san pham");
+        System.out.println("2 - Hien thi nhung san pham hien co");
+        System.out.println("3 - Chinh sua san pham hien co");
+        System.out.println("4 - Bo mot san pham");
+        System.out.println("5 - Tim san pham dua vao ten");
+        System.out.println("6 - Luu vao o dia");
+        System.out.println("7 - Xuan san pham tu o dia");
+        System.out.println("8 - Thoat");
+        System.out.println("Dien lua chon cua ban: ");
+        int a = sc.nextInt();
+        sc.nextLine();
+        switch (a) {
+            case 1 -&gt; add();
+            case 2 -&gt; show();
+            case 3 -&gt; edit();
+            case 4 -&gt; remove();
+            case 5 -&gt; search();
+            case 6 -&gt; save();
+            case 7 -&gt; load();
+            default -&gt; {
+                sc.close();
+                return;
+            }
+        }
+        confirm();
+    }
+
+    private static void confirm() throws IOException, ClassNotFoundException {
+        System.out.println("Ban co muon tiep tuc khong? An 1 neu co, 2 neu khong");
+        int a = sc.nextInt();
+        switch (a) {
+            case 2 -&gt; {
+            }
+            case 1 -&gt; main(null);
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match58-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_66.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            default -&gt; System.out.println("ERROR!");
+        }
+    }
+
+    public static void add() {
+        System.out.println("Dien ten: ");
+        String tensp = sc.nextLine();
+        System.out.println("Dien menh gia: ");
+        int giaca = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Dien so luong: ");
+        int soluong = sc.nextInt();
+        sc.nextLine();
+        arrTensp.add(tensp);
+        arrGiaca.add(giaca);
+        arrSoluong.add(soluong);
+        id.add(arrTensp.size());
+    }
+
+    public static void show() {
+        for (int i = 0; i &lt; id.size(); i++) {
+            System.out.println(id.get(i) + "       |       " + arrTensp.get(i) + "       |       " + arrGiaca.get(i) + "       |       " + arrSoluong.get(i));
+        }
+    }
+
+    public static void edit() {
+        System.out.println("Dien ID ban muon sua: ");
+        int gainId = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Sua ten: ");
+        String tensp = sc.nextLine();
+        System.out.println("Dien menh gia: ");
+        int giaca = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Dien so luong: ");
+        int soluong = sc.nextInt();
+        sc.nextLine();
+        arrTensp.set(gainId, tensp);
+        arrGiaca.set(gainId, giaca);
+        arrSoluong.set(gainId, soluong);
+    }
+
+    public static void remove() {
+        System.out.println("Dien ID ban muon xoa: ");
+        int gainId = sc.nextInt();
+        sc.nextLine();
+        id.remove(gainId - 1);
+        arrTensp.remove(gainId - 1);
+        arrGiaca.remove(gainId - 1);
+        arrSoluong.remove(gainId - 1);
+    }
+
+    public static void search() {
+        System.out.println("Dien ten ban muon tim: ");
+        String tmp = sc.nextLine();
+        for (int i = 0; i &lt; arrTensp.size(); i++) {
+            if (tmp.equalsIgnoreCase(arrTensp.get(i))) {
+                System.out.println(id.get(i) + "       |       " + arrTensp.get(i) + "       |       " + arrGiaca.get(i) + "       |       " + arrSoluong.get(i));
+                break;
+            }
+            System.out.println("Khong tim thay!");
+        }
+    }
+
+    public static void save() throws IOException {
+        FileOutputStream fileId = new FileOutputStream("id.bin");
+        ObjectOutputStream writeId = new ObjectOutputStream(fileId);
+        writeId.writeObject(id);
+        writeId.close();
+
+        FileOutputStream fileName = new FileOutputStream("tensp.bin");
+        ObjectOutputStream writeTensp = new ObjectOutputStream(fileName);
+        writeTensp.writeObject(arrTensp);
+        writeTensp.close();
+
+        FileOutputStream filePrice = new FileOutputStream("giaca.bin");
+        ObjectOutputStream writeGiaca = new ObjectOutputStream(filePrice);
+        writeGiaca.writeObject(arrGiaca);
+        writeGiaca.close();
+
+        FileOutputStream fileQuantity = new FileOutputStream("soluong.bin");
+        ObjectOutputStream writeSoluong = new ObjectOutputStream(fileQuantity);
+        writeSoluong.writeObject(arrSoluong);
+        writeSoluong.close();
+    }
+
+    public static void load() throws IOException, ClassNotFoundException {
+        FileInputStream fileId = new FileInputStream("id.bin");
+        ObjectInputStream readId = new ObjectInputStream(fileId);
+        id = (ArrayList&lt;Integer&gt;) readId.readObject();
+        readId.close();
+        FileInputStream fileName = new FileInputStream("tensp.bin");
+        ObjectInputStream readTensp = new ObjectInputStream(fileName);
+        arrTensp = (ArrayList&lt;String&gt;) readTensp.readObject();
+        readTensp.close();
+        FileInputStream filePrice = new FileInputStream("giaca.bin");
+        ObjectInputStream readGiaca = new ObjectInputStream(filePrice);
+        arrGiaca = (ArrayList&lt;Integer&gt;) readGiaca.readObject();
+        readGiaca.close();
+        FileInputStream fileQuantity = new FileInputStream(new File("soluong.bin"));
+        ObjectInputStream readSoluong = new ObjectInputStream(fileQuantity);
+        arrSoluong = (ArrayList&lt;Integer&gt;) readSoluong.readObject();
+        readSoluong.close();
+</FONT>    } 
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

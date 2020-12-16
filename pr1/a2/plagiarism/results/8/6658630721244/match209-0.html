@@ -1,0 +1,258 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LeThanhTrang_106522_assignsubmission_file_Product.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/LeThanhTrang_106522_assignsubmission_file_Product.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: LeThanhTrang_106522_assignsubmission_file_Product.java
+package Assignment;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ * @LeThanhTrang_5C19
+ * 
+ */
+public class Product {
+    public static Scanner sc = new Scanner(System.in);
+    private static ArrayList&lt;Product&gt; prodList = new ArrayList&lt;&gt;();
+    private int ID;
+    private String name;
+    private double price;
+    private int quantity;
+    public Product (int ID, String name, double price, int quantity) {
+        this.ID = ID;
+        this.name = name;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match209-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        this.price = price;
+        this.quantity = quantity;
+    }
+    public int getID() {
+        return ID;
+    }
+    public String getName() {
+        return name;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    public void setName(String name) {
+</FONT>        this.name = name;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
+        int option;
+        for(;;) {
+            printMenu();
+            do {
+                System.out.println("Please enter your option: ");
+                //Get option from user
+                option = sc.nextInt();
+            } while(option &lt; 1 || option &gt; 8);
+            switch(option) {
+                //Option 1: Add products
+                case 1:
+                    addProd();
+                    break;
+                //Option 2: Display products
+                case 2: 
+                    dispProd();
+                    break;
+                //Option 3: Delete a product
+                case 3: 
+                    delProd();
+                    break;
+                //Option 4: Edit a product
+                case 4:
+                    editProd();
+                    break;
+                //Option 5: Search for products by name
+                case 5:
+                    searchProd();
+                    break;
+                //Option 6: Sort products by price
+                case 6:
+                    sortProd();
+                    break;
+                //Option 7: Sa`ve products to next/binary file
+                case 7:
+                    saveProd();
+                    break;
+                //Option 8: Load products from the saved file
+                case 8:
+                    loadProd();
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        }
+    }
+    static void printMenu() {
+        System.out.println("1. Add products");
+        System.out.println("2. Display products");
+        System.out.println("3. Delete a product");
+        System.out.println("4. Edit a product");
+        System.out.println("5. Search for products by name");
+        System.out.println("6. Sort products by price");
+        System.out.println("7. Save products to next/binary file");
+        System.out.println("8. Load products from the saved file");
+    }
+    static int randomID() {
+        int min = 100, max = 1000;
+        int ID = (int) (Math.random() * (max - min + 3) + min);
+        return ID;
+    }
+    static void addProd() {
+        System.out.println("Enter the number of products you want to add: ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match209-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int num = sc.nextInt();
+        for(int i = 1; i &lt;= num;i++) {
+            System.out.println("Product " + i + ": ");
+            
+            System.out.print("Enter the product name:  ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter the product price:  ");
+            double price = Double.parseDouble(sc.nextLine());
+
+            System.out.print("Enter the product quantity:  ");
+            int quantity = Integer.parseInt(sc.nextLine());
+
+            // create a variable to storage
+            Product prod = new Product(randomID(),name, price, quantity);
+            prodList.add(prod);
+</FONT>        }
+    }
+    static void dispProd() {
+        //print table-like list of all products
+        System.out.printf("%-5s | %-40s | %-10s | %-10s | %n", "  ID ", "             Name      ", "  Price  ", " Quantity ");
+        System.out.println("-----------------------------------------------------------------------------");
+        for(Product prod : prodList) {
+            System.out.printf("%05d | %-40s | %-10.2f | %-10d | %n", prod.getID(), prod.getName(), prod.getPrice(), prod.getQuantity());
+        }
+        System.out.println("-----------------------------------------------------------------------------");
+    }
+    static void delProd() {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match209-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter product ID to delete!");
+        int idEntered = sc.nextInt();
+        for(Product prod: prodList) {
+            if(prod.getID() == idEntered) {
+                prodList.remove(prod);
+                break;
+</FONT>            }
+        }
+    }
+    static void editProd() {
+        System.out.println("Enter the product ID you want to edit: ");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match209-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        int idEntered = sc.nextInt();
+        for(Product prod: prodList) {
+            if(prod.getID() == idEntered) {
+                System.out.println("Enter the new product name: ");
+                String newName = sc.nextLine();
+</FONT>                System.out.println("Enter the new product price: ");
+                double newPrice = sc.nextDouble();
+                System.out.println("Enter the new product quantity: ");
+                int newQuantity = sc.nextInt();
+                prod.setName(newName);
+                prod.setPrice(newPrice);
+                prod.setQuantity(newQuantity);
+                break;
+            }
+        }
+    }
+    static void searchProd() {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match209-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.println("Enter a keyword for a search: ");
+        String keyword = sc.nextLine();
+        
+        //search for products
+        //create variable to storage
+        ArrayList&lt;Product&gt; findList = new ArrayList&lt;&gt;();
+        //if name contain the entered keyword
+        for(Product prod: prodList) {
+            if(prod.getName().contains(keyword)) {
+                findList.add(prod);
+            }
+        }
+        //display the results on screen
+        System.out.printf("%-3s | %-40s | %-10s | %-10s | %n", "  ID ", "          Name       ", "  Price  ", " Quantity ");
+        System.out.println("---------------------------------------------------------------------------  ");
+</FONT>        for(Product prod: findList) {
+            System.out.printf("%05d | %-40s | %-10.2f | %-10d |%n", prod.getID(), prod.getName(), prod.getPrice(), prod.getQuantity());
+        }
+    }
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match209-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    static void sortProd() {
+        //create a variable to storage
+        ArrayList&lt;Product&gt; sortList = new ArrayList&lt;&gt;(prodList);
+        Product temp;
+        for(int i = 0; i &lt; sortList.size() - 1; i++) {
+            for(int j = i + 1; j &lt; sortList.size(); j++) {
+</FONT>                if(sortList.get(i).getPrice() &gt; sortList.get(j).getPrice()) {
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match209-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    temp = sortList.get(i);
+                    sortList.set(i, sortList.get(j));
+                    sortList.set(j, temp);
+                }
+            }
+        }
+        System.out.printf("%-3s | %-40s | %-10s | %-10s | %n", "  ID ", "          Name       ", "  Price  ", " Quantity ");
+        System.out.println("-----------------------------------------------------------------------------");
+</FONT>        for(Product prod: sortList) {
+            System.out.printf("%05d | %-40s | %-10.2f | %-10d |%n", prod.getID(), prod.getName(), prod.getPrice(), prod.getQuantity());
+        }
+    }
+    static void saveProd() throws FileNotFoundException, IOException, ClassNotFoundException {
+        File f = new File("products.bin");
+        FileOutputStream fos = new FileOutputStream(f);  
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(prodList);
+    }
+    static void loadProd() throws FileNotFoundException, IOException, ClassNotFoundException {
+        File f = new File("products.bin");
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        //create a variable to storage
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match209-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        ArrayList&lt;Product&gt; list = (ArrayList&lt;Product&gt;) ois.readObject();
+        System.out.printf("%-5s | %-40s | %-10s | %-10s |%n", " ID ", "           Name        ", "  Price  ", " Quantity ");
+        System.out.println("-----------------------------------------------------------------------------");
+</FONT>        for(Product prod: list) {
+            System.out.printf("%05d | %-40s | %-10.2f | %-10d |%n", prod.getID(), prod.getName(), prod.getPrice(), prod.getQuantity());
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

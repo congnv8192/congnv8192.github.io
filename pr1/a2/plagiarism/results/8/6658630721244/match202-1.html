@@ -1,0 +1,185 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040064LeTrunguc_106573_assignsubmission_file_assignment2/assignment2/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040148TranQuangMinh_106440_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040148TranQuangMinh_106440_assignsubmission_file_Assignment2.java
+package Assignment2;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+public class Assignment2 {
+
+	public static void main(String[] args) throws Exception, FileNotFoundException, IOException {
+		Scanner sc = new Scanner(System.in);
+		File file = new File("Product.txt");
+		int i;
+		ArrayList&lt;Integer&gt; id = new ArrayList&lt;&gt;();
+		ArrayList&lt;String&gt; name = new ArrayList&lt;&gt;();
+		ArrayList&lt;Double&gt; price = new ArrayList&lt;&gt;();
+		ArrayList&lt;Integer&gt; quantity = new ArrayList&lt;&gt;();
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match202-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		System.out.println("Welcome to menu-driven program!");
+		int n = 0;
+		while (n != 9) {
+			System.out.println("Feature 1: Add products");
+			System.out.println("Feature 2: Display products");
+			System.out.println("Feature 3: Delete a product");
+			System.out.println("Feature 4: Edit a product");
+</FONT>			System.out.println("Feature 5: Search for products by name");
+			System.out.println("Feature 6: Sort products by price");
+			System.out.println("Feature 7: Save products to text/binary file");
+			System.out.println("Feature 8: Load products from the saved file");
+			System.out.println("Feature 9: Quit!");
+			System.out.print("Enter your choice: ");
+			n = sc.nextInt();
+			switch (n) {
+			case 1:
+				for (i = 0; i &lt; 30; i++) {
+					System.out.println("( Enter 'stop' if you want to stop! )");
+					int id1 = i + 1;
+					System.out.println("Product ID: " + id1);
+					id.add(id1);
+					System.out.print("Enter the product name: ");
+					String name1 = sc.next();
+					name.add(name1);
+					if (name1.equals("stop")) {
+						i += 30;
+					} else {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match202-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						System.out.print("Enter the product price: ");
+						double price1 = sc.nextDouble();
+						price.add(price1);
+						System.out.print("Enter the product quantity: ");
+						int quantity1 = sc.nextInt();
+						quantity.add(quantity1);
+					}
+				}
+				break;
+			case 2:
+</FONT>				for (i = 0; i &lt; price.size(); i++) {
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match202-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					System.out.format("%d | %s | %.1f | %d", id.get(i), name.get(i), price.get(i), quantity.get(i));
+					System.out.println();
+				}
+				break;
+			case 3:
+				System.out.print("Enter the product id you want to delete: ");
+				int iddel = sc.nextInt();
+</FONT>				id.remove(iddel - 1);
+				name.remove(iddel - 1);
+				price.remove(iddel - 1);
+				quantity.remove(iddel - 1);
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match202-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("The product has been deleted!");
+				break;
+			case 4:
+				System.out.println("Enter the product id you want to edit: ");
+				int idedit = sc.nextInt();
+				System.out.print("Enter new product name: ");
+</FONT><A NAME="1"></A><FONT color = #00FF00><A HREF="match202-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				String name2 = sc.next();
+				name.set(idedit - 1, name2);
+				System.out.print("Enter new product price: ");
+				double price2 = sc.nextDouble();
+				price.set(idedit - 1, price2);
+				System.out.print("Enter new product quantity: ");
+</FONT>				int quantity2 = sc.nextInt();
+				quantity.set(idedit - 1, quantity2);
+				System.out.println("Success! The product has been edited!");
+				break;
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match202-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 5:
+				System.out.print("Enter the keyword: ");
+				String key = sc.next();
+				for (int k = 0; k &lt; name.size(); k++) {
+</FONT>					if ((name.get(k)).contains(key)) {
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match202-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+						System.out.format("%d | %s | %.1f | %d", id.get(k), name.get(k), price.get(k), quantity.get(k));
+						System.out.println();
+					}
+				}
+				break;
+			case 6:
+</FONT>				int s = price.size();
+				for (i = 0; i &lt; (s - 1); i++) {
+					int min_price = i;
+					for (int j = (i + 1); j &lt; s; j++) {
+						if (price.get(j) &lt; price.get(min_price)) {
+							min_price = j;
+						}
+					}
+					double tmp_price = price.get(min_price);
+					price.set(min_price, price.get(i));
+					price.set(i, tmp_price);
+
+					String tmp_name = name.get(min_price);
+					name.set(min_price, name.get(i));
+					name.set(i, tmp_name);
+
+					int tmp_id = id.get(min_price);
+					id.set(min_price, id.get(i));
+					id.set(i, tmp_id);
+
+					int tmp_quantity = quantity.get(min_price);
+					quantity.set(min_price, quantity.get(i));
+					quantity.set(i, tmp_quantity);
+				}
+				for (int print = 0; print &lt; 4; print++) {
+					System.out.format("%d | %s | %.1f | %d", id.get(print), name.get(print), price.get(print), quantity.get(print));
+					System.out.println();
+				}
+				break;
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match202-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_12.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 7:
+				FileOutputStream fos = new FileOutputStream(file);
+				ObjectOutputStream oos = new ObjectOutputStream(fos);
+				oos.writeObject(name);
+				oos.writeObject(price);
+				oos.writeObject(quantity);
+				oos.close();
+				fos.close();
+				System.out.println("Saved!");
+				break;
+			case 8:
+				FileInputStream fis = new FileInputStream(file);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				name = (ArrayList) ois.readObject();
+				price = (ArrayList) ois.readObject();
+				quantity = (ArrayList) ois.readObject();
+				ois.close();
+				fis.close();
+				System.out.println("Loaded!");
+				break;
+			case 9:
+				System.out.println("Thank you and goodbye!");
+				break;
+			default:
+				System.out.println("Invalid! Please choose from feature 1 to 9!");
+</FONT>			}
+		}
+	}
+}</PRE>
+</PRE>
+</BODY>
+</HTML>

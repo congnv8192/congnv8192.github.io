@@ -1,0 +1,352 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040047HoangThiThuyDuong_106587_assignsubmission_file_Assigment02_1801040047/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040177TranDiemQuynh_106388_assignsubmission_file_assignment2_TranDiemQUynh_1801040177/pr1/<p><PRE>
+&gt;&gt;&gt;&gt; file: Management.java
+package pr1;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+/*
+ * author: Tran Diem Quynh
+ * ID: 1801040177
+ */
+
+public class Management {
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match12-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_66.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+	static List&lt;Products&gt; list = new ArrayList&lt;&gt;();
+
+	// Feature 1: Add Products
+
+	public static void addProducts() {
+		Scanner sc = new Scanner(System.in);
+		int n, id = 1;
+		do {
+			System.out.println("Input number of products: ");
+			n = Integer.parseInt(sc.nextLine());
+			if (n &lt; 1) {
+				System.out.println("Enter again!");
+			}
+		} while (n &lt; 1);
+
+		for (int i = 0; i &lt; n; i++) {
+			System.out.println("Input data for product " + (i + 1) + " : ");
+			Products p = new Products();
+			p.setId(id++);
+			System.out.println("Input product name: ");
+			p.setName(sc.nextLine());
+			System.out.println("Input product price: ");
+			p.setPrice(Double.parseDouble(sc.nextLine()));
+			System.out.println("Input the quantity: ");
+			p.setQuantity(Integer.parseInt(sc.nextLine()));
+			list.add(p);
+
+		}
+	}
+
+	// Feature 2: Display Products
+
+	public static void displayProducts() {
+		System.out.println("List of products: ");
+		System.out.printf("|%-15s|%-20s|%-15s|%-15s|", "ID", "Product Name", "Price", "Quantity");
+		for (Products p : list) {
+			System.out.printf("\n|%-15s|%-20s|%-15s|%-15s|", p.getId() + "", p.getName(), p.getPrice() + "",
+					p.getQuantity() + "");
+		}
+		System.out.println("");
+	}
+
+	// Feature 3: Delete a Product
+
+	public static void deleteProduct() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter product ID to delete: ");
+		int id = sc.nextInt();
+		boolean bl = false;
+		for (Products p : list) {
+			if (p.getId() == id) {
+				bl = list.remove(p);
+				break;
+			}
+		}
+		if (bl) {
+			System.out.println("The product with ID " + id + " is deleted.");
+		} else {
+			System.out.println("Error!");
+		}
+
+	}
+
+	// Feature 4: Edit a product
+
+	public static void editProduct() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter product ID to edit: ");
+		int id = Integer.parseInt(sc.nextLine());
+		boolean update = false;
+		for (Products p : list) {
+			if (p.getId() == id) {
+				System.out.println("Input new product Name: ");
+				p.setName(sc.nextLine());
+				System.out.println("Input new price: ");
+				p.setPrice(sc.nextDouble());
+				System.out.println("Input new quantity: ");
+				p.setQuantity(sc.nextInt());
+				update = true;
+				break;
+			}
+		}
+		if (update) {
+			System.out.println("The product with ID " + id + " is updated");
+		} else {
+			System.out.println("Error!");
+		}
+	}
+
+	// Feature 5: Search for products by name
+
+	public static void searchProductsByName() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter product Name to search: ");
+		String name = sc.nextLine();
+
+		int found = 0;
+		for (Products p : list) {
+			if (p.getName().equalsIgnoreCase(name)) {
+				found++;
+			}
+		}
+		if (found == 0) {
+			System.out.println("Not found any result!");
+		} else {
+			System.out.println(found + " products are found.");
+
+			System.out.println("\nHave " + found + " products are searched!");
+
+			System.out.printf("|%-15s|%-20s|%-15s|%-15s|", "ID", "Product Name", "Price", "Quantity");
+			for (Products p : list) {
+				if (p.getName().equalsIgnoreCase(name)) {
+					System.out.printf("\n|%-15s|%-20s|%-15s|%-15s|", p.getId() + "", p.getName(), p.getPrice() + "",
+							p.getQuantity() + "");
+				}
+			}
+			System.out.println("");
+		}
+	}
+
+	// Feature 6: Sort products by price (increasing price order)
+
+	public static void sortProductByPrice() {
+		Collections.sort(list, new Comparator&lt;Products&gt;() {
+			@Override
+			public int compare(Products o1, Products o2) {
+				return (int) (o1.getPrice() - o2.getPrice());
+			}
+		});
+		System.out.println("List of products after sorting price: ");
+		System.out.printf("|%-15s|%-20s|%-15s|%-15s|", "ID", "Product Name", "Price", "Quantity");
+		for (Products p : list) {
+			System.out.printf("\n|%-15s|%-20s|%-15s|%-15s|", p.getId() + "", p.getName(), p.getPrice() + "",
+					p.getQuantity() + "");
+		}
+		System.out.println("");
+	}
+
+	// Feature 7: Save products to text file
+
+	public static void saveProductsToFile() {
+		ObjectOutputStream write = null;
+		FileOutputStream fos = null;
+		try {
+			write = new ObjectOutputStream(new FileOutputStream("Data.txt"));
+			write.writeObject(list);
+			System.out.println("All products are saved to file named Data.txt");
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				write.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// Feature 8: Load products from the saved file
+
+	public static void loadProducts() {
+		ObjectInputStream read = null;
+		try {
+			read = new ObjectInputStream(new FileInputStream("Data.txt"));
+			List&lt;Products&gt; listRead = (List&lt;Products&gt;) read.readObject();
+
+			System.out.println("List of products are loaded from file named Data.txt");
+			System.out.printf("|%-15s|%-20s|%-15s|%-15s|", "ID", "Product Name", "Price", "Quantity");
+			for (Products p : listRead) {
+				System.out.printf("\n|%-15s|%-20s|%-15s|%-15s|", p.getId() + "", p.getName(), p.getPrice() + "",
+						p.getQuantity() + "");
+			}
+			System.out.println("");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				read.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// Create menu
+
+	public static void main(String[] args) {
+</FONT>		int n = 0;
+		Scanner sc = new Scanner(System.in);
+
+		do {
+			System.out.println("----------MENU----------");
+			System.out.println("1. Add products ");
+			System.out.println("2. Display products");
+			System.out.println("3. Delete a product");
+			System.out.println("4. Edit a product");
+			System.out.println("5. Search for products by name");
+			System.out.println("6. Sort products by price");
+			System.out.println("7. Save products to text file");
+			System.out.println("8. Load products from the saved file");
+			System.out.println("9. Exit");
+			try {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match12-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("Please choose a funcion: ");
+				n = sc.nextInt();
+				switch (n) {
+				case 1:
+					addProducts();
+					break;
+				case 2:
+					displayProducts();
+					break;
+				case 3:
+</FONT>					deleteProduct();
+					break;
+				case 4:
+					editProduct();
+					break;
+				case 5:
+					searchProductsByName();
+					break;
+				case 6:
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match12-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+					sortProductByPrice();
+					break;
+				case 7:
+					saveProductsToFile();
+					break;
+				case 8:
+					loadProducts();
+					break;
+				case 9:
+					System.exit(0);
+				default:
+					System.out.println("choose again!");
+</FONT>					break;
+				}
+			} catch (Exception e) {
+				System.out.println("Invalid!");
+				sc.nextLine();
+			}
+		} while (n != 9);
+	}
+}
+&gt;&gt;&gt;&gt; file: Products.java
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match12-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+package pr1
+;
+
+import java.io.Serializable;
+
+/*
+ * author: Tran Diem Quynh
+ * ID: 1801040177
+ */
+
+public class Products implements Serializable {
+
+	private int id;
+	private String name;
+	private double price;
+	private int quantity;
+
+	public Products() {
+	}
+
+	public Products(int id, String name, double price, int quantity) {
+		this.id = id;
+		this.name = name;
+</FONT>		this.price = price;
+		this.quantity = quantity;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

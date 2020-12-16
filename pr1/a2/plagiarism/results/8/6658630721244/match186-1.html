@@ -1,0 +1,251 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040187HaucTam_106451_assignsubmission_file_Product.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040208NguyenMinhThao_106314_assignsubmission_file_ManageLaptopProducts.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040208NguyenMinhThao_106314_assignsubmission_file_ManageLaptopProducts.java
+﻿package Assignment2;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+class Product implements Serializable {
+    
+    int ID;
+    String name;
+    double price;
+    int quantity;
+
+    public void input() {
+
+        Scanner sc = new Scanner(System.in);
+        Random rd = new Random();
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match186-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        ID = 1000 + rd.nextInt(9000);
+        System.out.print("\nEnter name: ");
+        name = sc.nextLine();
+        System.out.print("Enter price($): ");
+        price = sc.nextDouble();
+</FONT>        System.out.print("Enter quality: ");
+        quantity = sc.nextInt();
+    }
+    
+    public void display() {
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match186-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.format("%10d | %20s | %10.2f | %10d | %n", ID, name, price, quantity);
+    }
+
+    
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getNames() {
+        return name;
+    }
+
+    public void setNames(String names) {
+</FONT>        this.name = names;
+    }
+}
+    public class ManageLaptopProducts {
+    
+        ArrayList&lt;Product&gt; list = new ArrayList&lt;&gt;();
+
+    // Add products
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match186-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    void input(int num) {
+        for (int i = 1; i &lt;= num; i++) {
+            System.out.print("\n[Product " + i + "]");
+            Product products = new Product();
+            products.input();
+            list.add(products);
+        }
+    }
+    
+    // Display products
+    void display() {
+        System.out.println("\n-------------------------------------------------------------");
+</FONT><A NAME="7"></A><FONT color = #0000FF><A HREF="match186-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        System.out.format("%10s | %20s | %10s | %10s | %n", "ID", "NAME", "PRICE($)", "QUANTITY");
+        for (int i = 0; i &lt; list.size(); i++) {
+            list.get(i).display();
+        }
+        System.out.println("-------------------------------------------------------------");
+</FONT>    }
+    
+    // Locate a product
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match186-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    int locate(int loc) {
+        int i;
+        boolean found = false;
+        for (i = 0; i &lt; list.size(); i++) {
+            if (list.get(i).getID() == loc) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return -1;
+        }
+        return i;
+    }
+    
+    // Search for products
+    void search() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("\nEnter product's name: ");
+        String s = input.nextLine();
+</FONT>        boolean found = false;
+        for (int i = 0; i &lt; list.size(); i++) {
+            if (list.get(i).getNames().contains(s)) {
+                System.out.println("\n-------------------------------------------------------------");
+                System.out.format("%10s | %20s | %10s | %10s | %n", "ID", "NAME", "PRICE($)", "QUANTITY");
+                list.get(i).display();
+                System.out.println("-------------------------------------------------------------");
+                found = true;
+            }
+        }
+        if (!found) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match186-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("\nProduct not found!");
+        }
+    }
+    
+    // Save products
+    void save() {
+        try {
+            File f = new File("LaptopProducts.txt");
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(list);
+            System.out.println("\nFile Saved!");
+        } catch (IOException e) {
+            System.out.println("/nError!"+ e.getMessage());
+</FONT>        }
+    }
+    
+    // Load products
+    void load() {
+        try{
+            File file = new File("LaptopProducts.txt");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match186-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            list = (ArrayList&lt;Product&gt;) ois.readObject();
+            System.out.println("\nFile Loaded!");
+            display();
+        } catch (IOException e) {
+            System.out.println("/nError!"+ e.getMessage());
+</FONT>        } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ManageLaptopProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    	public static void main(String[] args){
+            
+            ManageLaptopProducts manage = new ManageLaptopProducts();
+            
+            Scanner sc = new Scanner(System.in);
+            int choiceNumber;
+        for (;;) {
+            System.out.println("\n[MENU]");
+            System.out.println("1. Add products");
+            System.out.println("2. Display products");
+            System.out.println("3. Delete a product");
+            System.out.println("4. Edit a product");
+            System.out.println("5. Search for products by name");
+            System.out.println("6. Sort products by price");
+            System.out.println("7. Save products to text/binary file");
+            System.out.println("8. Load products from the saved file");
+            System.out.println("0. Quit");
+            do {
+                System.out.print("\nChoose 1 option: ");
+                choiceNumber = sc.nextInt();
+            } while ((choiceNumber &lt; 0) || (choiceNumber &gt; 9));
+             
+            switch (choiceNumber) {
+                    case 1:
+                        int length;
+                        Scanner input = new Scanner(System.in);
+                        
+                        System.out.println("\nHow many products do you want to add?");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match186-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        length = input.nextInt();
+                        manage.input(length);
+                        System.out.println("\nSuccess!");
+                        break;
+
+                    case 2:
+                        manage.display();
+                        break;
+
+                    case 3:
+                        System.out.print("\nEnter the product ID: ");
+                        int delete = sc.nextInt();
+                        int a = manage.locate(delete);
+                        
+                        if (a == -1) {
+                            System.out.println("\nProduct not found!");
+                        } else {
+                            manage.list.remove(manage.list.get(a));
+                            System.out.println("Deleted!");
+                            manage.display();
+                        }
+                        break;
+
+                    case 4:
+</FONT>                        break;
+
+                    case 5:
+                        manage.search();
+                        break;
+
+                    case 6:
+                        break;
+
+                    case 7:
+                        manage.save();
+                        break;
+
+                    case 8:
+                        manage.load();
+                        break;
+                        
+                    case 0:
+                        System.out.println("The End.");
+                        System.exit(0);
+                        break;
+                }
+            }
+        }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

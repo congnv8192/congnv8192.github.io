@@ -1,0 +1,331 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenLongNhat_106297_assignsubmission_file_assign2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenLongNhat_106297_assignsubmission_file_assign2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenLongNhat_106297_assignsubmission_file_assign2.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assign2;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.Collections;
+import java.util.Scanner;
+import java.io.Serializable;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class assign2 {
+    
+    
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("All Feature ");
+        String choose = null;
+        boolean exit = false;
+        int productID;
+        String productName;
+        ProductManager productManager = new ProductManager();
+                   
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match73-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        showFeature();
+        while (true) { 
+            choose = sc.nextLine();
+          switch(choose){
+            case "1":
+              productManager.add();
+              break;
+            case "2":
+              productManager.display(); 
+              break;
+            case "3":
+              productID = productManager.inputId();
+              productManager.delete(productID);
+              break;
+            case "4":
+              productID = productManager.inputId();
+              productManager.edit(productID);
+              break;
+            case "5":
+              productName = productManager.inputName();
+              productManager.Search(productName);
+</FONT>            case "6":
+              productManager.SortProductByPrice();
+              break;
+            case "7":
+              productManager.saveProductToTextFile();
+              break;
+            case "8":
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match73-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+              productManager.loadProductFromTextFile();
+              break;
+            case "0":
+              System.out.println("Exited!");
+              exit = true;
+              break;
+            default:
+              System.out.println("Invalid! Please select action in the menu below: ");
+              break;
+            }
+            if (exit) {
+                break;
+            }
+            showFeature();
+        }
+    }
+    // show feature
+        public static void showFeature() {
+            System.out.println();
+            System.out.println("1. Add products");
+            System.out.println("2. Display products");
+            System.out.println("3. Delete a product");
+</FONT>            System.out.println("4. Edit a product");
+            System.out.println("5. Search for products by name");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match73-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("6. Sort products by price");
+            System.out.println("7. Save product to text file");
+            System.out.println("8. Load product from text file");
+            System.out.println("Enter your choose : ");
+        }
+}
+class Product implements Serializable {
+    private int id;
+</FONT>    private String name;
+    private double price;
+    private int quantity;
+ 
+    public Product() {
+    }
+    public Product(int id, String name, double price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+    
+    public int getId() {
+        return id;
+    }
+ 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public double getPrice() {
+        return price;
+    }
+ 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    @Override
+    public String toString(){
+        return "Product:&lt;" + id + ", " + name + ", " + price + "," + quantity + "&gt;" ;
+    }
+}
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match73-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+class SortProductByPrice implements Comparator&lt;Product&gt; {
+    @Override
+    public int compare(Product product1, Product product2) {
+        if (product1.getPrice() &gt; product2.getPrice()) {
+            return 1;
+        }
+        return -1;
+    }
+}
+class ProductManager {
+    public static Scanner scanner = new Scanner(System.in);
+</FONT>    private ArrayList&lt;Product&gt; productList = new ArrayList&lt;&gt;();
+    
+    public ProductManager() {
+    }
+    
+    public void add(){
+        int id = inputId();
+        String name = inputName();
+        double price = inputPrice();
+        int quantities = inputQuantity();
+        productList.add(new Product(id, name, price, quantities));      
+    }
+    
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match73-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public void edit(int id) {
+        int size = productList.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (productList.get(i).getId() == id) {
+                
+                productList.get(i).setName(inputName());
+                productList.get(i).setPrice(inputPrice());
+                productList.get(i).setQuantity(inputQuantity());
+</FONT>                break;
+            }
+        }
+    }
+    public void display() {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match73-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    for (Product product : productList) {
+        System.out.format("%5d | ", product.getId());
+        System.out.format("%20s | ", product.getName());
+        System.out.format("%5f | ", product.getPrice());
+        System.out.format("%20s | ", product.getQuantity());
+        }
+    }
+    public void delete(int id) {
+        Product product1 = null;
+        int size = productList.size();
+        for (int i = 0; i &lt; size; i++) {
+            if (productList.get(i).getId() == id) {
+                product1 = productList.get(i);
+                break;
+            }
+        }
+        if (product1 != null) {
+            productList.remove(product1);
+        } else {
+            System.out.printf("Id = %d NOT EXISTED.\n", id);
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match73-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_18.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        }
+    }
+    public void Search (String name){
+        int size = productList.size();
+        for (int i = 0; i &lt; size; i++) {
+            if(productList.get(i).getName().equals(name)){
+                System.out.format("%5d |",productList.get(i).getId());
+                System.out.format("%25s | ",productList.get(i).getName());
+                System.out.format("%5f | ",productList.get(i).getPrice());
+                System.out.format("%5d",productList.get(i).getQuantity());
+            }
+            else{
+                System.out.println("Not exsited");
+            }
+        }
+    }
+    
+    public void SortProductByPrice () {
+        Collections.sort(productList, new SortProductByPrice());
+    }
+    
+    public int inputId() {
+        System.out.println("Input product ID: ");
+        while (true) {
+            try {
+                int Id = Integer.parseInt((scanner.nextLine()));
+                return Id;
+            } catch (NumberFormatException ex) {
+                System.out.print("INVALID! Input product ID again: ");
+            }
+        }
+    }
+    
+    public String inputName() {
+        System.out.println("Input product Name: ");
+        return scanner.nextLine();
+    }
+    
+    public double inputPrice() {
+        System.out.println("Input product Price: ");
+        while (true) {
+            try {
+                double price = Double.parseDouble((scanner.nextLine()));
+                return price;
+            } catch (NumberFormatException ex) {
+                System.out.print("INVALID! Input product price again: ");
+            }
+        }
+    }
+    
+    public int inputQuantity() {
+        System.out.println("Input product Quantity: ");
+        while (true) {
+            try {
+                int Quantity = Integer.parseInt((scanner.nextLine()));
+</FONT>                return Quantity;
+            } catch (NumberFormatException ex) {
+                System.out.print("INVALID! Input product Quantity again: ");
+            }
+        }
+    }
+    
+    public void setProducts(ArrayList&lt;Product&gt; productList) {
+        this.productList = productList;
+    }
+    public ArrayList&lt;Product&gt; getproductList() {
+        return productList;
+    }
+    
+    public void saveProductToTextFile() throws FileNotFoundException, IOException{
+        
+        String fileName = "..\\data.txt";
+        try (FileOutputStream fos = new FileOutputStream(fileName)){
+            
+            for(Product product : productList){
+                String productLine = product.toString();
+                byte[] bytes = productLine.getBytes();
+                fos.write(bytes);
+                fos.write("\n".getBytes());
+            }
+            System.out.println("Save products to text file");
+        }
+    }
+    
+    
+    public void loadProductFromTextFile(){
+        String inputfileName = "..\\data.txt";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(inputfileName));
+            String line;
+            while ((line = br.readLine()) != null) {
+                
+                String product = line.trim().substring(9).replace("&gt;", "");
+                List&lt;String&gt; prop = Arrays.asList(product.trim().split(","));
+                Product p = new Product(Integer.parseInt(prop.get(0)),
+                prop.get(1),Double.parseDouble(prop.get(2)), Integer.parseInt(prop.get(3)));
+                productList.add(p);
+            }
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

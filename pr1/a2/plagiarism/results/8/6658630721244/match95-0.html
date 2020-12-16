@@ -1,0 +1,266 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/NguyenQuangHuy_106336_assignsubmission_file_NguyenQuangHuy_1c19_1901040094_A2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenQuangHuy_106336_assignsubmission_file_NguyenQuangHuy_1c19_1901040094_A2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenQuangHuy_106336_assignsubmission_file_NguyenQuangHuy_1c19_1901040094_A2.java
+package Assisgnment;
+
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match95-1.html#1" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_7.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class NguyenQuangHuy_1c19_1901040094_A2 {
+
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList&lt;Product&gt; products = new ArrayList&lt;&gt;();
+
+    public static void main(String[] args) {
+        for (;;) {
+            System.out.println("1. ADD PRODUCTS");
+            System.out.println("2. DISPLAY PRODUCTS");
+            System.out.println("3. DELETE A PRODUCT");
+            System.out.println("4. EDIT PRODUCTS");
+</FONT>            System.out.println("5. SEARCH PRODUCTS BY NAME");
+            System.out.println("6. SORT PRODUCTS BY PRICE");
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match95-1.html#2" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println("7. SAVE PRODUCTS");
+            System.out.println("8. LOAD PRODUCTS");
+            System.out.println("9. QUIT");
+
+            int option = 0;
+            do {
+                try {
+                    System.out.print("Select an option:");
+                    option = Integer.parseInt(sc.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    sc.nextLine();
+                }
+            } while (Character.isLetter(option) || option &lt; 1 || option &gt; 9);
+</FONT>
+            switch (option) {
+                case 1:
+                    AddProducts();
+                    break;
+                case 2:
+                    DisplayProducts();
+                    break;
+                case 3:
+                    DeleteProducts();
+                    break;
+                case 4:
+                    EditProducts();
+                    break;
+                case 5:
+                    SearchByName();
+                    break;
+                case 6:
+                    SortByPrice();
+                    break;
+                case 7:
+                    SaveProducts();
+                    break;
+                case 8:
+                    LoadProducts();
+                    break;
+                case 9:
+                    ExitSystem(0);
+                    break;
+            }
+        }
+    }
+
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match95-1.html#8" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void AddProducts() {
+        System.out.println("Adding products...");
+
+        System.out.println("Name:");
+        String name = sc.nextLine();
+        System.out.println("Price:");
+
+        double price;
+</FONT>        price = Double.parseDouble(sc.nextLine());
+        System.out.println("Quantity:");
+        int quantity;
+        quantity = Integer.parseInt(sc.nextLine());
+
+        Product product;
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match95-1.html#6" TARGET="1"><IMG SRC="../../../bitmaps/tm_1_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        product = new Product(name, price, quantity);
+        products.add(product);
+    }
+
+    private static void DisplayProducts() {
+        System.out.println("Displaying products...");
+
+        if (products.isEmpty()) {
+            System.out.println("There is nothing ti display!");
+        } else {
+            String info;
+</FONT>            info = "";
+            info = products.stream().map((p) -&gt; p.toString() + "\n").reduce(info, String::concat);
+<A NAME="10"></A><FONT color = #FF0000><A HREF="match95-1.html#10" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            System.out.println(info);
+        }
+    }
+
+    private static void DeleteProducts() {
+        System.out.println("Deleting products...");
+
+        if (!products.isEmpty()) {
+            System.out.println("Enter product's id: ");
+</FONT>            int id;
+<A NAME="7"></A><FONT color = #0000FF><A HREF="match95-1.html#7" TARGET="1"><IMG SRC="../../../bitmaps/tm_2_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            id = Integer.parseInt(sc.nextLine());
+
+            for (Product p : products) {
+                if (p.getId() == id) {
+                    products.remove(p);
+                    System.out.println("Products deleted!");
+                    break;
+                }
+            }
+        }
+    }
+
+    private static void LoadProducts() {
+
+    }
+
+    private static void SaveProducts() {
+</FONT>
+    }
+
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match95-1.html#3" TARGET="1"><IMG SRC="../../../bitmaps/tm_3_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    private static void SortByPrice() {
+        System.out.println("Sorting products by price...");
+
+        for (int i = 0; i &lt; products.size(); i++) {
+            for (int j = i; j &lt; products.size(); j++) {
+                if (products.get(j).getPrice() &gt; products.get(i).getPrice()) {
+
+                    Product temp;
+</FONT><A NAME="4"></A><FONT color = #FF00FF><A HREF="match95-1.html#4" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    temp = products.get(i);
+                    products.set(i, products.get(j));
+                    products.set(j, temp);
+                }
+            }
+        }
+    }
+
+    private static void SearchByName() {
+        System.out.println("Searching products by name...");
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();
+</FONT>
+        products.stream().filter((p) -&gt; (p.getName().contains(name))).forEachOrdered((p) -&gt; {
+            System.out.println(p.toString());
+        });
+    }
+
+    private static void EditProducts() {
+        System.out.println("Editing products...");
+        System.out.println("Input the ID of the product you want to edit: ");
+        int id;
+        id = Integer.parseInt(sc.nextLine());
+
+        products.stream().filter((p) -&gt; (p.getId() == id)).map((p) -&gt; {
+            System.out.println("Name:");
+            return p;
+        }).map((p) -&gt; {
+            String name = sc.nextLine();
+            System.out.println("Price:");
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match95-1.html#9" TARGET="1"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            double price = Double.parseDouble(sc.nextLine());
+            System.out.println("Quantity:");
+            int quantity = Integer.parseInt(sc.nextLine());
+            p.setName(name);
+            p.setPrice(price);
+            p.setQuantity(quantity);
+</FONT>            return p;
+        }).forEachOrdered((_item) -&gt; {
+            System.out.println("Edited sucessfully!");
+        });
+    }
+
+    private static void ExitSystem(int i) {
+        System.out.println("System shut down sucessfully!");
+        System.exit(i);
+    }
+
+    static class Product {
+
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match95-1.html#0" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        private final int id;
+        private String name;
+        private double price;
+        private int quantity;
+        static int count = 0;
+
+        public Product(String name, double price, int quantity) {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+            this.id = generateId();
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        private int generateId() {
+            count++;
+            return count;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public void setPrice(double price) {
+</FONT>            this.price = price;
+        }
+
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match95-1.html#5" TARGET="1"><IMG SRC="../../../bitmaps/tm_0_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+
+        @Override
+        public String toString() {
+            return "[Id: " + this.id + ", name: " + this.name + ", price: " + this.price + ", quantity: " + this.quantity + "]";
+</FONT>        }
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

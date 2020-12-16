@@ -1,0 +1,207 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/LyHoaiThu_106588_assignsubmission_file_LyHoaiThu_1C19_1901040213_A03_Assignment02.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenHoangLong_106302_assignsubmission_file_NguyenHoangLong_1C19_1901040127_B02.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenHoangLong_106302_assignsubmission_file_NguyenHoangLong_1C19_1901040127_B02.java
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+/**
+ *
+ * @author NguyenHoangLong_1C19_1901040127_B02
+ */
+public class NguyenHoangLong_1C19_1901040127_B02 {
+    public static void main(String[] args) throws Exception {
+        ArrayList&lt;Integer&gt; ProductID_al = new ArrayList&lt;Integer&gt;();
+        ArrayList&lt;String&gt; ProductName_al = new ArrayList&lt;String&gt;();
+        ArrayList&lt;String&gt; ProductPrice_al = new ArrayList&lt;String&gt;();
+        ArrayList&lt;String&gt; ProductQuantity_al = new ArrayList&lt;String&gt;();
+        String Name = "";
+        String Price = "";
+        String Quantity = "";
+        String Choices = "";
+        Scanner sc = new Scanner(System.in);
+        int chucnang = 0;
+        while (chucnang != 9) {
+            try {
+                System.out.println("Feature 1: Add products");
+                System.out.println("Feature 2: Display products");
+                System.out.println("Feature 3: Delete a product");
+                System.out.println("Feature 4 (optional): Edit a product");
+                System.out.println("Feature 5: Search for products by name");
+                System.out.println("Feature 6 (optional): Sort products by price");
+                System.out.println("Feature 7: Save products to text/binary file");
+                System.out.println("Feature 8: Load products from the saved file");
+                System.out.println("Feature 9:Quit program");
+<A NAME="6"></A><FONT color = #00FF00><A HREF="match207-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.print("Choose a feature: ");
+                chucnang = sc.nextInt();
+            } catch (Exception e) {
+                System.err.println("Please enter the correct number listed in the feature list");
+                sc.nextLine();
+            }
+            switch (chucnang) {
+                case 1:
+</FONT>                    Scanner sccase1 = new Scanner(System.in);
+                    int p = 1;
+
+                    do {
+                        System.out.println("Product ID: " + (p));
+                        System.out.print("Product name: ");
+                        Name = sc.next();
+                        sc.nextLine();
+                        System.out.print("Product price: ");
+                        Price = sc.next();
+                        System.out.print("Product quantity: ");
+                        Quantity = sc.next();
+                        System.out.print("Do you wanna add more products(Yes/No)? ");
+                        Choices = sc.next();
+                        p++;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match207-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        sc.nextLine();
+                        ProductName_al.add(Name);
+                        ProductPrice_al.add(Price);
+                        ProductQuantity_al.add(Quantity);
+                        ProductID_al.add(ProductName_al.size());
+                    } while (Choices.equalsIgnoreCase("Yes"));
+                    System.out.println("You have chosen no add more products");
+                    break;
+                case 2:
+                    System.out.println("--------------------------------------------------------------------------------------------");
+                    System.out.printf("|%23s| %26s| %17s| %18s|", "Product ID", "Product Name", "Product Price", "Product Quantity");
+                    System.out.println("");
+</FONT>                    for (int bang = 0; bang &lt; ProductID_al.size(); bang++) {
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match207-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        System.out.printf("|%23d| %26s| %17s| %18s|%n", ProductID_al.get(bang), ProductName_al.get(bang), ProductPrice_al.get(bang), ProductQuantity_al.get(bang));
+                    }
+                    System.out.println("--------------------------------------------------------------------------------------------");
+                    break;
+                case 3:
+                    String choices = "";
+                    do {
+                        System.out.print("Please enter the ID of the product that you wanna delete: ");
+                        int delete = sc.nextInt();
+</FONT>                        for (int xoa = 0; xoa &lt; ProductID_al.size(); xoa++) {
+                            if (delete == ProductID_al.get(xoa)) {
+                                ProductID_al.remove(xoa);
+                                ProductName_al.remove(xoa);
+                                ProductPrice_al.remove(xoa);
+                                ProductQuantity_al.remove(xoa);
+                            }
+                            System.out.println("Product was deleted");
+                            break;
+                        }
+                        System.out.print("Do you wanna delete another product(Yes/No)? ");
+                        choices = sc.next();
+                    } while (choices.equalsIgnoreCase("Yes"));
+                    break;
+                case 4:
+                    System.out.print("Please enter the product ID that you wanna edit: ");
+                    int id = sc.nextInt();
+                    System.out.print("Please enter a new name for the product: ");
+                    String tenmoi = sc.next();
+<A NAME="5"></A><FONT color = #FF0000><A HREF="match207-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.print("Please enter a new price for the product: ");
+                    String giamoi = sc.next();
+                    System.out.print("Please enter a new quantity for the product: ");
+                    String luongmoi = sc.next();
+                    for (int c = 0; c &lt; ProductID_al.size(); c++) {
+</FONT>                        if (id == c + 1) {
+                            ProductName_al.set(c, tenmoi);
+                            ProductPrice_al.set(c, giamoi);
+                            ProductQuantity_al.set(c, luongmoi);
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.print("Enter the keyword that you want to find: ");
+                    String tukhoa = sc.next();
+                    System.out.printf("|%23s| %26s| %17s| %18s|", "Product ID", "Product Name", "Product Price", "Product Quantity");
+                    System.out.println("");
+                    for (int kw = 0; kw &lt; ProductName_al.size(); kw++) {
+                        if (ProductName_al.get(kw).contains(tukhoa)) {
+                            System.out.printf("|%23d| %26s| %17s| %18s|%n", ProductID_al.get(kw), ProductName_al.get(kw), ProductPrice_al.get(kw), ProductQuantity_al.get(kw));
+                        }
+                    }
+                    break;
+                case 6:
+                    System.out.println("Sorting the products followed by increasing price");
+                    ArrayList&lt;Integer&gt; Increasingprice = new ArrayList&lt;Integer&gt;();
+                    System.out.printf("|%23s| %26s| %17s| %18s|", "Product ID", "Product Name", "Product Price", "Product Quantity");
+                    System.out.println("");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match207-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    for (int pr = 0; pr &lt; ProductPrice_al.size(); pr++) {
+                        Increasingprice.add(Integer.parseInt(ProductPrice_al.get(pr)));
+                    }
+                    Collections.sort(Increasingprice);
+</FONT>                    for (int pr = 0; pr &lt; Increasingprice.size(); pr++) {
+                        System.out.printf("|%23d| %26s| %17s| %18s|%n", ProductID_al.get(pr), ProductName_al.get(pr), ProductPrice_al.get(pr), ProductQuantity_al.get(pr));
+                    }
+
+                    break;
+                case 7:
+                    System.out.println("Saving the products into a text file: ");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match207-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    FileOutputStream fosid = new FileOutputStream("Product_ID.txt");
+                    ObjectOutputStream luuprid = new ObjectOutputStream(fosid);
+                    luuprid.writeObject(ProductID_al);
+                    FileOutputStream fosname = new FileOutputStream("Product_Name.txt");
+                    ObjectOutputStream luuprname = new ObjectOutputStream(fosname);
+                    luuprname.writeObject(ProductName_al);
+                    FileOutputStream fosprice = new FileOutputStream("Product_Price.txt");
+                    ObjectOutputStream luuprprice = new ObjectOutputStream(fosprice);
+                    luuprprice.writeObject(ProductPrice_al);
+                    FileOutputStream fosquantity = new FileOutputStream("Product_Quantity.txt");
+                    ObjectOutputStream luuprquantity = new ObjectOutputStream(fosquantity);
+                    luuprquantity.writeObject(ProductQuantity_al);
+</FONT>                    break;
+                case 8:
+                    System.out.println("Loading file to the program: ");
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match207-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_8.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    FileInputStream fisid = new FileInputStream("Product_ID.txt");
+                    ObjectInputStream nhapprid = new ObjectInputStream(fisid);
+                    ProductID_al = (ArrayList&lt;Integer&gt;) nhapprid.readObject();
+                    FileInputStream fisname = new FileInputStream("Product_Name.txt");
+                    ObjectInputStream nhapprname = new ObjectInputStream(fisname);
+                    ProductName_al = (ArrayList&lt;String&gt;) nhapprname.readObject();
+                    FileInputStream fisprice = new FileInputStream("Product_Price.txt");
+                    ObjectInputStream nhapprprice = new ObjectInputStream(fisprice);
+                    ProductPrice_al = (ArrayList&lt;String&gt;) nhapprprice.readObject();
+                    FileInputStream fisquantity = new FileInputStream("Product_Quantity.txt");
+                    ObjectInputStream nhapprquantity = new ObjectInputStream(fisquantity);
+                    ProductQuantity_al = (ArrayList&lt;String&gt;) nhapprquantity.readObject();
+</FONT>                    break;
+                case 9:
+                    System.out.println("Bye bye");
+                    break;
+                default:
+                    System.err.println("Please ONLY enter number from 1 to 9 please");
+                    break;
+            }
+        }
+    }
+}
+
+
+
+</PRE>
+</PRE>
+</BODY>
+</HTML>

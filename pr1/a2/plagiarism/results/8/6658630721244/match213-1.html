@@ -1,0 +1,314 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040166BuiTungNhat_106444_assignsubmission_file_Assignment2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/NguyenDuyAnh_106281_assignsubmission_file_Assignment_2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: NguyenDuyAnh_106281_assignsubmission_file_Assignment_2.java
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Assignment2 {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        Random ran = new Random();
+        int a, b, remove = 0, edit = 0, min, number = 0;
+        String quest = null;
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match213-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+        boolean continues, test = true;
+        File product = new File("Product.txt");
+        ArrayList&lt;String&gt; productName = new ArrayList&lt;&gt;();
+        ArrayList&lt;Integer&gt; productQuantity = new ArrayList&lt;&gt;();
+        ArrayList&lt;Double&gt; productPrice = new ArrayList&lt;&gt;();
+        ArrayList&lt;Integer&gt; productID = new ArrayList&lt;&gt;();
+        do {
+            System.out.println("Feature 1: Add products");
+</FONT>            System.out.println("Feature 1: Display products");
+            System.out.println("Feature 3: Delete a product");
+            System.out.println("Feature 4: Edit a product");
+            System.out.println("Feature 5: Search for products by name");
+            System.out.println("Feature 6: Sort products by price");
+            System.out.println("Feature 7: Save products to text/binary file");
+            System.out.println("Feature 8: Loads roducts from the saved file");
+            System.out.print("Enter the feature that you want to choose(from 1 to 8): ");
+            int ft = sc.nextInt();
+            switch (ft) {
+                case 1:
+                    try {
+                        
+                        number++;
+
+                        for (a = 0; a &lt; number; a++) {
+                            sc.nextLine();
+                            System.out.println("Enter product's name: ");
+
+                            productName.add(a, sc.nextLine());
+                            try {
+                                System.out.println("Enter product's productQuantity: ");
+
+                                productQuantity.add(a, sc.nextInt());
+                            } catch (Exception ex) {
+                                System.out.println("This quantity invalid!");
+
+                                System.out.println("Try again!");
+                                sc.nextInt();
+                            }
+                            try {
+                                System.out.println("Enter product's price: ");
+                                productPrice.add(a, sc.nextDouble());
+                            } catch (Exception ex) {
+                                System.out.println(" This price is invalid!");
+
+                                System.out.println("Try again!");
+                            }
+                            int id;
+                            productID.add(a, id = ran.nextInt(30) + 99999);
+                            System.out.println("Enter the next product that you want to type:");
+                            sc.nextInt();
+                        }
+
+                    } catch (Exception ex) {
+                        System.out.println("This quantity is invalid!");
+                        sc.next();
+                    }
+                    break;
+
+                case 2:
+                    if (productID.isEmpty()) {
+                        System.out.println("There is information to display on the screen !");
+                        System.out.println("Please back and add information in Feature 1 .");
+                    }
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match213-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                    System.out.format("%20s | %10s | %10s | %10s%n", "Name", "Quantity", "Price", "ID");
+                    for (a = 0; a &lt; productID.size(); a++) {
+
+                        System.out.format("%20s | %10d | %10.1f | %10d%n",
+                                productName.get(a),
+</FONT>                                productQuantity.get(a),
+                                productPrice.get(a),
+                                productID.get(a));
+                        
+                    }
+                    break;
+
+                case 3:
+                    if (productID.isEmpty()) {
+                        System.out.println("There is no information to delete!");
+                        System.out.println(" Please back and add information in Feature 1.");
+                    }
+                    try {
+                        System.out.println("Enter ID's product that you want to delete: ");
+                        remove = sc.nextInt();
+                    } catch (Exception ex) {
+                        System.out.println("This ID is invalid!");
+                        System.out.println("Try again!");
+                            
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match213-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_6.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        sc.nextInt();
+                    }
+                    for (a = 0; a &lt; productID.size(); a++) {
+                        if (remove == productID.get(a)) {
+                            productName.remove(a);
+                            productID.remove(a);
+                            productQuantity.remove(a);
+                            productPrice.remove(a);
+                            System.out.println("The product has been deleted!");
+                        }
+                    }
+
+                    System.out.println("New tab:");
+                    System.out.format("%20s | %10s | %10s | %10s%n", "Name", "Quantity", "Price", "ID");
+                    for (a = 0; a &lt; productID.size(); a++) {
+                        System.out.format("%20s | %10d | %10.1f | %10d%n",
+                                productName.get(a),
+</FONT>                                productQuantity.get(a),
+                                productPrice.get(a),
+                                productID.get(a));
+                    }
+                    break;
+                case 4:
+                    if (productID.isEmpty()) {
+                        System.out.println("There is no information to edit!");
+                        System.out.println("Please back and add information in Feature 1.");
+                    }
+                    try {
+                        System.out.print("Enter the ID of the product that you want to edit: ");
+                        edit = sc.nextInt();
+                    } catch (Exception ex) {
+                        System.out.println("ID is invalid!");
+
+                        System.out.println("Try again");
+                    }
+                    for (a = 0; a &lt; productID.size(); a++) {
+                        if (edit == productID.get(a)) {
+                            System.out.println("Choose the information that you want to edit:  Product's name");
+                            System.out.println("Choose the information that you want to edit: Product's price");
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match213-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                            System.out.println("Choose the information that you want to edit: Product's quantity ");
+                            int option = sc.nextInt();
+                            switch (option) {
+                                case 1:
+                                    System.out.print("Enter the new name of the product that you want to set: ");
+                                    productName.set(a, sc.next());
+                                    break;
+                                case 2:
+                                    System.out.print("Enter the new price of the productthat you want to set: ");
+                                    productPrice.set(a, sc.nextDouble());
+                                    break;
+                                case 3:
+                                    System.out.print("Enter the new quantity of the product that you want to set: ");
+                                    productQuantity.set(a, sc.nextInt());
+                                    break;
+                                default:
+                                    System.out.println("This option is invalid!");
+                            }
+                        }
+                    }
+
+                    break;
+</FONT>
+                case 5:
+                    if (productID.isEmpty()) {
+                        System.out.println("There is information to search! ");
+                        System.out.println("Please back and add information in Feature 1.");
+                    }
+                    System.out.print("Enter the keyword in order to search product:");
+                    String search = sc.next();
+                    for (a = 0; a &lt; productID.size(); a++) {
+                        if (productName.get(a).contains(search)) {
+                            test = true;
+                            System.out.format("%20s | %10d | %10.1f | %10d",
+                                    productName.get(a),
+                                    productQuantity.get(a),
+                                    productPrice.get(a),
+                                    productID.get(a));
+                        }
+                        if (test = false) {
+                            System.out.print("This keyword is wrong!");
+                        } else {
+                            System.out.print("Done!");
+                        }
+                    }
+                    break;
+
+                case 6:
+                    if (productID.isEmpty()) {
+                        System.out.println("There is no informaton to sort! ");
+                        System.out.println("Please back and add information in Feature 1.");
+                    }
+                    for (a = 0; a &lt;= productID.size() - 1; a++) {
+                        min = a;
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match213-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_5.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                        for (b = a + 1; b &lt;= productID.size(); b++) {
+                            if (productPrice.indexOf(b) &lt; productPrice.indexOf(min)) {
+                                min = b;
+                            }
+                        }
+                        double subprodPrice = productPrice.get(min);
+                        productPrice.set(min, productPrice.get(a));
+                        productPrice.set(a, subprodPrice);
+                        String subprodName = productName.get(min);
+                        productName.set(min, productName.get(a));
+                        productName.set(a, subprodName);
+                        int subquant = productQuantity.get(min);
+</FONT>                        productQuantity.set(min, productQuantity.get(a));
+                        productQuantity.set(a, subquant);
+                        int subprodID = productID.get(min);
+                        productID.set(min, productID.get(a));
+                        productID.set(a, subprodID);
+                    }
+                    System.out.println("This is sorted product list:");
+                    System.out.format("%20s | %10s | %10s | %10s%n", "Name", "Quantity", "Price", "ID");
+                    for (a = 0; a &lt; productID.size(); a++) {
+                        System.out.format("%20s | %10d | %10.1f | %10d%n",
+                                productName.get(a), 
+                                productQuantity.get(a), 
+                                productPrice.get(a), 
+                                productID.get(a));
+                    }
+
+                    break;
+                case 7:
+                   boolean h = false; 
+                    File file = new File("InformationProduct.bin");
+                    if (!file.exists()) { 
+                        file.createNewFile(); 
+                    }
+                    System.out.printf("Do you want to save data to InformationProduct.bin ?");
+                    String option;
+                    do {
+                        System.out.println("Please input Yes or No: ");
+                        option = sc.nextLine();
+                        switch (option) {
+                            case "yes":
+                                h = true;
+                                break;
+                            case "no":
+                                h = true;
+                                break;
+                        }
+                    } while (h = false);
+                    if (h = true) {
+                        FileOutputStream FOS = new FileOutputStream(file);
+                        ObjectOutputStream OOS = new ObjectOutputStream(FOS);
+                        OOS.writeObject(productID); 
+                        OOS.writeObject(productName);
+                        OOS.writeObject(productPrice);
+                        OOS.writeObject(productQuantity);
+                        OOS.close();
+                    }
+                        break;
+                case 8:
+
+                    try {
+                        FileInputStream m = new FileInputStream(product);
+                        ObjectInputStream n = new ObjectInputStream(m);
+
+                        productID = (ArrayList&lt;Integer&gt;) n.readObject();
+                        productName = (ArrayList&lt;String&gt;) n.readObject();
+                        productPrice = (ArrayList&lt;Double&gt;) n.readObject();
+                        productQuantity = (ArrayList&lt;Integer&gt;) n.readObject();
+                        n.close();
+                        m.close();
+                        System.out.println("Your product file has been load!");
+                    } catch (IOException | ClassNotFoundException e) {
+                    }
+                    ;
+                    break;
+                default:
+                    System.out.println("This choice is invalid");
+            }
+
+            System.out.println("Do you want to continue other features(Yes/No): ");
+            quest = sc.next();
+            if (quest.equalsIgnoreCase("Yes")) {
+                continues = true;
+            } else if (quest.equalsIgnoreCase("No")) {
+                continues = false;
+            } else {
+                continues = false;
+            }
+
+        } while (continues == true);
+    }
+
+    private static Object[] size() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

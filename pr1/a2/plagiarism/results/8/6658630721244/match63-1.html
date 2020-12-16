@@ -1,0 +1,248 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040073BuiThiHanh_106487_assignsubmission_file_BuiThiHanh_1C18_1801040073_A2.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/1801040238NguyenThiYen_106490_assignsubmission_file_NguyenThiYen_1801040238_1C18_A2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: 1801040238NguyenThiYen_106490_assignsubmission_file_NguyenThiYen_1801040238_1C18_A2.java
+package NguyenThiYen_1801040238_1C18_A2;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match63-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class NguyenThiYen_1801040238_1C18_A2 {
+
+	static File file = new File("Product.txt");
+	static Scanner sc = new Scanner(System.in);
+	static ArrayList&lt;Integer&gt; ID = new ArrayList&lt;&gt;();
+	static ArrayList&lt;String&gt; Name = new ArrayList&lt;&gt;();
+	static ArrayList&lt;Double&gt; Price = new ArrayList&lt;&gt;();
+	static ArrayList&lt;Integer&gt; Quantity = new ArrayList&lt;&gt;();
+
+	public static void main(String[] args) throws Exception {
+		int function = 0;
+		while (function != 9) {
+			try {
+				System.out.println("1. Add products");
+				System.out.println("2. Display products");
+				System.out.println("3. Delete a product");
+</FONT>				System.out.println("4. Edit a product");
+				System.out.println("5. Search for products by name");
+				System.out.println("6. Sort products by price");
+				System.out.println("7. Save products to text/binary file");
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match63-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_4.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+				System.out.println("8. Load products from the saved file");
+				System.out.println("9. Quit\nYour feature: ");
+				function = sc.nextInt();
+			} catch (Exception e) {
+				System.out.println("Not exist. Please choose again!");
+				sc.nextLine();
+			}
+			switch (function) {
+
+			case 1:
+				addProduct();
+				break;
+			case 2:
+				displayProduct();
+				break;
+			case 3:
+</FONT>				deleteProduct();
+				break;
+			case 4:
+				editProduct();
+				break;
+			case 5:
+				searchProduct();
+				break;
+			case 6:
+				sortProduct();
+				break;
+			case 7:
+				saveProduct();
+				break;
+			case 8:
+				loadProduct();
+				break;
+<A NAME="8"></A><FONT color = #00FFFF><A HREF="match63-0.html#8" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			case 9:
+				System.out.println("");
+				break;
+			default:
+				System.out.println("Your choice should be from 1 to 9!");
+			}
+		}
+	}
+
+	public static void addProduct() {
+		System.out.print("Enter the number of product you want to add: ");
+</FONT><A NAME="5"></A><FONT color = #FF0000><A HREF="match63-0.html#5" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int number = sc.nextInt();
+		for (int i = 0; i &lt; number; i++) {
+			try {
+				int id = i;
+				System.out.println("Product ID: " + i);
+</FONT>				ID.add(i);
+				System.out.print("Product name: ");
+				String name = new Scanner(System.in).nextLine();
+				Name.add(name);
+				System.out.print("Product price: ");
+				double price = new Scanner(System.in).nextDouble();
+				Price.add(price);
+				System.out.print("Product quantity: ");
+				int quantity = new Scanner(System.in).nextInt();
+				Quantity.add(quantity);
+			} catch (Exception e) {
+				System.err.println("Please enter the number, try it again!");
+				sc.nextLine();
+			}
+		}
+	}
+
+	public static void displayProduct() {
+		try {
+			System.out.format("| %2s | %15s | %15s | %15s |%n", "ID", "Name", "Price", "Quantity");
+			for (int i = 0; i &lt; Name.size(); i++) {
+				System.out.println("------------------------------------------------------------");
+				System.out.format("| %02d | %15s | %15.3f | %15d |%n", ID.get(i), Name.get(i), Price.get(i),
+						Quantity.get(i));
+			}
+		} catch (Exception e) {
+			sc.nextLine();
+		}
+	}
+
+	public static void deleteProduct() {
+		System.out.print("Input the product ID you want to delete: ");
+		int searchID = sc.nextInt();
+		if (!ID.contains(searchID)) {
+			System.out.println("This id does not exist!");
+		} else {
+			ID.remove(searchID);
+			Name.remove(searchID);
+			Price.remove(searchID);
+			Quantity.remove(searchID);
+			System.out.println("The product has been deleted!");
+		}
+	}
+
+	public static void editProduct() {
+
+		System.out.print("Input the product ID you want to edit: ");
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match63-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+		int sid = sc.nextInt();
+		if (!ID.contains(sid)) {
+			System.out.println("This id does not exist!");
+		} else {
+			System.out.print("Input new name: ");
+			String name = new Scanner(System.in).nextLine();
+			Name.set(sid, name);
+</FONT>			System.out.print("Input new price: ");
+			double price = new Scanner(System.in).nextDouble();
+<A NAME="9"></A><FONT color = #FF00FF><A HREF="match63-0.html#9" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_2.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			Price.set(sid, price);
+			System.out.print("Input new quantity: ");
+			int quantity = new Scanner(System.in).nextInt();
+			Quantity.set(sid, quantity);
+</FONT><A NAME="6"></A><FONT color = #00FF00><A HREF="match63-0.html#6" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println("The product has been edited!");
+		}
+	}
+
+	public static void searchProduct() {
+		System.out.println("Input the product name you want to find: ");
+		String searchByName = sc.next();
+		System.out.format("| %2s | %15s | %15s | %15s |%n", "ID", "Name", "Price", "Quantity");
+</FONT>		for (int i = 0; i &lt; Name.size(); i++) {
+			if (Name.get(i).contains(searchByName)) {
+				System.out.println("------------------------------------------------------------");
+				System.out.format("| %02d | %15s | %15.3f | %15d |%n", ID.get(i), Name.get(i), Price.get(i),
+						Quantity.get(i));
+
+			}
+		}
+	}
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match63-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+
+	public static void sortProduct() {
+
+		Double[] pr = Price.toArray(new Double[Price.size()]);
+		for (int i = 0; i &lt; Price.size() - 1; i++) {
+			int min_pos = i;
+			for (int j = i + 1; j &lt; Price.size(); j++) {
+				if (pr[j] &lt; pr[min_pos]) {
+					min_pos = j;
+				} else {
+					min_pos = i;
+				}
+			}
+			double temp = pr[i];
+			pr[i] = pr[min_pos];
+			pr[min_pos] = temp;
+
+			String pr1 = Name.set(0, Name.get(min_pos));
+</FONT><A NAME="0"></A><FONT color = #FF0000><A HREF="match63-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_15.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+			System.out.println(pr1);
+		}
+	}
+
+	public static void saveProduct() throws Exception {
+
+		PrintWriter fn = new PrintWriter(file);
+		if (file.exists()) {
+			fn.printf("| %2s | %15s | %15s | %15s |%n", "ID", "Name", "Price", "Quantity");
+			for (int i = 0; i &lt; Name.size(); i++) {
+				fn.printf("| %02d | %15s | %15.3f | %15d |%n", ID.get(i), Name.get(i), Price.get(i), Quantity.get(i));
+			}
+			fn.close();
+			System.out.println("The product has been saved to the text file");
+		} else {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+			fn.printf("| %2s | %15s | %15s | %15s |%n", "ID", "Name", "Price", "Quantity");
+			for (int i = 0; i &lt; Name.size(); i++) {
+				fn.printf("| %02d | %15s | %15.3f | %15d |%n", ID.get(i), Name.get(i), Price.get(i), Quantity.get(i));
+				fn.close();
+			}
+			System.out.println("The product has been saved to the text file");
+		}
+
+	}
+
+	public static void loadProduct() throws Exception {
+</FONT><A NAME="7"></A><FONT color = #0000FF><A HREF="match63-0.html#7" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+
+		FileInputStream f = new FileInputStream(file);
+		Scanner sc1 = new Scanner(f);
+		while (sc1.hasNext()) {
+			System.out.println(sc1.nextLine());
+		}
+		System.out.println("The file has been read.");
+</FONT>
+	}
+
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>

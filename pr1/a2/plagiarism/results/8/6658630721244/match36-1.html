@@ -1,0 +1,295 @@
+<HTML>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+<TITLE>D:/pr1/a2/pre-processed/1801040013VuThiPhuongAnh_106565_assignsubmission_file_assignment2_1801040013_VuThiPhuongAnh.java/</TITLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<HR>
+D:/pr1/a2/pre-processed/PhamQuangHa_106514_assignsubmission_file_Assignment2.java/<p><PRE>
+&gt;&gt;&gt;&gt; file: PhamQuangHa_106514_assignsubmission_file_Assignment2.java
+package pr1.assignment02;
+
+//Pham Quang Hà_8c19_1901040067_A2
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Assignment2 {
+
+    static ArrayList&lt;String&gt; namelist = new ArrayList&lt;&gt;(); // save product's name
+    static ArrayList&lt;Double&gt; pricelist = new ArrayList&lt;&gt;(); //  save products's price
+    static ArrayList&lt;Integer&gt; quantitylist = new ArrayList&lt;&gt;(); //  save product's quantity
+    
+        public static void runProgram(int feature) throws IOException {
+        switch (feature) { // make features
+            case 1:
+                feature1();
+                break;
+            case 2:
+                feature2();
+                break;
+            case 3:
+                feature3();
+                break;
+            case 4:
+                feature4();
+                break;
+            case 5:
+                feature5();
+                break;
+            case 6:
+                feature6();
+                break;
+            case 7:
+                feature7();
+                break;
+            case 8:
+                feature8();
+                break;
+            case 9:
+                quitProgram();
+                break;
+            default:
+                System.err.println("That wasn't a feature!");
+        }
+    }
+        
+
+    public static void main(String[] args) throws Exception {
+        int f = 0;
+        boolean check = false;
+        while (check == false) {
+            try {
+                while (f != 9) {
+                    menuPresent();
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.print("Enter feature: ");                    
+                    f = scanner.nextInt();
+                    runProgram(f);
+                    
+                }
+                check = true;
+            } catch (Exception e) {
+                System.err.println("Wrong input");
+            }            
+        }
+    }
+     public static void menuPresent() { //create a menu driven
+        System.out.println("__________________________________________________");
+        System.out.println("Welcome to Assignment2");
+        System.out.println("==================================================");
+        System.out.println("1: Add products");
+        System.out.println("2: Display products");
+        System.out.println("3: Delete product");
+        System.out.println("4: Edit product");
+        System.out.println("5: Search for products by name");
+        System.out.println("6: Sort products by price");
+        System.out.println("7: Save products to text/binary file");
+        System.out.println("8: Load products from the saved file");
+        System.out.println("9: Quit");
+        System.out.println("==================================================");
+    }
+
+
+    public static void feature1() { // adding products
+        try {
+<A NAME="1"></A><FONT color = #00FF00><A HREF="match36-0.html#1" TARGET="0"><IMG SRC="../../../bitmaps/tm_1_10.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            Scanner input = new Scanner(System.in); // get data from user
+
+            System.out.print("Add the number of product: ");
+            int numProducts = input.nextInt(); //number of products
+            input.nextLine();
+
+            for (int h = 0; h &lt; numProducts; h++) {
+                int id = namelist.size() + 1; // create ID of product
+                
+                System.out.println("ID: " + id);
+                System.out.print("Enter name of product: ");
+                String n = input.nextLine(); // product's name
+                System.out.print("Enter price of product: ");
+                double p = input.nextDouble(); // product's price
+                input.nextLine();
+                System.out.print("Enter quantity product: ");
+                int q = input.nextInt(); // product's quantity
+                input.nextLine();
+
+                namelist.add(n); // save input to arraylist
+                pricelist.add(p);
+                quantitylist.add(q);
+                
+            }
+        } catch (Exception e) {
+            System.err.println("Error, try again!");
+</FONT>        }
+    }
+
+<A NAME="4"></A><FONT color = #FF00FF><A HREF="match36-0.html#4" TARGET="0"><IMG SRC="../../../bitmaps/tm_4_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+    public static void feature2() { // displaying products
+        boolean check = namelist.isEmpty();
+        if (check == true) {
+            System.out.println("You must enter products information first");
+        } else { // create the table 
+            System.out.println("______________________________________________________________________");
+            System.out.format("%5s || %15s || %15s || %15s || %n", "ID", "Name", " Price", "Quantity"); 
+</FONT>
+            for (int h = 0; h &lt; namelist.size(); h++) {
+<A NAME="0"></A><FONT color = #FF0000><A HREF="match36-0.html#0" TARGET="0"><IMG SRC="../../../bitmaps/tm_0_34.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+                System.out.format("No.%3d || %15s || %10f || %15d || %n", h + 1, namelist.get(h), pricelist.get(h), quantitylist.get(h));
+            }
+            System.out.println("______________________________________________________________________");
+        }
+    }
+
+    public static void feature3() { // deleting product
+        try {
+            Scanner input = new Scanner(System.in);
+
+            System.out.print("Enter the ID product you want to delete: "); 
+            int id = input.nextInt(); //  ID you want to delete
+
+            namelist.remove(id - 1); // delete name in arraylist
+            pricelist.remove(id - 1); // delete price in arraylist
+            quantitylist.remove(id - 1); // delete quantity in arraylist
+            System.out.println("Delete successfully");
+
+        } catch (Exception e) { 
+            System.out.println("Wrong ID!");
+        }
+        feature2(); // the result after deleting
+    }
+
+    public static void feature4() { // editing product
+        try {
+            Scanner input = new Scanner(System.in);
+
+            System.out.print("Enter the ID product you want to edit: ");
+            int id = input.nextInt(); // ID you want to edit
+            input.nextLine();
+
+            System.out.print("Enter new name of product: ");
+            String newname = input.nextLine(); 
+            namelist.set(id - 1, newname); // change name in an array list 
+
+            System.out.print("Enter new price of product: ");
+            double newprice = input.nextDouble();
+            pricelist.set(id - 1, newprice); // change price
+
+            System.out.print("Enter new quantity of product: ");
+            int newquantity = input.nextInt();
+            quantitylist.set(id - 1, newquantity); // change quantity
+
+        } catch (Exception e) {
+            System.err.println("Invalid ID!");
+        }
+        feature2(); // the result after editing
+    }
+
+    public static void feature5() { // searching product by name
+        try {
+            boolean checkExist = false; 
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter the product you want to search: ");
+            String product_name = input.nextLine();
+
+            for (int h = 0; h &lt; namelist.size(); h++) {
+                if (namelist.get(h).contains(product_name)) {
+                    System.out.format("%10s || %20s || %10s || %10s || %n", "ID", "Name", " Price", "Quantity");
+                    System.out.format("No.%7d || %20s || %10f || %10d || %n", h + 1, namelist.get(h), pricelist.get(h), quantitylist.get(h));
+                    checkExist = true;
+                }
+            }
+            if(checkExist == false) {
+                System.err.println("Not find this product ");
+            }
+        } catch (Exception e) {
+            System.err.println("Invalid!");
+        }
+    }
+
+    public static void feature6() { // sorting products by price
+        int minPosition;
+        String product_name;
+        double product_price;
+        int product_quantity;
+        for (int k = 0; k &lt; namelist.size(); k++) { 
+            minPosition = k;
+            for (int a = k + 1; a &lt; namelist.size(); a++) { // find the minimum value in list
+                if (pricelist.get(a) &lt; pricelist.get(k)) { //compare the value in list
+                    minPosition = a; 
+                }
+            }
+            product_name = namelist.get(k);  
+            namelist.set(k, namelist.get(minPosition));
+            namelist.set(minPosition, product_name);
+</FONT>
+            product_price = pricelist.get(k);
+            pricelist.set(k, pricelist.get(minPosition));
+            pricelist.set(minPosition, product_price);
+
+<A NAME="2"></A><FONT color = #0000FF><A HREF="match36-0.html#2" TARGET="0"><IMG SRC="../../../bitmaps/tm_2_9.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            product_quantity = quantitylist.get(k);
+            quantitylist.set(k, quantitylist.get(minPosition));
+            quantitylist.set(minPosition, product_quantity);
+        }
+        feature2(); // display products after sorting price
+    }
+
+    public static void feature7() { //saving products
+        try {
+            File product_file = new File("product.txt");
+            FileOutputStream fos = new FileOutputStream(product_file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(namelist);
+            oos.writeObject(pricelist);
+            oos.writeObject(quantitylist);
+
+            oos.close();
+
+            System.out.println("Save file successfully");
+        } catch (IOException e) {
+            System.err.println("Wrong!");// save the file failed
+        }
+    }
+
+    public static void feature8() throws FileNotFoundException, IOException {
+        try {
+            File f = new File("products.txt");
+
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+</FONT>
+            namelist = (ArrayList&lt;String&gt;) ois.readObject();
+<A NAME="3"></A><FONT color = #00FFFF><A HREF="match36-0.html#3" TARGET="0"><IMG SRC="../../../bitmaps/tm_3_3.gif" ALT="other" BORDER="0" ALIGN=left></A>
+
+            pricelist = (ArrayList&lt;Double&gt;) ois.readObject();
+            quantitylist = (ArrayList&lt;Integer&gt;) ois.readObject();
+
+            ois.close();
+
+            System.out.println("Loading done");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Loading error!"); // loading failed
+        }
+    }
+
+    public static void quitProgram() { // quitting program
+        System.out.println("See you again!");
+</FONT>    }
+}
+</PRE>
+</PRE>
+</BODY>
+</HTML>
